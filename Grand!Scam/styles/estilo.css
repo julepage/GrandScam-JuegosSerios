@@ -1,0 +1,198 @@
+
+@font-face {
+  font-family: 'go3v2';
+  src: url('../Fonts/go3v2.woff') format('woff');  
+}
+@font-face {
+  font-family: 'Music-Warrior';
+  src: url('../Fonts/Music-Warrior.woff') format('woff');
+}
+@font-face {
+  font-family: 'Shojumaru-Regular';
+  src: url('../Fonts/Shojumaru-Regular.woff') format('woff');
+}
+@font-face {
+  font-family: 'Ming-Imperial';
+  src: url('../Fonts/Ming-Imperial.woff') format('woff');
+}
+
+body{
+  background-color: #000000;
+}
+#cabecera {
+  display: flex;
+  align-items: center; 
+  background: #ce202c;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+#enlaces {
+  display: flex; 
+  gap: 20px; 
+  margin-right: auto;
+}
+
+.enlace {
+  color: #000000;
+  font-size: 20px;
+  text-decoration: none;
+}
+
+
+
+body {
+  font-family: 'Shojumaru-Regular', sans-serif;
+}
+
+.titulo {
+  text-align: center;
+  font-family: 'go3v2';
+  font-size: 50px;
+  color: rgb(255, 255, 255);
+  text-size-adjust: 50px;
+
+}
+
+#tituloImg{
+  display: block;
+  margin: 0 auto 20px; 
+  max-width: 15%; 
+  height: auto; 
+}
+
+.twitter {
+  margin-left: 5px;
+  width: 40px;
+  height: auto;
+  border-radius: 5px;
+
+}
+#estudio{
+  display: flex;
+  margin-right: 20px;
+  color: #000000;
+  font-size: 20px;
+}
+
+#divDescripcion{
+  margin-left: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+#descripcion{
+  flex: 1;
+  margin-right: 20px;
+  color: rgb(255, 255, 255);
+}
+#divImagen{
+  flex: 1;
+  text-align: center;
+  
+
+}
+#descripcionTxt {
+  font-family:'Music-Warrior' ;
+  font-size: 32px;
+  color: rgb(255, 255, 255);
+}
+#imgDescripcion{
+  max-width: 100%; 
+  height: auto; 
+  max-height: 500px;
+  border-radius: 5px;
+
+}
+
+
+#columnas {
+  display: flex;
+  justify-content: space-between; 
+  margin: 20px 0; 
+}
+
+#col1, #col2 {
+  display: flex;
+  flex-direction: column; 
+  align-items: center; 
+  width: 45%; 
+}
+
+#nombre1, #nombre2, #nombre3, #nombre4, #foto1, #foto3,  #foto2,  #foto4 {
+  margin: 10px 0; 
+  font-size: 18px;
+  color: rgb(255, 255, 255);
+}
+
+#foto1, #foto3,  #foto2,  #foto4 {
+  width: 30%;
+  height: auto;
+}
+.blankspace{
+  height: 800px;
+  width: auto;
+}
+
+#juego {
+  display: block;
+  margin: 0 auto;
+  border: 2px solid #ce203c; 
+  width: auto;
+  height: auto; 
+  max-width: 800px; 
+  max-height: 600px; 
+}
+/*#juego[style] {
+  margin-top: 20px !important;
+}*/
+
+#controles {
+  display: flex;
+  align-items: center;
+  gap: 20px; 
+}
+
+#imgControles {
+  margin-top: 100px;
+  width: 800px;
+  height: auto;
+}
+
+#textoControles {
+  font-family:'Music-Warrior' ;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.jugador1{
+
+  color: red;
+}
+.jugador2{
+  color: blue;
+}
+body {
+cursor: url('./assests/cursor.png') 16 16, auto;
+}
+a, button, .interactive-element {
+  cursor: pointer; /* Cambia a la manita */
+}
+
+.divLicencia {
+  text-align: center;
+  color: red;
+  font-size: 12px; 
+}
+
+a {
+  color: red;
+  display: inline-block;
+}
+
+.cc-icon {
+  height: 12px !important;
+  margin-left: 3px;
+  vertical-align: text-bottom;
+}
