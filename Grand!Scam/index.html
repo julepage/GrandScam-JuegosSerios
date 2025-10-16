@@ -2,50 +2,27 @@
 <html lang="es">
 <head>
   <meta charset="utf-8">
-  <title>Stick-Do</title>
+  <title>Grand!Scam</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/x-icon" href="img/Stick-Do logo nb.png">
-  <link rel="stylesheet" href="styles/estilo.css"> 
- <style>
-  body{
-    cursor: url('./assests/cursor.png'), auto;
+  <style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    background-color: black;
   }
 
-  a, button {
-    cursor: url('./assests/manita.png'), pointer;
+  canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
   }
- </style>
+</style>
   <script src="./lib/phaser.js"></script>
-
 </head>
-
 <body>
-  <div id="cabecera">
-    <div id="enlaces">
-      <a class="enlace" href="index.html" target="_self">Juego</a>
-      <a class="enlace" href="controles.html" target="_self">Controles</a>
-      <a class="enlace" href="descripcion.html" target="_self">Descripcion</a>
-      <a class="enlace" href="autores.html" target="_self">Autores y creditos</a>
-    </div>
-
-    
-    <p id="estudio">Chung Lee Studios →</p>
-    
-    <a href="https://x.com/ChungLee04"><img src="https://img.freepik.com/vector-gratis/nuevo-diseno-icono-x-logotipo-twitter-2023_1017-45418.jpg?size=626&ext=jpg" class="twitter"></a>
-    <a href="https://github.com/MANK1NG/Chung-Lee"><img src="https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png" class="twitter"></a>
-
-  </div>
-
-  <img id="tituloImg" src="img/Stick-Do_Logo_Blanco (1).png"/>
-  
-    <canvas id="juego"></canvas>
-  
-    <script src="src/script.js" type="module"></script> 
+  <script type="module" src="./src/script.js"></script>
 </body>
-	<footer>
-    <br>
-    <br>
-  </footer>
-
-<!--2024-2025-->
 </html>
