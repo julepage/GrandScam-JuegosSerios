@@ -1,19 +1,14 @@
 import Juego from './juego.js';
 
 const config = {
-  type: Phaser.AUTO,
-  scale: {
-    mode: Phaser.Scale.RESIZE,
-    autoCenter: Phaser.Scale.CENTER_BOTH,
-  },
-  physics: {
-    default: 'arcade',
-    arcade: {
-      gravity: { y: 200 },
-      debug: false
+     type: Phaser.AUTO,
+    width: window.innerWidth, // Ancho de la ventana
+    height: window.innerHeight, // Alto de la ventana
+    scene: [Juego], // Aquí defines tus escenas
+    scale: {
+        mode: Phaser.Scale.FIT, // Ajusta el canvas para que ocupe toda la pantalla
+        autoCenter: Phaser.Scale.CENTER_BOTH // Centra el canvas
     }
-  },
-  scene: [Juego]
 };
 
 window.game = new Phaser.Game(config);

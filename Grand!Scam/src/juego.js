@@ -8,10 +8,12 @@ export default class Juego extends Phaser.Scene {
   }
 
   create() {
-    // Instancias la imagen en 0,0 con origen arriba-izquierda
-    this.fondo = this.add.image(0, 0, 'fondoJuego').setOrigin(0, 0);
-    this.fondo.setDisplaySize(1567, 1080);
-}
+        this.fondo = this.add.image(0, 0, 'fondoJuego');
 
+        this.fondo.setScale(this.cameras.main.height / this.fondo.height);
 
+        this.fondo.setDisplaySize(this.fondo.width * this.cameras.main.height / this.fondo.height, this.cameras.main.height);
+        
+        this.fondo.setPosition(this.cameras.main.width / 2, this.cameras.main.height / 2);
+    }
 }
