@@ -5,6 +5,10 @@ export default class Juego extends Phaser.Scene {
 
   preload() {
     this.load.image('fondoJuego', './assets/fondoJuego.png');
+    this.load.spritesheet('animHumo', './assets/animHumo.png', {
+       frameWidth: 274.28571428571428,
+       frameHeight: 273
+    });
   }
 
   create() {
@@ -15,5 +19,15 @@ export default class Juego extends Phaser.Scene {
         this.fondo.setDisplaySize(this.fondo.width * this.cameras.main.height / this.fondo.height, this.cameras.main.height);
         
         this.fondo.setPosition(this.cameras.main.width / 2, this.cameras.main.height / 2);
+
+        this.anims.create({
+          key: 'humo',
+          frames: this.anims.generateFrameNumbers('animHumo', { start: 0, end: 11 }),
+          frameRate: 10,
+          repeat: -1
+        });
+
+        this.humo = this.add.sprite(this.cameras.main.width / 3.43, this.cameras.main.height / 1.54, 'animHumo');
+        this.humo.anims.play('humo', true);
     }
 }
