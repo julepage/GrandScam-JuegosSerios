@@ -51,9 +51,7 @@ export default class Juego extends Phaser.Scene {
     this.scene.launch('EscenaPausa');
     this.scene.pause();
   }
-  escenaPausa(){
-    this.scene.start('EscenaPausa');
-  }
+ 
 
   createAnims(){
     //CREACION DE ANIMS
