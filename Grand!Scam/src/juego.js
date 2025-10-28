@@ -30,12 +30,26 @@ export default class Juego extends Phaser.Scene {
       }
     });
 
+    //BOTON PAUSA
+    this.botonPausa = this.add.sprite(this.cameras.main.width / 20, 60, "botonPausa").setInteractive().setScale(0.4);
+    this.botonPausa.on('pointerdown', () => {
+      this.escenaPausa();
+    });
+    
+    this.botonPausa.on('pointerover', () => {this.botonPausa.setScale(0.45);});
+    this.botonPausa.on('pointerout', () => {this.botonPausa.setScale(0.4);});
+
   }
 
+//CAMBIOS ESCENAS
   telefonoScene(){
     this.telefono.stop();
     this.telefono.setFrame(0);
     this.scene.launch('telefono');
+  }
+  escenaPausa(){
+    this.scene.launch('EscenaPausa');
+    this.scene.pause();
   }
 
   createAnims(){

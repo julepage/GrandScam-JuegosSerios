@@ -35,7 +35,8 @@ export default class EscenaCarga extends Phaser.Scene {
     });
          //FONDO
         this.load.image('fondoJuego', './assets/fondoJuego.png');
-
+        //IMAGENES
+        this.load.image('botonPausa', './assets/pausa_boton.png');
         //SPRITESHEETS
         this.load.spritesheet('animHumo', './assets/animHumo.png', {
           frameWidth: 274.28571428571428,
