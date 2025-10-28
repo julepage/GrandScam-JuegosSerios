@@ -25,11 +25,12 @@ export default class Juego extends Phaser.Scene {
     this.telefono.on('pointerdown', () => {
       this.telefono.stop();
       this.telefono.setFrame(0);
+      this.telefonoScene();
     });
   }
 
   telefonoScene(){
-
+    this.scene.start('telefono');
   }
 
   createAnims(){
