@@ -1,10 +1,12 @@
 export default class Telefono extends Phaser.Scene {
   constructor() {
-    super({ key: 'juetelefonogo' });
+    super({ key: 'telefono' });
   }
 
   create(){
-    console.log("PERRITA");
+    const { width, height } = this.scale;
+        this.add.rectangle(0, 0, width * 2, height * 2, 0x000000, 0.5)
+            .setOrigin(0);
   }
 
 }

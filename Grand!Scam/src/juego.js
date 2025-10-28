@@ -1,6 +1,8 @@
 export default class Juego extends Phaser.Scene {
   constructor() {
     super({ key: 'juego' });
+    this.entraLLamada = false;
+    this.entraMensaje = false;
   }
 
   create() {
@@ -15,22 +17,25 @@ export default class Juego extends Phaser.Scene {
 
     //ANIM HUMO (SIEMPRE VA A ESTAR EN ESCENA)
     this.humo = this.add.sprite(this.cameras.main.width / 3.43, this.cameras.main.height / 1.54, 'animHumo');
-    this.humo.anims.play('humo', true);
+    this.humo.anims.play('humo');
 
     //INSTANCIA DEL TELEFONO (ESTA FIJO PERO SIN ANIM)
     this.telefono = this.add.sprite(this.cameras.main.width / 1.335, 
       this.cameras.main.height / 1.54, 'animTelefono').setInteractive();
     
-    //PULSACION DEL BOTON TELEFONO
+      //PULSACION DEL BOTON TELEFONO
     this.telefono.on('pointerdown', () => {
-      this.telefono.stop();
-      this.telefono.setFrame(0);
-      this.telefonoScene();
+      if(this.entraLLamada){
+        this.telefonoScene();
+      }
     });
+
   }
 
   telefonoScene(){
-    this.scene.start('telefono');
+    this.telefono.stop();
+    this.telefono.setFrame(0);
+    this.scene.launch('telefono');
   }
 
   createAnims(){
@@ -50,4 +55,24 @@ export default class Juego extends Phaser.Scene {
         repeat: -1
     });
   }
+
+  update() {
+    if(!this.entraLLamada && !this.entraMensaje)
+    {
+      const num = Phaser.Math.Between(0, 100);
+      if (num == 1) {
+        this.entraLLamada = true;
+        this.telefono.anims.play('telefono');
+      }
+
+      if(num == 2){
+        this.entraMensaje = true;
+        //ANIMACION
+      }
+   }
+
+    // if(!this.scene.isActive('telefono')){
+    //   this.entraLLamada = false;
+    // }
+}
 }
