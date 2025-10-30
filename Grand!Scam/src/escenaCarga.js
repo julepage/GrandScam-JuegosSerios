@@ -39,6 +39,7 @@ export default class EscenaCarga extends Phaser.Scene {
         this.load.image('botonPausa', './assets/pausa_boton.png');
         this.load.image('fondoPausa', './assets/pausaFondo.png');
         this.load.image('boton', './assets/boton.jpg');
+        this.load.image('movilOff', './assets/movilOff.png');
 
         //SPRITESHEETS
         this.load.spritesheet('animHumo', './assets/animHumo.png', {
@@ -48,6 +49,11 @@ export default class EscenaCarga extends Phaser.Scene {
 
        //---//
        this.load.spritesheet('animTelefono', './assets/animTelefono.png', {
+         frameWidth: 274.28571428571428,
+         frameHeight: 273
+       });
+       //---//
+       this.load.spritesheet('animMovil', './assets/animMovil.png', {
          frameWidth: 274.28571428571428,
          frameHeight: 273
        });

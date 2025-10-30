@@ -30,6 +30,17 @@ export default class Juego extends Phaser.Scene {
       }
     });
 
+     //INSTANCIA DEL MOVIL (ESTA FIJO PERO SIN ANIM)
+    this.movil = this.add.sprite(this.cameras.main.width / 2.65, 
+      this.cameras.main.height / 1.95, 'movilOff').setInteractive();
+
+      //PULSACION DEL BOTON MOVIL
+    this.movil.on('pointerdown', () => {
+      if(this.entraMensaje){
+        this.movilScene();
+      }
+    });
+
     //BOTON PAUSA
     this.botonPausa = this.add.sprite(this.cameras.main.width / 20, 60, "botonPausa").setInteractive().setScale(0.4);
     this.botonPausa.on('pointerdown', () => {
@@ -46,6 +57,11 @@ export default class Juego extends Phaser.Scene {
     this.telefono.stop();
     this.telefono.setFrame(0);
     this.scene.launch('telefono');
+  }
+  movilScene(){
+    this.movil.stop();
+    this.movil.setFrame(0);
+    this.scene.launch('movil');
   }
   escenaPausa(){
     this.scene.launch('EscenaPausa');
@@ -69,6 +85,14 @@ export default class Juego extends Phaser.Scene {
       frameRate: 10,
         repeat: -1
     });
+
+     //---//
+    this.anims.create({
+      key: 'movil',
+      frames: this.anims.generateFrameNumbers('animMovil', { start: 0, end: 11 }),
+      frameRate: 10,
+        repeat: -1
+    });
   }
 
   update() {
@@ -82,7 +106,7 @@ export default class Juego extends Phaser.Scene {
 
       if(num == 1){
         this.entraMensaje = true;
-        //ANIMACION
+        this.movil.anims.play('movil');
       }
    }
 
