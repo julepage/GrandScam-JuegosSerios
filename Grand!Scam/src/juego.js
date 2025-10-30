@@ -74,13 +74,13 @@ export default class Juego extends Phaser.Scene {
   update() {
     if(!this.entraLLamada && !this.entraMensaje)
     {
-      const num = Phaser.Math.Between(0, 100);
-      if (num == 1) {
+      const num = Phaser.Math.Between(0, 2);
+      if (num == 0) {
         this.entraLLamada = true;
         this.telefono.anims.play('telefono');
       }
 
-      if(num == 2){
+      if(num == 1){
         this.entraMensaje = true;
         //ANIMACION
       }
