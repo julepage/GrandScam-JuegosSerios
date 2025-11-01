@@ -12,6 +12,8 @@ export default class Juego extends Phaser.Scene {
     this.fondo.setDisplaySize(this.fondo.width * this.cameras.main.height / this.fondo.height, this.cameras.main.height);
     this.fondo.setPosition(this.cameras.main.width / 2, this.cameras.main.height / 2);
 
+    // Detectar la tecla ESC
+    this.teclaEsc = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ESC);
     //CREACION ANIMACIONES DEL JUEGO
     this.createAnims();
 
@@ -20,56 +22,56 @@ export default class Juego extends Phaser.Scene {
     this.humo.anims.play('humo');
 
     //INSTANCIA DEL TELEFONO (ESTA FIJO PERO SIN ANIM)
-    this.telefono = this.add.sprite(this.cameras.main.width / 1.335, 
+    this.telefono = this.add.sprite(this.cameras.main.width / 1.335,
       this.cameras.main.height / 1.54, 'animTelefono').setInteractive();
-    
-      //PULSACION DEL BOTON TELEFONO
+
+    //PULSACION DEL BOTON TELEFONO
     this.telefono.on('pointerdown', () => {
-      if(this.entraLLamada){
+      if (this.entraLLamada) {
         this.telefonoScene();
       }
     });
 
-     //INSTANCIA DEL MOVIL (ESTA FIJO PERO SIN ANIM)
-    this.movil = this.add.sprite(this.cameras.main.width / 2.65, 
+    //INSTANCIA DEL MOVIL (ESTA FIJO PERO SIN ANIM)
+    this.movil = this.add.sprite(this.cameras.main.width / 2.65,
       this.cameras.main.height / 1.95, 'movilOff').setInteractive();
 
-      //PULSACION DEL BOTON MOVIL
+    //PULSACION DEL BOTON MOVIL
     this.movil.on('pointerdown', () => {
-      if(this.entraMensaje){
+      if (this.entraMensaje) {
         this.movilScene();
       }
     });
 
     //BOTON PAUSA
-    this.botonPausa = this.add.sprite(this.cameras.main.width / 20, 60, "botonPausa").setInteractive().setScale(0.4);
+    this.botonPausa = this.add.sprite(this.cameras.main.width / 20, 60, "botonPausa").setInteractive().setScale(0.4).setDepth(1);
     this.botonPausa.on('pointerdown', () => {
       this.escenaPausa();
     });
-    
-    this.botonPausa.on('pointerover', () => {this.botonPausa.setScale(0.45);});
-    this.botonPausa.on('pointerout', () => {this.botonPausa.setScale(0.4);});
+
+    this.botonPausa.on('pointerover', () => { this.botonPausa.setScale(0.45); });
+    this.botonPausa.on('pointerout', () => { this.botonPausa.setScale(0.4); });
 
   }
 
-//CAMBIOS ESCENAS
-  telefonoScene(){
+  //CAMBIOS ESCENAS
+  telefonoScene() {
     this.telefono.stop();
     this.telefono.setFrame(0);
     this.scene.launch('telefono');
   }
-  movilScene(){
+  movilScene() {
     this.movil.stop();
     this.movil.setFrame(0);
     this.scene.launch('movil');
   }
-  escenaPausa(){
+  escenaPausa() {
     this.scene.launch('EscenaPausa');
     this.scene.pause();
   }
- 
 
-  createAnims(){
+
+  createAnims() {
     //CREACION DE ANIMS
     this.anims.create({
       key: 'humo',
@@ -78,40 +80,44 @@ export default class Juego extends Phaser.Scene {
       repeat: -1
     });
 
-     //---//
+    //---//
     this.anims.create({
       key: 'telefono',
       frames: this.anims.generateFrameNumbers('animTelefono', { start: 0, end: 3 }),
       frameRate: 10,
-        repeat: -1
+      repeat: -1
     });
 
-     //---//
+    //---//
     this.anims.create({
       key: 'movil',
       frames: this.anims.generateFrameNumbers('animMovil', { start: 0, end: 11 }),
       frameRate: 10,
-        repeat: -1
+      repeat: -1
     });
   }
 
   update() {
-    if(!this.entraLLamada && !this.entraMensaje)
-    {
+    if (!this.entraLLamada && !this.entraMensaje) {
       const num = Phaser.Math.Between(0, 2);
       if (num == 0) {
         this.entraLLamada = true;
         this.telefono.anims.play('telefono');
       }
 
-      if(num == 1){
+      if (num == 1) {
         this.entraMensaje = true;
         this.movil.anims.play('movil');
       }
-   }
+    }
 
+    if (Phaser.Input.Keyboard.JustDown(this.teclaEsc)) {
+      // Acción al presionar ESC
+      this.scene.pause();              // Pausa la escena actual
+      this.scene.launch('EscenaPausa'); // Abre tu escena de pausa
+    }
     // if(!this.scene.isActive('telefono')){
     //   this.entraLLamada = false;
     // }
-}
+  }
 }

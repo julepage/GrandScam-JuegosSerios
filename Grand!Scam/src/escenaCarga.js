@@ -1,13 +1,13 @@
 export default class EscenaCarga extends Phaser.Scene {
-    constructor() {
-        super('carga');
-    }
+  constructor() {
+    super('carga');
+  }
 
-    preload() {
-        //PROGRESS BAR
+  preload() {
+    //PROGRESS BAR
     const centerX = this.cameras.main.width / 2;
     const centerY = this.cameras.main.height / 2;
-    const barWidth = this.cameras.main.width/4;
+    const barWidth = this.cameras.main.width / 4;
     const barHeight = barWidth * 0.1;
     const barraFondo = this.add.rectangle(centerX, centerY, barWidth, barHeight, 0x555555);
     barraFondo.setOrigin(0.5, 0.5);
@@ -33,30 +33,33 @@ export default class EscenaCarga extends Phaser.Scene {
         this.scene.start('juego');
       });
     });
-         //FONDO
-        this.load.image('fondoJuego', './assets/fondoJuego.png');
-        //IMAGENES
-        this.load.image('botonPausa', './assets/pausa_boton.png');
-        this.load.image('fondoPausa', './assets/pausaFondo.png');
-        this.load.image('boton', './assets/boton.jpg');
-        this.load.image('movilOff', './assets/movilOff.png');
 
-        //SPRITESHEETS
-        this.load.spritesheet('animHumo', './assets/animHumo.png', {
-          frameWidth: 274.28571428571428,
-          frameHeight: 273
-        });
+    //JSON CON TEXTOS
+    this.load.json('es', 'assets/lang/es.json');
+    //FONDO
+    this.load.image('fondoJuego', './assets/fondoJuego.png');
+    //IMAGENES
+    this.load.image('botonPausa', './assets/pausa_boton.png');
+    this.load.image('fondoPausa', './assets/pausaFondo.png');
+    this.load.image('boton', './assets/boton.jpg');
+    this.load.image('movilOff', './assets/movilOff.png');
 
-       //---//
-       this.load.spritesheet('animTelefono', './assets/animTelefono.png', {
-         frameWidth: 274.28571428571428,
-         frameHeight: 273
-       });
-       //---//
-       this.load.spritesheet('animMovil', './assets/animMovil.png', {
-         frameWidth: 274.28571428571428,
-         frameHeight: 273
-       });
-    }
+    //SPRITESHEETS
+    this.load.spritesheet('animHumo', './assets/animHumo.png', {
+      frameWidth: 274.28571428571428,
+      frameHeight: 273
+    });
+
+    //---//
+    this.load.spritesheet('animTelefono', './assets/animTelefono.png', {
+      frameWidth: 274.28571428571428,
+      frameHeight: 273
+    });
+    //---//
+    this.load.spritesheet('animMovil', './assets/animMovil.png', {
+      frameWidth: 274.28571428571428,
+      frameHeight: 273
+    });
+  }
 }
 
