@@ -6,7 +6,7 @@ import EscenaMovil from './escenaMovil.js';
 
 
 const config = {
-     type: Phaser.AUTO,
+    type: Phaser.AUTO,
     width: window.innerWidth, // Ancho de la ventana
     height: window.innerHeight, // Alto de la ventana
     scene: [EscenaCarga, Juego, EscenaTelefono, EscenaMovil, EscenaPausa], // Aquí defines tus escenas

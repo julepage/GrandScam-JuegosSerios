@@ -3,7 +3,7 @@ export default class EscenaTelefono extends Phaser.Scene {
     super({ key: 'telefono' });
   }
 
-  create(){
+  create() {
     const { width, height } = this.scale;
     this.add.rectangle(0, 0, width * 2, height * 2, 0x000000, 0.5).setOrigin(0);
 
@@ -13,5 +13,4 @@ export default class EscenaTelefono extends Phaser.Scene {
     this.fondo.setDisplaySize(this.fondo.width * this.cameras.main.height / this.fondo.height, this.cameras.main.height);
     this.fondo.setPosition(this.cameras.main.width / 2, this.cameras.main.height / 2);
   }
-
 }
