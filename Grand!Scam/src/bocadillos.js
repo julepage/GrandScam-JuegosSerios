@@ -1,12 +1,13 @@
 export default class Bocadillos extends Phaser.GameObjects.Container {
-    constructor(scene, x, y) {
+    constructor(scene, x, y, textoInicial) {
         super(scene, x, y);
         this.scene = scene;
+        console.log(textoInicial)
         scene.add.existing(this);
 
          const textos = this.scene.cache.json.get('es');
           //primer timo
-        this.caso1 = this.scene.add.text(this.scene.cameras.main.width / 2 * 1.3, this.scene.cameras.main.height / 5, textos.SMS.caso1.mIni, {
+        this.caso1 = this.scene.add.text(this.scene.cameras.main.width / 2 * 1.3, this.scene.cameras.main.height / 5, textoInicial, {
             fontFamily: 'Georgia, "Times New Roman", serif',
             fontSize: '20px',
             color: '#000000ff',
