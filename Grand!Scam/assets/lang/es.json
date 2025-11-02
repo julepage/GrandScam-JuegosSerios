@@ -6,8 +6,17 @@
   },
   "SMS": {
     "caso1": {
-      "mensaje1": "Su paquete ha tenido una incidencia, pulse en el siguiente enlace"
+      "mIni": "¡Únete a este sorteo y\n podrás ganar un viaje a un sitio\n entre todos nuestros destinos!",
+      "enlace": "sorteovacas",
+      "opciones": [
+        {
+          "1": "Hacer clic en el enlace",
+          "2": "No participar en el sorteo",
+          "3": "Verificar el enlace"
+          
+        }
+      ]
     }
   },
   "llamada": {}
-} 
+}
