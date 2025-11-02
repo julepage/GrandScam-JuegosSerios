@@ -3,5 +3,11 @@
     "continuar": "CONTINUAR",
     "opciones": "OPCIONES",
     "menu": "MENÚ"
-  }
-}
+  },
+  "SMS": {
+    "caso1": {
+      "mensaje1": "Su paquete ha tenido una incidencia, pulse en el siguiente enlace"
+    }
+  },
+  "llamada": {}
+} 
