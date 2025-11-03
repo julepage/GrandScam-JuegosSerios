@@ -54,7 +54,7 @@ export default class EscenaPausa extends Phaser.Scene {
             fontFamily: 'Georgia, "Times New Roman", serif',
             fontSize: '150px',
             color: '#ff5100ff',
-            stroke: '#000000',
+            stroke: '#561b00ff',
             strokeThickness: 6,
             align: 'center'
         })

@@ -1,5 +1,5 @@
 export default class Bocadillos extends Phaser.GameObjects.Container {
-    constructor(scene, x, y, textoInicial) {
+    constructor(scene, x, y, textoInicial, tipoEstafa) {
         super(scene, x, y);
         this.scene = scene;
         scene.add.existing(this);
@@ -15,19 +15,25 @@ export default class Bocadillos extends Phaser.GameObjects.Container {
             align: 'center'
         }).setOrigin(0.5, 0.5);
 
-        this.enlace = this.scene.add.text(this.caso1.x, this.caso1.y + this.caso1.height / 1.5, this.textos.comienzo.enlace, {
-            fontFamily: 'Georgia, "Times New Roman", serif',
-            fontSize: '20px',
-            color: '#0011ffff',
-            stroke: '#1e00ffff',
-            strokeThickness: 1,
-            align: 'center'
-        }).setOrigin(0.5, 0.5);
-        // Dibujar línea debajo del texto
-        const underline = this.scene.add.graphics();
-        underline.lineStyle(2, 0x0011ff, 1); // grosor, color, alpha
-        const bounds = this.enlace.getBounds();
-        underline.strokeLineShape(new Phaser.Geom.Line(bounds.x, bounds.bottom + 2, bounds.right, bounds.bottom + 2));
+        if (tipoEstafa === this.scene.textos.movil.SMS) {
+            this.enlace = this.scene.add.text(this.caso1.x, this.caso1.y + this.caso1.height / 1.5, this.textos.comienzo.enlace, {
+                fontFamily: 'Georgia, "Times New Roman", serif',
+                fontSize: '20px',
+                color: '#0011ffff',
+                stroke: '#1e00ffff',
+                strokeThickness: 1,
+                align: 'center'
+            }).setOrigin(0.5, 0.5);
+            // Dibujar línea debajo del texto
+            const underline = this.scene.add.graphics();
+            underline.lineStyle(2, 0x0011ff, 1); // grosor, color, alpha
+            const bounds = this.enlace.getBounds();
+            underline.strokeLineShape(new Phaser.Geom.Line(bounds.x, bounds.bottom + 2, bounds.right, bounds.bottom + 2));
+            this.fondoMovil = this.scene.add.image(0, 0, 'fondoSMS');
+            this.fondoMovil.setScale(this.scene.cameras.main.height / this.fondoMovil.height);
+            this.fondoMovil.setDisplaySize(this.fondoMovil.width * this.scene.cameras.main.height / this.fondoMovil.height, this.scene.cameras.main.height);
+            this.fondoMovil.setPosition(this.scene.cameras.main.width / 2, this.scene.cameras.main.height / 2);
+        }
     }
 
     //dependiendo del numero de respuestas pone un bocadillo

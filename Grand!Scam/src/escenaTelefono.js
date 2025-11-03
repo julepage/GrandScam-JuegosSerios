@@ -19,7 +19,8 @@ export default class EscenaTelefono extends Phaser.Scene {
     //Caso random
     this.randomCaso = Phaser.Math.RND.pick(Object.keys(this.textos.telefono.llamada));
     //poner bocadillos
-    this.bocadillos = new Bocadillos(this, 0, 0, this.textos.telefono.llamada[this.randomCaso]);
+    this.cuadro = this.add.image(this.cameras.main.width / 3 * 2, this.cameras.main.height / 4, 'cuadroTexto').setScale(0.5);
+    this.bocadillos = new Bocadillos(this, 0, 0, this.textos.telefono.llamada[this.randomCaso], this.textos.telefono.llamada);
     this.bocadillos.ponerBocadillos(this.textos.telefono.llamada[this.randomCaso].comienzo.opciones);
     this.bocadillos.ponerTextos(this.textos.telefono.llamada[this.randomCaso].comienzo.opciones);
   }

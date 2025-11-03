@@ -7,7 +7,7 @@ export default class EscenaMovil extends Phaser.Scene {
 
 
   create() {
-    const textos = this.cache.json.get('es');
+    this.textos = this.cache.json.get('es');
     //Fondo negro translucido
     const { width, height } = this.scale;
     this.add.rectangle(0, 0, width * 2, height * 2, 0x000000, 0.5).setOrigin(0);
@@ -18,11 +18,12 @@ export default class EscenaMovil extends Phaser.Scene {
     this.fondo.setPosition(this.cameras.main.width / 2, this.cameras.main.height / 2);
 
     //Caso y aplicacion random
-    this.randomApp = Phaser.Math.RND.pick(Object.keys(textos.movil));
-    this.randomCaso = Phaser.Math.RND.pick(Object.keys(textos.movil[this.randomApp]));
+    this.randomApp = Phaser.Math.RND.pick(Object.keys(this.textos.movil));
+    this.randomCaso = Phaser.Math.RND.pick(Object.keys(this.textos.movil[this.randomApp]));
     //poner bocadillos
-    this.bocadillos = new Bocadillos(this, 0, 0, textos.movil[this.randomApp][this.randomCaso]);
-    this.bocadillos.ponerBocadillos(textos.movil[this.randomApp][this.randomCaso].comienzo.opciones);
-    this.bocadillos.ponerTextos(textos.movil[this.randomApp][this.randomCaso].comienzo.opciones);
+    this.cuadro = this.add.image(this.cameras.main.width/3*2, this.cameras.main.height/4, 'cuadroTexto').setScale(0.5);
+    this.bocadillos = new Bocadillos(this, 0, 0, this.textos.movil[this.randomApp][this.randomCaso], this.textos.movil[this.randomApp]);//hasta caso1
+    this.bocadillos.ponerBocadillos(this.textos.movil[this.randomApp][this.randomCaso].comienzo.opciones);
+    this.bocadillos.ponerTextos(this.textos.movil[this.randomApp][this.randomCaso].comienzo.opciones);
   }
 }
