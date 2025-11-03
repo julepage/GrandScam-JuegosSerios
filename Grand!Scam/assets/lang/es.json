@@ -37,52 +37,52 @@
           }
         ]
       }
-    },
-    "llamada": {
-      "caso1": {
-        "comienzo": {
-          "mensajeInicial": "Buenos días, le habla Sergio Sergitez del\n departamento de atención al cliente de\n LaLuzDeDios Energía. Esta llamada puede ser\n grabada por motivos de calidad. ¿Podría\n confirmar si hablo con Juani Juanitez,\n titular del contrato número 123456?",
-          "opciones": [
-            {
-              "texto": "Sí, soy yo.",
-              "siguiente": "casoFactura"
-            },
-            {
-              "texto": "¿De qué se trata esta llamada?",
-              "siguiente": "casoFactura"
-            }
-          ]
-        },
-        "casoFactura": {
-          "mensajeInicial": "Le llamamos para informarle que en nuestros registros tiene una factura pendiente. Puede consultarla desde su área de cliente o en nuestra aplicación móvil. Le recomendamos efectuar el pago lo antes posible para evitar que el suministro pueda verse afectado.",
-          "opciones": [
-            {
-              "texto": "Gracias por el aviso, envienme la factura por correo.",
-              "siguiente": "acierto"
-            },
-            {
-              "texto": "No me fio de usted. Adios.",
-              "siguiente": "fallo"
-            },
-            {
-              "texto": "¿Puede repetirme su nombre?",
-              "siguiente": "dudas"
-            }
-          ]
-        },
-        "dudas": {
-          "mensajeInicial": "Por supuesto. Me llamo Sergio Sergitez, de atencion al cliente de LaLuzDeDios Energia.",
-          "opciones": [
-            {
-              "texto": "Esta bien, pagare.",
-              "siguiente": "acierto"
-            },
-            {
-              "texto": "Lo siento pero no me fio de la llamada. Adios.",
-              "siguiente": "fallo"
-            }
-          ]
-        }
+    }
+  },
+  "llamada": {
+    "caso1": {
+      "comienzo": {
+        "mensajeInicial": "Buenos días, le habla Sergio Sergitez del\n departamento de atención al cliente de\n LaLuzDeDios Energía. Esta llamada puede ser\n grabada por motivos de calidad. ¿Podría\n confirmar si hablo con Juani Juanitez,\n titular del contrato número 123456?",
+        "opciones": [
+          {
+            "texto": "Sí, soy yo.",
+            "siguiente": "casoFactura"
+          },
+          {
+            "texto": "¿De qué se trata esta llamada?",
+            "siguiente": "casoFactura"
+          }
+        ]
+      },
+      "casoFactura": {
+        "mensajeInicial": "Le llamamos para informarle que en nuestros registros tiene una factura pendiente. Puede consultarla desde su área de cliente o en nuestra aplicación móvil. Le recomendamos efectuar el pago lo antes posible para evitar que el suministro pueda verse afectado.",
+        "opciones": [
+          {
+            "texto": "Gracias por el aviso, envienme la factura por correo.",
+            "siguiente": "acierto"
+          },
+          {
+            "texto": "No me fio de usted. Adios.",
+            "siguiente": "fallo"
+          },
+          {
+            "texto": "¿Puede repetirme su nombre?",
+            "siguiente": "dudas"
+          }
+        ]
+      },
+      "dudas": {
+        "mensajeInicial": "Por supuesto. Me llamo Sergio Sergitez, de atencion al cliente de LaLuzDeDios Energia.",
+        "opciones": [
+          {
+            "texto": "Esta bien, pagare.",
+            "siguiente": "acierto"
+          },
+          {
+            "texto": "Lo siento pero no me fio de la llamada. Adios.",
+            "siguiente": "fallo"
+          }
+        ]
       }
     }
   }
