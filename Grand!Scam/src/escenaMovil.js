@@ -17,14 +17,12 @@ export default class EscenaMovil extends Phaser.Scene {
     this.fondo.setDisplaySize(this.fondo.width * this.cameras.main.height / this.fondo.height, this.cameras.main.height);
     this.fondo.setPosition(this.cameras.main.width / 2, this.cameras.main.height / 2);
 
+    //Caso y aplicacion random
+    this.randomApp = Phaser.Math.RND.pick(Object.keys(textos.movil));
+    this.randomCaso = Phaser.Math.RND.pick(Object.keys(textos.movil[this.randomApp]));
     //poner bocadillos
-    this.bocadillos = new Bocadillos(this, 0, 0, textos.SMS.caso1);
-    this.bocadillos.ponerBocadillos(textos.SMS.caso1.comienzo.opciones);
-    this.bocadillos.ponerTextos(textos.SMS.caso1.comienzo.opciones);
-
-  }
-
-  update() {
-    // if(textos.SMS.caso1.)
+    this.bocadillos = new Bocadillos(this, 0, 0, textos.movil[this.randomApp][this.randomCaso]);
+    this.bocadillos.ponerBocadillos(textos.movil[this.randomApp][this.randomCaso].comienzo.opciones);
+    this.bocadillos.ponerTextos(textos.movil[this.randomApp][this.randomCaso].comienzo.opciones);
   }
 }
