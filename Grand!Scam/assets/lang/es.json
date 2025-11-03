@@ -4,17 +4,88 @@
     "opciones": "OPCIONES",
     "menu": "MENÚ"
   },
+
   "SMS": {
     "caso1": {
-      "mIni": "¡Únete a este sorteo y\n podrás ganar un viaje a un sitio\n entre todos nuestros destinos!",
-      "enlace": "sorteovacas",
-      "opciones": [
-        {
-          "1": "Hacer clic en el enlace",
-          "2": "No participar en el sorteo",
-          "3": "Verificar el enlace"
-          
+      "comienzo":{
+        "mIni": "¡Únete a este sorteo y\n podrás ganar un viaje a un sitio\n entre todos nuestros destinos!",
+        "enlace": "sorteovacas",
+        "opciones": [
+          {
+            "texto": "Hacer clic en el enlace",
+            "siguiente": "fallo"
+          },
+          {
+            "texto": "No participar en el sorteo",
+            "siguiente": "acierto"
+          },
+          {
+            "texto": "Verificar el enlace",
+            "siguiente": "mirarWeb"
+          }
+        ]
+      },
+      "mirarWeb":{
+        "mIni": "Vaya! Parece una web poco fiable\n, no tiene la s de seguro en el enlace https",
+        "opciones":[
+            {
+              "texto": "No participar en el sorteo",
+              "siguiente": "acierto"
+            },
+            {
+              "texto": "Participar igualmente",
+              "siguiente": "fallo"
+            }
+        ]
+      }
+    },
+
+    "llamada": {
+      "caso1": {
+        "comienzo": {
+          "mensajeInicial": "Buenos días, le habla Sergio Sergitez del departamento de atención al cliente de LaLuzDeDios Energía. Esta llamada puede ser grabada por motivos de calidad. ¿Podría confirmar si hablo con Juani Juanitez, titular del contrato número 123456?",
+          "opciones": [
+            {
+              "texto": "Sí, soy yo.",
+              "siguiente": "casoFactura"
+            },
+            {
+              "texto": "¿De qué se trata esta llamada?",
+              "siguiente": "casoFactura"
+            }
+          ]
+        },
+        "casoFactura": {
+          "mensajeInicial": "Le llamamos para informarle que en nuestros registros tiene una factura pendiente. Puede consultarla desde su área de cliente o en nuestra aplicación móvil. Le recomendamos efectuar el pago lo antes posible para evitar que el suministro pueda verse afectado.",
+          "opciones": [
+            {
+              "texto": "Gracias por el aviso, envienme la factura por correo.",
+              "siguiente": "acierto"
+            },
+            {
+              "texto": "No me fio de usted. Adios.",
+              "siguiente": "fallo"
+            },
+            {
+              "texto": "¿Puede repetirme su nombre?",
+              "siguiente": "dudas"
+            }
+          ]
+        },
+        "dudas": {
+          "mensajeInicial": "Por supuesto. Me llamo Sergio Sergitez, de atencion al cliente de LaLuzDeDios Energia.",
+          "opciones": [
+            {
+              "texto": "Esta bien, pagare.",
+              "siguiente": "acierto"
+            },
+            {
+              "texto": "Lo siento pero no me fio de la llamada. Adios.",
+              "siguiente": "fallo"
+            }
+          ]
         }
+<<<<<<< Updated upstream
       ]
     }
   },
@@ -62,6 +133,8 @@
             "siguiente": "fallo"
           }
         ]
+=======
+>>>>>>> Stashed changes
       }
     }
   }
