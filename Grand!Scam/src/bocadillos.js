@@ -4,9 +4,9 @@ export default class Bocadillos extends Phaser.GameObjects.Container {
         this.scene = scene;
         scene.add.existing(this);
 
-        const textos = this.scene.cache.json.get('es');
+        this.textos = textoInicial;
         //primer timo
-        this.caso1 = this.scene.add.text(this.scene.cameras.main.width / 2 * 1.3, this.scene.cameras.main.height / 5, textoInicial, {
+        this.caso1 = this.scene.add.text(this.scene.cameras.main.width / 2 * 1.3, this.scene.cameras.main.height / 5, this.textos.comienzo.mIni, {
             fontFamily: 'Georgia, "Times New Roman", serif',
             fontSize: '20px',
             color: '#000000ff',
@@ -15,7 +15,7 @@ export default class Bocadillos extends Phaser.GameObjects.Container {
             align: 'center'
         }).setOrigin(0.5, 0.5);
 
-        this.enlace = this.scene.add.text(this.caso1.x, this.caso1.y + this.caso1.height / 1.5, textos.SMS.caso1.comienzo.enlace, {
+        this.enlace = this.scene.add.text(this.caso1.x, this.caso1.y + this.caso1.height / 1.5, this.textos.comienzo.enlace, {
             fontFamily: 'Georgia, "Times New Roman", serif',
             fontSize: '20px',
             color: '#0011ffff',
@@ -29,7 +29,7 @@ export default class Bocadillos extends Phaser.GameObjects.Container {
         const bounds = this.enlace.getBounds();
         underline.strokeLineShape(new Phaser.Geom.Line(bounds.x, bounds.bottom + 2, bounds.right, bounds.bottom + 2));
     }
-    
+
     //dependiendo del numero de respuestas pone un bocadillo
     ponerBocadillos(opcionesArray) {
         if (!opcionesArray || opcionesArray.length == 0) return; // seguridad
@@ -118,7 +118,30 @@ export default class Bocadillos extends Phaser.GameObjects.Container {
                     align: 'center'
                 }).setOrigin(0.5, 0.5).setInteractive();
 
-                this.bocadillo2 = this.scene.add.text(
+                this.texto1.on('pointerdown', () => {
+                    if (opcionesArray[0].siguiente == "acierto" || opcionesArray[0].siguiente == "fallo") {
+                        this.scene.scene.stop();
+                    }
+                    else {
+                    this.caso1.destroy();
+                    this.bocadillo1.destroy();
+                    this.bocadillo2.destroy();
+                    this.caso1 = this.scene.add.text(this.scene.cameras.main.width / 2 * 1.3, this.scene.cameras.main.height / 5, this.textos[opcionesArray[0].siguiente].mIni, {
+                        fontFamily: 'Georgia, "Times New Roman", serif',
+                        fontSize: '20px',
+                        color: '#000000ff',
+                        stroke: '#000000',
+                        strokeThickness: 1,
+                        align: 'center'
+                    }).setOrigin(0.5, 0.5);
+                    this.texto1.destroy();
+                    this.texto2.destroy();
+                        this.ponerBocadillos(this.textos[opcionesArray[0].siguiente].opciones);
+                        this.ponerTextos(this.textos[opcionesArray[0].siguiente].opciones);
+                    }
+                });
+
+                this.texto2 = this.scene.add.text(
                     this.caso1.x,
                     this.bocadillo1.y + this.bocadillo1.height / 2,
                     opcionesArray[1].texto, {
@@ -129,6 +152,29 @@ export default class Bocadillos extends Phaser.GameObjects.Container {
                     strokeThickness: 1,
                     align: 'center'
                 }).setOrigin(0.5, 0.5).setInteractive();
+
+                this.texto2.on('pointerdown', () => {
+                    if (opcionesArray[1].siguiente == "acierto" || opcionesArray[1].siguiente == "fallo") {
+                        this.scene.scene.stop();
+                    }
+                    else {
+                    this.caso1.destroy();
+                    this.bocadillo1.destroy();
+                    this.bocadillo2.destroy();
+                    this.caso1 = this.scene.add.text(this.scene.cameras.main.width / 2 * 1.3, this.scene.cameras.main.height / 5, this.textos[opcionesArray[1].siguiente].mIni, {
+                        fontFamily: 'Georgia, "Times New Roman", serif',
+                        fontSize: '20px',
+                        color: '#000000ff',
+                        stroke: '#000000',
+                        strokeThickness: 1,
+                        align: 'center'
+                    }).setOrigin(0.5, 0.5);
+                    this.texto1.destroy();
+                    this.texto2.destroy();
+                        this.ponerBocadillos(this.textos[opcionesArray[1].siguiente].opciones);
+                        this.ponerTextos(this.textos[opcionesArray[1].siguiente].opciones);
+                    }
+                });
                 break;
             }
             case 3: {
@@ -137,10 +183,10 @@ export default class Bocadillos extends Phaser.GameObjects.Container {
                 const topY = this.caso1.y + this.caso1.height + padding;
 
                 // Bocadillo pequeño izquierda
-                this.bocadillo1 = this.scene.add.text(
+                this.texto1 = this.scene.add.text(
                     this.caso1.x - padding, // separar un poco a la izquierda
                     topY,
-                     opcionesArray[0].texto, {
+                    opcionesArray[0].texto, {
                     fontFamily: 'Georgia, "Times New Roman", serif',
                     fontSize: '15px',
                     color: '#000000ff',
@@ -149,11 +195,36 @@ export default class Bocadillos extends Phaser.GameObjects.Container {
                     align: 'center'
                 }).setOrigin(0.5, 0.5).setInteractive();
 
+                this.texto1.on('pointerdown', () => {
+                    if (opcionesArray[0].siguiente === "acierto" || opcionesArray[0].siguiente === "fallo") {
+                        this.scene.scene.stop();
+                    }
+                    else {
+                        this.caso1.destroy();
+                        this.bocadillo1.destroy();
+                        this.bocadillo2.destroy();
+                        this.bocadillo3.destroy();
+                        this.caso1 = this.scene.add.text(this.scene.cameras.main.width / 2 * 1.3, this.scene.cameras.main.height / 5, this.textos[opcionesArray[0].siguiente].mIni, {
+                            fontFamily: 'Georgia, "Times New Roman", serif',
+                            fontSize: '20px',
+                            color: '#000000ff',
+                            stroke: '#000000',
+                            strokeThickness: 1,
+                            align: 'center'
+                        }).setOrigin(0.5, 0.5);
+                        this.texto1.destroy();
+                        this.texto2.destroy();
+                        this.texto3.destroy();
+                        this.ponerBocadillos(this.textos[opcionesArray[0].siguiente].opciones);
+                        this.ponerTextos(this.textos[opcionesArray[0].siguiente].opciones);
+                    }
+                });
+
                 // Bocadillo pequeño derecha
-                this.bocadillo2 = this.scene.add.text(
+                this.texto2 = this.scene.add.text(
                     this.caso1.x + this.scene.cameras.main.width / 14.76, // separar un poco a la derecha
                     topY,
-                   opcionesArray[1].texto, {
+                    opcionesArray[1].texto, {
                     fontFamily: 'Georgia, "Times New Roman", serif',
                     fontSize: '15px',
                     color: '#000000ff',
@@ -161,11 +232,37 @@ export default class Bocadillos extends Phaser.GameObjects.Container {
                     strokeThickness: 1,
                     align: 'center'
                 }).setOrigin(0.5, 0.5).setInteractive();
+
+                this.texto2.on('pointerdown', () => {
+                    if (opcionesArray[1].siguiente == "acierto" || opcionesArray[1].siguiente == "fallo") {
+                        this.scene.scene.stop();
+                    }
+                    else {
+                    this.caso1.destroy();
+                    this.bocadillo1.destroy();
+                    this.bocadillo2.destroy();
+                    this.bocadillo3.destroy();
+                    this.caso1 = this.scene.add.text(this.scene.cameras.main.width / 2 * 1.3, this.scene.cameras.main.height / 5, this.textos[opcionesArray[1].siguiente].mIni, {
+                        fontFamily: 'Georgia, "Times New Roman", serif',
+                        fontSize: '20px',
+                        color: '#000000ff',
+                        stroke: '#000000',
+                        strokeThickness: 1,
+                        align: 'center'
+                    }).setOrigin(0.5, 0.5);
+                    this.texto1.destroy();
+                    this.texto2.destroy();
+                    this.texto3.destroy();
+                        this.ponerBocadillos(this.textos[opcionesArray[1].siguiente].opciones);
+                        this.ponerTextos(this.textos[opcionesArray[1].siguiente].opciones);
+                    }
+                });
+
                 // Bocadillo grande abajo
-                this.bocadillo3 = this.scene.add.text(
+                this.texto3 = this.scene.add.text(
                     this.caso1.x,
                     topY + this.bocadillo1.height / 2,
-                   opcionesArray[2].texto, {
+                    opcionesArray[2].texto, {
                     fontFamily: 'Georgia, "Times New Roman", serif',
                     fontSize: '15px',
                     color: '#000000ff',
@@ -173,6 +270,31 @@ export default class Bocadillos extends Phaser.GameObjects.Container {
                     strokeThickness: 1,
                     align: 'center'
                 }).setOrigin(0.5, 0.5).setInteractive();
+
+                this.texto3.on('pointerdown', () => {
+                    if (opcionesArray[2].siguiente == "acierto" || opcionesArray[2].siguiente == "fallo") {
+                        this.scene.scene.stop();
+                    }
+                    else {
+                    this.caso1.destroy();
+                    this.bocadillo1.destroy();
+                    this.bocadillo2.destroy();
+                    this.bocadillo3.destroy();
+                    this.caso1 = this.scene.add.text(this.scene.cameras.main.width / 2 * 1.3, this.scene.cameras.main.height / 5, this.textos[opcionesArray[2].siguiente].mIni, {
+                        fontFamily: 'Georgia, "Times New Roman", serif',
+                        fontSize: '20px',
+                        color: '#000000ff',
+                        stroke: '#000000',
+                        strokeThickness: 1,
+                        align: 'center'
+                    }).setOrigin(0.5, 0.5);
+                    this.texto1.destroy();
+                    this.texto2.destroy();
+                    this.texto3.destroy();
+                        this.ponerBocadillos(this.textos[opcionesArray[2].siguiente].opciones);
+                        this.ponerTextos(this.textos[opcionesArray[2].siguiente].opciones);
+                    }
+                });
                 break;
             }
             case 4: {
@@ -181,7 +303,7 @@ export default class Bocadillos extends Phaser.GameObjects.Container {
                 const bottomY4 = topY4 + this.scene.cameras.main.width / 38.4 + padding; // 50 = altura aproximada del bocadilloP
                 const offsetX = this.scene.cameras.main.width / 19.2; // separación horizontal
                 // fila superior
-                this.bocadillo1 = this.scene.add.text(this.caso1.x - offsetX, topY4,  opcionesArray[0].texto, {
+                this.texto1 = this.scene.add.text(this.caso1.x - offsetX, topY4, opcionesArray[0].texto, {
                     fontFamily: 'Georgia, "Times New Roman", serif',
                     fontSize: '15px',
                     color: '#000000ff',
@@ -189,7 +311,34 @@ export default class Bocadillos extends Phaser.GameObjects.Container {
                     strokeThickness: 1,
                     align: 'center'
                 }).setOrigin(0.5, 0.5).setInteractive();
-                this.bocadillo2 = this.scene.add.text(this.caso1.x + offsetX, topY4,  opcionesArray[1].texto, {
+
+                this.texto1.on('pointerdown', () => {
+                    if (opcionesArray[0].siguiente == "acierto" || opcionesArray[0].siguiente == "fallo") {
+                        this.scene.scene.stop();
+                    }
+                    else {
+                    this.caso1.destroy();
+                    this.bocadillo1.destroy();
+                    this.bocadillo2.destroy();
+                    this.bocadillo3.destroy();
+                    this.caso1 = this.scene.add.text(this.scene.cameras.main.width / 2 * 1.3, this.scene.cameras.main.height / 5, this.textos[opcionesArray[0].siguiente].mIni, {
+                        fontFamily: 'Georgia, "Times New Roman", serif',
+                        fontSize: '20px',
+                        color: '#000000ff',
+                        stroke: '#000000',
+                        strokeThickness: 1,
+                        align: 'center'
+                    }).setOrigin(0.5, 0.5);
+                    this.texto1.destroy();
+                    this.texto2.destroy();
+                    this.texto3.destroy();
+                    this.textos4.destroy();
+                        this.ponerBocadillos(this.textos[opcionesArray[0].siguiente].opciones);
+                        this.ponerTextos(this.textos[opcionesArray[0].siguiente].opciones);
+                    }
+                });
+
+                this.texto2 = this.scene.add.text(this.caso1.x + offsetX, topY4, opcionesArray[1].texto, {
                     fontFamily: 'Georgia, "Times New Roman", serif',
                     fontSize: '15px',
                     color: '#000000ff',
@@ -197,8 +346,35 @@ export default class Bocadillos extends Phaser.GameObjects.Container {
                     strokeThickness: 1,
                     align: 'center'
                 }).setOrigin(0.5, 0.5).setInteractive();
+
+                this.texto2.on('pointerdown', () => {
+                    if (opcionesArray[1].siguiente == "acierto" || opcionesArray[1].siguiente == "fallo") {
+                        this.scene.scene.stop();
+                    }
+                    else {
+                    this.caso1.destroy();
+                    this.bocadillo1.destroy();
+                    this.bocadillo2.destroy();
+                    this.bocadillo3.destroy();
+                    this.caso1 = this.scene.add.text(this.scene.cameras.main.width / 2 * 1.3, this.scene.cameras.main.height / 5, this.textos[opcionesArray[1].siguiente].mIni, {
+                        fontFamily: 'Georgia, "Times New Roman", serif',
+                        fontSize: '20px',
+                        color: '#000000ff',
+                        stroke: '#000000',
+                        strokeThickness: 1,
+                        align: 'center'
+                    }).setOrigin(0.5, 0.5);
+                    this.texto1.destroy();
+                    this.texto2.destroy();
+                    this.texto3.destroy();
+                    this.textos4.destroy();
+                        this.ponerBocadillos(this.textos[opcionesArray[1].siguiente].opciones);
+                        this.ponerTextos(this.textos[opcionesArray[1].siguiente].opciones);
+                    }
+                });
+
                 // fila inferior
-                this.bocadillo3 = this.scene.add.text(this.caso1.x - offsetX, bottomY4, opcionesArray[2].texto, {
+                this.texto3 = this.scene.add.text(this.caso1.x - offsetX, bottomY4, opcionesArray[2].texto, {
                     fontFamily: 'Georgia, "Times New Roman", serif',
                     fontSize: '15px',
                     color: '#000000ff',
@@ -206,7 +382,34 @@ export default class Bocadillos extends Phaser.GameObjects.Container {
                     strokeThickness: 1,
                     align: 'center'
                 }).setOrigin(0.5, 0.5).setInteractive();
-                this.bocadillo4 = this.scene.add.text(this.caso1.x + offsetX, bottomY4, opcionesArray[3].texto, {
+
+                this.texto3.on('pointerdown', () => {
+                    if (opcionesArray[2].siguiente == "acierto" || opcionesArray[2].siguiente == "fallo") {
+                        this.scene.scene.stop();
+                    }
+                    else {
+                    this.caso1.destroy();
+                    this.bocadillo1.destroy();
+                    this.bocadillo2.destroy();
+                    this.bocadillo3.destroy();
+                    this.caso1 = this.scene.add.text(this.scene.cameras.main.width / 2 * 1.3, this.scene.cameras.main.height / 5, this.textos[opcionesArray[2].siguiente].mIni, {
+                        fontFamily: 'Georgia, "Times New Roman", serif',
+                        fontSize: '20px',
+                        color: '#000000ff',
+                        stroke: '#000000',
+                        strokeThickness: 1,
+                        align: 'center'
+                    }).setOrigin(0.5, 0.5);
+                    this.texto1.destroy();
+                    this.texto2.destroy();
+                    this.texto3.destroy();
+                    this.textos4.destroy();
+                        this.ponerBocadillos(this.textos[opcionesArray[2].siguiente].opciones);
+                        this.ponerTextos(this.textos[opcionesArray[2].siguiente].opciones);
+                    }
+                });
+
+                this.texto4 = this.scene.add.text(this.caso1.x + offsetX, bottomY4, opcionesArray[3].texto, {
                     fontFamily: 'Georgia, "Times New Roman", serif',
                     fontSize: '15px',
                     color: '#000000ff',
@@ -214,6 +417,32 @@ export default class Bocadillos extends Phaser.GameObjects.Container {
                     strokeThickness: 1,
                     align: 'center'
                 }).setOrigin(0.5, 0.5).setInteractive();
+
+                this.texto4.on('pointerdown', () => {
+                    if (opcionesArray[3].siguiente == "acierto" || opcionesArray[3].siguiente == "fallo") {
+                        this.scene.scene.stop();
+                    }
+                    else {
+                    this.caso1.destroy();
+                    this.bocadillo1.destroy();
+                    this.bocadillo2.destroy();
+                    this.bocadillo3.destroy();
+                    this.caso1 = this.scene.add.text(this.scene.cameras.main.width / 2 * 1.3, this.scene.cameras.main.height / 5, this.textos[opcionesArray[3].siguiente].mIni, {
+                        fontFamily: 'Georgia, "Times New Roman", serif',
+                        fontSize: '20px',
+                        color: '#000000ff',
+                        stroke: '#000000',
+                        strokeThickness: 1,
+                        align: 'center'
+                    }).setOrigin(0.5, 0.5);
+                    this.texto1.destroy();
+                    this.texto2.destroy();
+                    this.texto3.destroy();
+                    this.textos4.destroy();
+                        this.ponerBocadillos(this.textos[opcionesArray[3].siguiente].opciones);
+                        this.ponerTextos(this.textos[opcionesArray[3].siguiente].opciones);
+                    }
+                });
                 break;
             }
             default:

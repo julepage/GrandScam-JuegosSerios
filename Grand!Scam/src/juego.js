@@ -116,8 +116,12 @@ export default class Juego extends Phaser.Scene {
       this.scene.pause();              // Pausa la escena actual
       this.scene.launch('EscenaPausa'); // Abre tu escena de pausa
     }
-    // if(!this.scene.isActive('telefono')){
-    //   this.entraLLamada = false;
-    // }
+    if(!this.scene.isActive('telefono') && !this.telefono.anims.isPlaying){
+      this.entraLLamada = false;
+    }
+    if(!this.scene.isActive('movil') && !this.movil.anims.isPlaying){
+      this.entraMensaje = false;
+      this.movil.setTexture('movilOff');
+    }
   }
 }

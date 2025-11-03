@@ -18,7 +18,7 @@ export default class EscenaMovil extends Phaser.Scene {
     this.fondo.setPosition(this.cameras.main.width / 2, this.cameras.main.height / 2);
 
     //poner bocadillos
-    this.bocadillos = new Bocadillos(this, 0, 0, textos.SMS.caso1.comienzo.mIni);
+    this.bocadillos = new Bocadillos(this, 0, 0, textos.SMS.caso1);
     this.bocadillos.ponerBocadillos(textos.SMS.caso1.comienzo.opciones);
     this.bocadillos.ponerTextos(textos.SMS.caso1.comienzo.opciones);
 

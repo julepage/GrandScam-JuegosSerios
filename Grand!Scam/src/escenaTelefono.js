@@ -17,7 +17,8 @@ export default class EscenaTelefono extends Phaser.Scene {
     this.fondo.setPosition(this.cameras.main.width / 2, this.cameras.main.height / 2);
 
     //poner bocadillos
-    this.bocadillos = new Bocadillos(this, 0, 0, this.textos.llamada.caso1.comienzo.mensajeInicial);
+    this.bocadillos = new Bocadillos(this, 0, 0, this.textos.llamada.caso1);
     this.bocadillos.ponerBocadillos(this.textos.llamada.caso1.comienzo.opciones);
+    this.bocadillos.ponerTextos(this.textos.llamada.caso1.comienzo.opciones);
   }
 }
