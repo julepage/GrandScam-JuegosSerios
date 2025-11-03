@@ -15,6 +15,7 @@ export default class Bocadillos extends Phaser.GameObjects.Container {
             strokeThickness: 1,
             align: 'center'
         }).setOrigin(0.5, 0.5);
+        
         this.enlace = this.scene.add.text(this.caso1.x, this.caso1.y + this.caso1.height / 1.5, textos.SMS.caso1.enlace, {
             fontFamily: 'Georgia, "Times New Roman", serif',
             fontSize: '20px',
