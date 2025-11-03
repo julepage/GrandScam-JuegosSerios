@@ -19,10 +19,10 @@ export default class EscenaMovil extends Phaser.Scene {
     
     //poner bocadillos
     this.bocadillos = new Bocadillos(this, 0, 0, textos.SMS.caso1.mIni);
-    this.bocadillos.ponerBocadillos(textos.SMS.caso1.opciones);
+    this.bocadillos.ponerBocadillos(textos.SMS.caso1.comienzo.opciones);
   }
 
   update() {
-
+   // if(textos.SMS.caso1.)
   }
 }
