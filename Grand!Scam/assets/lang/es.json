@@ -2,7 +2,8 @@
   "botones": {
     "continuar": "CONTINUAR",
     "opciones": "OPCIONES",
-    "menu": "MENÚ"
+    "menu": "MENÚ",
+    "jugar": "JUGAR"
   },
   "movil": {
     "SMS": {
