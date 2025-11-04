@@ -130,7 +130,7 @@ export default class Bocadillos extends Phaser.GameObjects.Container {
                     this.caso1.y + this.caso1.height + padding,
                     opcionesArray[0].texto, {
                     fontFamily: 'Georgia, "Times New Roman", serif',
-                    fontSize: '15px',
+                    fontSize: '18px',
                     color: '#000000ff',
                     stroke: '#000000',
                     strokeThickness: 1,
@@ -142,7 +142,7 @@ export default class Bocadillos extends Phaser.GameObjects.Container {
                     this.bocadillo1.y + this.bocadillo1.height / 2,
                     opcionesArray[1].texto, {
                     fontFamily: 'Georgia, "Times New Roman", serif',
-                    fontSize: '15px',
+                    fontSize: '18px',
                     color: '#000000ff',
                     stroke: '#000000',
                     strokeThickness: 1,
@@ -161,7 +161,7 @@ export default class Bocadillos extends Phaser.GameObjects.Container {
                     topY,
                     opcionesArray[0].texto, {
                     fontFamily: 'Georgia, "Times New Roman", serif',
-                    fontSize: '15px',
+                    fontSize: '18px',
                     color: '#000000ff',
                     stroke: '#000000',
                     strokeThickness: 1,
@@ -174,7 +174,7 @@ export default class Bocadillos extends Phaser.GameObjects.Container {
                     topY,
                     opcionesArray[1].texto, {
                     fontFamily: 'Georgia, "Times New Roman", serif',
-                    fontSize: '15px',
+                    fontSize: '18px',
                     color: '#000000ff',
                     stroke: '#000000',
                     strokeThickness: 1,
@@ -187,7 +187,7 @@ export default class Bocadillos extends Phaser.GameObjects.Container {
                     topY + this.bocadillo1.height / 2,
                     opcionesArray[2].texto, {
                     fontFamily: 'Georgia, "Times New Roman", serif',
-                    fontSize: '15px',
+                    fontSize: '18px',
                     color: '#000000ff',
                     stroke: '#000000',
                     strokeThickness: 1,
@@ -203,7 +203,7 @@ export default class Bocadillos extends Phaser.GameObjects.Container {
                 // fila superior
                 this.texto1 = this.scene.add.text(this.caso1.x - offsetX, topY4, opcionesArray[0].texto, {
                     fontFamily: 'Georgia, "Times New Roman", serif',
-                    fontSize: '15px',
+                    fontSize: '18px',
                     color: '#000000ff',
                     stroke: '#000000',
                     strokeThickness: 1,
@@ -212,7 +212,7 @@ export default class Bocadillos extends Phaser.GameObjects.Container {
 
                 this.texto2 = this.scene.add.text(this.caso1.x + offsetX, topY4, opcionesArray[1].texto, {
                     fontFamily: 'Georgia, "Times New Roman", serif',
-                    fontSize: '15px',
+                    fontSize: '18px',
                     color: '#000000ff',
                     stroke: '#000000',
                     strokeThickness: 1,
@@ -222,7 +222,7 @@ export default class Bocadillos extends Phaser.GameObjects.Container {
                 // fila inferior
                 this.texto3 = this.scene.add.text(this.caso1.x - offsetX, bottomY4, opcionesArray[2].texto, {
                     fontFamily: 'Georgia, "Times New Roman", serif',
-                    fontSize: '15px',
+                    fontSize: '18px',
                     color: '#000000ff',
                     stroke: '#000000',
                     strokeThickness: 1,
@@ -231,7 +231,7 @@ export default class Bocadillos extends Phaser.GameObjects.Container {
 
                 this.texto4 = this.scene.add.text(this.caso1.x + offsetX, bottomY4, opcionesArray[3].texto, {
                     fontFamily: 'Georgia, "Times New Roman", serif',
-                    fontSize: '15px',
+                    fontSize: '18px',
                     color: '#000000ff',
                     stroke: '#000000',
                     strokeThickness: 1,
