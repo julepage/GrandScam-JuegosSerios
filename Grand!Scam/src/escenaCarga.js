@@ -5,9 +5,9 @@ export default class EscenaCarga extends Phaser.Scene {
 
   preload() {
     //PROGRESS BAR
-    const centerX = this.cameras.main.width / 2;
-    const centerY = this.cameras.main.height / 2;
-    const barWidth = this.cameras.main.width / 4;
+    const centerX = window.innerWidth / 2;
+    const centerY = window.innerHeight / 2;
+    const barWidth = window.innerWidth / 4;
     const barHeight = barWidth * 0.1;
     const barraFondo = this.add.rectangle(centerX, centerY, barWidth, barHeight, 0x555555);
     barraFondo.setOrigin(0.5, 0.5);
@@ -16,7 +16,7 @@ export default class EscenaCarga extends Phaser.Scene {
 
     //TEXTO
     const textoPorcentaje = this.add.text(centerX, centerY + barHeight * 2, '0%', {
-      fontSize: `${Math.max(16, this.cameras.main.width * 0.03)}px`,
+      fontSize: `${Math.max(16, window.innerWidth * 0.03)}px`,
       fill: '#ffffff'
     }).setOrigin(0.5);
 

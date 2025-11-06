@@ -12,27 +12,27 @@ export default class EscenaPausa extends Phaser.Scene {
 
         //POSICION Y TAMAÑO DEL FONDO
         this.fondo = this.add.image(0, 0, 'fondoPausa');
-        this.fondo.setScale(this.cameras.main.height / this.fondo.height);
-        this.fondo.setDisplaySize(this.fondo.width * this.cameras.main.height / this.fondo.height, this.cameras.main.height);
-        this.fondo.setPosition(this.cameras.main.width / 2, this.cameras.main.height / 2);
+        this.fondo.setScale(window.innerHeight / this.fondo.height);
+        this.fondo.setDisplaySize(this.fondo.width * window.innerHeight / this.fondo.height, window.innerHeight);
+        this.fondo.setPosition(window.innerWidth / 2, window.innerHeight / 2);
 
         //BOTONES 
         // Detectar la tecla ESC
         this.teclaEsc = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ESC);
         //CONTINUAR
-        this.botonContinuar = this.crearBotonConFlecha(this.cameras.main.width / 2, this.cameras.main.height / 3, textos.botones.continuar,
+        this.botonContinuar = this.crearBotonConFlecha(window.innerWidth / 2, window.innerHeight/ 3, textos.botones.continuar,
             () => {
                 this.scene.resume('juego');
                 this.scene.stop(); // opcional: cierra la escena de pausa
             });
 
         //OPCIONES
-        this.botonOpciones = this.crearBotonConFlecha(this.cameras.main.width / 2, this.cameras.main.height / 2, textos.botones.opciones,
+        this.botonOpciones = this.crearBotonConFlecha(window.innerWidth / 2, window.innerHeight / 2, textos.botones.opciones,
             () => {
                 //opciones
             });
         //MENU
-        this.botonMenu = this.crearBotonConFlecha(this.cameras.main.width / 2, this.cameras.main.height / 3 * 2, textos.botones.menu,
+        this.botonMenu = this.crearBotonConFlecha(window.innerWidth / 2, window.innerHeight / 3 * 2, textos.botones.menu,
             () => {
                 this.scene.launch('menu');
                 this.scene?.stop('juego');
