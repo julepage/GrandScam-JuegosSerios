@@ -11,9 +11,8 @@ export default class Juego extends Phaser.Scene {
 
     //POSICION Y TAMAÑO DEL FONDO
     this.fondo = this.add.image(0, 0, 'fondoJuego');
-    this.fondo.setScale(this.cameras.main.height/ this.fondo.height);
-    //this.fondo.setDisplaySize(this.fondo.width * this.cameras.main.height / this.fondo.height, this.cameras.main.height);
-    this.fondo.setPosition(this.cameras.main.width / 2, this.cameras.main.height / 2);
+    this.fondo.setScale(window.innerHeight / this.fondo.height);
+    this.fondo.setPosition(window.innerWidth / 2, window.innerHeight / 2);
 
     // Detectar la tecla ESC
     this.teclaEsc = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ESC);
@@ -21,12 +20,12 @@ export default class Juego extends Phaser.Scene {
     this.createAnims();
 
     //ANIM HUMO (SIEMPRE VA A ESTAR EN ESCENA)
-    this.humo = this.add.sprite(this.cameras.main.width / 3.43, this.cameras.main.height / 1.54, 'animHumo');
+    this.humo = this.add.sprite(window.innerWidth / 3.43, window.innerHeight / 1.54, 'animHumo');
     this.humo.anims.play('humo');
 
     //INSTANCIA DEL TELEFONO (ESTA FIJO PERO SIN ANIM)
-    this.telefono = this.add.sprite(this.cameras.main.width / 1.335,
-      this.cameras.main.height / 1.54, 'animTelefono').setInteractive();
+    this.telefono = this.add.sprite(window.innerWidth / 1.335,
+      window.innerHeight / 1.54, 'animTelefono').setInteractive();
 
     //PULSACION DEL BOTON TELEFONO
     this.telefono.on('pointerdown', () => {
@@ -36,8 +35,8 @@ export default class Juego extends Phaser.Scene {
     });
 
     //INSTANCIA DEL MOVIL (ESTA FIJO PERO SIN ANIM)
-    this.movil = this.add.sprite(this.cameras.main.width / 2.65,
-      this.cameras.main.height / 1.95, 'movilOff').setInteractive();
+    this.movil = this.add.sprite(window.innerWidth / 2.65,
+      window.innerHeight / 1.95, 'movilOff').setInteractive();
 
     //PULSACION DEL BOTON MOVIL
     this.movil.on('pointerdown', () => {
@@ -47,7 +46,7 @@ export default class Juego extends Phaser.Scene {
     });
 
     //BOTON PAUSA
-    this.botonPausa = this.add.sprite(this.cameras.main.width / 20, 60, "botonPausa").setInteractive().setScale(0.4).setDepth(1);
+    this.botonPausa = this.add.sprite(window.innerWidth / 20, 60, "botonPausa").setInteractive().setScale(0.4).setDepth(1);
     this.botonPausa.on('pointerdown', () => {
       this.escenaPausa();
     });

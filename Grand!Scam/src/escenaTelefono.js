@@ -12,9 +12,9 @@ export default class EscenaTelefono extends Phaser.Scene {
 
     //POSICION Y TAMAÑO DEL FONDO
     this.fondo = this.add.image(0, 0, 'fondoTelefono');
-    this.fondo.setScale(this.cameras.main.height / this.fondo.height);
-    this.fondo.setDisplaySize(this.fondo.width * this.cameras.main.height / this.fondo.height, this.cameras.main.height);
-    this.fondo.setPosition(this.cameras.main.width / 2, this.cameras.main.height / 2);
+    this.fondo.setScale(window.innerHeight / this.fondo.height);
+    this.fondo.setDisplaySize(this.fondo.width * window.innerHeight / this.fondo.height, window.innerHeight);
+    this.fondo.setPosition(window.innerWidth / 2, window.innerHeight / 2);
 
     //Caso random
     this.randomCaso = Phaser.Math.RND.pick(Object.keys(this.textos.telefono.llamada));
