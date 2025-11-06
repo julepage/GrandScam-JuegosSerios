@@ -29,7 +29,8 @@ export default class EscenaPausa extends Phaser.Scene {
         //OPCIONES
         this.botonOpciones = this.crearBotonConFlecha(window.innerWidth / 2, window.innerHeight / 2, textos.botones.opciones,
             () => {
-                //opciones
+                this.scene.launch('opciones');
+                this.scene.stop();
             });
         //MENU
         this.botonMenu = this.crearBotonConFlecha(window.innerWidth / 2, window.innerHeight / 3 * 2, textos.botones.menu,
