@@ -5,18 +5,52 @@ export default class Bocadillos extends Phaser.GameObjects.Container {
         scene.add.existing(this);
 
         this.textos = textoInicial;
-        //primer timo
-        this.cuadro = this.scene.add.image(this.scene.cameras.main.width / 3 * 2, this.scene.cameras.main.height / 4, 'cuadroTexto').setScale(0.5);
-        const anchoCuadro = this.cuadro.width * 0.5; // 90% para márgenes laterales
-        this.caso1 = this.scene.add.text(this.scene.cameras.main.width / 2 * 1.3, this.scene.cameras.main.height / 5, this.textos.comienzo.mIni, {
-            fontFamily: 'Georgia, "Times New Roman", serif',
-            fontSize: '20px',
-            color: '#000000ff',
-            stroke: '#000000',
-            strokeThickness: 1,
-            align: 'center',
-            wordWrap: { width: this.anchoCuadro, useAdvancedWrap: true }
-        }).setOrigin(0.5, 0.5);
+        // Crear el cuadro
+        this.cuadro = this.scene.add.image(
+            this.scene.cameras.main.width / 3 * 2,
+            this.scene.cameras.main.height / 4,
+            'cuadroTexto'
+        ).setScale(0.5);
+
+        // Obtener posición central real del cuadro
+        const cuadroCenter = this.cuadro.getCenter();
+
+        // Obtener dimensiones reales escaladas
+        const maxWidth = this.cuadro.displayWidth * 0.9;
+        const maxHeight = this.cuadro.displayHeight * 0.9;
+
+        // Función para texto escalable
+        const crearTextoEscalable = (x, y, textoStr, maxWidth, maxHeight) => {
+            let fontSize = 20;
+            let txt = this.scene.add.text(x, y, textoStr, {
+                fontFamily: 'Georgia, "Times New Roman", serif',
+                fontSize: `${fontSize}px`,
+                color: '#000000ff',
+                stroke: '#000000',
+                strokeThickness: 1,
+                align: 'center',
+                wordWrap: { width: maxWidth, useAdvancedWrap: true }
+            }).setOrigin(0.5, 0.5);
+
+            // Reducir fuente hasta que ancho y alto encajen
+            while ((txt.width > maxWidth || txt.height > maxHeight) && fontSize > 8) {
+                fontSize -= 1;
+                txt.setFontSize(fontSize);
+                txt.setWordWrapWidth(maxWidth); // 🔹 recalcula wordWrap con la nueva fuente
+            }
+
+            return txt;
+        }
+
+        // Crear texto centrado en el cuadro
+        this.caso1 = crearTextoEscalable(
+            cuadroCenter.x,
+            cuadroCenter.y,
+            this.textos.comienzo.mIni,
+            maxWidth,
+            maxHeight
+        );
+
 
         if (tipoEstafa === this.scene.textos.movil.SMS) {
             this.enlace = this.scene.add.text(this.caso1.x, this.caso1.y + this.caso1.height / 1.5, this.textos.comienzo.enlace, {
@@ -27,9 +61,9 @@ export default class Bocadillos extends Phaser.GameObjects.Container {
                 strokeThickness: 1,
                 align: 'center'
             }).setOrigin(0.5, 0.5);
-            // Dibujar línea debajo del texto
+            //dibuja linea debajo del texto
             const underline = this.scene.add.graphics();
-            underline.lineStyle(2, 0x0011ff, 1); // grosor, color, alpha
+            underline.lineStyle(2, 0x0011ff, 1); //grosor, color, alpha
             const bounds = this.enlace.getBounds();
             underline.strokeLineShape(new Phaser.Geom.Line(bounds.x, bounds.bottom + 2, bounds.right, bounds.bottom + 2));
             this.fondoMovil = this.scene.add.image(0, 0, 'fondoSMS');
@@ -111,12 +145,12 @@ export default class Bocadillos extends Phaser.GameObjects.Container {
             default:
                 console.warn("Número de opciones no soportado:", keys.length);
         }
-        //LLamada a los botones
+        //llamada a los botones
         this.ponerBotones(opcionesArray);
     }
 
     ponerTextos(opcionesArray) {
-        // Destruir textos anteriores
+        //borra los textos anteriores
         this.texto1?.destroy();
         this.texto2?.destroy();
         this.texto3?.destroy();
@@ -126,10 +160,13 @@ export default class Bocadillos extends Phaser.GameObjects.Container {
         const keys = Object.keys(opcionesArray);
         const padding = this.scene.cameras.main.width / 9;
 
-        // Función para crear texto escalado dentro del bocadillo
+        //funcion para crear texto escalado dentro del bocadillo
         const crearTexto = (bocadillo, textoStr) => {
-            const maxWidth = bocadillo.width * bocadillo.scaleX * 0.9; // 90% del ancho del bocadillo
-            let fontSize = 18; // tamaño inicial
+            //ancho y alto max
+            const maxWidth = bocadillo.width * bocadillo.scaleX * 0.9;
+            const maxHeight = bocadillo.height * bocadillo.scaleY * 0.9;
+
+            let fontSize = 18; //tam ini
             let txt = this.scene.add.text(bocadillo.x, bocadillo.y, textoStr, {
                 fontFamily: 'Georgia, "Times New Roman", serif',
                 fontSize: `${fontSize}px`,
@@ -140,8 +177,8 @@ export default class Bocadillos extends Phaser.GameObjects.Container {
                 wordWrap: { width: maxWidth, useAdvancedWrap: true }
             }).setOrigin(0.5, 0.5);
 
-            // Reducir tamaño de fuente hasta que quepa
-            while (txt.width > maxWidth && fontSize > 8) {
+            //hacer que encajen 
+            while ((txt.width > maxWidth || txt.height > maxHeight) && fontSize > 8) {
                 fontSize -= 1;
                 txt.setFontSize(fontSize);
             }
@@ -176,85 +213,63 @@ export default class Bocadillos extends Phaser.GameObjects.Container {
 
     //BOTONES
     ponerBotones(opcionesArray) {
-        //? para comprobar si es un objeto definido, si no lo es simplemente no hace la funcion y no falla.
-        //BOTON1
-        this.bocadillo1?.on('pointerdown', () => {
-            if (opcionesArray[0].siguiente == "acierto" || opcionesArray[0].siguiente == "fallo") {
-                this.scene.scene.stop();
-            }
-            else {
-                this.caso1.destroy();
-                this.caso1 = this.scene.add.text(this.scene.cameras.main.width / 2 * 1.3, this.scene.cameras.main.height / 5, this.textos[opcionesArray[0].siguiente].mIni, {
-                    fontFamily: 'Georgia, "Times New Roman", serif',
-                    fontSize: '20px',
-                    color: '#000000ff',
-                    stroke: '#000000',
-                    strokeThickness: 1,
-                    align: 'center'
-                }).setOrigin(0.5, 0.5);
-                this.ponerBocadillos(this.textos[opcionesArray[0].siguiente].opciones);
-                this.ponerTextos(this.textos[opcionesArray[0].siguiente].opciones);
-            }
-        });
+        if (!opcionesArray || opcionesArray.length === 0) return;
 
-        //BOTON2
-        this.bocadillo2?.on('pointerdown', () => {
-            if (opcionesArray[1].siguiente == "acierto" || opcionesArray[1].siguiente == "fallo") {
+        // Función para actualizar el texto del cuadro y los bocadillos
+        const actualizarCaso = (siguiente) => {
+            if (siguiente === "acierto" || siguiente === "fallo") {
                 this.scene.scene.stop();
+                return;
             }
-            else {
-                this.caso1.destroy();
-                this.caso1 = this.scene.add.text(this.scene.cameras.main.width / 2 * 1.3, this.scene.cameras.main.height / 5, this.textos[opcionesArray[1].siguiente].mIni, {
-                    fontFamily: 'Georgia, "Times New Roman", serif',
-                    fontSize: '20px',
-                    color: '#000000ff',
-                    stroke: '#000000',
-                    strokeThickness: 1,
-                    align: 'center'
-                }).setOrigin(0.5, 0.5);
-                this.ponerBocadillos(this.textos[opcionesArray[1].siguiente].opciones);
-                this.ponerTextos(this.textos[opcionesArray[1].siguiente].opciones);
-            }
-        });
 
-        //BOTON3
-        this.bocadillo3?.on('pointerdown', () => {
-            if (opcionesArray[2].siguiente == "acierto" || opcionesArray[2].siguiente == "fallo") {
-                this.scene.scene.stop();
-            }
-            else {
-                this.caso1.destroy();
-                this.caso1 = this.scene.add.text(this.scene.cameras.main.width / 2 * 1.3, this.scene.cameras.main.height / 5, this.textos[opcionesArray[2].siguiente].mIni, {
-                    fontFamily: 'Georgia, "Times New Roman", serif',
-                    fontSize: '20px',
-                    color: '#000000ff',
-                    stroke: '#000000',
-                    strokeThickness: 1,
-                    align: 'center'
-                }).setOrigin(0.5, 0.5);
-                this.ponerBocadillos(this.textos[opcionesArray[2].siguiente].opciones);
-                this.ponerTextos(this.textos[opcionesArray[2].siguiente].opciones);
-            }
-        });
+            this.caso1?.destroy();
 
-        //BOTON4
-        this.bocadillo4?.on('pointerdown', () => {
-            if (opcionesArray[3].siguiente == "acierto" || opcionesArray[3].siguiente == "fallo") {
-                this.scene.scene.stop();
-            }
-            else {
-                this.caso1.destroy();
-                this.caso1 = this.scene.add.text(this.scene.cameras.main.width / 2 * 1.3, this.scene.cameras.main.height / 5, this.textos[opcionesArray[3].siguiente].mIni, {
-                    fontFamily: 'Georgia, "Times New Roman", serif',
-                    fontSize: '20px',
-                    color: '#000000ff',
-                    stroke: '#000000',
-                    strokeThickness: 1,
-                    align: 'center'
-                }).setOrigin(0.5, 0.5);
-                this.ponerBocadillos(this.textos[opcionesArray[3].siguiente].opciones);
-                this.ponerTextos(this.textos[opcionesArray[3].siguiente].opciones);
-            }
+            // Calcular dimensiones del cuadro
+            const maxWidth = this.cuadro.displayWidth * 0.9;
+            const maxHeight = this.cuadro.displayHeight * 0.9;
+            const cuadroCenter = this.cuadro.getCenter();
+
+            // Crear texto escalable
+            this.caso1 = this.crearTextoEscalable(cuadroCenter.x, cuadroCenter.y, this.textos[siguiente].mIni, maxWidth, maxHeight);
+
+            // Actualizar bocadillos y textos
+            this.ponerBocadillos(this.textos[siguiente].opciones);
+            this.ponerTextos(this.textos[siguiente].opciones);
+        };
+
+        // Lista de bocadillos
+        const bocadillos = [this.bocadillo1, this.bocadillo2, this.bocadillo3, this.bocadillo4];
+
+        bocadillos.forEach((bocadillo, index) => {
+            if (!bocadillo || !opcionesArray[index]) return;
+
+            bocadillo.setInteractive().off('pointerdown').on('pointerdown', () => {
+                actualizarCaso(opcionesArray[index].siguiente);
+            });
         });
     }
+
+    // Función reusable para crear texto escalable
+    crearTextoEscalable(x, y, textoStr, maxWidth, maxHeight) {
+        let fontSize = 20;
+        let txt = this.scene.add.text(x, y, textoStr, {
+            fontFamily: 'Georgia, "Times New Roman", serif',
+            fontSize: `${fontSize}px`,
+            color: '#000000ff',
+            stroke: '#000000',
+            strokeThickness: 1,
+            align: 'center',
+            wordWrap: { width: maxWidth, useAdvancedWrap: true }
+        }).setOrigin(0.5, 0.5);
+
+        // Ajustar fuente hasta que encaje en ancho y alto
+        while ((txt.width > maxWidth || txt.height > maxHeight) && fontSize > 8) {
+            fontSize -= 1;
+            txt.setFontSize(fontSize);
+            txt.setWordWrapWidth(maxWidth);
+        }
+
+        return txt;
+    }
+
 }

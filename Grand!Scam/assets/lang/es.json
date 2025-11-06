@@ -46,7 +46,7 @@
     "llamada": {
       "caso1": {
         "comienzo": {
-          "mIni": "Buenos días, le habla Sergio Sergitez del\n departamento de atención al cliente de LaLuzDeDios Energía. Esta llamada puede ser\n grabada por motivos de calidad. ¿Podría confirmar si hablo con Juani Juanitez, titular del contrato número 123456?",
+          "mIni": "Buenos días, le habla Sergio Sergitez del departamento de atención al cliente de LaLuzDeDios Energía. Esta llamada puede ser grabada por motivos de calidad. ¿Podría confirmar si hablo con Juani Juanitez, titular del contrato número 123456?",
           "opciones": [
             {
               "texto": "Sí, soy yo.",
@@ -62,7 +62,7 @@
           "mIni": "Le llamamos para informarle que en nuestros registros tiene una factura pendiente. Puede consultarla desde su área de\n cliente o en nuestra aplicación móvil. Le recomendamos efectuar el pago lo antes posible para evitar que el suministro pueda verse afectado.",
           "opciones": [
             {
-              "texto": "Gracias por el aviso,\n envienme la factura por correo.",
+              "texto": "Gracias por el aviso, envienme la factura por correo.",
               "siguiente": "acierto"
             },
             {
