@@ -6,10 +6,13 @@ export default class Juego extends Phaser.Scene {
   }
 
   create() {
+    // Dentro del create() de la nueva escena
+    this.cameras.main.fadeIn(1000, 0, 0, 0);
+
     //POSICION Y TAMAÑO DEL FONDO
     this.fondo = this.add.image(0, 0, 'fondoJuego');
-    this.fondo.setScale(this.cameras.main.height / this.fondo.height);
-    this.fondo.setDisplaySize(this.fondo.width * this.cameras.main.height / this.fondo.height, this.cameras.main.height);
+    this.fondo.setScale(this.cameras.main.height/ this.fondo.height);
+    //this.fondo.setDisplaySize(this.fondo.width * this.cameras.main.height / this.fondo.height, this.cameras.main.height);
     this.fondo.setPosition(this.cameras.main.width / 2, this.cameras.main.height / 2);
 
     // Detectar la tecla ESC
@@ -116,10 +119,10 @@ export default class Juego extends Phaser.Scene {
       this.scene.pause();              // Pausa la escena actual
       this.scene.launch('EscenaPausa'); // Abre tu escena de pausa
     }
-    if(!this.scene.isActive('telefono') && !this.telefono.anims.isPlaying){
+    if (!this.scene.isActive('telefono') && !this.telefono.anims.isPlaying) {
       this.entraLLamada = false;
     }
-    if(!this.scene.isActive('movil') && !this.movil.anims.isPlaying){
+    if (!this.scene.isActive('movil') && !this.movil.anims.isPlaying) {
       this.entraMensaje = false;
       this.movil.setTexture('movilOff');
     }

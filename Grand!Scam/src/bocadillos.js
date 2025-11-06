@@ -6,13 +6,16 @@ export default class Bocadillos extends Phaser.GameObjects.Container {
 
         this.textos = textoInicial;
         //primer timo
+        this.cuadro = this.scene.add.image(this.scene.cameras.main.width / 3 * 2, this.scene.cameras.main.height / 4, 'cuadroTexto').setScale(0.5);
+        const anchoCuadro = this.cuadro.width * 0.5; // 90% para márgenes laterales
         this.caso1 = this.scene.add.text(this.scene.cameras.main.width / 2 * 1.3, this.scene.cameras.main.height / 5, this.textos.comienzo.mIni, {
             fontFamily: 'Georgia, "Times New Roman", serif',
             fontSize: '20px',
             color: '#000000ff',
             stroke: '#000000',
             strokeThickness: 1,
-            align: 'center'
+            align: 'center',
+            wordWrap: { width: this.anchoCuadro, useAdvancedWrap: true }
         }).setOrigin(0.5, 0.5);
 
         if (tipoEstafa === this.scene.textos.movil.SMS) {
@@ -112,137 +115,64 @@ export default class Bocadillos extends Phaser.GameObjects.Container {
         this.ponerBotones(opcionesArray);
     }
 
-    ponerTextos(opcionesArray) {//q le entre opciones del json
-        //? para comprobar si es un objeto definido, si no lo es simplemente no hace la funcion y no falla.
+    ponerTextos(opcionesArray) {
+        // Destruir textos anteriores
         this.texto1?.destroy();
         this.texto2?.destroy();
         this.texto3?.destroy();
         this.texto4?.destroy();
-        if (!opcionesArray || opcionesArray.length == 0) return; // seguridad
-        const keys = Object.keys(opcionesArray); // ["1","2","3"]
-        const padding = this.scene.cameras.main.width / 9;//12.8
+        if (!opcionesArray || opcionesArray.length == 0) return;
+
+        const keys = Object.keys(opcionesArray);
+        const padding = this.scene.cameras.main.width / 9;
+
+        // Función para crear texto escalado dentro del bocadillo
+        const crearTexto = (bocadillo, textoStr) => {
+            const maxWidth = bocadillo.width * bocadillo.scaleX * 0.9; // 90% del ancho del bocadillo
+            let fontSize = 18; // tamaño inicial
+            let txt = this.scene.add.text(bocadillo.x, bocadillo.y, textoStr, {
+                fontFamily: 'Georgia, "Times New Roman", serif',
+                fontSize: `${fontSize}px`,
+                color: '#000000ff',
+                stroke: '#000000',
+                strokeThickness: 1,
+                align: 'center',
+                wordWrap: { width: maxWidth, useAdvancedWrap: true }
+            }).setOrigin(0.5, 0.5);
+
+            // Reducir tamaño de fuente hasta que quepa
+            while (txt.width > maxWidth && fontSize > 8) {
+                fontSize -= 1;
+                txt.setFontSize(fontSize);
+            }
+
+            return txt;
+        }
 
         switch (keys.length) {
-            case 2: {
-                // Dos bocadillos grandes
-                this.texto1 = this.scene.add.text(
-                    this.caso1.x,
-                    this.caso1.y + this.caso1.height + padding,
-                    opcionesArray[0].texto, {
-                    fontFamily: 'Georgia, "Times New Roman", serif',
-                    fontSize: '18px',
-                    color: '#000000ff',
-                    stroke: '#000000',
-                    strokeThickness: 1,
-                    align: 'center'
-                }).setOrigin(0.5, 0.5);
-
-                this.texto2 = this.scene.add.text(
-                    this.caso1.x,
-                    this.bocadillo1.y + this.bocadillo1.height / 2,
-                    opcionesArray[1].texto, {
-                    fontFamily: 'Georgia, "Times New Roman", serif',
-                    fontSize: '18px',
-                    color: '#000000ff',
-                    stroke: '#000000',
-                    strokeThickness: 1,
-                    align: 'center'
-                }).setOrigin(0.5, 0.5);
+            case 2:
+                this.texto1 = crearTexto(this.bocadillo1, opcionesArray[0].texto);
+                this.texto2 = crearTexto(this.bocadillo2, opcionesArray[1].texto);
                 break;
-            }
-            case 3: {
-                // Tres opciones: 2 pequeños arriba, 1 grande abajo
-                const smallOffset = 10;
-                const topY = this.caso1.y + this.caso1.height + padding;
 
-                // Bocadillo pequeño izquierda
-                this.texto1 = this.scene.add.text(
-                    this.caso1.x - padding, // separar un poco a la izquierda
-                    topY,
-                    opcionesArray[0].texto, {
-                    fontFamily: 'Georgia, "Times New Roman", serif',
-                    fontSize: '18px',
-                    color: '#000000ff',
-                    stroke: '#000000',
-                    strokeThickness: 1,
-                    align: 'center'
-                }).setOrigin(0.5, 0.5);
-
-                // Bocadillo pequeño derecha
-                this.texto2 = this.scene.add.text(
-                    this.caso1.x + this.scene.cameras.main.width / 14.76, // separar un poco a la derecha
-                    topY,
-                    opcionesArray[1].texto, {
-                    fontFamily: 'Georgia, "Times New Roman", serif',
-                    fontSize: '18px',
-                    color: '#000000ff',
-                    stroke: '#000000',
-                    strokeThickness: 1,
-                    align: 'center'
-                }).setOrigin(0.5, 0.5);
-
-                // Bocadillo grande abajo
-                this.texto3 = this.scene.add.text(
-                    this.caso1.x,
-                    topY + this.bocadillo1.height / 2,
-                    opcionesArray[2].texto, {
-                    fontFamily: 'Georgia, "Times New Roman", serif',
-                    fontSize: '18px',
-                    color: '#000000ff',
-                    stroke: '#000000',
-                    strokeThickness: 1,
-                    align: 'center'
-                }).setOrigin(0.5, 0.5);
+            case 3:
+                this.texto1 = crearTexto(this.bocadillo1, opcionesArray[0].texto);
+                this.texto2 = crearTexto(this.bocadillo2, opcionesArray[1].texto);
+                this.texto3 = crearTexto(this.bocadillo3, opcionesArray[2].texto);
                 break;
-            }
-            case 4: {
-                // Cuatro pequeños en cuadrícula 2x2
-                const topY4 = this.caso1.y + this.caso1.height + padding;
-                const bottomY4 = topY4 + this.scene.cameras.main.width / 38.4 + padding; // 50 = altura aproximada del bocadilloP
-                const offsetX = this.scene.cameras.main.width / 19.2; // separación horizontal
-                // fila superior
-                this.texto1 = this.scene.add.text(this.caso1.x - offsetX, topY4, opcionesArray[0].texto, {
-                    fontFamily: 'Georgia, "Times New Roman", serif',
-                    fontSize: '18px',
-                    color: '#000000ff',
-                    stroke: '#000000',
-                    strokeThickness: 1,
-                    align: 'center'
-                }).setOrigin(0.5, 0.5);
 
-                this.texto2 = this.scene.add.text(this.caso1.x + offsetX, topY4, opcionesArray[1].texto, {
-                    fontFamily: 'Georgia, "Times New Roman", serif',
-                    fontSize: '18px',
-                    color: '#000000ff',
-                    stroke: '#000000',
-                    strokeThickness: 1,
-                    align: 'center'
-                }).setOrigin(0.5, 0.5);
-
-                // fila inferior
-                this.texto3 = this.scene.add.text(this.caso1.x - offsetX, bottomY4, opcionesArray[2].texto, {
-                    fontFamily: 'Georgia, "Times New Roman", serif',
-                    fontSize: '18px',
-                    color: '#000000ff',
-                    stroke: '#000000',
-                    strokeThickness: 1,
-                    align: 'center'
-                }).setOrigin(0.5, 0.5);
-
-                this.texto4 = this.scene.add.text(this.caso1.x + offsetX, bottomY4, opcionesArray[3].texto, {
-                    fontFamily: 'Georgia, "Times New Roman", serif',
-                    fontSize: '18px',
-                    color: '#000000ff',
-                    stroke: '#000000',
-                    strokeThickness: 1,
-                    align: 'center'
-                }).setOrigin(0.5, 0.5);
+            case 4:
+                this.texto1 = crearTexto(this.bocadillo1, opcionesArray[0].texto);
+                this.texto2 = crearTexto(this.bocadillo2, opcionesArray[1].texto);
+                this.texto3 = crearTexto(this.bocadillo3, opcionesArray[2].texto);
+                this.texto4 = crearTexto(this.bocadillo4, opcionesArray[3].texto);
                 break;
-            }
+
             default:
                 console.warn("Número de opciones no soportado:", keys.length);
         }
     }
+
 
     //BOTONES
     ponerBotones(opcionesArray) {

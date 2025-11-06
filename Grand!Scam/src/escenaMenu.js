@@ -5,7 +5,7 @@ export default class EscenaMenu extends Phaser.Scene {
 
 
     create() {
-         const textos = this.cache.json.get('es');
+        const textos = this.cache.json.get('es');
         this.fondo = this.add.image(0, 0, 'fondoMenu');
         this.fondo.setScale(this.cameras.main.height / this.fondo.height);
         this.fondo.setDisplaySize(this.fondo.width * this.cameras.main.height / this.fondo.height, this.cameras.main.height);
@@ -14,7 +14,12 @@ export default class EscenaMenu extends Phaser.Scene {
         this.teclaSpace = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
         this.botonJugar = this.crearBotonConFlecha(this.cameras.main.width / 1.37, this.cameras.main.height / 2, textos.botones.jugar,
             () => {
-                this.scene.launch('juego');
+                this.cameras.main.fadeOut(1000, 0, 0, 0); // (duración, r, g, b)
+
+                this.cameras.main.once('camerafadeoutcomplete', () => {
+                    this.scene.start('juego');
+                });
+                
             });
     }
 
@@ -42,18 +47,20 @@ export default class EscenaMenu extends Phaser.Scene {
             .setDepth(1)
             .setOrigin(0.5, 0.5);
 
-    
+
 
         // Eventos del botón
         boton.on('pointerover', () => {
-            boton.setStyle({ fontSize: '160px' });
+            boton.setStyle({ fontSize: '160px', color: '#ffd500ff' });
         });
 
         boton.on('pointerout', () => {
-            boton.setStyle({ fontSize: '150px' });
+            boton.setStyle({ fontSize: '150px', color: '#f8f8f8ff' });
         });
 
         boton.on('pointerdown', accion);//lo que hace cuando lo presionas
+        // Dentro de tu escena actual
+
 
         return boton;
     }
