@@ -9,8 +9,8 @@ import EscenaOpciones from './escenaOpciones.js';
 
 const config = {
     type: Phaser.AUTO,
-    width: window.innerWidth, // Ancho de la ventana
-    height: window.innerHeight, // Alto de la ventana
+    width: 1600, // Ancho de la ventana
+    height: 900, // Alto de la ventana
     scene: [EscenaCarga, EscenaMenu, Juego, EscenaTelefono, EscenaMovil, EscenaPausa, EscenaOpciones], // Aquí defines tus escenas
     scale: {
         mode: Phaser.Scale.FIT, // Ajusta el canvas para que ocupe toda la pantalla
