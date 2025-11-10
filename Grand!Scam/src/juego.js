@@ -39,6 +39,9 @@ export default class Juego extends Phaser.Scene {
 
       // Marca que ya se hizo el reemplazo
       this.registry.set('textosPersonalizados', true);
+      // Marcar el cuestionario como completado
+      this.registry.set('cuestionarioCompletado', true);
+
     }
 
 

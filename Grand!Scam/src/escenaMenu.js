@@ -9,14 +9,21 @@ export default class EscenaMenu extends Phaser.Scene {
         this.fondo = this.add.image(0, 0, 'fondoMenu');
         this.fondo.setScale(this.cameras.main.height / this.fondo.height);
         this.fondo.setPosition(this.cameras.main.width / 2, this.cameras.main.height / 2);
-
+     
+        const cuestionarioCompletado = this.registry.get('cuestionarioCompletado') ?? false;
+        this.c = cuestionarioCompletado;//ñapa
         this.teclaSpace = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
         this.botonJugar = this.crearBotonConFlecha(this.cameras.main.width / 1.265, this.cameras.main.height / 2, textos.botones.jugar,
             () => {
                 this.cameras.main.fadeOut(1000, 0, 0, 0); // (duración, r, g, b)
 
                 this.cameras.main.once('camerafadeoutcomplete', () => {
-                    this.scene.start('cuestionario');
+                    if(!cuestionarioCompletado){
+                        this.scene.start('cuestionario');
+                    }
+                    else{
+                       this.scene.start('juego'); 
+                    }
                 });
                 
             });
@@ -26,7 +33,12 @@ export default class EscenaMenu extends Phaser.Scene {
         // Revisar si se presionó Enter
 
         if (Phaser.Input.Keyboard.JustDown(this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER))) {
-            this.scene.launch('juego'); // Reanuda el juego
+             if(!this.c){
+                        this.scene.start('cuestionario');
+                    }
+                    else{
+                       this.scene.start('juego'); 
+                    }
         }
     }
 

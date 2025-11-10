@@ -4,12 +4,17 @@ export default class EscenaCuestionario extends Phaser.Scene {
     }
 
     preload() {
-        // Cargamos el JSON base una vez
+        // Carga JSON de textos
         this.load.json('es', 'assets/es.json');
     }
 
     create() {
-        this.add.text(400, 80, 'Introduce tus datos', {
+        // Traemos JSON
+        const textos = this.cache.json.get('es');
+        this.textos = textos.cuestionario;
+
+        // Título del formulario
+        this.add.text(400, 80, this.textos.titulo, {
             fontSize: '32px',
             color: '#ffffff',
         }).setOrigin(0.5);
@@ -17,12 +22,15 @@ export default class EscenaCuestionario extends Phaser.Scene {
         // Variables de los datos
         this.playerData = { nombre: '', edad: '' };
 
-        // Campos
-        this.createInputField(400, 200, 'Nombre', 'nombre');
-        this.createInputField(400, 300, 'Edad', 'edad');
+        // Array de inputs en orden
+        this.inputFields = [];
 
-        // Botón
-        const boton = this.add.text(400, 420, 'Comenzar', {
+        // Crear campos usando labels del JSON
+        this.createInputField(400, 200, this.textos.campos.nombre, 'nombre');
+        this.createInputField(400, 300, this.textos.campos.edad, 'edad');
+
+        // Botón "Comenzar"
+        const boton = this.add.text(400, 420, this.textos.botonComenzar, {
             fontSize: '28px',
             backgroundColor: '#00aa00',
             padding: { x: 20, y: 10 },
@@ -30,11 +38,7 @@ export default class EscenaCuestionario extends Phaser.Scene {
         }).setOrigin(0.5).setInteractive();
 
         boton.on('pointerdown', () => {
-            if (this.playerData.nombre && this.playerData.edad) {
-                this.scene.start('juego', { playerData: this.playerData });
-            } else {
-                this.mensajeError.setText('Por favor, completa todos los campos.');
-            }
+            this.submitForm();
         });
 
         // Mensaje de error
@@ -43,11 +47,21 @@ export default class EscenaCuestionario extends Phaser.Scene {
             color: '#ff5555',
         }).setOrigin(0.5);
 
-        // Escuchar teclado
+        // Campo activo inicial
+        this.activeField = this.inputFields[0];
+        this.updateActiveBox(this.activeField);
+
+        // Teclado
         this.input.keyboard.on('keydown', this.handleTyping, this);
 
-        // Campo activo
-        this.activeField = null;
+        // TAB para cambiar campo
+        this.input.keyboard.on('keydown-TAB', (event) => {
+            event.preventDefault(); // Evita que el navegador cambie de foco
+            this.focusNextInput();
+        });
+
+        // ENTER para enviar formulario
+        this.input.keyboard.on('keydown-ENTER', () => this.submitForm());
     }
 
     createInputField(x, y, labelText, fieldKey) {
@@ -67,24 +81,36 @@ export default class EscenaCuestionario extends Phaser.Scene {
             color: '#ffffff',
         }).setOrigin(0.5);
 
-        //guardar referencia
+        // Guardar referencia
         box.fieldKey = fieldKey;
         box.textObj = text;
 
-        //click para activar
+        // Click para activar
         box.on('pointerdown', () => {
             this.activeField = box;
             this.updateActiveBox(box);
         });
+
+        // Añadir al array de inputs
+        this.inputFields.push(box);
     }
 
     updateActiveBox(activeBox) {
-        //desactiva todos los cuadros y marca el activo
-        this.children.list.forEach(obj => {
-            if (obj.type === 'Rectangle') {
-                obj.setStrokeStyle(2, obj === activeBox ? 0x00ff00 : 0xffffff);
-            }
+        // Borde verde para activo, blanco para los demás
+        this.inputFields.forEach(box => {
+            box.setStrokeStyle(2, box === activeBox ? 0x00ff00 : 0xffffff);
         });
+    }
+
+    focusNextInput() {
+        if (!this.inputFields.length) return;
+
+        let currentIndex = this.inputFields.indexOf(this.activeField);
+        if (currentIndex === -1) currentIndex = 0;
+        else currentIndex = (currentIndex + 1) % this.inputFields.length;
+
+        this.activeField = this.inputFields[currentIndex];
+        this.updateActiveBox(this.activeField);
     }
 
     handleTyping(event) {
@@ -100,5 +126,21 @@ export default class EscenaCuestionario extends Phaser.Scene {
         }
 
         field.textObj.setText(this.playerData[field.fieldKey]);
+    }
+
+    submitForm() {
+        // Verifica que todos los campos estén completos
+        const todosCompletos = this.inputFields.every(box => this.playerData[box.fieldKey] && this.playerData[box.fieldKey].length > 0);
+
+        if (todosCompletos) {
+            // Guardar datos para toda la partida
+            this.registry.set('playerData', this.playerData);
+            this.registry.set('cuestionarioCompletado', true);
+
+            // Ir a escena de juego
+            this.scene.start('juego', { playerData: this.playerData });
+        } else {
+            this.mensajeError.setText(this.textos.errorCampos);
+        }
     }
 }

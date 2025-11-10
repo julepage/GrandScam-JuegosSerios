@@ -50,6 +50,8 @@ export default class EscenaCarga extends Phaser.Scene {
     this.load.image('bocadilloP', './assets/respuestaPeque.png');
     this.load.image('cuadroTexto', './assets/cuadroTexto.png');
     this.load.image('fondoSMS', './assets/fondoSMS.png');
+    this.load.image('fondoOp', './assets/opciones.png');
+
 
     //SPRITESHEETS
     this.load.spritesheet('animHumo', './assets/animHumo.png', {

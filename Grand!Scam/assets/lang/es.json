@@ -1,4 +1,13 @@
 {
+  "cuestionario": {
+    "titulo": "Introduce tus datos",
+    "campos": {
+      "nombre": "Nombre",
+      "edad": "Edad"
+    },
+    "botonComenzar": "Comenzar",
+    "errorCampos": "Por favor, completa todos los campos."
+  },
   "botones": {
     "continuar": "CONTINUAR",
     "opciones": "OPCIONES",
