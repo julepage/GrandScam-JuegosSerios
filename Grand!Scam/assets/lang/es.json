@@ -46,7 +46,7 @@
     "llamada": {
       "caso1": {
         "comienzo": {
-          "mIni": "Buenos días, le habla Sergio Sergitez del departamento de atención al cliente de LaLuzDeDios Energía. Esta llamada puede ser grabada por motivos de calidad. ¿Podría confirmar si hablo con Juani Juanitez, titular del contrato número 123456?",
+          "mIni": "Buenos días, le habla Sergio Sergitez del departamento de atención al cliente de LaLuzDeDios Energía. Esta llamada puede ser grabada por motivos de calidad. ¿Podría confirmar si hablo con  {nombre}  {nombre}tez, titular del contrato número 123456?",
           "opciones": [
             {
               "texto": "Sí, soy yo.",

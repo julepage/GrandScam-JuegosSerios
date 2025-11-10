@@ -7,9 +7,40 @@ export default class Juego extends Phaser.Scene {
     this.entraMensaje = false;
   }
 
+  //DATOS DEL FORMULARIO
+  init(data) {
+    this.playerData = data.playerData;
+  }
+
+  reemplazarEnJson(obj, data) {
+    if (typeof obj === 'string') {
+      return obj.replace(/\{(\w+)\}/g, (_, key) => data[key] ?? `{${key}}`);
+    } else if (Array.isArray(obj)) {
+      return obj.map(v => this.reemplazarEnJson(v, data));
+    } else if (typeof obj === 'object' && obj !== null) {
+      const nuevo = {};
+      for (const k in obj) nuevo[k] = this.reemplazarEnJson(obj[k], data);
+      return nuevo;
+    }
+    return obj;
+  }
+
   create() {
     // Dentro del create() de la nueva escena
     this.cameras.main.fadeIn(1000, 0, 0, 0);
+
+    // Personalizar textos solo la primera vez
+    if (!this.registry.get('textosPersonalizados')) {
+      const textosBase = this.cache.json.get('es');  // Tu JSON de diálogos
+      const textosPersonalizados = this.reemplazarEnJson(textosBase, this.playerData);
+
+      // ⚠️ Importante: Phaser devuelve una referencia viva, así que esto modifica el JSON global
+      Object.assign(textosBase, textosPersonalizados);
+
+      // Marca que ya se hizo el reemplazo
+      this.registry.set('textosPersonalizados', true);
+    }
+
 
     //POSICION Y TAMAÑO DEL FONDO
     this.fondo = this.add.image(0, 0, 'fondoJuego');
@@ -62,12 +93,12 @@ export default class Juego extends Phaser.Scene {
   telefonoScene() {
     this.telefono.stop();
     this.telefono.setFrame(0);
-    this.scene.launch('telefono', {vidas: this.vidas});
+    this.scene.launch('telefono', { vidas: this.vidas });
   }
   movilScene() {
     this.movil.stop();
     this.movil.setFrame(0);
-    this.scene.launch('movil', {vidas: this.vidas});
+    this.scene.launch('movil', { vidas: this.vidas });
   }
   escenaPausa() {
     this.scene.launch('EscenaPausa');

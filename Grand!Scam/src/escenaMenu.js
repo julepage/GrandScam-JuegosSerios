@@ -16,7 +16,7 @@ export default class EscenaMenu extends Phaser.Scene {
                 this.cameras.main.fadeOut(1000, 0, 0, 0); // (duración, r, g, b)
 
                 this.cameras.main.once('camerafadeoutcomplete', () => {
-                    this.scene.start('juego');
+                    this.scene.start('cuestionario');
                 });
                 
             });
