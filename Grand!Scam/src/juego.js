@@ -1,3 +1,5 @@
+import GestionVida from "./gestionVida.js";
+
 export default class Juego extends Phaser.Scene {
   constructor() {
     super({ key: 'juego' });
@@ -53,19 +55,19 @@ export default class Juego extends Phaser.Scene {
 
     this.botonPausa.on('pointerover', () => { this.botonPausa.setScale(0.45); });
     this.botonPausa.on('pointerout', () => { this.botonPausa.setScale(0.4); });
-
+    this.vidas = new GestionVida(this);
   }
 
   //CAMBIOS ESCENAS
   telefonoScene() {
     this.telefono.stop();
     this.telefono.setFrame(0);
-    this.scene.launch('telefono');
+    this.scene.launch('telefono', {vidas: this.vidas});
   }
   movilScene() {
     this.movil.stop();
     this.movil.setFrame(0);
-    this.scene.launch('movil');
+    this.scene.launch('movil', {vidas: this.vidas});
   }
   escenaPausa() {
     this.scene.launch('EscenaPausa');

@@ -5,6 +5,9 @@ export default class EscenaMovil extends Phaser.Scene {
     super({ key: 'movil' });
   }
 
+  init(data) {
+    this.vidas = data.vidas;
+  }
 
   create() {
     this.textos = this.cache.json.get('es');
@@ -21,8 +24,7 @@ export default class EscenaMovil extends Phaser.Scene {
     this.randomApp = Phaser.Math.RND.pick(Object.keys(this.textos.movil));
     this.randomCaso = Phaser.Math.RND.pick(Object.keys(this.textos.movil[this.randomApp]));
     //poner bocadillos
-    this.cuadro = this.add.image(this.cameras.main.width/3*2, this.cameras.main.height/4, 'cuadroTexto').setScale(0.5);
-    this.bocadillos = new Bocadillos(this, 0, 0, this.textos.movil[this.randomApp][this.randomCaso], this.textos.movil[this.randomApp]);//hasta caso1
+    this.bocadillos = new Bocadillos(this, this.textos.movil[this.randomApp][this.randomCaso], this.textos.movil[this.randomApp], this.vidas);//hasta caso1
     this.bocadillos.ponerBocadillos(this.textos.movil[this.randomApp][this.randomCaso].comienzo.opciones);
     this.bocadillos.ponerTextos(this.textos.movil[this.randomApp][this.randomCaso].comienzo.opciones);
   }

@@ -1,14 +1,14 @@
 export default class Bocadillos extends Phaser.GameObjects.Container {
-    constructor(scene, x, y, textoInicial, tipoEstafa) {
-        super(scene, x, y);
+    constructor(scene, textoInicial, tipoEstafa, vidas) {
+        super(scene);
         this.scene = scene;
         scene.add.existing(this);
 
         this.textos = textoInicial;
         // Crear el cuadro
         this.cuadro = this.scene.add.image(
-            this.scene.cameras.main.width / 3 * 2,
-            this.scene.cameras.main.height / 4,
+            this.scene.cameras.main.width / 1.5,
+            this.scene.cameras.main.height / 4.4,
             'cuadroTexto'
         ).setScale(0.5);
 
@@ -71,6 +71,9 @@ export default class Bocadillos extends Phaser.GameObjects.Container {
             this.fondoMovil.setDisplaySize(this.fondoMovil.width * this.scene.cameras.main.height / this.fondoMovil.height, this.scene.cameras.main.height);
             this.fondoMovil.setPosition(this.scene.cameras.main.width / 2, this.scene.cameras.main.height / 2);
         }
+        this.padding = this.scene.cameras.main.width / 11.5;//12.8
+        this.topY = this.cuadro.y + this.padding * 2;
+        this.gestV = vidas;
     }
 
     //dependiendo del numero de respuestas pone un bocadillo
@@ -83,63 +86,56 @@ export default class Bocadillos extends Phaser.GameObjects.Container {
         if (!opcionesArray || opcionesArray.length == 0) return; // seguridad
         const keys = Object.keys(opcionesArray); // ["1","2","3"]
         console.log(keys.length);
-        const padding = this.scene.cameras.main.width / 9;//12.8
 
         switch (keys.length) {
             case 2: {
                 // Dos bocadillos grandes
                 this.bocadillo1 = this.scene.add.image(
                     this.caso1.x,
-                    this.caso1.y + this.caso1.height + padding,
+                    this.topY - this.padding * 0.002,
                     "bocadilloG"
                 ).setOrigin(0.5, 0.5).setScale(0.5).setInteractive();
 
                 this.bocadillo2 = this.scene.add.image(
                     this.caso1.x,
-                    this.bocadillo1.y + this.bocadillo1.height / 2,
+                    this.topY + this.bocadillo1.height / 2.355,
                     "bocadilloG"
                 ).setOrigin(0.5, 0.5).setScale(0.5).setInteractive();
                 break;
             }
             case 3: {
                 // Tres opciones: 2 pequeños arriba, 1 grande abajo
-                const smallOffset = 10;
-                const topY = this.caso1.y + this.caso1.height + padding;
 
                 // Bocadillo pequeño izquierda
                 this.bocadillo1 = this.scene.add.image(
-                    this.caso1.x - padding, // separar un poco a la izquierda
-                    topY,
+                    this.caso1.x - this.padding, // separar un poco a la izquierda
+                    this.topY,
                     "bocadilloP"
                 ).setOrigin(0.5, 0.5).setScale(0.5).setInteractive();
 
                 // Bocadillo pequeño derecha
                 this.bocadillo2 = this.scene.add.image(
-                    this.caso1.x + this.scene.cameras.main.width / 14.76, // separar un poco a la derecha
-                    topY,
+                    this.caso1.x + this.padding, // separar un poco a la derecha
+                    this.topY,
                     "bocadilloP"
                 ).setOrigin(0.5, 0.5).setScale(0.5).setInteractive();
 
                 // Bocadillo grande abajo
                 this.bocadillo3 = this.scene.add.image(
                     this.caso1.x,
-                    topY + this.bocadillo1.height / 2,
+                    this.topY + this.bocadillo1.height / 2,
                     "bocadilloG"
                 ).setOrigin(0.5, 0.5).setScale(0.5).setInteractive();
                 break;
             }
             case 4: {
-                // Cuatro pequeños en cuadrícula 2x2
-                const topY4 = this.caso1.y + this.caso1.height + padding;
-                const bottomY4 = topY4 + this.scene.cameras.main.width / 38.4 + padding; // 50 = altura aproximada del bocadilloP
-                const offsetX = this.scene.cameras.main.width / 19.2; // separación horizontal
                 // fila superior
-                this.bocadillo1 = this.scene.add.image(this.caso1.x - offsetX, topY4, "bocadilloP").setOrigin(0.5, 0.5).setScale(0.5).setInteractive();
-                this.bocadillo2 = this.scene.add.image(this.caso1.x + offsetX, topY4, "bocadilloP").setOrigin(0.5, 0.5).setScale(0.5).setInteractive();
+                this.bocadillo1 = this.scene.add.image(this.caso1.x - this.padding, this.topY, "bocadilloP").setOrigin(0.5, 0.5).setScale(0.5).setInteractive();
+                this.bocadillo2 = this.scene.add.image(this.caso1.x + this.padding, this.topY, "bocadilloP").setOrigin(0.5, 0.5).setScale(0.5).setInteractive();
 
                 // fila inferior
-                this.bocadillo3 = this.scene.add.image(this.caso1.x - offsetX, bottomY4, "bocadilloP").setOrigin(0.5, 0.5).setScale(0.5).setInteractive();
-                this.bocadillo4 = this.scene.add.image(this.caso1.x + offsetX, bottomY4, "bocadilloP").setOrigin(0.5, 0.5).setScale(0.5).setInteractive();
+                this.bocadillo3 = this.scene.add.image(this.caso1.x - this.padding, this.topY + this.bocadillo1.height / 1.95, "bocadilloP").setOrigin(0.5, 0.5).setScale(0.5).setInteractive();
+                this.bocadillo4 = this.scene.add.image(this.caso1.x + this.padding, this.topY + this.bocadillo1.height / 1.95, "bocadilloP").setOrigin(0.5, 0.5).setScale(0.5).setInteractive();
                 break;
             }
             default:
@@ -218,6 +214,10 @@ export default class Bocadillos extends Phaser.GameObjects.Container {
         // Función para actualizar el texto del cuadro y los bocadillos
         const actualizarCaso = (siguiente) => {
             if (siguiente === "acierto" || siguiente === "fallo") {
+                if (siguiente == "fallo")
+                    this.gestV.quitarVida();
+                if(siguiente == "acierto")
+                    this.gestV.addAciertos();
                 this.scene.scene.stop();
                 return;
             }

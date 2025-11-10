@@ -23,9 +23,9 @@ export default class EscenaMenu extends Phaser.Scene {
     }
 
     update() {
-        // Revisar si se presionó ESC
+        // Revisar si se presionó Enter
 
-        if (Phaser.Input.Keyboard.JustDown(this.teclaSpace)) {
+        if (Phaser.Input.Keyboard.JustDown(this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER))) {
             this.scene.launch('juego'); // Reanuda el juego
         }
     }
