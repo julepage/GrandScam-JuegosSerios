@@ -150,7 +150,7 @@ export default class Juego extends Phaser.Scene {
       this.casosDisponiblesOb = this.casosDisponiblesCOOb;
     else
       this.casosDisponiblesOp = this.casosDisponiblesCOOp;
-
+    
     if (this.casosDisponiblesOb.length > 0) {
       const index = Phaser.Math.RND.between(0, this.casosDisponiblesOb.length - 1);
       this.randomCaso = this.casosDisponiblesOb[index];
