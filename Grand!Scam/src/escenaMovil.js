@@ -26,12 +26,12 @@ export default class EscenaMovil extends Phaser.Scene {
     //poner bocadillos
     if (this.randomCaso != " ") {
       if (this.obligatorio) {
-        this.bocadillos = new Bocadillos(this, this.textos.movil[this.randomApp].obligatorio[this.randomCaso], this.textos.movil[this.randomApp].obligatorio, this.vidas);//hasta caso1
+        this.bocadillos = new Bocadillos(this, this.textos.movil[this.randomApp].obligatorio[this.randomCaso], this.textos.movil[this.randomApp], this.vidas);//hasta caso1
         this.bocadillos.ponerBocadillos(this.textos.movil[this.randomApp].obligatorio[this.randomCaso].comienzo.opciones);
         this.bocadillos.ponerTextos(this.textos.movil[this.randomApp].obligatorio[this.randomCaso].comienzo.opciones);
       }
       else{
-        this.bocadillos = new Bocadillos(this, this.textos.movil[this.randomApp].opcional[this.randomCaso], this.textos.movil[this.randomApp].opcional, this.vidas);//hasta caso1
+        this.bocadillos = new Bocadillos(this, this.textos.movil[this.randomApp].opcional[this.randomCaso], this.textos.movil[this.randomApp], this.vidas);//hasta caso1
         this.bocadillos.ponerBocadillos(this.textos.movil[this.randomApp].opcional[this.randomCaso].comienzo.opciones);
         this.bocadillos.ponerTextos(this.textos.movil[this.randomApp].opcional[this.randomCaso].comienzo.opciones);
       }
