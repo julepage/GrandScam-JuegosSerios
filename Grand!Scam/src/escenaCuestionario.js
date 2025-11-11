@@ -4,45 +4,59 @@ export default class EscenaCuestionario extends Phaser.Scene {
     }
 
     preload() {
-        // Carga JSON de textos
         this.load.json('es', 'assets/es.json');
     }
 
     create() {
-        // Traemos JSON
+        // Cargar JSON
         const textos = this.cache.json.get('es');
         this.textos = textos.cuestionario;
 
-        // Título del formulario
+        // Defaults (todos deben venir definidos en el JSON)
+        this.defaults = this.textos.defaults;
+
+        // Título
         this.add.text(400, 80, this.textos.titulo, {
             fontSize: '32px',
             color: '#ffffff',
         }).setOrigin(0.5);
 
-        // Variables de los datos
-        this.playerData = { nombre: '', edad: '' };
+        // Variables iniciales
+        this.playerData = {
+            nombre: '',
+            edad: '',
+            mascota: '',
+            calle: '',
+            color: ''
+        };
 
-        // Array de inputs en orden
+        // Campos del formulario
         this.inputFields = [];
 
-        // Crear campos usando labels del JSON
-        this.createInputField(400, 200, this.textos.campos.nombre, 'nombre');
-        this.createInputField(400, 300, this.textos.campos.edad, 'edad');
+        // Helper para etiquetas
+        const lbl = (key) => this.textos.campos[key];
 
-        // Botón "Comenzar"
-        const boton = this.add.text(400, 420, this.textos.botonComenzar, {
+        // Campos obligatorios
+        this.createInputField(400, 200, lbl('nombre'), 'nombre', true);
+        this.createInputField(400, 300, lbl('edad'), 'edad', true);
+
+        // Campos opcionales (con *)
+        this.createInputField(400, 380, lbl('mascota') + ' *', 'mascota', false);
+        this.createInputField(400, 460, lbl('calle') + ' *', 'calle', false);
+        this.createInputField(400, 540, lbl('color') + ' *', 'color', false);
+
+        // Botón
+        const boton = this.add.text(400, 620, this.textos.botonComenzar, {
             fontSize: '28px',
             backgroundColor: '#00aa00',
             padding: { x: 20, y: 10 },
             color: '#ffffff',
         }).setOrigin(0.5).setInteractive();
 
-        boton.on('pointerdown', () => {
-            this.submitForm();
-        });
+        boton.on('pointerdown', () => this.submitForm());
 
-        // Mensaje de error
-        this.mensajeError = this.add.text(400, 480, '', {
+        // Mensaje error
+        this.mensajeError = this.add.text(400, 680, '', {
             fontSize: '20px',
             color: '#ff5555',
         }).setOrigin(0.5);
@@ -53,21 +67,17 @@ export default class EscenaCuestionario extends Phaser.Scene {
 
         // Teclado
         this.input.keyboard.on('keydown', this.handleTyping, this);
-
-        // TAB para cambiar campo
         this.input.keyboard.on('keydown-TAB', (event) => {
-            event.preventDefault(); // Evita que el navegador cambie de foco
+            event.preventDefault();
             this.focusNextInput();
         });
-
-        // ENTER para enviar formulario
         this.input.keyboard.on('keydown-ENTER', () => this.submitForm());
     }
 
-    createInputField(x, y, labelText, fieldKey) {
+    createInputField(x, y, labelText, fieldKey, required = true) {
         this.add.text(x - 200, y, `${labelText}:`, {
             fontSize: '24px',
-            color: '#ffffff',
+            color: required ? '#ffffff' : '#cccccc',
             align: 'right',
         }).setOrigin(1, 0.5);
 
@@ -81,22 +91,19 @@ export default class EscenaCuestionario extends Phaser.Scene {
             color: '#ffffff',
         }).setOrigin(0.5);
 
-        // Guardar referencia
         box.fieldKey = fieldKey;
         box.textObj = text;
+        box.required = required;
 
-        // Click para activar
         box.on('pointerdown', () => {
             this.activeField = box;
             this.updateActiveBox(box);
         });
 
-        // Añadir al array de inputs
         this.inputFields.push(box);
     }
 
     updateActiveBox(activeBox) {
-        // Borde verde para activo, blanco para los demás
         this.inputFields.forEach(box => {
             box.setStrokeStyle(2, box === activeBox ? 0x00ff00 : 0xffffff);
         });
@@ -106,8 +113,7 @@ export default class EscenaCuestionario extends Phaser.Scene {
         if (!this.inputFields.length) return;
 
         let currentIndex = this.inputFields.indexOf(this.activeField);
-        if (currentIndex === -1) currentIndex = 0;
-        else currentIndex = (currentIndex + 1) % this.inputFields.length;
+        currentIndex = (currentIndex + 1) % this.inputFields.length;
 
         this.activeField = this.inputFields[currentIndex];
         this.updateActiveBox(this.activeField);
@@ -119,6 +125,8 @@ export default class EscenaCuestionario extends Phaser.Scene {
         const field = this.activeField;
         const key = event.key;
 
+        if (this.playerData[field.fieldKey] == null) this.playerData[field.fieldKey] = '';
+
         if (key === 'Backspace') {
             this.playerData[field.fieldKey] = this.playerData[field.fieldKey].slice(0, -1);
         } else if (key.length === 1) {
@@ -129,30 +137,33 @@ export default class EscenaCuestionario extends Phaser.Scene {
     }
 
     submitForm() {
+        // Comprobar obligatorios
+        const faltan = this.inputFields.some(box => 
+            box.required && (!this.playerData[box.fieldKey] || this.playerData[box.fieldKey].trim().length === 0)
+        );
+
+        if (faltan) {
+            this.mensajeError.setText(this.textos.errorCampos);
+            return;
+        }
+
+        // Asignar defaults desde el JSON a los opcionales vacíos
         this.inputFields.forEach(box => {
             const key = box.fieldKey;
             let value = this.playerData[key]?.trim();
 
-            if (!value) {
-                // Valor por defecto según el campo
-                if (key === 'nombre') value = 'Invitado';
-                else if (key === 'edad') value = '0'; // o cualquier otro default
+            if (!box.required && (!value || value.length === 0)) {
+                value = this.defaults[key] || '';
             }
 
             this.playerData[key] = value;
         });
-        // Verifica que todos los campos estén completos
-        const todosCompletos = this.inputFields.every(box => this.playerData[box.fieldKey] && this.playerData[box.fieldKey].length > 0);
 
-        if (todosCompletos) {
-            // Guardar datos para toda la partida
-            this.registry.set('playerData', this.playerData);
-            this.registry.set('cuestionarioCompletado', true);
+        // Guardar datos globales
+        this.registry.set('playerData', this.playerData);
+        this.registry.set('cuestionarioCompletado', true);
 
-            // Ir a escena de juego
-            this.scene.start('juego', { playerData: this.playerData });
-        } else {
-            this.mensajeError.setText(this.textos.errorCampos);
-        }
+        // Ir a la siguiente escena
+        this.scene.start('juego', { playerData: this.playerData });
     }
 }
