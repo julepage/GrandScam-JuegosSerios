@@ -1,12 +1,20 @@
 {
-  "cuestionario": {
+ "cuestionario": {
     "titulo": "Introduce tus datos",
     "campos": {
       "nombre": "Nombre",
-      "edad": "Edad"
+      "edad": "Edad",
+      "mascota": "Mascota",
+      "calle": "Dirección",
+      "color": "Color favorito"
+    },
+    "defaults": {
+      "mascota": "no tienes mascota",
+      "calle": "no lo se",
+      "color": "azul"
     },
     "botonComenzar": "Comenzar",
-    "errorCampos": "Por favor, completa todos los campos."
+    "errorCampos": "Por favor, completa los campos obligatorios (sin asterisco)."
   },
   "botones": {
     "continuar": "CONTINUAR",
@@ -51,7 +59,112 @@
           }
         }
       },
-      "opcional": {}
+      "opcional": {
+        "caso1": {
+          "comienzo": {
+            "mIni": "¡Enhorabuena! Has sido seleccionado para recibir una ayuda económica de 500€ del Ministerio de Solidaridad. Para reclamarla, haz clic en el siguiente enlace y completa con tus datos personales.",
+            "enlace": "ministerio-ayudas-gov.es-premios",
+            "opciones": [
+              {
+                "texto": "Hacer clic en el enlace",
+                "siguiente": "fallo"
+              },
+              {
+                "texto": "Verificar el enlace antes de entrar",
+                "siguiente": "verificar"
+              },
+              {
+                "texto": "Ignorar el mensaje",
+                "siguiente": "acierto"
+              }
+            ]
+          },
+          "verificar": {
+            "mIni": "Tras revisar el enlace, notas que la web no tiene el candado de seguridad y la dirección no es oficial (falta el .gob.es real). Parece una estafa para robar datos.",
+            "opciones": [
+              {
+                "texto": "Ignorar el mensaje y borrarlo",
+                "siguiente": "acierto"
+              },
+              {
+                "texto": "Entrar igualmente en la web",
+                "siguiente": "fallo"
+              }
+            ]
+          }
+        },
+        "caso2": {
+          "comienzo": {
+            "mIni": "Gerencia Atención Primaria: Valoramos su opinión sobre la atención de enfermería en su Centro de Salud. Si desea evaluar (1 min), acceda a su Área Ciudadana en la web oficial y utilice el código de verificación GC-2025-8421. Para comprobar la autenticidad visite www.salud.gob.es o llame al 012. Nunca facilite datos bancarios, PIN o contraseñas por SMS.",
+            "opciones": [
+              {
+                "texto": "Acceder al Área Ciudadana (sin enlace en SMS)",
+                "siguiente": "accesoArea"
+              },
+              {
+                "texto": "Verificar remitente y autenticidad",
+                "siguiente": "verificar"
+              },
+              {
+                "texto": "Ignorar y borrar el mensaje",
+                "siguiente": "acierto"
+              }
+            ]
+          },
+          "verificar": {
+            "mIni": "Compruebe: 1) que la web sea la oficial (dominio .gob/.gob.es), 2) que la dirección la escribe usted manualmente (no siga enlaces sospechosos), 3) que el remitente SMS coincide con el número corto o remitente oficial de la administración, 4) llame al 012 si tiene dudas. ¿Qué desea hacer?",
+            "opciones": [
+              {
+                "texto": "Escribir manualmente www.salud.gob.es y usar el código",
+                "siguiente": "accesoArea"
+              },
+              {
+                "texto": "Llamar al 012 para confirmar",
+                "siguiente": "llamar012"
+              },
+              {
+                "texto": "Ignorar el mensaje",
+                "siguiente": "acierto"
+              }
+            ]
+          },
+          "llamar012": {
+            "mIni": "Al contactar con el 012 le confirman que la campaña de valoración está activa y que el código GC-2025-8421 es válido para su Área Ciudadana. ¿Qué hace ahora?",
+            "opciones": [
+              {
+                "texto": "Entrar a Área Ciudadana con el código (sitio oficial)",
+                "siguiente": "accesoArea"
+              },
+              {
+                "texto": "Aun así prefiero no acceder",
+                "siguiente": "acierto"
+              }
+            ]
+          },
+          "accesoArea": {
+            "mIni": "Simulación: Está en el Área Ciudadana oficial. Se le solicita introducir el código de verificación. Recuerde: en la web oficial NUNCA le pedirán datos bancarios por este proceso.",
+            "opciones": [
+              {
+                "texto": "Introducir el código GC-2025-8421",
+                "siguiente": "codigoValido"
+              },
+              {
+                "texto": "Cerrar y no introducir datos personales",
+                "siguiente": "acierto"
+              }
+            ]
+          },
+          "codigoValido": {
+            "mIni": "Código aceptado. Gracias por su valoración. (Simulación segura: no se solicitaron datos sensibles).",
+            "opciones": [
+              {
+                "texto": "Finalizar",
+                "siguiente": "acierto"
+              }
+            ]
+          }
+        }
+      }
     },
     "correo": {
       "obligatorio": {},
@@ -110,23 +223,17 @@
               }
             ]
           },
-          "perro":{
+          "perro": {
             "mIni": "{mascota}",
-            "opciones":[
-
-            ]
+            "opciones": []
           },
-          "calle":{
+          "calle": {
             "mIni": "Vivimos en {calle}",
-            "opciones":[
-              
-            ]
+            "opciones": []
           },
-          "color":{
+          "color": {
             "mIni": "Es el {color}",
-            "opciones":[
-              
-            ]
+            "opciones": []
           }
         }
       },

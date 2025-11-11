@@ -71,6 +71,12 @@ export default class Bocadillos extends Phaser.GameObjects.Container {
             this.fondoMovil.setDisplaySize(this.fondoMovil.width * this.scene.cameras.main.height / this.fondoMovil.height, this.scene.cameras.main.height);
             this.fondoMovil.setPosition(this.scene.cameras.main.width / 2, this.scene.cameras.main.height / 2);
         }
+        else if (tipoEstafa === this.scene.textos.movil.whatsapp) {
+            this.fondoMovil = this.scene.add.image(0, 0, 'was');
+            this.fondoMovil.setScale(this.scene.cameras.main.height / this.fondoMovil.height);
+            this.fondoMovil.setDisplaySize(this.fondoMovil.width * this.scene.cameras.main.height / this.fondoMovil.height, this.scene.cameras.main.height);
+            this.fondoMovil.setPosition(this.scene.cameras.main.width / 2, this.scene.cameras.main.height / 2);
+        }
         this.padding = this.scene.cameras.main.width / 11.5;//12.8
         this.topY = this.cuadro.y + this.padding * 2;
         this.gestV = vidas;
@@ -216,7 +222,7 @@ export default class Bocadillos extends Phaser.GameObjects.Container {
             if (siguiente === "acierto" || siguiente === "fallo") {
                 if (siguiente == "fallo")
                     this.gestV.quitarVida();
-                if(siguiente == "acierto")
+                if (siguiente == "acierto")
                     this.gestV.addAciertos();
                 this.scene.scene.stop();
                 return;
