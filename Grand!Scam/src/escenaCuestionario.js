@@ -4,13 +4,15 @@ export default class EscenaCuestionario extends Phaser.Scene {
     }
 
     preload() {
-        // Cargar JSON
         this.load.json('es', 'assets/es.json');
     }
 
     create() {
+        // Cargar JSON
         const textos = this.cache.json.get('es');
         this.textos = textos.cuestionario;
+
+        // Defaults (todos deben venir definidos en el JSON)
         this.defaults = this.textos.defaults;
 
         // Título
@@ -23,30 +25,25 @@ export default class EscenaCuestionario extends Phaser.Scene {
         this.playerData = {
             nombre: '',
             edad: '',
-            mascota: this.defaults.mascota,
-            calle: this.defaults.calle,
-            color: this.defaults.color
+            mascota: '',
+            calle: '',
+            color: ''
         };
 
         // Campos del formulario
         this.inputFields = [];
-        const lbl = key => this.textos.campos[key];
+
+        // Helper para etiquetas
+        const lbl = (key) => this.textos.campos[key];
 
         // Campos obligatorios
         this.createInputField(400, 200, lbl('nombre') + '*', 'nombre', true);
         this.createInputField(400, 300, lbl('edad') + '*', 'edad', true);
 
-        // Campos opcionales
+        // Campos opcionales (con *)
         this.createInputField(400, 380, lbl('mascota'), 'mascota', false);
         this.createInputField(400, 460, lbl('calle'), 'calle', false);
         this.createInputField(400, 540, lbl('color'), 'color', false);
-
-        // Mostrar valores iniciales de opcionales
-        this.inputFields.forEach(f => {
-            if (!f.required && this.playerData[f.fieldKey]) {
-                f.textObj.setText(this.playerData[f.fieldKey]);
-            }
-        });
 
         // Botón
         const boton = this.add.text(400, 620, this.textos.botonComenzar, {
@@ -58,7 +55,7 @@ export default class EscenaCuestionario extends Phaser.Scene {
 
         boton.on('pointerdown', () => this.submitForm());
 
-        // Mensaje de error
+        // Mensaje error
         this.mensajeError = this.add.text(400, 680, '', {
             fontSize: '20px',
             color: '#ff5555',
@@ -78,12 +75,14 @@ export default class EscenaCuestionario extends Phaser.Scene {
     }
 
     createInputField(x, y, labelText, fieldKey, required = true) {
-        this.add.text(x - 200, y, `${labelText}:`, {
+        // Etiqueta a la izquierda
+        this.add.text(x - 150, y, `${labelText}:`, {
             fontSize: '24px',
             color: required ? '#ffffff' : '#cccccc',
             align: 'right',
         }).setOrigin(1, 0.5);
 
+        // Caja de input
         const box = this.add.rectangle(x + 50, y, 300, 40, 0x333333)
             .setStrokeStyle(2, 0xffffff)
             .setOrigin(0.5)
@@ -105,6 +104,7 @@ export default class EscenaCuestionario extends Phaser.Scene {
 
         this.inputFields.push(box);
     }
+
 
     updateActiveBox(activeBox) {
         this.inputFields.forEach(box => {
@@ -140,7 +140,7 @@ export default class EscenaCuestionario extends Phaser.Scene {
     }
 
     submitForm() {
-        // Verificar campos obligatorios
+        // Comprobar obligatorios
         const faltan = this.inputFields.some(box =>
             box.required && (!this.playerData[box.fieldKey] || this.playerData[box.fieldKey].trim().length === 0)
         );
@@ -150,24 +150,23 @@ export default class EscenaCuestionario extends Phaser.Scene {
             return;
         }
 
-        // Asignar defaults a opcionales vacíos
+        // Asignar defaults desde el JSON a los opcionales vacíos
         this.inputFields.forEach(box => {
             const key = box.fieldKey;
             let value = this.playerData[key]?.trim();
 
-            if (!value || value.length === 0) {
-                if (!box.required) {
-                    value = this.defaults[key] || '';
-                }
+            if (!box.required && (!value || value.length === 0)) {
+                value = this.defaults[key] || '';
             }
 
             this.playerData[key] = value;
         });
 
-        // Guardar datos y pasar a siguiente escena
+        // Guardar datos globales
         this.registry.set('playerData', this.playerData);
         this.registry.set('cuestionarioCompletado', true);
 
+        // Ir a la siguiente escena
         this.scene.start('juego', { playerData: this.playerData });
     }
 }
