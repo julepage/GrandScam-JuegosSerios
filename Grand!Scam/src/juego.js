@@ -7,6 +7,8 @@ export default class Juego extends Phaser.Scene {
     this.entraMensaje = false;
     this.masLLamada = true;
     this.masMensaje = true;
+    this.obLlamada = true;
+    this.obMovil = true;
   }
 
   //DATOS DEL FORMULARIO
@@ -109,21 +111,24 @@ export default class Juego extends Phaser.Scene {
     if (this.casosDisponiblesLLOb.length > 0) {
       const index = Phaser.Math.RND.between(0, this.casosDisponiblesLLOb.length - 1);
       this.randomCaso = this.casosDisponiblesLLOb[index];
-
+      
       this.casosDisponiblesLLOb.length = 0;
     }
     else if (this.casosDisponiblesLLOp.length > 0) {
-      this.masLLamada = true;
+      this.obLlamada = false;
       const index = Phaser.Math.RND.between(0, this.casosDisponiblesLLOp.length - 1);
       this.randomCaso = this.casosDisponiblesLLOp[index];
-
       this.casosDisponiblesLLOp.splice(index, 1);
-      this.masLLamada = false;
+      if (this.casosDisponiblesLLOp.length == 0)
+        this.masLLamada = false;
     }
     else {
       this.randomCaso = " ";
     }
-    this.scene.launch('telefono', { vidas: this.vidas, textos: this.textos, randomCaso: this.randomCaso, obligatorio: this.masLLamada });
+    console.log(this.textos.telefono.llamada.opcional[this.randomCaso]);
+    console.log(this.casosDisponiblesLLOp);
+    console.log(this.randomCaso);
+    this.scene.launch('telefono', { vidas: this.vidas, textos: this.textos, randomCaso: this.randomCaso, obligatorio: this.obLlamada });
   }
   movilScene() {
     this.movil.stop();
@@ -147,11 +152,12 @@ export default class Juego extends Phaser.Scene {
         this.casosDisponiblesOp = this.casosDisponiblesWAOp;
     else if (this.reandomApp == this.textos.movil.correo)
       if (this.casosDisponiblesCOOb)
-      this.casosDisponiblesOb = this.casosDisponiblesCOOb;
-    else
-      this.casosDisponiblesOp = this.casosDisponiblesCOOp;
-    
+        this.casosDisponiblesOb = this.casosDisponiblesCOOb;
+      else
+        this.casosDisponiblesOp = this.casosDisponiblesCOOp;
+
     if (this.casosDisponiblesOb.length > 0) {
+      this.obMovil = true;
       const index = Phaser.Math.RND.between(0, this.casosDisponiblesOb.length - 1);
       this.randomCaso = this.casosDisponiblesOb[index];
 
@@ -165,7 +171,7 @@ export default class Juego extends Phaser.Scene {
       this.casosDisponiblesOb.length = 0;
     }
     else if (this.casosDisponiblesOp.length > 0) {
-      this.masMensaje = true;
+      this.obMovil = false;
       const index = Phaser.Math.RND.between(0, this.casosDisponiblesOp.length - 1);
       this.randomCaso = this.casosDisponiblesOp[index];
 
@@ -177,12 +183,15 @@ export default class Juego extends Phaser.Scene {
         this.casosDisponiblesCOOp.splice(index, 1);
 
       this.casosDisponiblesOp.splice(index, 1);
-      this.masMensaje = false;
+       if (this.casosDisponiblesSMSOp.length == 0 && this.casosDisponiblesWAOp.length == 0 && this.casosDisponiblesCOOp.length == 0)
+        this.masMensaje = false;
     }
     else {
       this.randomCaso = " ";
     }
-    this.scene.launch('movil', { vidas: this.vidas, textos: this.textos, randomApp: this.randomApp, randomCaso: this.randomCaso, obligatorio: this.masMensaje });
+    console.log(this.randomApp);
+    console.log(this.randomCaso);
+    this.scene.launch('movil', { vidas: this.vidas, textos: this.textos, randomApp: this.randomApp, randomCaso: this.randomCaso, obligatorio: this.obMovil });
   }
   escenaPausa() {
     this.scene.launch('EscenaPausa');
