@@ -94,7 +94,7 @@
           },
           "caso2": {
             "comienzo": {
-              "mIni": "Gerencia Atención Primaria: Valoramos su opinión sobre la atención de enfermería en su Centro de Salud. Si desea evaluar (1 min), acceda a su Área Ciudadana en la web oficial y utilice el código de verificación GC-2025-8421. Para comprobar la autenticidad visite www.salud.gob.es o llame al 012. Nunca facilite datos bancarios, PIN o contraseñas por SMS.",
+              "mIni": "Gerencia Atención Primaria: Valoramos su opinión sobre la atención de enfermería en su Centro de Salud. Si desea evaluar la atención prestada por la enfermera (1 min), acceda a su Área Ciudadana en la web oficial y utilice el código de verificación GC-2025-8421. Para comprobar la autenticidad visite www.salud.gob.es o llame al 012. Nunca facilite datos bancarios, PIN o contraseñas por SMS.",
               "opciones": [
                 {
                   "texto": "Acceder al Área Ciudadana (sin enlace en SMS)",
