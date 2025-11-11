@@ -295,7 +295,7 @@
             ]
           },
           "calle": {
-            "mIni": "Vivimos en {calle}",
+            "mIni": "Vives en {calle}",
             "opciones": [
               {
                 "texto": "Vale, te hago la transferencia",

@@ -12,7 +12,7 @@ export default class EscenaCuestionario extends Phaser.Scene {
         const textos = this.cache.json.get('es');
         this.textos = textos.cuestionario;
 
-        // Defaults (todos deben venir definidos en el JSON)
+        // Defaults
         this.defaults = this.textos.defaults;
 
         // Título
@@ -32,15 +32,13 @@ export default class EscenaCuestionario extends Phaser.Scene {
 
         // Campos del formulario
         this.inputFields = [];
-
-        // Helper para etiquetas
         const lbl = (key) => this.textos.campos[key];
 
         // Campos obligatorios
         this.createInputField(400, 200, lbl('nombre') + '*', 'nombre', true);
         this.createInputField(400, 300, lbl('edad') + '*', 'edad', true);
 
-        // Campos opcionales (con *)
+        // Campos opcionales
         this.createInputField(400, 380, lbl('mascota'), 'mascota', false);
         this.createInputField(400, 460, lbl('calle'), 'calle', false);
         this.createInputField(400, 540, lbl('color'), 'color', false);
@@ -72,17 +70,17 @@ export default class EscenaCuestionario extends Phaser.Scene {
             this.focusNextInput();
         });
         this.input.keyboard.on('keydown-ENTER', () => this.submitForm());
+        this.input.keyboard.on('keydown-UP', () => this.focusPrevInput());
+        this.input.keyboard.on('keydown-DOWN', () => this.focusNextInput());
     }
 
     createInputField(x, y, labelText, fieldKey, required = true) {
-        // Etiqueta a la izquierda
         this.add.text(x - 150, y, `${labelText}:`, {
             fontSize: '24px',
             color: required ? '#ffffff' : '#cccccc',
             align: 'right',
         }).setOrigin(1, 0.5);
 
-        // Caja de input
         const box = this.add.rectangle(x + 50, y, 300, 40, 0x333333)
             .setStrokeStyle(2, 0xffffff)
             .setOrigin(0.5)
@@ -105,7 +103,6 @@ export default class EscenaCuestionario extends Phaser.Scene {
         this.inputFields.push(box);
     }
 
-
     updateActiveBox(activeBox) {
         this.inputFields.forEach(box => {
             box.setStrokeStyle(2, box === activeBox ? 0x00ff00 : 0xffffff);
@@ -114,11 +111,17 @@ export default class EscenaCuestionario extends Phaser.Scene {
 
     focusNextInput() {
         if (!this.inputFields.length) return;
+        let idx = this.inputFields.indexOf(this.activeField);
+        idx = (idx + 1) % this.inputFields.length;
+        this.activeField = this.inputFields[idx];
+        this.updateActiveBox(this.activeField);
+    }
 
-        let currentIndex = this.inputFields.indexOf(this.activeField);
-        currentIndex = (currentIndex + 1) % this.inputFields.length;
-
-        this.activeField = this.inputFields[currentIndex];
+    focusPrevInput() {
+        if (!this.inputFields.length) return;
+        let idx = this.inputFields.indexOf(this.activeField);
+        idx = (idx - 1 + this.inputFields.length) % this.inputFields.length;
+        this.activeField = this.inputFields[idx];
         this.updateActiveBox(this.activeField);
     }
 
@@ -150,15 +153,13 @@ export default class EscenaCuestionario extends Phaser.Scene {
             return;
         }
 
-        // Asignar defaults desde el JSON a los opcionales vacíos
+        // Asignar defaults a opcionales vacíos
         this.inputFields.forEach(box => {
             const key = box.fieldKey;
             let value = this.playerData[key]?.trim();
-
             if (!box.required && (!value || value.length === 0)) {
                 value = this.defaults[key] || '';
             }
-
             this.playerData[key] = value;
         });
 
@@ -166,7 +167,7 @@ export default class EscenaCuestionario extends Phaser.Scene {
         this.registry.set('playerData', this.playerData);
         this.registry.set('cuestionarioCompletado', true);
 
-        // Ir a la siguiente escena
+        // Ir a siguiente escena
         this.scene.start('juego', { playerData: this.playerData });
     }
 }
