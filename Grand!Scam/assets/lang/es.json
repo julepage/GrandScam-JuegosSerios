@@ -249,7 +249,7 @@
             ]
           },
           "perro": {
-            "mIni": "{mascota}.",
+            "mIni": "{mascota}",
             "opciones": [
               {
                 "texto": "Vale, te hago la transferencia",
@@ -369,11 +369,96 @@
       "opcional": {
         "caso1": {
           "comienzo": {
-            "mIni": "",
+            "mIni": "Buenos días, le llamo de la clínica dental Sonrisa Perfecta. Tenemos registrada una ortodoncia pendiente y necesitamos que realice el pago por adelantado para confirmar su cita.",
             "opciones": [
               {
-                "texto": "",
-                "siguiente": ""
+                "texto": "¿Pago por adelantado? No recuerdo haber hecho cita.",
+                "siguiente": "dudaCita"
+              },
+              {
+                "texto": "Ah sí, claro, ¿cuánto tengo que pagar?",
+                "siguiente": "pagoDirecto"
+              },
+              {
+                "texto": "¿Podría decirme su nombre y de qué clínica llama exactamente?",
+                "siguiente": "verificacion"
+              }
+            ]
+          },
+          "dudaCita": {
+            "mIni": "Sí, aparece en nuestro sistema. Solo necesitamos confirmar el abono de 500€ para mantener su hora. Es un procedimiento nuevo.",
+            "opciones": [
+              {
+                "texto": "¿Podría enviarme la cita por correo oficial de la clínica?",
+                "siguiente": "correoVerificacion"
+              },
+              {
+                "texto": "Vale, dígame el número de cuenta y hago la transferencia.",
+                "siguiente": "fallo"
+              },
+              {
+                "texto": "¿Puedo pagar cuando vaya a la clínica?",
+                "siguiente": "negacionPago"
+              }
+            ]
+          },
+          "pagoDirecto": {
+            "mIni": "Perfecto. Son 500€ por la reserva. Le paso un número de cuenta personal para hacer el ingreso, es más rápido.",
+            "opciones": [
+              {
+                "texto": "¿Por qué es una cuenta personal y no de la clínica?",
+                "siguiente": "verificacion"
+              },
+              {
+                "texto": "Está bien, pásame el número.",
+                "siguiente": "fallo"
+              }
+            ]
+          },
+          "verificacion": {
+            "mIni": "Claro, soy Laura de la clínica Sonrisa Perfecta... bueno, trabajamos con varios consultorios asociados.",
+            "opciones": [
+              {
+                "texto": "Eso suena raro, ¿puede darme el número oficial de la clínica para verificar?",
+                "siguiente": "correoVerificacion"
+              },
+              {
+                "texto": "Vale, me fio, ¿cómo hago el pago?",
+                "siguiente": "fallo"
+              },
+              {
+                "texto": "Prefiero acercarme personalmente a la clínica antes de pagar.",
+                "siguiente": "acierto"
+              }
+            ]
+          },
+          "correoVerificacion": {
+            "mIni": "No tenemos correo oficial, solo este número. Si no hace el pago hoy, perderá su cita.",
+            "opciones": [
+              {
+                "texto": "Si no tienen correo oficial, no parece muy profesional. Prefiero no seguir.",
+                "siguiente": "acierto"
+              },
+              {
+                "texto": "Está bien, si lo necesito lo pagaré luego.",
+                "siguiente": "acierto"
+              },
+              {
+                "texto": "Vale, hago el pago entonces para no perder la cita.",
+                "siguiente": "fallo"
+              }
+            ]
+          },
+          "negacionPago": {
+            "mIni": "Lo siento, solo aceptamos pagos por adelantado. Es una política reciente.",
+            "opciones": [
+              {
+                "texto": "Entonces lo siento, no puedo confirmar la cita.",
+                "siguiente": "acierto"
+              },
+              {
+                "texto": "Bueno, pagaré si no hay otra opción.",
+                "siguiente": "fallo"
               }
             ]
           }
