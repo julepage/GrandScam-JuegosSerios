@@ -52,7 +52,7 @@ export default class Bocadillos extends Phaser.GameObjects.Container {
         );
 
 
-        if (tipoEstafa === this.scene.textos.movil.SMS) {
+        if (tipoEstafa === this.scene.textos.movil.SMS.obligatorio) {
             this.enlace = this.scene.add.text(this.caso1.x, this.caso1.y + this.caso1.height / 1.5, this.textos.comienzo.enlace, {
                 fontFamily: 'Georgia, "Times New Roman", serif',
                 fontSize: '20px',

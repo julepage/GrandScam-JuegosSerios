@@ -92,9 +92,12 @@ export default class Juego extends Phaser.Scene {
     this.botonPausa.on('pointerout', () => { this.botonPausa.setScale(0.4); });
     this.vidas = new GestionVida(this);
     this.textos = this.cache.json.get('es');
-    this.casosDisponiblesLL = Object.keys(this.textos.telefono.llamada);
-    this.casosDisponiblesSMS = Object.keys(this.textos.movil.SMS);
-    //this.casosDisponiblesWA = Object.keys(this.textos.movil.whatsapp);
+    this.casosDisponiblesLLOb = Object.keys(this.textos.telefono.llamada.obligatorio);
+    this.casosDisponiblesLLOp = Object.keys(this.textos.telefono.llamada.opcional);
+    this.casosDisponiblesSMSOb = Object.keys(this.textos.movil.SMS.obligatorio);
+    this.casosDisponiblesSMSOp = Object.keys(this.textos.movil.SMS.obligatorio);
+    this.casosDisponiblesWAOb = Object.keys(this.textos.movil.whatsapp.opcional);
+    this.casosDisponiblesWAOp = Object.keys(this.textos.movil.whatsapp.opcional);
     //this.casosDisponiblesGM = Object.keys(this.textos.movil.gmail);
   }
 
@@ -102,14 +105,22 @@ export default class Juego extends Phaser.Scene {
   telefonoScene() {
     this.telefono.stop();
     this.telefono.setFrame(0);
-    if (this.casosDisponiblesLL.length > 0) {
+    if (this.casosDisponiblesLLOb.length > 0) {
       this.masLLamada = true;
-      const index = Phaser.Math.RND.between(0, this.casosDisponiblesLL.length - 1);
-      this.randomCaso = this.casosDisponiblesLL[index];
+      const index = Phaser.Math.RND.between(0, this.casosDisponiblesLLOb.length - 1);
+      this.randomCaso = this.casosDisponiblesLLOb[index];
 
-      this.casosDisponiblesLL.splice(index, 1);
+      this.casosDisponiblesLLOb.splice(index, 1);
       this.masLLamada = false;
     }
+    // else if (this.casosDisponiblesLLOp.length > 0) {
+    //   this.masLLamada = true;
+    //   const index = Phaser.Math.RND.between(0, this.casosDisponiblesLLOp.length - 1);
+    //   this.randomCaso = this.casosDisponiblesLLOp[index];
+
+    //   this.casosDisponiblesLLOp.splice(index, 1);
+    //   this.masLLamada = false;
+    // }
     else {
       this.randomCaso = " ";
     }
@@ -121,28 +132,53 @@ export default class Juego extends Phaser.Scene {
     this.casosApp = Object.keys(this.textos.movil);
     const index = Phaser.Math.RND.between(0, this.casosApp.length - 1);
     this.randomApp = this.casosApp[index];
-    if (this.reandomApp == this.textos.movil.SMS)
-      this.casosDisponibles = this.casosDisponiblesSMS;
-    else if (this.reandomApp == this.textos.movil.whatsapp)
-      this.casosDisponibles = this.casosDisponiblesSMS;
-    else if (this.reandomApp == this.textos.movil.gmail)
-      this.casosDisponibles = this.casosDisponiblesSMS;
-    console.log(this.casosDisponibles)
-    if (this.casosDisponibles.length > 0) {
+    this.casosDisponiblesOb = this.casosDisponiblesSMSOb;
+    this.casosDisponiblesOp = this.casosDisponiblesSMSOp;
+    if (this.randomApp == this.textos.movil.SMS)
+      if (this.casosDisponiblesSMSOb.length > 0)
+        this.casosDisponiblesOb = this.casosDisponiblesSMSOb;
+      // else
+      //   this.casosDisponiblesOp = this.casosDisponiblesSMSOp;
+    else if (this.randomApp == this.textos.movil.whatsapp)
+      if (this.casosDisponiblesWAOb.length > 0)
+        this.casosDisponiblesOb = this.casosDisponiblesWAOb;
+      // else
+      //   this.casosDisponiblesOp = this.casosDisponiblesWAOp;
+    // else if (this.reandomApp == this.textos.movil.correo)
+    //   if (this.casosDisponiblesSMSOb)
+    //   this.casosDisponiblesOb = this.casosDisponiblesSMSOb;
+    // else
+    //   this.casosDisponiblesOp = this.casosDisponiblesSMSOp;
+    if (this.casosDisponiblesOb.length > 0) {
       this.masMensaje = true;
-      const index = Phaser.Math.RND.between(0, this.casosDisponibles.length - 1);
-      this.randomCaso = this.casosDisponibles[index];
+      const index = Phaser.Math.RND.between(0, this.casosDisponiblesOb.length - 1);
+      this.randomCaso = this.casosDisponiblesOb[index];
 
       if (this.reandomApp == this.textos.movil.SMS)
-        this.casosDisponiblesSMS.splice(index, 1);
+        this.casosDisponiblesSMSOb.splice(index, 1);
       else if (this.reandomApp == this.textos.movil.whatsapp)
-        this.casosDisponiblesSMS.splice(index, 1);
-      else if (this.reandomApp == this.textos.movil.gmail)
-        this.casosDisponiblesSMS.splice(index, 1);
+        this.casosDisponiblesWAOb.splice(index, 1);
+      // else if (this.reandomApp == this.textos.movil.gmail)
+      //   this.casosDisponiblesSMSOb.splice(index, 1);
 
-      this.casosDisponibles.splice(index, 1);
+      this.casosDisponiblesOb.splice(index, 1);
       this.masMensaje = false;
     }
+    // else if (this.casosDisponiblesOp.length > 0) {
+    //   this.masMensaje = true;
+    //   const index = Phaser.Math.RND.between(0, this.casosDisponiblesOp.length - 1);
+    //   this.randomCaso = this.casosDisponiblesOp[index];
+
+    //   if (this.reandomApp == this.textos.movil.SMS)
+    //     this.casosDisponiblesSMSOp.splice(index, 1);
+    //   else if (this.reandomApp == this.textos.movil.whatsapp)
+    //     this.casosDisponiblesWAOp.splice(index, 1);
+    //   // else if (this.reandomApp == this.textos.movil.gmail)
+    //   //   this.casosDisponiblesSMSOp.splice(index, 1);
+
+    //   this.casosDisponiblesOp.splice(index, 1);
+    //   this.masMensaje = false;
+    // }
     else {
       this.randomCaso = " ";
     }
