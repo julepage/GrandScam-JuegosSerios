@@ -378,7 +378,7 @@
             ]
           },
           "dudaCita": {
-            "mIni": "Sí, aparece en nuestro sistema. Solo necesitamos confirmar el abono de 500€ para mantener su hora. Es un procedimiento nuevo.",
+            "mIni": "Sí, aparece en nuestro sistema. Solo necesitamos confirmar el abono de 2000€ para mantener su hora. Es un procedimiento nuevo.",
             "opciones": [
               {
                 "texto": "¿Podría enviarme la cita por correo oficial de la clínica?",
@@ -395,7 +395,7 @@
             ]
           },
           "pagoDirecto": {
-            "mIni": "Perfecto. Son 500€ por la reserva. Le paso un número de cuenta personal para hacer el ingreso, es más rápido.",
+            "mIni": "Perfecto. Son 2000€ por la reserva. Le paso un número de cuenta personal para hacer el ingreso, es más rápido.",
             "opciones": [
               {
                 "texto": "¿Por qué es una cuenta personal y no de la clínica?",
@@ -450,6 +450,189 @@
               },
               {
                 "texto": "Bueno, pagaré si no hay otra opción.",
+                "siguiente": "fallo"
+              }
+            ]
+          }
+        },
+        "caso2": {
+          "comienzo": {
+            "mIni": "Buenos días, le llamamos del departamento de seguridad de su banco. Hemos detectado un intento de cargo de 1.200€ en su cuenta. Necesitamos confirmar su identidad para bloquear la operación.",
+            "opciones": [
+              {
+                "texto": "¿Qué tipo de cargo y desde dónde se ha hecho?",
+                "siguiente": "detalleCargo"
+              },
+              {
+                "texto": "¡Dios mío! Sí, confirmo que no lo hice, ¿qué debo hacer?",
+                "siguiente": "pedirDatos"
+              },
+              {
+                "texto": "¿Podría decirme su nombre completo y desde qué número oficial me llama?",
+                "siguiente": "verificacionLlamada"
+              }
+            ]
+          },
+          "detalleCargo": {
+            "mIni": "El cargo se realizó desde una tienda online internacional. Para poder bloquearlo, necesitamos verificar que usted es el titular. ¿Podría decirme los tres dígitos del reverso de su tarjeta?",
+            "opciones": [
+              {
+                "texto": "Eso es el CVV, ¿por qué lo necesitan si ya tienen mis datos?",
+                "siguiente": "sospecha"
+              },
+              {
+                "texto": "Claro, son 482.",
+                "siguiente": "fallo"
+              },
+              {
+                "texto": "Prefiero contactar directamente con mi banco antes de dar datos.",
+                "siguiente": "acierto"
+              }
+            ]
+          },
+          "pedirDatos": {
+            "mIni": "Perfecto. Para detener el pago, necesito que me confirme su usuario y contraseña de banca online, o en su defecto el código CVV de su tarjeta.",
+            "opciones": [
+              {
+                "texto": "No suelo dar mi contraseña por teléfono, ¿hay otra forma de verificar?",
+                "siguiente": "sospecha"
+              },
+              {
+                "texto": "De acuerdo, mi usuario es... espere, ¿esto no debería hacerse desde la app?",
+                "siguiente": "sospecha"
+              },
+              {
+                "texto": "Vale, le doy la contraseña para que lo bloquee rápido.",
+                "siguiente": "fallo"
+              }
+            ]
+          },
+          "verificacionLlamada": {
+            "mIni": "Mi nombre es Javier López, agente de seguridad del banco. Por protección de datos no puedo darle el número, pero puedo confirmar que llamamos desde el área de Madrid.",
+            "opciones": [
+              {
+                "texto": "Si no puede darme un número verificable, prefiero colgar y llamar yo mismo al banco.",
+                "siguiente": "acierto"
+              },
+              {
+                "texto": "De acuerdo, si es urgente puedo darle mis datos para resolverlo.",
+                "siguiente": "fallo"
+              },
+              {
+                "texto": "¿Puede enviarme un correo oficial desde el banco para confirmar la gestión?",
+                "siguiente": "sospecha"
+              }
+            ]
+          },
+          "sospecha": {
+            "mIni": "Entendemos su preocupación, pero si no nos facilita los datos en este momento, el dinero saldrá de su cuenta. Solo tardará un minuto.",
+            "opciones": [
+              {
+                "texto": "Si es tan urgente, lo haré directamente por la app o en mi sucursal.",
+                "siguiente": "acierto"
+              },
+              {
+                "texto": "Bueno... está bien, le doy los datos para evitar el cargo.",
+                "siguiente": "fallo"
+              },
+              {
+                "texto": "Envíeme un enlace oficial o correo para continuar.",
+                "siguiente": "correo"
+              }
+            ]
+          },
+          "correo": {
+            "mIni": "Le enviaremos un enlace por SMS. Solo deberá introducir su usuario, contraseña y CVV para confirmar la cancelación.",
+            "opciones": [
+              {
+                "texto": "Eso suena peligroso. No introduciré mis datos en ningún enlace.",
+                "siguiente": "acierto"
+              },
+              {
+                "texto": "Perfecto, espero el SMS y lo hago enseguida.",
+                "siguiente": "fallo"
+              }
+            ]
+          }
+        },
+        "caso3": {
+          "comienzo": {
+            "mIni": "Buenos días, le llamamos del departamento de seguridad de su banco. Hemos detectado un intento de transferencia inusual de 900€ desde su cuenta. Queremos asegurarnos de que todo está bien.",
+            "opciones": [
+              {
+                "texto": "¿Podría decirme a qué cuenta se intentó transferir el dinero?",
+                "siguiente": "detalleTransferencia"
+              },
+              {
+                "texto": "No confío en estas llamadas. Prefiero no decir nada y colgar.",
+                "siguiente": "fallo"
+              },
+              {
+                "texto": "¿Puede confirmar que realmente llama del banco?",
+                "siguiente": "verificacionAgente"
+              }
+            ]
+          },
+          "detalleTransferencia": {
+            "mIni": "Fue una transferencia a una cuenta extranjera. Si no la reconoce, podemos bloquearla, pero necesitamos confirmar su identidad antes.",
+            "opciones": [
+              {
+                "texto": "Vale, ¿cómo puedo confirmar mi identidad?",
+                "siguiente": "procesoVerificacion"
+              },
+              {
+                "texto": "No daré ningún dato por teléfono, gracias.",
+                "siguiente": "fallo"
+              },
+              {
+                "texto": "Suena raro, pero puedo revisar la app del banco mientras hablamos.",
+                "siguiente": "acierto"
+              }
+            ]
+          },
+          "verificacionAgente": {
+            "mIni": "Por supuesto. Le llamo desde el número oficial del banco, puede comprobarlo en la pantalla de su móvil o en la web. Si prefiere, puedo esperar mientras verifica.",
+            "opciones": [
+              {
+                "texto": "Bien, lo compruebo. Sí, coincide con el número del banco. ¿Qué debo hacer?",
+                "siguiente": "procesoVerificacion"
+              },
+              {
+                "texto": "Podría ser un número falsificado. No me fío, colgaré.",
+                "siguiente": "fallo"
+              },
+              {
+                "texto": "Le creo, dígame cómo detener esa transferencia.",
+                "siguiente": "procesoVerificacion"
+              }
+            ]
+          },
+          "procesoVerificacion": {
+            "mIni": "Perfecto. Le enviaremos un código por SMS para verificar que usted es el titular. No le pediremos contraseñas ni datos de tarjeta, solo el código de seguridad.",
+            "opciones": [
+              {
+                "texto": "Vale, espero el código y se lo digo.",
+                "siguiente": "acierto"
+              },
+              {
+                "texto": "No pienso dar ningún código ni información, esto suena a estafa.",
+                "siguiente": "fallo"
+              },
+              {
+                "texto": "¿Puedo confirmar este proceso en mi sucursal mejor?",
+                "siguiente": "esperaSucursal"
+              }
+            ]
+          },
+          "esperaSucursal": {
+            "mIni": "Puede hacerlo, pero la operación vence en minutos. Si no la bloqueamos ahora, el dinero saldrá de su cuenta.",
+            "opciones": [
+              {
+                "texto": "Entonces procedamos con el código de verificación.",
+                "siguiente": "acierto"
+              },
+              {
+                "texto": "Prefiero esperar e ir al banco mañana.",
                 "siguiente": "fallo"
               }
             ]
