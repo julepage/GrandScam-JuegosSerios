@@ -153,6 +153,15 @@
                 "siguiente": "acierto"
               }
             ]
+          },
+          "codigoValido": {
+            "mIni": "Código aceptado. Gracias por su valoración. (Simulación segura: no se solicitaron datos sensibles).",
+            "opciones": [
+              {
+                "texto": "Finalizar",
+                "siguiente": "acierto"
+              }
+            ]
           }
         },
         "caso3": {
@@ -166,11 +175,24 @@
               },
               {
                 "texto": "No pulsar el enlace y verificar en la web oficial del centro de salud",
-                "siguiente": "acierto"
+                "siguiente": "verificar"
               },
               {
                 "texto": "Ignorar el mensaje",
                 "siguiente": "acierto"
+              }
+            ]
+          },
+          "verificar": {
+            "mIni": "Al revisar el enlace detectas señales de alerta: la URL no es la oficial del servicio público (no es dominio .gob/.gob.es), no tiene candado de seguridad y contiene palabras sospechosas.",
+            "opciones": [
+              {
+                "texto": "No participar.",
+                "siguiente": "acierto"
+              },
+              {
+                "texto": "Participar igualmente (pulsar el enlace)",
+                "siguiente": "fallo"
               }
             ]
           }
