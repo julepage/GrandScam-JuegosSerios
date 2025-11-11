@@ -9,7 +9,7 @@ export default class EscenaMenu extends Phaser.Scene {
         this.fondo = this.add.image(0, 0, 'fondoMenu');
         this.fondo.setScale(this.cameras.main.height / this.fondo.height);
         this.fondo.setPosition(this.cameras.main.width / 2, this.cameras.main.height / 2);
-     
+
         const cuestionarioCompletado = this.registry.get('cuestionarioCompletado') ?? false;
         this.c = cuestionarioCompletado;//niapa
         this.teclaSpace = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
@@ -18,14 +18,15 @@ export default class EscenaMenu extends Phaser.Scene {
                 this.cameras.main.fadeOut(1000, 0, 0, 0); // (duración, r, g, b)
 
                 this.cameras.main.once('camerafadeoutcomplete', () => {
-                    if(!cuestionarioCompletado){
+                    if (!cuestionarioCompletado) {
                         this.scene.start('cuestionario');
                     }
-                    else{
-                       this.scene.start('juego'); 
+                    else {
+                        this.scene.stop('juego');
+                        this.scene.start('juego');
                     }
                 });
-                
+
             });
     }
 
@@ -33,12 +34,12 @@ export default class EscenaMenu extends Phaser.Scene {
         // Revisar si se presionó Enter
 
         if (Phaser.Input.Keyboard.JustDown(this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER))) {
-             if(!this.c){
-                        this.scene.start('cuestionario');
-                    }
-                    else{
-                       this.scene.start('juego'); 
-                    }
+            if (!this.c) {
+                this.scene.start('cuestionario');
+            }
+            else {
+                this.scene.start('juego');
+            }
         }
     }
 

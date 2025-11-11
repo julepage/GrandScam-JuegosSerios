@@ -168,6 +168,7 @@ export default class EscenaCuestionario extends Phaser.Scene {
         this.registry.set('cuestionarioCompletado', true);
 
         // Ir a siguiente escena
+        this.scene.stop('juego');
         this.scene.start('juego', { playerData: this.playerData });
     }
 }

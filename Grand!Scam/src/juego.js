@@ -3,19 +3,13 @@ import GestionVida from "./gestionVida.js";
 export default class Juego extends Phaser.Scene {
   constructor() {
     super({ key: 'juego' });
-    this.entraLLamada = false;
-    this.entraMensaje = false;
-    this.masLLamada = true;
-    this.masMensaje = true;
-    this.obLlamada = true;
-    this.obMovil = true;
   }
-
+  
   //DATOS DEL FORMULARIO
   init(data) {
     this.playerData = data.playerData;
   }
-
+  
   reemplazarEnJson(obj, data) {
     if (typeof obj === 'string') {
       return obj.replace(/\{(\w+)\}/g, (_, key) => data[key] ?? `{${key}}`);
@@ -30,6 +24,12 @@ export default class Juego extends Phaser.Scene {
   }
 
   create() {
+    this.entraLLamada = false;
+    this.entraMensaje = false;
+    this.masLLamada = true;
+    this.masMensaje = true;
+    this.obLlamada = true;
+    this.obMovil = true;
     // Dentro del create() de la nueva escena
     this.cameras.main.fadeIn(1000, 0, 0, 0);
     // Personalizar textos solo la primera vez
@@ -132,8 +132,8 @@ export default class Juego extends Phaser.Scene {
     this.movil.stop();
     this.movil.setFrame(0);
 
-    const index = Phaser.Math.RND.between(0, this.casosApp.length - 1);
-    this.randomApp = this.casosApp[index];
+    const i = Phaser.Math.RND.between(0, this.casosApp.length - 1);
+    this.randomApp = this.casosApp[i];
 
     this.casosDisponiblesOb = this.casosDisponiblesSMSOb;
     this.casosDisponiblesOp = this.casosDisponiblesSMSOp;
@@ -143,53 +143,37 @@ export default class Juego extends Phaser.Scene {
         this.casosDisponiblesOb = this.casosDisponiblesSMSOb;
       else {
         this.casosDisponiblesOp = this.casosDisponiblesSMSOp;
-        if (this.casosDisponiblesSMSOp.length == 1)
-          this.casosApp.splice(index, 1);
       }
     else if (this.randomApp == "whatsapp")
       if (this.casosDisponiblesWAOb.length > 0)
         this.casosDisponiblesOb = this.casosDisponiblesWAOb;
       else {
         this.casosDisponiblesOp = this.casosDisponiblesWAOp;
-        if (this.casosDisponiblesWAOp.length == 1)
-          this.casosApp.splice(index, 1);
       }
     else if (this.randomApp == "correo")
       if (this.casosDisponiblesCOOb.length > 0)
         this.casosDisponiblesOb = this.casosDisponiblesCOOb;
       else {
         this.casosDisponiblesOp = this.casosDisponiblesCOOp;
-        if (this.casosDisponiblesCOOp.length == 1)
-          this.casosApp.splice(index, 1);
       }
+    console.log(this.casosApp)
     if (this.casosDisponiblesOb.length > 0) {
       this.obMovil = true;
       const index = Phaser.Math.RND.between(0, this.casosDisponiblesOb.length - 1);
       this.randomCaso = this.casosDisponiblesOb[index];
 
-      if (this.randomApp == "SMS")
-        this.casosDisponiblesSMSOb.length = 0;
-      else if (this.randomApp == "whatsapp")
-        this.casosDisponiblesWAOb.length = 0;
-      else if (this.randomApp == "correo")
-        this.casosDisponiblesCOOb.length = 0;
-
       this.casosDisponiblesOb.length = 0;
     }
     else if (this.casosDisponiblesOp.length > 0) {
       this.obMovil = false;
-      console.log(this.casosDisponiblesOp);
       const index = Phaser.Math.RND.between(0, this.casosDisponiblesOp.length - 1);
       this.randomCaso = this.casosDisponiblesOp[index];
 
-      if (this.randomApp == "SMS")
-        this.casosDisponiblesSMSOp.splice(index, 1);
-      else if (this.randomApp == "whatsapp")
-        this.casosDisponiblesWAOp.splice(index, 1);
-      else if (this.randomApp == "correo")
-        this.casosDisponiblesCOOp.splice(index, 1);
+      console.log(this.casosDisponiblesOp);
 
       this.casosDisponiblesOp.splice(index, 1);
+      if (this.casosDisponiblesOp.length == 0)
+        this.casosApp.splice(i, 1);
       if (this.casosApp.length == 0)
         this.masMensaje = false;
     }
