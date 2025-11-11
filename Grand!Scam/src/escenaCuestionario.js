@@ -4,15 +4,13 @@ export default class EscenaCuestionario extends Phaser.Scene {
     }
 
     preload() {
+        // Cargar JSON
         this.load.json('es', 'assets/es.json');
     }
 
     create() {
-        // Cargar JSON
         const textos = this.cache.json.get('es');
         this.textos = textos.cuestionario;
-
-        // Defaults (todos deben venir definidos en el JSON)
         this.defaults = this.textos.defaults;
 
         // Título
@@ -25,25 +23,30 @@ export default class EscenaCuestionario extends Phaser.Scene {
         this.playerData = {
             nombre: '',
             edad: '',
-            mascota: '',
-            calle: '',
-            color: ''
+            mascota: this.defaults.mascota,
+            calle: this.defaults.calle,
+            color: this.defaults.color
         };
 
         // Campos del formulario
         this.inputFields = [];
-
-        // Helper para etiquetas
-        const lbl = (key) => this.textos.campos[key];
+        const lbl = key => this.textos.campos[key];
 
         // Campos obligatorios
-        this.createInputField(400, 200, lbl('nombre'), 'nombre', true);
-        this.createInputField(400, 300, lbl('edad'), 'edad', true);
+        this.createInputField(400, 200, lbl('nombre') + '*', 'nombre', true);
+        this.createInputField(400, 300, lbl('edad') + '*', 'edad', true);
 
-        // Campos opcionales (con *)
-        this.createInputField(400, 380, lbl('mascota') + ' *', 'mascota', false);
-        this.createInputField(400, 460, lbl('calle') + ' *', 'calle', false);
-        this.createInputField(400, 540, lbl('color') + ' *', 'color', false);
+        // Campos opcionales
+        this.createInputField(400, 380, lbl('mascota'), 'mascota', false);
+        this.createInputField(400, 460, lbl('calle'), 'calle', false);
+        this.createInputField(400, 540, lbl('color'), 'color', false);
+
+        // Mostrar valores iniciales de opcionales
+        this.inputFields.forEach(f => {
+            if (!f.required && this.playerData[f.fieldKey]) {
+                f.textObj.setText(this.playerData[f.fieldKey]);
+            }
+        });
 
         // Botón
         const boton = this.add.text(400, 620, this.textos.botonComenzar, {
@@ -55,7 +58,7 @@ export default class EscenaCuestionario extends Phaser.Scene {
 
         boton.on('pointerdown', () => this.submitForm());
 
-        // Mensaje error
+        // Mensaje de error
         this.mensajeError = this.add.text(400, 680, '', {
             fontSize: '20px',
             color: '#ff5555',
@@ -137,8 +140,8 @@ export default class EscenaCuestionario extends Phaser.Scene {
     }
 
     submitForm() {
-        // Comprobar obligatorios
-        const faltan = this.inputFields.some(box => 
+        // Verificar campos obligatorios
+        const faltan = this.inputFields.some(box =>
             box.required && (!this.playerData[box.fieldKey] || this.playerData[box.fieldKey].trim().length === 0)
         );
 
@@ -147,23 +150,24 @@ export default class EscenaCuestionario extends Phaser.Scene {
             return;
         }
 
-        // Asignar defaults desde el JSON a los opcionales vacíos
+        // Asignar defaults a opcionales vacíos
         this.inputFields.forEach(box => {
             const key = box.fieldKey;
             let value = this.playerData[key]?.trim();
 
-            if (!box.required && (!value || value.length === 0)) {
-                value = this.defaults[key] || '';
+            if (!value || value.length === 0) {
+                if (!box.required) {
+                    value = this.defaults[key] || '';
+                }
             }
 
             this.playerData[key] = value;
         });
 
-        // Guardar datos globales
+        // Guardar datos y pasar a siguiente escena
         this.registry.set('playerData', this.playerData);
         this.registry.set('cuestionarioCompletado', true);
 
-        // Ir a la siguiente escena
         this.scene.start('juego', { playerData: this.playerData });
     }
 }

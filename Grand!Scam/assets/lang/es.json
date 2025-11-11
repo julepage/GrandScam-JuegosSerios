@@ -1,5 +1,5 @@
 {
- "cuestionario": {
+  "cuestionario": {
     "titulo": "Introduce tus datos",
     "campos": {
       "nombre": "Nombre",
@@ -91,77 +91,77 @@
                 "siguiente": "fallo"
               }
             ]
-          }
-        },
-        "caso2": {
-          "comienzo": {
-            "mIni": "Gerencia Atención Primaria: Valoramos su opinión sobre la atención de enfermería en su Centro de Salud. Si desea evaluar (1 min), acceda a su Área Ciudadana en la web oficial y utilice el código de verificación GC-2025-8421. Para comprobar la autenticidad visite www.salud.gob.es o llame al 012. Nunca facilite datos bancarios, PIN o contraseñas por SMS.",
-            "opciones": [
-              {
-                "texto": "Acceder al Área Ciudadana (sin enlace en SMS)",
-                "siguiente": "accesoArea"
-              },
-              {
-                "texto": "Verificar remitente y autenticidad",
-                "siguiente": "verificar"
-              },
-              {
-                "texto": "Ignorar y borrar el mensaje",
-                "siguiente": "acierto"
-              }
-            ]
           },
-          "verificar": {
-            "mIni": "Compruebe: 1) que la web sea la oficial (dominio .gob/.gob.es), 2) que la dirección la escribe usted manualmente (no siga enlaces sospechosos), 3) que el remitente SMS coincide con el número corto o remitente oficial de la administración, 4) llame al 012 si tiene dudas. ¿Qué desea hacer?",
-            "opciones": [
-              {
-                "texto": "Escribir manualmente www.salud.gob.es y usar el código",
-                "siguiente": "accesoArea"
-              },
-              {
-                "texto": "Llamar al 012 para confirmar",
-                "siguiente": "llamar012"
-              },
-              {
-                "texto": "Ignorar el mensaje",
-                "siguiente": "acierto"
-              }
-            ]
-          },
-          "llamar012": {
-            "mIni": "Al contactar con el 012 le confirman que la campaña de valoración está activa y que el código GC-2025-8421 es válido para su Área Ciudadana. ¿Qué hace ahora?",
-            "opciones": [
-              {
-                "texto": "Entrar a Área Ciudadana con el código (sitio oficial)",
-                "siguiente": "accesoArea"
-              },
-              {
-                "texto": "Aun así prefiero no acceder",
-                "siguiente": "acierto"
-              }
-            ]
-          },
-          "accesoArea": {
-            "mIni": "Simulación: Está en el Área Ciudadana oficial. Se le solicita introducir el código de verificación. Recuerde: en la web oficial NUNCA le pedirán datos bancarios por este proceso.",
-            "opciones": [
-              {
-                "texto": "Introducir el código GC-2025-8421",
-                "siguiente": "codigoValido"
-              },
-              {
-                "texto": "Cerrar y no introducir datos personales",
-                "siguiente": "acierto"
-              }
-            ]
-          },
-          "codigoValido": {
-            "mIni": "Código aceptado. Gracias por su valoración. (Simulación segura: no se solicitaron datos sensibles).",
-            "opciones": [
-              {
-                "texto": "Finalizar",
-                "siguiente": "acierto"
-              }
-            ]
+          "caso2": {
+            "comienzo": {
+              "mIni": "Gerencia Atención Primaria: Valoramos su opinión sobre la atención de enfermería en su Centro de Salud. Si desea evaluar (1 min), acceda a su Área Ciudadana en la web oficial y utilice el código de verificación GC-2025-8421. Para comprobar la autenticidad visite www.salud.gob.es o llame al 012. Nunca facilite datos bancarios, PIN o contraseñas por SMS.",
+              "opciones": [
+                {
+                  "texto": "Acceder al Área Ciudadana (sin enlace en SMS)",
+                  "siguiente": "accesoArea"
+                },
+                {
+                  "texto": "Verificar remitente y autenticidad",
+                  "siguiente": "verificar"
+                },
+                {
+                  "texto": "Ignorar y borrar el mensaje",
+                  "siguiente": "acierto"
+                }
+              ]
+            },
+            "verificar": {
+              "mIni": "Compruebe: 1) que la web sea la oficial (dominio .gob/.gob.es), 2) que la dirección la escribe usted manualmente (no siga enlaces sospechosos), 3) que el remitente SMS coincide con el número corto o remitente oficial de la administración, 4) llame al 012 si tiene dudas. ¿Qué desea hacer?",
+              "opciones": [
+                {
+                  "texto": "Escribir manualmente www.salud.gob.es y usar el código",
+                  "siguiente": "accesoArea"
+                },
+                {
+                  "texto": "Llamar al 112 para confirmar",
+                  "siguiente": "llamar112"
+                },
+                {
+                  "texto": "Ignorar el mensaje",
+                  "siguiente": "acierto"
+                }
+              ]
+            },
+            "llamar112": {
+              "mIni": "Al contactar con el 112 le confirman que la campaña de valoración está activa y que el código GC-2025-8421 es válido para su Área Ciudadana. ¿Qué hace ahora?",
+              "opciones": [
+                {
+                  "texto": "Entrar a Área Ciudadana con el código (sitio oficial)",
+                  "siguiente": "accesoArea"
+                },
+                {
+                  "texto": "Aun así prefiero no acceder",
+                  "siguiente": "acierto"
+                }
+              ]
+            },
+            "accesoArea": {
+              "mIni": "Simulación: Está en el Área Ciudadana oficial. Se le solicita introducir el código de verificación. Recuerde: en la web oficial NUNCA le pedirán datos bancarios por este proceso.",
+              "opciones": [
+                {
+                  "texto": "Introducir el código GC-2025-8421",
+                  "siguiente": "codigoValido"
+                },
+                {
+                  "texto": "Cerrar y no introducir datos personales",
+                  "siguiente": "acierto"
+                }
+              ]
+            },
+            "codigoValido": {
+              "mIni": "Código aceptado. Gracias por su valoración. (Simulación segura: no se solicitaron datos sensibles).",
+              "opciones": [
+                {
+                  "texto": "Finalizar",
+                  "siguiente": "acierto"
+                }
+              ]
+            }
           }
         }
       }
@@ -170,11 +170,15 @@
       "obligatorio": {
         "caso1": {
           "comienzo": {
-            "mIni": "",
+            "mIni": "feo",
             "opciones": [
               {
-                "texto": "",
-                "siguiente": ""
+                "texto": "f",
+                "siguiente": "fallo"
+              },
+              {
+                "texto": "s",
+                "siguiente": "fallo"
               }
             ]
           }
@@ -183,11 +187,15 @@
       "opcional": {
         "caso1": {
           "comienzo": {
-            "mIni": "",
+            "mIni": "gordo",
             "opciones": [
               {
-                "texto": "",
-                "siguiente": ""
+                "texto": "s",
+                "siguiente": "fallo"
+              },
+              {
+                "texto": "b",
+                "siguiente": "fallo"
               }
             ]
           }
@@ -228,21 +236,21 @@
             "opciones": [
               {
                 "texto": "¿Como se llama el perro?",
-                "siguinte": "perro"
+                "siguiente": "perro"
               },
               {
                 "texto": "¿En que calle vivo?",
-                "siguinte": "calle"
+                "siguiente": "calle"
               },
               {
                 "texto": "¿Cual es mi color favorito?",
-                "siguinte": "color"
+                "siguiente": "color"
               }
             ]
           },
           "perro": {
-            "mIni": "{mascota}",
-            "opciones":[
+            "mIni": "{mascota}.",
+            "opciones": [
               {
                 "texto": "Vale, te hago la transferencia",
                 "siguiente": "fallo"
@@ -255,7 +263,7 @@
           },
           "calle": {
             "mIni": "Vivimos en {calle}",
-             "opciones":[
+            "opciones": [
               {
                 "texto": "Vale, te hago la transferencia",
                 "siguiente": "fallo"
@@ -268,7 +276,7 @@
           },
           "color": {
             "mIni": "Es el {color}",
-            "opciones":[
+            "opciones": [
               {
                 "texto": "Vale, te hago la transferencia",
                 "siguiente": "fallo"
@@ -279,9 +287,9 @@
               }
             ]
           },
-          "llamada":{
+          "llamada": {
             "mIni": "No puedo, date prisa.",
-            "opciones":[
+            "opciones": [
               {
                 "texto": "Vale, te hago la transferencia",
                 "siguiente": "fallo"
