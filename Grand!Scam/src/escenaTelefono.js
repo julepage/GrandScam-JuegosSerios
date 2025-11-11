@@ -9,6 +9,7 @@ export default class EscenaTelefono extends Phaser.Scene {
     this.vidas = data.vidas;
     this.textos = data.textos;
     this.randomCaso = data.randomCaso;
+    this.obligatorio = data.obligatorio;
   }
 
   create() {
@@ -23,9 +24,16 @@ export default class EscenaTelefono extends Phaser.Scene {
 
     //poner bocadillos
     if (this.randomCaso != " ") {
-      this.bocadillos = new Bocadillos(this, this.textos.telefono.llamada[this.randomCaso], this.textos.telefono.llamada, this.vidas);
-      this.bocadillos.ponerBocadillos(this.textos.telefono.llamada[this.randomCaso].comienzo.opciones);
-      this.bocadillos.ponerTextos(this.textos.telefono.llamada[this.randomCaso].comienzo.opciones);
+      if (this.obligatorio) {
+        this.bocadillos = new Bocadillos(this, this.textos.telefono.llamada.obligatorio[this.randomCaso], this.textos.telefono.llamada.obligatorio, this.vidas);
+        this.bocadillos.ponerBocadillos(this.textos.telefono.llamada.obligatorio[this.randomCaso].comienzo.opciones);
+        this.bocadillos.ponerTextos(this.textos.telefono.llamada.obligatorio[this.randomCaso].comienzo.opciones);
+      }
+      else{
+        this.bocadillos = new Bocadillos(this, this.textos.telefono.llamada.opcional[this.randomCaso], this.textos.telefono.llamada.opcional, this.vidas);
+        this.bocadillos.ponerBocadillos(this.textos.telefono.llamada.opcional[this.randomCaso].comienzo.opciones);
+        this.bocadillos.ponerTextos(this.textos.telefono.llamada.opcional[this.randomCaso].comienzo.opciones);
+      }
     }
   }
 }

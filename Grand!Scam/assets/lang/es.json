@@ -167,12 +167,29 @@
       }
     },
     "correo": {
-      "obligatorio": {},
+      "obligatorio": {
+        "caso1": {
+          "comienzo": {
+            "mIni": "",
+            "opciones": [
+              {
+                "texto": "",
+                "siguiente": ""
+              }
+            ]
+          }
+        }
+      },
       "opcional": {
         "caso1": {
           "comienzo": {
-            "mIni": "¡Únete a este sorteo y podrás ganar un viaje a un sitio entre todos nuestros destinos!",
-            "opciones": []
+            "mIni": "",
+            "opciones": [
+              {
+                "texto": "",
+                "siguiente": ""
+              }
+            ]
           }
         }
       }
@@ -225,23 +242,68 @@
           },
           "perro": {
             "mIni": "{mascota}",
-            "opciones": []
+            "opciones":[
+              {
+                "texto": "Vale, te hago la transferencia",
+                "siguiente": "fallo"
+              },
+              {
+                "texto": "¿Puedo hacerte una llamada?",
+                "siguiente": "llamada"
+              }
+            ]
           },
           "calle": {
             "mIni": "Vivimos en {calle}",
-            "opciones": []
+             "opciones":[
+              {
+                "texto": "Vale, te hago la transferencia",
+                "siguiente": "fallo"
+              },
+              {
+                "texto": "¿Puedo hacerte una llamada?",
+                "siguiente": "llamada"
+              }
+            ]
           },
           "color": {
             "mIni": "Es el {color}",
-            "opciones": []
+            "opciones":[
+              {
+                "texto": "Vale, te hago la transferencia",
+                "siguiente": "fallo"
+              },
+              {
+                "texto": "¿Puedo hacerte una llamada?",
+                "siguiente": "llamada"
+              }
+            ]
+          },
+          "llamada":{
+            "mIni": "No puedo, date prisa.",
+            "opciones":[
+              {
+                "texto": "Vale, te hago la transferencia",
+                "siguiente": "fallo"
+              },
+              {
+                "texto": "No me da confianza. Lo siento.",
+                "siguiente": "acierto"
+              }
+            ]
           }
         }
       },
       "opcional": {
         "caso1": {
           "comienzo": {
-            "mIni": "¡Únete a este sorteo y podrás ganar un viaje a un sitio entre todos nuestros destinos!",
-            "opciones": []
+            "mIni": "",
+            "opciones": [
+              {
+                "texto": "",
+                "siguiente": ""
+              }
+            ]
           }
         }
       }
@@ -296,7 +358,19 @@
           }
         }
       },
-      "opcional": {}
+      "opcional": {
+        "caso1": {
+          "comienzo": {
+            "mIni": "",
+            "opciones": [
+              {
+                "texto": "",
+                "siguiente": ""
+              }
+            ]
+          }
+        }
+      }
     }
   }
 }

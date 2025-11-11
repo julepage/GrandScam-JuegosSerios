@@ -10,6 +10,7 @@ export default class EscenaMovil extends Phaser.Scene {
     this.textos = data.textos;
     this.randomApp = data.randomApp;
     this.randomCaso = data.randomCaso;
+    this.obligatorio = data.obligatorio;
   }
 
   create() {
@@ -24,9 +25,16 @@ export default class EscenaMovil extends Phaser.Scene {
 
     //poner bocadillos
     if (this.randomCaso != " ") {
-      this.bocadillos = new Bocadillos(this, this.textos.movil[this.randomApp][this.randomCaso], this.textos.movil[this.randomApp], this.vidas);//hasta caso1
-      this.bocadillos.ponerBocadillos(this.textos.movil[this.randomApp][this.randomCaso].comienzo.opciones);
-      this.bocadillos.ponerTextos(this.textos.movil[this.randomApp][this.randomCaso].comienzo.opciones);
+      if (this.obligatorio) {
+        this.bocadillos = new Bocadillos(this, this.textos.movil[this.randomApp].obligatorio[this.randomCaso], this.textos.movil[this.randomApp].obligatorio, this.vidas);//hasta caso1
+        this.bocadillos.ponerBocadillos(this.textos.movil[this.randomApp].obligatorio[this.randomCaso].comienzo.opciones);
+        this.bocadillos.ponerTextos(this.textos.movil[this.randomApp].obligatorio[this.randomCaso].comienzo.opciones);
+      }
+      else{
+        this.bocadillos = new Bocadillos(this, this.textos.movil[this.randomApp].opcional[this.randomCaso], this.textos.movil[this.randomApp].opcional, this.vidas);//hasta caso1
+        this.bocadillos.ponerBocadillos(this.textos.movil[this.randomApp].opcional[this.randomCaso].comienzo.opciones);
+        this.bocadillos.ponerTextos(this.textos.movil[this.randomApp].opcional[this.randomCaso].comienzo.opciones);
+      }
     }
   }
 }
