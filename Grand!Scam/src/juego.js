@@ -102,6 +102,7 @@ export default class Juego extends Phaser.Scene {
     this.casosDisponiblesWAOp = Object.keys(this.textos.movil.whatsapp.opcional);
     this.casosDisponiblesCOOb = Object.keys(this.textos.movil.correo.obligatorio);
     this.casosDisponiblesCOOp = Object.keys(this.textos.movil.correo.opcional);
+    this.casosApp = Object.keys(this.textos.movil);
   }
 
   //CAMBIOS ESCENAS
@@ -111,7 +112,7 @@ export default class Juego extends Phaser.Scene {
     if (this.casosDisponiblesLLOb.length > 0) {
       const index = Phaser.Math.RND.between(0, this.casosDisponiblesLLOb.length - 1);
       this.randomCaso = this.casosDisponiblesLLOb[index];
-      
+
       this.casosDisponiblesLLOb.length = 0;
     }
     else if (this.casosDisponiblesLLOp.length > 0) {
@@ -125,65 +126,71 @@ export default class Juego extends Phaser.Scene {
     else {
       this.randomCaso = " ";
     }
-    console.log(this.textos.telefono.llamada.opcional[this.randomCaso]);
-    console.log(this.casosDisponiblesLLOp);
-    console.log(this.randomCaso);
     this.scene.launch('telefono', { vidas: this.vidas, textos: this.textos, randomCaso: this.randomCaso, obligatorio: this.obLlamada });
   }
   movilScene() {
     this.movil.stop();
     this.movil.setFrame(0);
-    this.casosApp = Object.keys(this.textos.movil);
+
     const index = Phaser.Math.RND.between(0, this.casosApp.length - 1);
     this.randomApp = this.casosApp[index];
 
     this.casosDisponiblesOb = this.casosDisponiblesSMSOb;
     this.casosDisponiblesOp = this.casosDisponiblesSMSOp;
 
-    if (this.randomApp == this.textos.movil.SMS)
+    if (this.randomApp == "SMS")
       if (this.casosDisponiblesSMSOb.length > 0)
         this.casosDisponiblesOb = this.casosDisponiblesSMSOb;
-      else
+      else {
         this.casosDisponiblesOp = this.casosDisponiblesSMSOp;
-    else if (this.randomApp == this.textos.movil.whatsapp)
+        if (this.casosDisponiblesSMSOp.length == 1)
+          this.casosApp.splice(index, 1);
+      }
+    else if (this.randomApp == "whatsapp")
       if (this.casosDisponiblesWAOb.length > 0)
         this.casosDisponiblesOb = this.casosDisponiblesWAOb;
-      else
+      else {
         this.casosDisponiblesOp = this.casosDisponiblesWAOp;
-    else if (this.reandomApp == this.textos.movil.correo)
-      if (this.casosDisponiblesCOOb)
+        if (this.casosDisponiblesWAOp.length == 1)
+          this.casosApp.splice(index, 1);
+      }
+    else if (this.randomApp == "correo")
+      if (this.casosDisponiblesCOOb.length > 0)
         this.casosDisponiblesOb = this.casosDisponiblesCOOb;
-      else
+      else {
         this.casosDisponiblesOp = this.casosDisponiblesCOOp;
-
+        if (this.casosDisponiblesCOOp.length == 1)
+          this.casosApp.splice(index, 1);
+      }
     if (this.casosDisponiblesOb.length > 0) {
       this.obMovil = true;
       const index = Phaser.Math.RND.between(0, this.casosDisponiblesOb.length - 1);
       this.randomCaso = this.casosDisponiblesOb[index];
 
-      if (this.reandomApp == this.textos.movil.SMS)
+      if (this.randomApp == "SMS")
         this.casosDisponiblesSMSOb.length = 0;
-      else if (this.reandomApp == this.textos.movil.whatsapp)
+      else if (this.randomApp == "whatsapp")
         this.casosDisponiblesWAOb.length = 0;
-      else if (this.reandomApp == this.textos.movil.correo)
+      else if (this.randomApp == "correo")
         this.casosDisponiblesCOOb.length = 0;
 
       this.casosDisponiblesOb.length = 0;
     }
     else if (this.casosDisponiblesOp.length > 0) {
       this.obMovil = false;
+      console.log(this.casosDisponiblesOp);
       const index = Phaser.Math.RND.between(0, this.casosDisponiblesOp.length - 1);
       this.randomCaso = this.casosDisponiblesOp[index];
 
-      if (this.reandomApp == this.textos.movil.SMS)
+      if (this.randomApp == "SMS")
         this.casosDisponiblesSMSOp.splice(index, 1);
-      else if (this.reandomApp == this.textos.movil.whatsapp)
+      else if (this.randomApp == "whatsapp")
         this.casosDisponiblesWAOp.splice(index, 1);
-      else if (this.reandomApp == this.textos.movil.correo)
+      else if (this.randomApp == "correo")
         this.casosDisponiblesCOOp.splice(index, 1);
 
       this.casosDisponiblesOp.splice(index, 1);
-       if (this.casosDisponiblesSMSOp.length == 0 && this.casosDisponiblesWAOp.length == 0 && this.casosDisponiblesCOOp.length == 0)
+      if (this.casosApp.length == 0)
         this.masMensaje = false;
     }
     else {
