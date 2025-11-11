@@ -9,8 +9,8 @@
       "color": "Color favorito"
     },
     "defaults": {
-      "mascota": "no tienes mascota",
-      "calle": "no lo se",
+      "mascota": "No tienes mascota",
+      "calle": "la calle Galileo",
       "color": "azul"
     },
     "botonComenzar": "Comenzar",
@@ -146,19 +146,30 @@
             "opciones": [
               {
                 "texto": "Introducir el código GC-2025-8421",
-                "siguiente": "codigoValido"
+                "siguiente": "acierto"
               },
               {
                 "texto": "Cerrar y no introducir datos personales",
                 "siguiente": "acierto"
               }
             ]
-          },
-          "codigoValido": {
-            "mIni": "Código aceptado. Gracias por su valoración. (Simulación segura: no se solicitaron datos sensibles).",
+          }
+        },
+        "caso3": {
+          "comienzo": {
+            "mIni": "Su centro de salud le confirma la cita médica. Para confirmar su asistencia, pulse en el siguiente enlace:",
+            "enlace": "http://cita-medica-.com/confirma",
             "opciones": [
               {
-                "texto": "Finalizar",
+                "texto": "Pulsar el enlace para confirmar",
+                "siguiente": "fallo"
+              },
+              {
+                "texto": "No pulsar el enlace y verificar en la web oficial del centro de salud",
+                "siguiente": "acierto"
+              },
+              {
+                "texto": "Ignorar el mensaje",
                 "siguiente": "acierto"
               }
             ]
