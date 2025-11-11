@@ -129,6 +129,18 @@ export default class EscenaCuestionario extends Phaser.Scene {
     }
 
     submitForm() {
+        this.inputFields.forEach(box => {
+            const key = box.fieldKey;
+            let value = this.playerData[key]?.trim();
+
+            if (!value) {
+                // Valor por defecto según el campo
+                if (key === 'nombre') value = 'Invitado';
+                else if (key === 'edad') value = '0'; // o cualquier otro default
+            }
+
+            this.playerData[key] = value;
+        });
         // Verifica que todos los campos estén completos
         const todosCompletos = this.inputFields.every(box => this.playerData[box.fieldKey] && this.playerData[box.fieldKey].length > 0);
 

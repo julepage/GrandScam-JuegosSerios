@@ -7,8 +7,8 @@ export default class GestionVidas extends Phaser.GameObjects.Container {
         this.vidas = 3;
         this.aciertos = 0;
         this.vida3 = this.scene.add.image(this.scene.cameras.main.width / 70, this.scene.cameras.main.height / 1.075, 'vida').setScale(0.6, 0.6).setOrigin(0, 0.5);
-        this.vida2 = this.scene.add.image(this.scene.cameras.main.width / 70, this.scene.cameras.main.height / 1.398, 'vida').setScale(0.6, 0.6).setOrigin(0, 0.5);
-        this.vida1 = this.scene.add.image(this.scene.cameras.main.width / 70, this.scene.cameras.main.height / 2, 'vida').setScale(0.6, 0.6).setOrigin(0, 0.5);
+        this.vida2 = this.scene.add.image(this.scene.cameras.main.width / 70, this.scene.cameras.main.height / 1.252, 'vida').setScale(0.6, 0.6).setOrigin(0, 0.5);
+        this.vida1 = this.scene.add.image(this.scene.cameras.main.width / 70, this.scene.cameras.main.height / 1.5, 'vida').setScale(0.6, 0.6).setOrigin(0, 0.5);
         this.humo1 = this.scene.add.sprite(this.scene.cameras.main.width / 1.075, this.scene.cameras.main.height / 2, 'animHumo').setScale(0.5, 0.5);
         this.humo2 = this.scene.add.sprite(this.scene.cameras.main.width / 1.125, this.scene.cameras.main.height / 1.995, 'animHumo').setScale(0.5, 0.5);
         this.humo3 = this.scene.add.sprite(this.scene.cameras.main.width / 1.175, this.scene.cameras.main.height / 1.99, 'animHumo').setScale(0.5, 0.5);

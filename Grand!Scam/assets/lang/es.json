@@ -16,88 +16,180 @@
   },
   "movil": {
     "SMS": {
-      "caso1": {
-        "comienzo": {
-          "mIni": "¡Únete a este sorteo y podrás ganar un viaje a un sitio entre todos nuestros destinos!",
-          "enlace": "sorteovacas",
-          "opciones": [
-            {
-              "texto": "Hacer clic en el enlace",
-              "siguiente": "fallo"
-            },
-            {
-              "texto": "No participar en el sorteo",
-              "siguiente": "acierto"
-            },
-            {
-              "texto": "Verificar el enlace",
-              "siguiente": "mirarWeb"
-            }
-          ]
-        },
-        "mirarWeb": {
-          "mIni": "Vaya! Parece una web poco fiable, no tiene la s de seguro en el enlace https",
-          "opciones": [
-            {
-              "texto": "No participar en el sorteo",
-              "siguiente": "acierto"
-            },
-            {
-              "texto": "Participar igualmente",
-              "siguiente": "fallo"
-            }
-          ]
+      "obligatorio": {
+        "caso1": {
+          "comienzo": {
+            "mIni": "¡Únete a este sorteo y podrás ganar un viaje a un sitio entre todos nuestros destinos!",
+            "enlace": "sorteovacas",
+            "opciones": [
+              {
+                "texto": "Hacer clic en el enlace",
+                "siguiente": "fallo"
+              },
+              {
+                "texto": "No participar en el sorteo",
+                "siguiente": "acierto"
+              },
+              {
+                "texto": "Verificar el enlace",
+                "siguiente": "mirarWeb"
+              }
+            ]
+          },
+          "mirarWeb": {
+            "mIni": "Vaya! Parece una web poco fiable, no tiene la s de seguro en el enlace https",
+            "opciones": [
+              {
+                "texto": "No participar en el sorteo",
+                "siguiente": "acierto"
+              },
+              {
+                "texto": "Participar igualmente",
+                "siguiente": "fallo"
+              }
+            ]
+          }
+        }
+      },
+      "opcional": {}
+    },
+    "correo": {
+      "obligatorio": {},
+      "opcional": {
+        "caso1": {
+          "comienzo": {
+            "mIni": "¡Únete a este sorteo y podrás ganar un viaje a un sitio entre todos nuestros destinos!",
+            "opciones": []
+          }
+        }
+      }
+    },
+    "whatsapp": {
+      "obligatorio": {
+        "caso1": {
+          "comienzo": {
+            "mIni": "Mama!!! Mi móvil se ha estropeado, este es mi número nuevo. El otro número ya no lo usaré. ¿Me podrías hacer un favor?",
+            "opciones": [
+              {
+                "texto": "Si, dime.",
+                "siguiente": "transferencia"
+              },
+              {
+                "texto": "¿Por qué has tenido que cambiar de número?",
+                "siguiente": "transferencia"
+              }
+            ]
+          },
+          "transferencia": {
+            "mIni": "Se me ha bloqueado el numero y se me han borrado todas las fotos y contactos. Tengo que pagar una cosa y no tengo la tarjeta, ¿me podrias hacer una trasferencia? Ya te lo pagaré.\nIBAN: ESXX XXXX XXXX XXXX XXXX XXXX\nNOMBRE: Nacho Nachete\nCANTIDAD: 1.500€",
+            "opciones": [
+              {
+                "texto": "Vale, ahora mismo te la hago.",
+                "siguiente": "fallo"
+              },
+              {
+                "texto": "(Hacer una pregunta personal)",
+                "siguiente": "preguntasPersonales"
+              }
+            ]
+          },
+          "preguntasPersonales": {
+            "mIni": "¿Que pregunta quieres hacer?",
+            "opciones": [
+              {
+                "texto": "¿Como se llama el perro?",
+                "siguinte": "perro"
+              },
+              {
+                "texto": "¿En que calle vivo?",
+                "siguinte": "calle"
+              },
+              {
+                "texto": "¿Cual es mi color favorito?",
+                "siguinte": "color"
+              }
+            ]
+          },
+          "perro":{
+            "mIni": "{mascota}",
+            "opciones":[
+
+            ]
+          },
+          "calle":{
+            "mIni": "Vivimos en {calle}",
+            "opciones":[
+              
+            ]
+          },
+          "color":{
+            "mIni": "Es el {color}",
+            "opciones":[
+              
+            ]
+          }
+        }
+      },
+      "opcional": {
+        "caso1": {
+          "comienzo": {
+            "mIni": "¡Únete a este sorteo y podrás ganar un viaje a un sitio entre todos nuestros destinos!",
+            "opciones": []
+          }
         }
       }
     }
   },
   "telefono": {
     "llamada": {
-      "caso1": {
-        "comienzo": {
-          "mIni": "Buenos días, le habla Sergio Sergitez del departamento de atención al cliente de LaLuzDeDios Energía. Esta llamada puede ser grabada por motivos de calidad. ¿Podría confirmar si hablo con  {nombre}  {nombre}tez, titular del contrato número 123456?",
-          "opciones": [
-            {
-              "texto": "Sí, soy yo.",
-              "siguiente": "casoFactura"
-            },
-            {
-              "texto": "¿De qué se trata esta llamada?",
-              "siguiente": "casoFactura"
-            }
-          ]
-        },
-        "casoFactura": {
-          "mIni": "Le llamamos para informarle que en nuestros registros tiene una factura pendiente. Puede consultarla desde su área de\n cliente o en nuestra aplicación móvil. Le recomendamos efectuar el pago lo antes posible para evitar que el suministro pueda verse afectado.",
-          "opciones": [
-            {
-              "texto": "Gracias por el aviso, envienme la factura por correo.",
-              "siguiente": "acierto"
-            },
-            {
-              "texto": "No me fio de usted. Adios.",
-              "siguiente": "fallo"
-            },
-            {
-              "texto": "¿Puede repetirme su nombre?",
-              "siguiente": "dudas"
-            }
-          ]
-        },
-        "dudas": {
-          "mIni": "Por supuesto. Me llamo Sergio Sergitez, de atencion al cliente de LaLuzDeDios Energia.",
-          "opciones": [
-            {
-              "texto": "Esta bien, pagare.",
-              "siguiente": "acierto"
-            },
-            {
-              "texto": "Lo siento pero no me fio de la llamada. Adios.",
-              "siguiente": "fallo"
-            }
-          ]
+      "obligatorio": {
+        "caso1": {
+          "comienzo": {
+            "mIni": "Buenos días, le habla Sergio Sergitez del departamento de atención al cliente de LaLuzDeDios Energía. Esta llamada puede ser grabada por motivos de calidad. ¿Podría confirmar si hablo con  {nombre}  {nombre}tez, titular del contrato número 123456?",
+            "opciones": [
+              {
+                "texto": "Sí, soy yo.",
+                "siguiente": "casoFactura"
+              },
+              {
+                "texto": "¿De qué se trata esta llamada?",
+                "siguiente": "casoFactura"
+              }
+            ]
+          },
+          "casoFactura": {
+            "mIni": "Le llamamos para informarle que en nuestros registros tiene una factura pendiente. Puede consultarla desde su área de\n cliente o en nuestra aplicación móvil. Le recomendamos efectuar el pago lo antes posible para evitar que el suministro pueda verse afectado.",
+            "opciones": [
+              {
+                "texto": "Gracias por el aviso, envienme la factura por correo.",
+                "siguiente": "acierto"
+              },
+              {
+                "texto": "No me fio de usted. Adios.",
+                "siguiente": "fallo"
+              },
+              {
+                "texto": "¿Puede repetirme su nombre?",
+                "siguiente": "dudas"
+              }
+            ]
+          },
+          "dudas": {
+            "mIni": "Por supuesto. Me llamo Sergio Sergitez, de atencion al cliente de LaLuzDeDios Energia.",
+            "opciones": [
+              {
+                "texto": "Esta bien, pagare.",
+                "siguiente": "acierto"
+              },
+              {
+                "texto": "Lo siento pero no me fio de la llamada. Adios.",
+                "siguiente": "fallo"
+              }
+            ]
+          }
         }
-      }
+      },
+      "opcional": {}
     }
   }
 }
