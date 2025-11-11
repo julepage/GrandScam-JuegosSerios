@@ -41,7 +41,7 @@ export default class Bocadillos extends Phaser.GameObjects.Container {
 
             return txt;
         }
-
+        console.log(this.textos)
         // Crear texto centrado en el cuadro
         this.caso1 = crearTextoEscalable(
             cuadroCenter.x,

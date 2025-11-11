@@ -338,11 +338,97 @@
       "opcional": {
         "caso1": {
           "comienzo": {
-            "mIni": "",
+            "mIni": "Mama!!! Mi móvil se ha estropeado, este es mi número nuevo. El otro número ya no lo usaré. ¿Me podrías hacer un favor?",
             "opciones": [
               {
-                "texto": "",
-                "siguiente": ""
+                "texto": "Si, dime.",
+                "siguiente": "transferencia"
+              },
+              {
+                "texto": "¿Por qué has tenido que cambiar de número?",
+                "siguiente": "transferencia"
+              }
+            ]
+          },
+          "transferencia": {
+            "mIni": "Se me ha bloqueado el numero y se me han borrado todas las fotos y contactos. Tengo que pagar una cosa y no tengo la tarjeta, ¿me podrias hacer una trasferencia? Ya te lo pagaré.\nIBAN: ESXX XXXX XXXX XXXX XXXX XXXX\nNOMBRE: Nacho Nachete\nCANTIDAD: 1.500€",
+            "opciones": [
+              {
+                "texto": "Vale, ahora mismo te la hago.",
+                "siguiente": "fallo"
+              },
+              {
+                "texto": "(Hacer una pregunta personal)",
+                "siguiente": "preguntasPersonales"
+              }
+            ]
+          },
+          "preguntasPersonales": {
+            "mIni": "¿Que pregunta quieres hacer?",
+            "opciones": [
+              {
+                "texto": "¿Como se llama el perro?",
+                "siguiente": "perro"
+              },
+              {
+                "texto": "¿En que calle vivo?",
+                "siguiente": "calle"
+              },
+              {
+                "texto": "¿Cual es mi color favorito?",
+                "siguiente": "color"
+              }
+            ]
+          },
+          "perro": {
+            "mIni": "{mascota}",
+            "opciones": [
+              {
+                "texto": "Vale, te hago la transferencia",
+                "siguiente": "fallo"
+              },
+              {
+                "texto": "¿Puedo hacerte una llamada?",
+                "siguiente": "llamada"
+              }
+            ]
+          },
+          "calle": {
+            "mIni": "Vivimos en {calle}",
+            "opciones": [
+              {
+                "texto": "Vale, te hago la transferencia",
+                "siguiente": "fallo"
+              },
+              {
+                "texto": "¿Puedo hacerte una llamada?",
+                "siguiente": "llamada"
+              }
+            ]
+          },
+          "color": {
+            "mIni": "Es el {color}",
+            "opciones": [
+              {
+                "texto": "Vale, te hago la transferencia",
+                "siguiente": "fallo"
+              },
+              {
+                "texto": "¿Puedo hacerte una llamada?",
+                "siguiente": "llamada"
+              }
+            ]
+          },
+          "llamada": {
+            "mIni": "No puedo, date prisa.",
+            "opciones": [
+              {
+                "texto": "Vale, te hago la transferencia",
+                "siguiente": "fallo"
+              },
+              {
+                "texto": "No me da confianza. Lo siento.",
+                "siguiente": "acierto"
               }
             ]
           }
