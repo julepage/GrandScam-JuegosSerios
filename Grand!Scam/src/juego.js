@@ -95,10 +95,11 @@ export default class Juego extends Phaser.Scene {
     this.casosDisponiblesLLOb = Object.keys(this.textos.telefono.llamada.obligatorio);
     this.casosDisponiblesLLOp = Object.keys(this.textos.telefono.llamada.opcional);
     this.casosDisponiblesSMSOb = Object.keys(this.textos.movil.SMS.obligatorio);
-    this.casosDisponiblesSMSOp = Object.keys(this.textos.movil.SMS.obligatorio);
-    this.casosDisponiblesWAOb = Object.keys(this.textos.movil.whatsapp.opcional);
+    this.casosDisponiblesSMSOp = Object.keys(this.textos.movil.SMS.opcional);
+    this.casosDisponiblesWAOb = Object.keys(this.textos.movil.whatsapp.obligatorio);
     this.casosDisponiblesWAOp = Object.keys(this.textos.movil.whatsapp.opcional);
-    //this.casosDisponiblesGM = Object.keys(this.textos.movil.gmail);
+    this.casosDisponiblesCOOb = Object.keys(this.textos.movil.correo.obligatorio);
+    this.casosDisponiblesCOOp = Object.keys(this.textos.movil.correo.opcional);
   }
 
   //CAMBIOS ESCENAS
@@ -106,25 +107,23 @@ export default class Juego extends Phaser.Scene {
     this.telefono.stop();
     this.telefono.setFrame(0);
     if (this.casosDisponiblesLLOb.length > 0) {
-      this.masLLamada = true;
       const index = Phaser.Math.RND.between(0, this.casosDisponiblesLLOb.length - 1);
       this.randomCaso = this.casosDisponiblesLLOb[index];
 
       this.casosDisponiblesLLOb.splice(index, 1);
+    }
+    else if (this.casosDisponiblesLLOp.length > 0) {
+      this.masLLamada = true;
+      const index = Phaser.Math.RND.between(0, this.casosDisponiblesLLOp.length - 1);
+      this.randomCaso = this.casosDisponiblesLLOp[index];
+
+      this.casosDisponiblesLLOp.splice(index, 1);
       this.masLLamada = false;
     }
-    // else if (this.casosDisponiblesLLOp.length > 0) {
-    //   this.masLLamada = true;
-    //   const index = Phaser.Math.RND.between(0, this.casosDisponiblesLLOp.length - 1);
-    //   this.randomCaso = this.casosDisponiblesLLOp[index];
-
-    //   this.casosDisponiblesLLOp.splice(index, 1);
-    //   this.masLLamada = false;
-    // }
     else {
       this.randomCaso = " ";
     }
-    this.scene.launch('telefono', { vidas: this.vidas, textos: this.textos, randomCaso: this.randomCaso });
+    this.scene.launch('telefono', { vidas: this.vidas, textos: this.textos, randomCaso: this.randomCaso, obligatorio: this.masLlamada });
   }
   movilScene() {
     this.movil.stop();
@@ -132,25 +131,27 @@ export default class Juego extends Phaser.Scene {
     this.casosApp = Object.keys(this.textos.movil);
     const index = Phaser.Math.RND.between(0, this.casosApp.length - 1);
     this.randomApp = this.casosApp[index];
+
     this.casosDisponiblesOb = this.casosDisponiblesSMSOb;
     this.casosDisponiblesOp = this.casosDisponiblesSMSOp;
+
     if (this.randomApp == this.textos.movil.SMS)
       if (this.casosDisponiblesSMSOb.length > 0)
         this.casosDisponiblesOb = this.casosDisponiblesSMSOb;
-      // else
-      //   this.casosDisponiblesOp = this.casosDisponiblesSMSOp;
+      else
+        this.casosDisponiblesOp = this.casosDisponiblesSMSOp;
     else if (this.randomApp == this.textos.movil.whatsapp)
       if (this.casosDisponiblesWAOb.length > 0)
         this.casosDisponiblesOb = this.casosDisponiblesWAOb;
-      // else
-      //   this.casosDisponiblesOp = this.casosDisponiblesWAOp;
-    // else if (this.reandomApp == this.textos.movil.correo)
-    //   if (this.casosDisponiblesSMSOb)
-    //   this.casosDisponiblesOb = this.casosDisponiblesSMSOb;
-    // else
-    //   this.casosDisponiblesOp = this.casosDisponiblesSMSOp;
+      else
+        this.casosDisponiblesOp = this.casosDisponiblesWAOp;
+    else if (this.reandomApp == this.textos.movil.correo)
+      if (this.casosDisponiblesCOOb)
+      this.casosDisponiblesOb = this.casosDisponiblesCOOb;
+    else
+      this.casosDisponiblesOp = this.casosDisponiblesCOOp;
+
     if (this.casosDisponiblesOb.length > 0) {
-      this.masMensaje = true;
       const index = Phaser.Math.RND.between(0, this.casosDisponiblesOb.length - 1);
       this.randomCaso = this.casosDisponiblesOb[index];
 
@@ -158,31 +159,30 @@ export default class Juego extends Phaser.Scene {
         this.casosDisponiblesSMSOb.splice(index, 1);
       else if (this.reandomApp == this.textos.movil.whatsapp)
         this.casosDisponiblesWAOb.splice(index, 1);
-      // else if (this.reandomApp == this.textos.movil.gmail)
-      //   this.casosDisponiblesSMSOb.splice(index, 1);
+      else if (this.reandomApp == this.textos.movil.correo)
+        this.casosDisponiblesCOOb.splice(index, 1);
 
       this.casosDisponiblesOb.splice(index, 1);
+    }
+    else if (this.casosDisponiblesOp.length > 0) {
+      this.masMensaje = true;
+      const index = Phaser.Math.RND.between(0, this.casosDisponiblesOp.length - 1);
+      this.randomCaso = this.casosDisponiblesOp[index];
+
+      if (this.reandomApp == this.textos.movil.SMS)
+        this.casosDisponiblesSMSOp.splice(index, 1);
+      else if (this.reandomApp == this.textos.movil.whatsapp)
+        this.casosDisponiblesWAOp.splice(index, 1);
+      else if (this.reandomApp == this.textos.movil.correo)
+        this.casosDisponiblesCOOp.splice(index, 1);
+
+      this.casosDisponiblesOp.splice(index, 1);
       this.masMensaje = false;
     }
-    // else if (this.casosDisponiblesOp.length > 0) {
-    //   this.masMensaje = true;
-    //   const index = Phaser.Math.RND.between(0, this.casosDisponiblesOp.length - 1);
-    //   this.randomCaso = this.casosDisponiblesOp[index];
-
-    //   if (this.reandomApp == this.textos.movil.SMS)
-    //     this.casosDisponiblesSMSOp.splice(index, 1);
-    //   else if (this.reandomApp == this.textos.movil.whatsapp)
-    //     this.casosDisponiblesWAOp.splice(index, 1);
-    //   // else if (this.reandomApp == this.textos.movil.gmail)
-    //   //   this.casosDisponiblesSMSOp.splice(index, 1);
-
-    //   this.casosDisponiblesOp.splice(index, 1);
-    //   this.masMensaje = false;
-    // }
     else {
       this.randomCaso = " ";
     }
-    this.scene.launch('movil', { vidas: this.vidas, textos: this.textos, randomApp: this.randomApp, randomCaso: this.randomCaso });
+    this.scene.launch('movil', { vidas: this.vidas, textos: this.textos, randomApp: this.randomApp, randomCaso: this.randomCaso, obligatorio: this.masMensaje });
   }
   escenaPausa() {
     this.scene.launch('EscenaPausa');
