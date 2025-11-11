@@ -5,6 +5,8 @@ export default class Juego extends Phaser.Scene {
     super({ key: 'juego' });
     this.entraLLamada = false;
     this.entraMensaje = false;
+    this.masLLamada = true;
+    this.masMensaje = true;
   }
 
   //DATOS DEL FORMULARIO
@@ -28,7 +30,6 @@ export default class Juego extends Phaser.Scene {
   create() {
     // Dentro del create() de la nueva escena
     this.cameras.main.fadeIn(1000, 0, 0, 0);
-
     // Personalizar textos solo la primera vez
     if (!this.registry.get('textosPersonalizados')) {
       const textosBase = this.cache.json.get('es');  // Tu JSON de diálogos
@@ -90,18 +91,62 @@ export default class Juego extends Phaser.Scene {
     this.botonPausa.on('pointerover', () => { this.botonPausa.setScale(0.45); });
     this.botonPausa.on('pointerout', () => { this.botonPausa.setScale(0.4); });
     this.vidas = new GestionVida(this);
+    this.textos = this.cache.json.get('es');
+    this.casosDisponiblesLL = Object.keys(this.textos.telefono.llamada);
+    this.casosDisponiblesSMS = Object.keys(this.textos.movil.SMS);
+    //this.casosDisponiblesWA = Object.keys(this.textos.movil.whatsapp);
+    //this.casosDisponiblesGM = Object.keys(this.textos.movil.gmail);
   }
 
   //CAMBIOS ESCENAS
   telefonoScene() {
     this.telefono.stop();
     this.telefono.setFrame(0);
-    this.scene.launch('telefono', { vidas: this.vidas });
+    if (this.casosDisponiblesLL.length > 0) {
+      this.masLLamada = true;
+      const index = Phaser.Math.RND.between(0, this.casosDisponiblesLL.length - 1);
+      this.randomCaso = this.casosDisponiblesLL[index];
+
+      this.casosDisponiblesLL.splice(index, 1);
+      this.masLLamada = false;
+    }
+    else {
+      this.randomCaso = " ";
+    }
+    this.scene.launch('telefono', { vidas: this.vidas, textos: this.textos, randomCaso: this.randomCaso });
   }
   movilScene() {
     this.movil.stop();
     this.movil.setFrame(0);
-    this.scene.launch('movil', { vidas: this.vidas });
+    this.casosApp = Object.keys(this.textos.movil);
+    const index = Phaser.Math.RND.between(0, this.casosApp.length - 1);
+    this.randomApp = this.casosApp[index];
+    if (this.reandomApp == this.textos.movil.SMS)
+      this.casosDisponibles = this.casosDisponiblesSMS;
+    else if (this.reandomApp == this.textos.movil.whatsapp)
+      this.casosDisponibles = this.casosDisponiblesSMS;
+    else if (this.reandomApp == this.textos.movil.gmail)
+      this.casosDisponibles = this.casosDisponiblesSMS;
+    console.log(this.casosDisponibles)
+    if (this.casosDisponibles.length > 0) {
+      this.masMensaje = true;
+      const index = Phaser.Math.RND.between(0, this.casosDisponibles.length - 1);
+      this.randomCaso = this.casosDisponibles[index];
+
+      if (this.reandomApp == this.textos.movil.SMS)
+        this.casosDisponiblesSMS.splice(index, 1);
+      else if (this.reandomApp == this.textos.movil.whatsapp)
+        this.casosDisponiblesSMS.splice(index, 1);
+      else if (this.reandomApp == this.textos.movil.gmail)
+        this.casosDisponiblesSMS.splice(index, 1);
+
+      this.casosDisponibles.splice(index, 1);
+      this.masMensaje = false;
+    }
+    else {
+      this.randomCaso = " ";
+    }
+    this.scene.launch('movil', { vidas: this.vidas, textos: this.textos, randomApp: this.randomApp, randomCaso: this.randomCaso });
   }
   escenaPausa() {
     this.scene.launch('EscenaPausa');
@@ -138,12 +183,12 @@ export default class Juego extends Phaser.Scene {
   update() {
     if (!this.entraLLamada && !this.entraMensaje) {
       const num = Phaser.Math.Between(0, 2);
-      if (num == 0) {
+      if (num == 0 && this.masLLamada) {
         this.entraLLamada = true;
         this.telefono.anims.play('telefono');
       }
 
-      if (num == 1) {
+      if (num == 1 && this.masMensaje) {
         this.entraMensaje = true;
         this.movil.anims.play('movil');
       }

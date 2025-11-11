@@ -11,7 +11,7 @@ export default class EscenaMenu extends Phaser.Scene {
         this.fondo.setPosition(this.cameras.main.width / 2, this.cameras.main.height / 2);
      
         const cuestionarioCompletado = this.registry.get('cuestionarioCompletado') ?? false;
-        this.c = cuestionarioCompletado;//ñapa
+        this.c = cuestionarioCompletado;//niapa
         this.teclaSpace = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
         this.botonJugar = this.crearBotonConFlecha(this.cameras.main.width / 1.265, this.cameras.main.height / 2, textos.botones.jugar,
             () => {
