@@ -52,7 +52,7 @@ export default class Bocadillos extends Phaser.GameObjects.Container {
         );
 
         if (tipoEstafa === this.scene.textos.movil.SMS) {
-            this.enlace = this.scene.add.text(this.caso1.x, this.caso1.y + this.caso1.height / 1.5, this.textos.comienzo.enlace, {
+            this.enlace = this.scene.add.text(this.caso1.x, this.caso1.y + this.caso1.height / 1.2, this.textos.comienzo.enlace, {
                 fontFamily: 'Georgia, "Times New Roman", serif',
                 fontSize: '20px',
                 color: '#0011ffff',
@@ -60,7 +60,7 @@ export default class Bocadillos extends Phaser.GameObjects.Container {
                 strokeThickness: 1,
                 align: 'center'
             }).setOrigin(0.5, 0.5);
-            console.log("enrra");
+           
             //dibuja linea debajo del texto
             const underline = this.scene.add.graphics();
             underline.lineStyle(2, 0x0011ff, 1); //grosor, color, alpha
