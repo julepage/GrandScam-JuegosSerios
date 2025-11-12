@@ -57,6 +57,42 @@
               }
             ]
           }
+        },
+        "caso2": {
+          "comienzo": {
+            "mIni": "El DGT ha emitido una multa por exceso de  velocidad , https://dgtioyi-es.cfd .por favor pagarla lo antes posible para evitar acumucion.",
+            "opciones": [
+              {
+                "texto": "Hacer clic en el enlace para pagar la multa",
+                "siguiente": "fallo"
+              },
+              {
+                "texto": "Verificar si el enlace es oficial",
+                "siguiente": "verificar"
+              },
+              {
+                "texto": "Ignorar el mensaje",
+                "siguiente": "acierto"
+              },
+              {
+                "texto": "¡Pero si no tengo coche! No me interesa.",
+                "siguiente": "acierto"
+              }
+            ]
+          },
+          "verificar": {
+            "mIni": "El enlace no pertenece al dominio oficial de la DGT (dgt.es) y tiene faltas de ortografía. Es un intento de estafa para robar tus datos o dinero.",
+            "opciones": [
+              {
+                "texto": "Borrar el mensaje y no acceder al enlace.",
+                "siguiente": "acierto"
+              },
+              {
+                "texto": "Acceder igualmente para comprobar la multa, no vaya a ser.",
+                "siguiente": "fallo"
+              }
+            ]
+          }
         }
       },
       "opcional": {
@@ -196,6 +232,42 @@
               }
             ]
           }
+        },
+        "caso4": {
+          "comienzo": {
+            "mIni": "La entrega se ha suspendido porque su pedido no tiene numero de casa. Actualicelo lo antes posible:https://dhflon.click/es",
+            "opciones": [
+              {
+                "texto": "Hacer clic en el enlace para actualizar la dirección",
+                "siguiente": "fallo"
+              },
+              {
+                "texto": "Verificar si el enlace es oficial de la empresa de mensajería",
+                "siguiente": "verificar"
+              },
+              {
+                "texto": "Ignorar el mensaje",
+                "siguiente": "acierto"
+              },
+              {
+                "texto": "¡Pero si no he pedido nada a casa! No me fio, seguro que es un timo.",
+                "siguiente": "acierto"
+              }
+            ]
+          },
+          "verificar": {
+            "mIni": "El enlace https://dhflon.click/es no pertenece a ninguna empresa oficial de mensajería conocida y no utiliza un dominio verificado (.es o .com de la empresa).",
+            "opciones": [
+              {
+                "texto": "Borrar el mensaje y no acceder al enlace",
+                "siguiente": "acierto"
+              },
+              {
+                "texto": "Acceder igualmente para ver de qué se trata",
+                "siguiente": "fallo"
+              }
+            ]
+          }
         }
       }
     },
@@ -203,15 +275,64 @@
       "obligatorio": {
         "caso1": {
           "comienzo": {
-            "mIni": "feo",
+            "mIni": "From: soporte-seguridad@outlook.com\nTo: {nombre}@ejemplo.com\nSubject: Se ha detectado actividad inusual en su cuenta\n\nEstimado usuario,\n\nHemos detectado un intento de acceso no autorizado a su cuenta desde un dispositivo desconocido. Por motivos de seguridad, su cuenta ha sido bloqueada temporalmente.\n\nPara restablecer su acceso, por favor verifique su identidad haciendo clic en el siguiente enlace:\nhttps://seguridad-outlook-auth.es/verify\n\nSi no realiza esta verificación en las próximas 24 horas, su cuenta podría ser suspendida de forma preventiva.",
             "opciones": [
               {
-                "texto": "f",
+                "texto": "Hacer clic en el enlace para desbloquear la cuenta",
                 "siguiente": "fallo"
               },
               {
-                "texto": "s",
+                "texto": "Verificar si el correo y el enlace son auténticos",
+                "siguiente": "verificar"
+              },
+              {
+                "texto": "Ignorar el mensaje y entrar manualmente en Outlook",
+                "siguiente": "acierto"
+              }
+            ]
+          },
+          "verificar": {
+            "mIni": "El dominio del enlace no es el oficial de Microsoft (debería ser outlook.com o microsoft.com). Además, la dirección del remitente no pertenece a un dominio verificado pero, ¿y si me quedo sin mi cuenta?",
+            "opciones": [
+              {
+                "texto": "Borrar el correo y no hacer clic en ningún enlace",
+                "siguiente": "acierto"
+              },
+              {
+                "texto": "Seguir el enlace de todas formas para asegurarme",
                 "siguiente": "fallo"
+              }
+            ]
+          }
+        },
+        "caso2": {
+          "comienzo": {
+            "mIni": "From: facturacion@empresa-servicios.com\nTo: {nombre}@empresa.com\nSubject: Factura pendiente Nº 8239 – Pago urgente requerido\n\nEstimado cliente,\n\nAdjuntamos la factura correspondiente al mes actual. Hemos detectado un error en el último pago y necesitamos que regularice la situación para evitar recargos.\n\nPuede descargar su factura y realizar el pago desde el siguiente enlace seguro:\nhttps://empresa-servicios-facturas.com/descargar\n\nAtentamente,\nDepartamento de Facturación.",
+            "opciones": [
+              {
+                "texto": "Descargar la factura y pagar de inmediato",
+                "siguiente": "fallo"
+              },
+              {
+                "texto": "Verificar el dominio y remitente antes de abrir el adjunto",
+                "siguiente": "verificar"
+              },
+              {
+                "texto": "Comprobar con el departamento financiero antes de actuar",
+                "siguiente": "acierto"
+              }
+            ]
+          },
+          "verificar": {
+            "mIni": "Aunque el correo parece legítimo, el dominio del remitente no coincide con el de la empresa real y la URL redirige a un sitio no oficial.",
+            "opciones": [
+              {
+                "texto": "Abrir igualmente el archivo adjunto para comprobar",
+                "siguiente": "fallo"
+              },
+              {
+                "texto": "Borrar el mensaje sin abrir el adjunto",
+                "siguiente": "acierto"
               }
             ]
           }
@@ -220,15 +341,96 @@
       "opcional": {
         "caso1": {
           "comienzo": {
-            "mIni": "gordo",
+            "mIni": "From: service@paypal.com\nTo: {nombre}@ejemplo.com\nSubject: Se ha limitado temporalmente su cuenta PayPal\n\nEstimado cliente,\n\nHemos detectado una actividad inusual en su cuenta PayPal. Para proteger su seguridad, hemos limitado algunas funciones.\n\nPor favor, acceda al siguiente enlace y confirme sus datos para restaurar el acceso completo:\nhttps://paypal-security-verification.com/login",
             "opciones": [
               {
-                "texto": "s",
+                "texto": "Acceder al enlace para verificar la cuenta",
                 "siguiente": "fallo"
               },
               {
-                "texto": "b",
+                "texto": "Comprobar si el dominio pertenece a PayPal",
+                "siguiente": "verificar"
+              },
+              {
+                "texto": "Ignorar el mensaje y revisar desde la app oficial",
+                "siguiente": "acierto"
+              }
+            ]
+          },
+          "verificar": {
+            "mIni": "El dominio mostrado no pertenece a PayPal. Los correos auténticos siempre redirigen a paypal.com y nunca piden datos bancarios directamente.",
+            "opciones": [
+              {
+                "texto": "Acceder igualmente al enlace para comprobar",
                 "siguiente": "fallo"
+              },
+              {
+                "texto": "Borrar el mensaje sin hacer clic en nada",
+                "siguiente": "acierto"
+              }
+            ]
+          }
+        },
+        "caso2": {
+          "comienzo": {
+            "mIni": "From: docs-notifications@google.com\nTo: {nombre}@ejemplo.com\nSubject: [Importante] Nuevo documento compartido con usted\n\n{nombre} (usuario conocido) le ha compartido un documento de Google Docs: \"Informe confidencial 2025\".\n\nPara visualizar el documento, acceda haciendo clic en el botón azul inferior.",
+            "opciones": [
+              {
+                "texto": "Hacer clic en el botón",
+                "siguiente": "fallo"
+              },
+              {
+                "texto": "Pasar el ratón por encima del enlace para ver el destino real",
+                "siguiente": "verificar"
+              },
+              {
+                "texto": "Confirmar con el remitente antes de abrir",
+                "siguiente": "acierto"
+              }
+            ]
+          },
+          "verificar": {
+            "mIni": "Aunque el correo parece de Google, la dirección de enlace no pertenece a domains.google.com o drive.google.com. Podría intentar robar tus credenciales al simular una pantalla de inicio de sesión falsa.",
+            "opciones": [
+              {
+                "texto": "No acceder al enlace y avisar al remitente",
+                "siguiente": "acierto"
+              },
+              {
+                "texto": "Acceder igualmente para comprobar el documento",
+                "siguiente": "fallo"
+              }
+            ]
+          }
+        },
+        "caso3": {
+          "comienzo": {
+            "mIni": "From: facturacion@notifications.plataformaStreaming.com\nTo: {nombre}@ejemplo.com\nSubject: Aviso importante: pago no recibido – riesgo de suspensión de su suscripción\n\nEstimado/a {nombre},\n\nNo hemos podido procesar el cobro de su suscripción a 'plataforma de Streaming' correspondiente al periodo actual. Si no actualiza su método de pago en las próximas 72 horas, su suscripción será suspendida y perderá acceso al servicio hasta que regularice la situación.\n\nPara actualizar su método de pago de forma segura, acceda a su cuenta desde la app oficial o desde su página de facturación:\nhttps://www.plataformaStreaming.com/billing\n\nNo responda a correos que pidan transferencias directas a cuentas bancarias no verificadas. Si necesita ayuda, contacte con Atención al Cliente a través de la app o www.plataformaStreaming.com/contact.\n",
+            "opciones": [
+              {
+                "texto": "Hacer una transferencia desde mi banca online a la cuenta que aparece en el correo",
+                "siguiente": "fallo"
+              },
+              {
+                "texto": "Entrar en la app o web oficiales para actualizar el pago y que no me quiten la cuenta",
+                "siguiente": "acierto"
+              },
+              {
+                "texto": "Ignorar el mensaje y arriesgarme a que me quiten el servicio",
+                "siguiente": "fallo"
+              }
+            ]
+          },
+          "verificar": {
+            "mIni": "Indicadores de legitimidad:\n\n1) El remitente proviene de un subdominio oficial de la plataforma de streaming (notifications.plataformaStreaming.com). \n2) El correo no solicita contraseñas ni códigos por enlace. \n3) Proporciona instrucciones para operar desde canales oficiales.\n4) Incluye un plazo claro (72 horas) y opciones de contacto oficiales.",
+            "opciones": [
+               {
+                "texto": "Llamar al banco para hacer una transferencia a la cuenta indicada en el correo",
+                "siguiente": "fallo"
+              },
+              {
+                "texto": "Abrir la aplicación y comprobar el estado de la suscripción",
+                "siguiente": "acierto"
               }
             ]
           }
