@@ -4,12 +4,12 @@ export default class Juego extends Phaser.Scene {
   constructor() {
     super({ key: 'juego' });
   }
-  
+
   //DATOS DEL FORMULARIO
   init(data) {
     this.playerData = data.playerData;
   }
-  
+
   reemplazarEnJson(obj, data) {
     if (typeof obj === 'string') {
       return obj.replace(/\{(\w+)\}/g, (_, key) => data[key] ?? `{${key}}`);
@@ -22,7 +22,7 @@ export default class Juego extends Phaser.Scene {
     }
     return obj;
   }
-  
+
   create() {
     this.entraLLamada = false;
     this.entraMensaje = false;
@@ -39,14 +39,19 @@ export default class Juego extends Phaser.Scene {
 
       // ⚠️ Importante: Phaser devuelve una referencia viva, así que esto modifica el JSON global
       Object.assign(textosBase, textosPersonalizados);
-      
+
       // Marca que ya se hizo el reemplazo
       this.registry.set('textosPersonalizados', true);
       // Marcar el cuestionario como completado
       this.registry.set('cuestionarioCompletado', true);
 
     }
-    
+
+    //VENTANA
+    this.scrollSpeed = 0.4; // velocidad del movimiento (ajústala)
+    this.ventana1 = this.add.image(0, 0, 'ventana1').setOrigin(0, 0);
+    this.ventana2 = this.add.image(this.ventana1.width, 0, 'ventana2').setOrigin(0, 0);
+    this.ventana3 = this.add.image(this.ventana1.width * 2, 0, 'ventana3').setOrigin(0, 0);
 
     //POSICION Y TAMAÑO DEL FONDO
     this.fondo = this.add.image(0, 0, 'fondoJuego');
@@ -57,11 +62,11 @@ export default class Juego extends Phaser.Scene {
     this.teclaEsc = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ESC);
     //CREACION ANIMACIONES DEL JUEGO
     this.createAnims();
-    
+
     //ANIM HUMO (SIEMPRE VA A ESTAR EN ESCENA)
     this.humo = this.add.sprite(this.cameras.main.width / 4.45, this.cameras.main.height / 1.52, 'animHumo');
     this.humo.anims.play('humo');
-    
+
     this.vidas = new GestionVida(this);
     //INSTANCIA DEL TELEFONO (ESTA FIJO PERO SIN ANIM)
     this.telefono = this.add.sprite(this.cameras.main.width / 1.25,
@@ -180,8 +185,8 @@ export default class Juego extends Phaser.Scene {
     else {
       this.randomCaso = " ";
     }
-    console.log(this.randomApp);
-    console.log(this.randomCaso);
+    // console.log(this.randomApp);
+    // console.log(this.randomCaso);
     this.scene.launch('movil', { vidas: this.vidas, textos: this.textos, randomApp: this.randomApp, randomCaso: this.randomCaso, obligatorio: this.obMovil });
   }
   escenaPausa() {
@@ -225,6 +230,22 @@ export default class Juego extends Phaser.Scene {
   }
 
   update() {
+    // MOVIMIENTO CONTINUO DEL CIELO (se laggeeeeea)
+    this.ventana1.x -= this.scrollSpeed;
+    this.ventana2.x -= this.scrollSpeed;
+    this.ventana3.x -= this.scrollSpeed;
+    // Reposicionar si alguna sale completamente a la izquierda
+    if (this.ventana1.x + this.ventana1.width <= 0) {
+      this.ventana1.x = Math.max(this.ventana2.x, this.ventana3.x) + this.ventana1.width;
+    }
+    if (this.ventana2.x + this.ventana2.width <= 0) {
+      this.ventana2.x = Math.max(this.ventana1.x, this.ventana3.x) + this.ventana2.width;
+    }
+    if (this.ventana3.x + this.ventana3.width <= 0) {
+      this.ventana3.x = Math.max(this.ventana1.x, this.ventana2.x) + this.ventana3.width;
+    }
+
+    //FLUJO JUEGO
     if (!this.entraLLamada && !this.entraMensaje) {
       const num = Phaser.Math.Between(0, 2);
       if (num == 0 && this.masLLamada) {

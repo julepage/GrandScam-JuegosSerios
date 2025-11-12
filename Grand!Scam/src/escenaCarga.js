@@ -55,6 +55,9 @@ export default class EscenaCarga extends Phaser.Scene {
     this.load.image('vida', './assets/vidas.png');
     this.load.image('was', './assets/was.png');
     this.load.image('velas', './assets/velas.png');
+    this.load.image('ventana1', './assets/ventana1.png');
+    this.load.image('ventana2', './assets/ventana2.png');
+    this.load.image('ventana3', './assets/ventana3.png');
 
 
 

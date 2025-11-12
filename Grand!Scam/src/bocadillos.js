@@ -37,7 +37,7 @@ export default class Bocadillos extends Phaser.GameObjects.Container {
                 fontSize -= 1;
                 txt.setFontSize(fontSize);
                 txt.setWordWrapWidth(maxWidth); // 🔹 recalcula wordWrap con la nueva fuente
-            }
+            } 
 
             return txt;
         }
