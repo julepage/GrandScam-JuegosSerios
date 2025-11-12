@@ -685,6 +685,68 @@
               }
             ]
           }
+        },
+        "caso2": {
+          "comienzo": {
+            "mIni": "Hola, buenas tardes. Le llamamos porque ha sido seleccionado al azar para participar en una promoción especial: ¡podría ganar un viaje todo incluido! Solo tiene que abrir el enlace que le enviamos por WhatsApp para confirmar su participación.",
+            "opciones": [
+              {
+                "texto": "¿De qué empresa me llama exactamente?",
+                "siguiente": "identificacion"
+              },
+              {
+                "texto": "No suelo abrir enlaces de desconocidos, gracias. Prefiero no participar.",
+                "siguiente": "acierto"
+              },
+              {
+                "texto": "Ah, qué bien, ¿dónde está el enlace?",
+                "siguiente": "fallo"
+              }
+            ]
+          },
+          "identificacion": {
+            "mIni": "Somos del 'Programa ViajaFácil 2025'. Estamos contactando a personas al azar para una promoción exclusiva. Solo necesita abrir el enlace y rellenar un breve formulario.",
+            "opciones": [
+              {
+                "texto": "¿Podría darme una página oficial donde comprobar que esta promoción existe?",
+                "siguiente": "comprobacion"
+              },
+              {
+                "texto": "Vale, confío en ustedes. Voy a abrir el enlace y rellenar el formulario.",
+                "siguiente": "fallo"
+              },
+              {
+                "texto": "Mejor no, no suelo hacer cosas así por teléfono. Gracias igualmente.",
+                "siguiente": "acierto"
+              }
+            ]
+          },
+          "comprobacion": {
+            "mIni": "Claro, puede vernos en nuestra web: 'viajafacil-premios.com'. Ahí encontrará toda la información. Si lo desea, puedo esperar mientras la revisa.",
+            "opciones": [
+              {
+                "texto": "Busco la web.",
+                "siguiente": "desconfianza"
+              },
+              {
+                "texto": "Prefiero no continuar por teléfono. Si realmente gané algo, que me contacten oficialmente.",
+                "siguiente": "acierto"
+              }
+            ]
+          },
+          "desconfianza": {
+            "mIni": "(La web no tiene candado seguro y no pinta bien, parece sospechoso.)",
+            "opciones": [
+              {
+                "texto": "No tiene seguridad en la web, no voy a abrir nada. Adiós.",
+                "siguiente": "acierto"
+              },
+              {
+                "texto": "Bueno... tal vez sí lo pulse, total, no pierdo nada.",
+                "siguiente": "fallo"
+              }
+            ]
+          }
         }
       },
       "opcional": {
