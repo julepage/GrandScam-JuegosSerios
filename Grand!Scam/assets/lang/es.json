@@ -275,7 +275,7 @@
       "obligatorio": {
         "caso1": {
           "comienzo": {
-            "mIni": "From: soporte-seguridad@outlook.com\nTo: {nombre}@ejemplo.com\nSubject: Se ha detectado actividad inusual en su cuenta\n\nEstimado usuario,\n\nHemos detectado un intento de acceso no autorizado a su cuenta desde un dispositivo desconocido. Por motivos de seguridad, su cuenta ha sido bloqueada temporalmente.\n\nPara restablecer su acceso, por favor verifique su identidad haciendo clic en el siguiente enlace:\nhttps://seguridad-outlook-auth.es/verify\n\nSi no realiza esta verificación en las próximas 24 horas, su cuenta podría ser suspendida de forma preventiva.",
+            "mIni": "From: soporte-seguridad@outlook.com\nTo: {nombre}@ejemplo.com\nSubject: Se ha detectado actividad inusual en su cuenta\nEstimado usuario,\nHemos detectado un intento de acceso no autorizado a su cuenta desde un dispositivo desconocido. Por motivos de seguridad, su cuenta ha sido bloqueada temporalmente.\nPara restablecer su acceso, por favor verifique su identidad haciendo clic en el siguiente enlace:\nhttps://seguridad-outlook-auth.es/verify\nSi no realiza esta verificación en las próximas 24 horas, su cuenta podría ser suspendida de forma preventiva.",
             "opciones": [
               {
                 "texto": "Hacer clic en el enlace para desbloquear la cuenta",
@@ -307,7 +307,7 @@
         },
         "caso2": {
           "comienzo": {
-            "mIni": "From: facturacion@empresa-servicios.com\nTo: {nombre}@empresa.com\nSubject: Factura pendiente Nº 8239 – Pago urgente requerido\n\nEstimado cliente,\n\nAdjuntamos la factura correspondiente al mes actual. Hemos detectado un error en el último pago y necesitamos que regularice la situación para evitar recargos.\n\nPuede descargar su factura y realizar el pago desde el siguiente enlace seguro:\nhttps://empresa-servicios-facturas.com/descargar\n\nAtentamente,\nDepartamento de Facturación.",
+            "mIni": "From: facturacion@empresa-servicios.com\nTo: {nombre}@empresa.com\nSubject: Factura pendiente Nº 8239 – Pago urgente requerido\nEstimado cliente,\nAdjuntamos la factura correspondiente al mes actual. Hemos detectado un error en el último pago y necesitamos que regularice la situación para evitar recargos.\nPuede descargar su factura y realizar el pago desde el siguiente enlace seguro:\nhttps://empresa-servicios-facturas.com/descargar\nAtentamente,\nDepartamento de Facturación.",
             "opciones": [
               {
                 "texto": "Descargar la factura y pagar de inmediato",
@@ -341,7 +341,7 @@
       "opcional": {
         "caso1": {
           "comienzo": {
-            "mIni": "From: service@paypal.com\nTo: {nombre}@ejemplo.com\nSubject: Se ha limitado temporalmente su cuenta PayPal\n\nEstimado cliente,\n\nHemos detectado una actividad inusual en su cuenta PayPal. Para proteger su seguridad, hemos limitado algunas funciones.\n\nPor favor, acceda al siguiente enlace y confirme sus datos para restaurar el acceso completo:\nhttps://paypal-security-verification.com/login",
+            "mIni": "From: service@paypal.com\nTo: {nombre}@ejemplo.com\nSubject: Se ha limitado temporalmente su cuenta PayPal\nEstimado cliente,\nHemos detectado una actividad inusual en su cuenta PayPal. Para proteger su seguridad, hemos limitado algunas funciones.\nPor favor, acceda al siguiente enlace y confirme sus datos para restaurar el acceso completo:\nhttps://paypal-security-verification.com/login",
             "opciones": [
               {
                 "texto": "Acceder al enlace para verificar la cuenta",
@@ -373,7 +373,7 @@
         },
         "caso2": {
           "comienzo": {
-            "mIni": "From: docs-notifications@google.com\nTo: {nombre}@ejemplo.com\nSubject: [Importante] Nuevo documento compartido con usted\n\n{nombre} (usuario conocido) le ha compartido un documento de Google Docs: \"Informe confidencial 2025\".\n\nPara visualizar el documento, acceda haciendo clic en el botón azul inferior.",
+            "mIni": "From: docs-notifications@google.com\nTo: {nombre}@ejemplo.com\nSubject: [Importante] Nuevo documento compartido con usted\n{nombre} (usuario conocido) le ha compartido un documento de Google Docs: \"Informe confidencial 2025\".\nPara visualizar el documento, acceda haciendo clic en el botón azul inferior.",
             "opciones": [
               {
                 "texto": "Hacer clic en el botón",
@@ -405,7 +405,7 @@
         },
         "caso3": {
           "comienzo": {
-            "mIni": "From: facturacion@notifications.plataformaStreaming.com\nTo: {nombre}@ejemplo.com\nSubject: Aviso importante: pago no recibido – riesgo de suspensión de su suscripción\n\nEstimado/a {nombre},\n\nNo hemos podido procesar el cobro de su suscripción a 'plataforma de Streaming' correspondiente al periodo actual. Si no actualiza su método de pago en las próximas 72 horas, su suscripción será suspendida y perderá acceso al servicio hasta que regularice la situación.\n\nPara actualizar su método de pago de forma segura, acceda a su cuenta desde la app oficial o desde su página de facturación:\nhttps://www.plataformaStreaming.com/billing\n\nNo responda a correos que pidan transferencias directas a cuentas bancarias no verificadas. Si necesita ayuda, contacte con Atención al Cliente a través de la app o www.plataformaStreaming.com/contact.\n",
+            "mIni": "From: facturacion@notifications.plataformaStreaming.com\nTo: {nombre}@ejemplo.com\nSubject: Aviso importante: pago no recibido – riesgo de suspensión de su suscripción\nEstimado/a {nombre},\nNo hemos podido procesar el cobro de su suscripción a 'plataforma de Streaming' correspondiente al periodo actual. Si no actualiza su método de pago en las próximas 72 horas, su suscripción será suspendida y perderá acceso al servicio hasta que regularice la situación.\nPara actualizar su método de pago de forma segura, acceda a su cuenta desde la app oficial o desde su página de facturación:\nhttps://www.plataformaStreaming.com/billing\nNo responda a correos que pidan transferencias directas a cuentas bancarias no verificadas. Si necesita ayuda, contacte con Atención al Cliente a través de la app o www.plataformaStreaming.com/contact.",
             "opciones": [
               {
                 "texto": "Hacer una transferencia desde mi banca online a la cuenta que aparece en el correo",
@@ -422,7 +422,7 @@
             ]
           },
           "verificar": {
-            "mIni": "Indicadores de legitimidad:\n\n1) El remitente proviene de un subdominio oficial de la plataforma de streaming (notifications.plataformaStreaming.com). \n2) El correo no solicita contraseñas ni códigos por enlace. \n3) Proporciona instrucciones para operar desde canales oficiales.\n4) Incluye un plazo claro (72 horas) y opciones de contacto oficiales.",
+            "mIni": "Indicadores de legitimidad:\n1) El remitente proviene de un subdominio oficial de la plataforma de streaming (notifications.plataformaStreaming.com). \n2) El correo no solicita contraseñas ni códigos por enlace. \n3) Proporciona instrucciones para operar desde canales oficiales.\n4) Incluye un plazo claro (72 horas) y opciones de contacto oficiales.",
             "opciones": [
                {
                 "texto": "Llamar al banco para hacer una transferencia a la cuenta indicada en el correo",

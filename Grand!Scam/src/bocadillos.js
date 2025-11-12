@@ -33,7 +33,7 @@ export default class Bocadillos extends Phaser.GameObjects.Container {
             }).setOrigin(0.5, 0.5);
 
             // Reducir fuente hasta que ancho y alto encajen
-            while ((txt.width > maxWidth || txt.height > maxHeight) && fontSize > 8) {
+            while ((txt.width > maxWidth || txt.height > maxHeight - 110) && fontSize > 8) {
                 fontSize -= 1;
                 txt.setFontSize(fontSize);
                 txt.setWordWrapWidth(maxWidth); // 🔹 recalcula wordWrap con la nueva fuente
@@ -41,7 +41,7 @@ export default class Bocadillos extends Phaser.GameObjects.Container {
 
             return txt;
         }
-        console.log(this.textos)
+
         // Crear texto centrado en el cuadro
         this.caso1 = crearTextoEscalable(
             cuadroCenter.x,
@@ -60,7 +60,7 @@ export default class Bocadillos extends Phaser.GameObjects.Container {
                 strokeThickness: 1,
                 align: 'center'
             }).setOrigin(0.5, 0.5);
-           
+
             //dibuja linea debajo del texto
             const underline = this.scene.add.graphics();
             underline.lineStyle(2, 0x0011ff, 1); //grosor, color, alpha
@@ -73,6 +73,12 @@ export default class Bocadillos extends Phaser.GameObjects.Container {
         }
         else if (tipoEstafa === this.scene.textos.movil.whatsapp) {
             this.fondoMovil = this.scene.add.image(0, 0, 'was');
+            this.fondoMovil.setScale(this.scene.cameras.main.height / this.fondoMovil.height);
+            this.fondoMovil.setDisplaySize(this.fondoMovil.width * this.scene.cameras.main.height / this.fondoMovil.height, this.scene.cameras.main.height);
+            this.fondoMovil.setPosition(this.scene.cameras.main.width / 2, this.scene.cameras.main.height / 2);
+        }
+        else if (tipoEstafa === this.scene.textos.movil.correo) {
+            this.fondoMovil = this.scene.add.image(0, 0, 'fondoCorreo');
             this.fondoMovil.setScale(this.scene.cameras.main.height / this.fondoMovil.height);
             this.fondoMovil.setDisplaySize(this.fondoMovil.width * this.scene.cameras.main.height / this.fondoMovil.height, this.scene.cameras.main.height);
             this.fondoMovil.setPosition(this.scene.cameras.main.width / 2, this.scene.cameras.main.height / 2);
