@@ -22,7 +22,7 @@ export default class Juego extends Phaser.Scene {
     }
     return obj;
   }
-
+  
   create() {
     this.entraLLamada = false;
     this.entraMensaje = false;
@@ -39,14 +39,14 @@ export default class Juego extends Phaser.Scene {
 
       // ⚠️ Importante: Phaser devuelve una referencia viva, así que esto modifica el JSON global
       Object.assign(textosBase, textosPersonalizados);
-
+      
       // Marca que ya se hizo el reemplazo
       this.registry.set('textosPersonalizados', true);
       // Marcar el cuestionario como completado
       this.registry.set('cuestionarioCompletado', true);
 
     }
-
+    
 
     //POSICION Y TAMAÑO DEL FONDO
     this.fondo = this.add.image(0, 0, 'fondoJuego');
@@ -57,11 +57,12 @@ export default class Juego extends Phaser.Scene {
     this.teclaEsc = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ESC);
     //CREACION ANIMACIONES DEL JUEGO
     this.createAnims();
-
+    
     //ANIM HUMO (SIEMPRE VA A ESTAR EN ESCENA)
     this.humo = this.add.sprite(this.cameras.main.width / 4.45, this.cameras.main.height / 1.52, 'animHumo');
     this.humo.anims.play('humo');
-
+    
+    this.vidas = new GestionVida(this);
     //INSTANCIA DEL TELEFONO (ESTA FIJO PERO SIN ANIM)
     this.telefono = this.add.sprite(this.cameras.main.width / 1.25,
       this.cameras.main.height / 1.45, 'animTelefono').setInteractive();
@@ -92,7 +93,6 @@ export default class Juego extends Phaser.Scene {
 
     this.botonPausa.on('pointerover', () => { this.botonPausa.setScale(0.45); });
     this.botonPausa.on('pointerout', () => { this.botonPausa.setScale(0.4); });
-    this.vidas = new GestionVida(this);
     this.textos = this.cache.json.get('es');
     this.casosDisponiblesLLOb = Object.keys(this.textos.telefono.llamada.obligatorio);
     this.casosDisponiblesLLOp = Object.keys(this.textos.telefono.llamada.opcional);
@@ -195,6 +195,14 @@ export default class Juego extends Phaser.Scene {
     this.anims.create({
       key: 'humo',
       frames: this.anims.generateFrameNumbers('animHumo', { start: 0, end: 11 }),
+      frameRate: 10,
+      repeat: -1
+    });
+
+    //---//
+    this.anims.create({
+      key: 'fuego',
+      frames: this.anims.generateFrameNumbers('animFuego', { start: 0, end: 5 }),
       frameRate: 10,
       repeat: -1
     });

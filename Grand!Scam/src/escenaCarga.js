@@ -64,6 +64,12 @@ export default class EscenaCarga extends Phaser.Scene {
     });
 
     //---//
+    this.load.spritesheet('animFuego', './assets/animFuego.png', {
+      frameWidth: 65,
+      frameHeight: 72
+    });
+
+    //---//
     this.load.spritesheet('animTelefono', './assets/animTelefono.png', {
       frameWidth: 274.28571428571428,
       frameHeight: 273
