@@ -747,6 +747,12 @@
                 "siguiente": "fallo"
               }
             ]
+          },
+          "acierto":{
+            "mIni": "VAYA CHAMPION HOSTIA"
+          },
+          "fallo":{
+            "mIni": "VAYA CHAMPION HOSTIA"
           }
         }
       },
