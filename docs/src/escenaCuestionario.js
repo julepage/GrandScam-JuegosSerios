@@ -8,6 +8,11 @@ export default class EscenaCuestionario extends Phaser.Scene {
     }
 
     create() {
+        // Cámara principal
+        const cam = this.cameras.main;
+        const centerX = cam.width / 2;
+        const centerY = cam.height / 2;
+
         // Cargar JSON
         const textos = this.cache.json.get('es');
         this.textos = textos.cuestionario;
@@ -15,8 +20,11 @@ export default class EscenaCuestionario extends Phaser.Scene {
         // Defaults
         this.defaults = this.textos.defaults;
 
+        //findo
+        this.add.image(centerX, centerY, 'fondoC').setOrigin(0.5, 0.5).setScale(0.54);
+
         // Título
-        this.add.text(400, 80, this.textos.titulo, {
+        this.add.text(centerX, centerY - 250, this.textos.titulo, {
             fontSize: '32px',
             color: '#ffffff',
         }).setOrigin(0.5);
@@ -34,19 +42,23 @@ export default class EscenaCuestionario extends Phaser.Scene {
         this.inputFields = [];
         const lbl = (key) => this.textos.campos[key];
 
+        // Espaciado entre campos
+        const startY = centerY - 150;
+        const gap = 80;
+
         // Campos obligatorios
-        this.createInputField(400, 200, lbl('nombre') + '*', 'nombre', true);
-        this.createInputField(400, 300, lbl('edad') + '*', 'edad', true);
+        this.createInputField(centerX, startY, `${lbl('nombre')}*`, 'nombre', true);
+        this.createInputField(centerX, startY + gap, `${lbl('edad')}*`, 'edad', true);
 
         // Campos opcionales
-        this.createInputField(400, 380, lbl('mascota'), 'mascota', false);
-        this.createInputField(400, 460, lbl('calle'), 'calle', false);
-        this.createInputField(400, 540, lbl('color'), 'color', false);
+        this.createInputField(centerX, startY + gap * 2, `Nombre de tu ${lbl('mascota')} \n(si no tienes,\n no contestes)`, 'mascota', false);
+        this.createInputField(centerX, startY + gap * 3, lbl('calle'), 'calle', false);
+        this.createInputField(centerX, startY + gap * 4, lbl('color'), 'color', false);
 
         // Botón
-        const boton = this.add.text(400, 620, this.textos.botonComenzar, {
+        const boton = this.add.text(centerX, startY + gap * 5.2, this.textos.botonComenzar, {
             fontSize: '28px',
-            backgroundColor: '#00aa00',
+            backgroundColor: '#9e1f50ff',
             padding: { x: 20, y: 10 },
             color: '#ffffff',
         }).setOrigin(0.5).setInteractive();
@@ -54,7 +66,7 @@ export default class EscenaCuestionario extends Phaser.Scene {
         boton.on('pointerdown', () => this.submitForm());
 
         // Mensaje error
-        this.mensajeError = this.add.text(400, 680, '', {
+        this.mensajeError = this.add.text(centerX, startY + gap * 6, '', {
             fontSize: '20px',
             color: '#ff5555',
         }).setOrigin(0.5);
@@ -75,18 +87,18 @@ export default class EscenaCuestionario extends Phaser.Scene {
     }
 
     createInputField(x, y, labelText, fieldKey, required = true) {
-        this.add.text(x - 150, y, `${labelText}:`, {
+        this.add.text(x - 180, y, `${labelText}:`, {
             fontSize: '24px',
             color: required ? '#ffffff' : '#cccccc',
             align: 'right',
         }).setOrigin(1, 0.5);
 
-        const box = this.add.rectangle(x + 50, y, 300, 40, 0x333333)
+        const box = this.add.rectangle(x + 60, y, 320, 40, 0x333333)
             .setStrokeStyle(2, 0xffffff)
             .setOrigin(0.5)
             .setInteractive();
 
-        const text = this.add.text(x + 50, y, '', {
+        const text = this.add.text(x + 60, y, '', {
             fontSize: '22px',
             color: '#ffffff',
         }).setOrigin(0.5);
@@ -105,7 +117,9 @@ export default class EscenaCuestionario extends Phaser.Scene {
 
     updateActiveBox(activeBox) {
         this.inputFields.forEach(box => {
-            box.setStrokeStyle(2, box === activeBox ? 0x00ff00 : 0xffffff);
+            box.setStrokeStyle(2, box === activeBox ? 0xFF0055//si quieres que se vea mas 0x00ff00 que es verde
+
+                : 0xffffff);
         });
     }
 

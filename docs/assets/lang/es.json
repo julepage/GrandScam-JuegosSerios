@@ -471,7 +471,7 @@
             "mIni": "¿Que pregunta quieres hacer?",
             "opciones": [
               {
-                "texto": "¿Como se llama el perro?",
+                "texto": "¿Como se llama tu mascota?",
                 "siguiente": "perro"
               },
               {
