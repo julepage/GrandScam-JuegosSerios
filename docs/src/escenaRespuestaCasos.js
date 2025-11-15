@@ -14,14 +14,12 @@ export default class RespuestaCasos extends Phaser.Scene {
         // this.fondo.setScale(this.cameras.main.height / this.fondo.height);
         // this.fondo.setPosition(this.cameras.main.width / 2, this.cameras.main.height / 2);
 
-        //if (this.respuesta == "acierto") {
-            this.add.text(this.cameras.main.width / 2, this.cameras.main.height / 2, this.textos[this.respuesta].mIni, {
-            fontSize: '50px',
-            color: '#ff5555',
+        this.text =  this.add.text(this.cameras.main.width / 2, this.cameras.main.height / 2, this.textos[this.respuesta].mIni, {
+            fontSize: '100px',
+            color: '#ff0000ff',
         }).setOrigin(0.5);
-        // }
-        // else if (this.respuesta == "fallo") {
-
-        // }
+        if (this.respuesta == "acierto") {
+           this.text.setColor('#5eff00ff');
+        }
     }
 }

@@ -26,8 +26,8 @@
   "tutorial": {
     "movil": {
       "SMS": {
-        "comiezo": {
-          "mini": "Unete a un sorteo de un viaje a un valneario en Asturias entrando al siguente enlace: http:sorteo/estafa",
+        "comienzo": {
+          "mIni": "Unete a un sorteo de un viaje a un valneario en Asturias entrando al siguente enlace: http:sorteo/estafa",
           "opciones": [
             {
               "texto": "Hacer clic en el enlace",
@@ -38,12 +38,18 @@
               "siguiente": "acierto"
             }
           ]
+        },
+        "acierto":{
+          "mIni": "MUY BIEN"
+        },
+        "fallo":{
+          "mIni": "MUY MAL"
         }
       }
     },
     "telefono": {
-      "comiezo": {
-        "mini": "Le llamamos de la compañía del gas, debe pagar antes de 24horas o se le cortará el suministro. Visite nuestra web oficial y haga el pago desde allí.",
+      "comienzo": {
+        "mIni": "Le llamamos de la compañía del gas, debe pagar antes de 24horas o se le cortará el suministro. Visite nuestra web oficial y haga el pago desde allí.",
         "opciones": [
           {
             "texto": "Ignorar",
@@ -54,7 +60,13 @@
             "siguiente": "acierto"
           }
         ]
-      }
+      },
+      "acierto":{
+          "mIni": "MUY BIEN"
+        },
+        "fallo":{
+          "mIni": "MUY MAL"
+        }
     }
   },
   "movil": {
@@ -786,7 +798,7 @@
             "mIni": "VAYA CHAMPION HOSTIA"
           },
           "fallo": {
-            "mIni": "VAYA CHAMPION HOSTIA"
+            "mIni": "PRINGAO"
           }
         }
       },
