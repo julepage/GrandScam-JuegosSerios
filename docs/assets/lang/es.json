@@ -39,10 +39,10 @@
             }
           ]
         },
-        "acierto":{
+        "acierto": {
           "mIni": "MUY BIEN"
         },
-        "fallo":{
+        "fallo": {
           "mIni": "MUY MAL"
         }
       }
@@ -61,12 +61,12 @@
           }
         ]
       },
-      "acierto":{
-          "mIni": "MUY BIEN"
-        },
-        "fallo":{
-          "mIni": "MUY MAL"
-        }
+      "acierto": {
+        "mIni": "MUY BIEN"
+      },
+      "fallo": {
+        "mIni": "MUY MAL"
+      }
     }
   },
   "movil": {
@@ -103,6 +103,12 @@
                 "siguiente": "fallo"
               }
             ]
+          },
+          "acierto": {
+            "mIni": "Has conseguido detectar que era un enlace falso\n¡ENHORABUENA!"
+          },
+          "fallo": {
+            "mIni": "Al pulsar en el enlace han conseguido acceso a tus\ncontraseñas y se han llevado 3500€ de tu cuenta del banco.\nNo debes fiarte de enlaces que no muestran la url completa."
           }
         },
         "caso2": {
@@ -139,6 +145,12 @@
                 "siguiente": "fallo"
               }
             ]
+          },
+          "acierto": {
+            "mIni": "El mensaje erea sospechoso por todos lados.\n¡UNA MENOS PARA LA VICTOIRA!"
+          },
+          "fallo": {
+            "mIni": "El enlace te llevaba a un sitio fraudulento ya\nque no era la web oficial de la DGT. Pudieron entrar\na tus cuentas y compraron aparatos electronicos por un\nprecio superior a 3200€. Ademas el mensaje estaba escrito hasta\ncon faltas de otrografia, un sitio oficial jamas permitira eso."
           }
         }
       },
@@ -174,6 +186,12 @@
                 "siguiente": "fallo"
               }
             ]
+          },
+          "acierto": {
+            "mIni": "Conseguiste detectar que el enlace era falso. ¡ENHORABUENA!"
+          },
+          "fallo": {
+            "mIni": "Al pulsar en el enlace han conseguido acceso a tus\ncontactos y a tu cuenta del banco. Te han sacado 1600€\nde la cuenta y han enviado a todos tus contactos\nel mismo enlace fraudulento."
           }
         },
         "caso2": {
@@ -245,6 +263,9 @@
                 "siguiente": "acierto"
               }
             ]
+          },
+          "acierto": {
+            "mIni": "Esta vez daba igual que hicieras. Tambien hay veces\nque los SMS pueden ser verdaderos pero no te interese su contenido.\nEn todo caso ¡BIEN HECHO!"
           }
         },
         "caso3": {
@@ -278,6 +299,12 @@
                 "siguiente": "fallo"
               }
             ]
+          },
+          "acierto": {
+            "mIni": "Has detectado con exito que intentaban engañarte.\n¡UNA MAS CERCA DE LA VICTORIA!"
+          },
+          "fallo": {
+            "mIni": "El enlace no tenia la 's' de seguro en la url\n(Enlace seguro: https//, enlace inseguro: http//). Entraron a\ntus contraseñas y cambiaron sin tu permiso tu contraseña del\nbanco para que no pudieras cancelar la tarjeta. Sacaron 5000€." 
           }
         },
         "caso4": {
@@ -314,6 +341,12 @@
                 "siguiente": "fallo"
               }
             ]
+          },
+          "acierto": {
+            "mIni": "¿Como ibas a fiarte de un enlace no oficil? ¡PERFECTO!"
+          },
+          "fallo": {
+            "mIni": "No deberias fiarte de enlaces no oficiales, hay un cien por cien\nde probabilidades de que se trate de una estafa. Con el enlace fueron\ncapaces de entrar a tus contactos y quitarte 500€ del banco.\nEnviaron a 10 de tus contactos una peticion de 50€\ny estafaron a 7 de ellos."
           }
         }
       }
@@ -350,6 +383,12 @@
                 "siguiente": "fallo"
               }
             ]
+          },
+          "acierto": {
+            "mIni": "Supiste detectar el fraude perfectamente. ¡ENHORABUENA!"
+          },
+          "fallo": {
+            "mIni": "No tienes que fiarte de correos que se hayan enviado desde\nun remitente no oficial. Les diste tus datos y consiguieron\ntus contraseñas a traves de ellos. Se quedaron con todo\nel dinero que tenias en el banco"
           }
         },
         "caso2": {
@@ -382,6 +421,12 @@
                 "siguiente": "acierto"
               }
             ]
+          },
+          "acierto": {
+            "mIni": "Eso es, era un fraude. ¡CADA VEZ MAS CERCA DE LA VICTORIA!"
+          },
+          "fallo": {
+            "mIni": "El remitente no era el de una empresa y te hacian pagar\nla factura desde un enlace sin darte la opcion de pagarlo desde su aplicacion\no web oficial. Pagaste una factura falsa y se quedaron con el dinero."
           }
         }
       },
@@ -416,6 +461,12 @@
                 "siguiente": "acierto"
               }
             ]
+          },
+          "acierto": {
+            "mIni": "Pintaba raro el remitente. ¡BIEN HECHO!"
+          },
+          "fallo": {
+            "mIni": "El dominio no pertenecia a PayPal y te estaban pidiendo datos\nbancarios, no deberias fiarte sin comprobar nada.\nTe robaron todo el dinero que tenias en PayPal."
           }
         },
         "caso2": {
@@ -448,6 +499,12 @@
                 "siguiente": "fallo"
               }
             ]
+          },
+          "acierto": {
+            "mIni": "Menos mal que no pulsaste, ha saber que hubiese pasado.\n¡TE ESTAS ACERCANDO A LA VICOTIRA!"
+          },
+          "fallo": {
+            "mIni": "La dirección del remitente era falsa, siempre puedes consultarnen google las direcciones oficiales de empresas como google para asegurarte.\nLes diste tu contraseña de google y cambiaron todas tus\ncontraseñas usando tu correo. Además al cambiar la contraseña\ndel banco pudieron entrar a tu cuenta y sacaron 3000€."
           }
         },
         "caso3": {
@@ -481,6 +538,12 @@
               }
             ]
           }
+        },
+        "acierto": {
+          "mIni": "MUY BIEN"
+        },
+        "fallo": {
+          "mIni": "MUY MAL"
         }
       }
     },
@@ -581,6 +644,12 @@
                 "siguiente": "acierto"
               }
             ]
+          },
+          "acierto": {
+            "mIni": "Reconociste que no era tu hija de verdad, se notaba que ocultaba algo al no querer coger la llamada. ¡ENHORABUENA!"
+          },
+          "fallo": {
+            "mIni": "Las preguntas personales siempre son buena opcion, pero\nno siempre sirven para garantizar la identidad de una persona,\nya que puedes estar preguntando algo que los estafadores puedan\nsaber sacando datos de algun otro lado. Deberias haber\nsospechado si no queria siquiera hacer una llamada,\ny no fiarte hasta que reconozcas su voz o su cara.\nEl estafador se quedo con el dinero."
           }
         }
       },
@@ -680,6 +749,12 @@
                 "siguiente": "acierto"
               }
             ]
+          },
+          "acierto": {
+            "mIni": "Reconociste que no era tu hija de verdad, se notaba que ocultaba algo al no querer coger la llamada. ¡ENHORABUENA!"
+          },
+          "fallo": {
+            "mIni": "Las preguntas personales siempre son buena opcion, pero\nno siempre sirven para garantizar la identidad de una persona,\nya que puedes estar preguntando algo que los estafadores puedan\nsaber sacando datos de algun otro lado. Deberias haber\nsospechado si no queria siquiera hacer una llamada,\ny no fiarte hasta que reconozcas su voz o su cara.\nEl estafador se quedo con el dinero."
           }
         }
       }
@@ -731,6 +806,12 @@
                 "siguiente": "fallo"
               }
             ]
+          },
+          "acierto": {
+            "mIni": "Te fiaste de la empresa ya que confirmo su identidad y\nconocia lo fundamental de tu cuenta. ¡BIEN HECHO!"
+          },
+          "fallo": {
+            "mIni": "Te han conrtado la luz, debiste fiarte ya que te estaba\nproporcionando datos que solo la empresa puede saber de tu cuenta."
           }
         },
         "caso2": {
@@ -795,10 +876,10 @@
             ]
           },
           "acierto": {
-            "mIni": "VAYA CHAMPION HOSTIA"
+            "mIni": "Si de verdad ganaste un premio que sea un sitio mas seguro.\n¡UN PASO MAS CERCA DE LA VICTORIA!"
           },
           "fallo": {
-            "mIni": "PRINGAO"
+            "mIni": "La web no daba confianza y efectivamente era un sitio no oficial.\nUna llamada donde te dicen que entres al enlace que te enviaron\nsuele ser una estafa, deberias comprobar antes el sitio oficial para\nverificar la veracidad. Al pulsar el enlace entraban\ndirectamente a tu cuenta bancaria. Te quitaron 1700€."
           }
         }
       },
@@ -897,6 +978,12 @@
                 "siguiente": "fallo"
               }
             ]
+          },
+          "acierto": {
+            "mIni": "Es demasiado dinero como para no poder pagarlo en el mismo sitio.\n¡UNA MENOS PARA LA VICTORIA!"
+          },
+          "fallo": {
+            "mIni": "El dentista te dejaria la opcion de pagarlo alli para hacerlo\nde una forma segura. Ademas no tener un correo oficial\nes un indicio de estafa. El estafador se quedo\ncon el dinero de tu ortodoncia."
           }
         },
         "caso2": {
@@ -997,6 +1084,12 @@
                 "siguiente": "fallo"
               }
             ]
+          },
+          "acierto": {
+            "mIni": "Te pedian datos sin sentido. ¡ENHORABUENA!"
+          },
+          "fallo": {
+            "mIni": "El banco jamas te pediria los digitos de tu tarjeta o el CVV.\nLos bancos para confirmar la identidad suelen mandar codigos\na los correos o telefonos asociados para que verifiques tu identidad.\nAl darles tus datos sacaron de verdad los 1200€."
           }
         },
         "caso3": {
@@ -1080,6 +1173,12 @@
                 "siguiente": "fallo"
               }
             ]
+          },
+          "acierto": {
+            "mIni": "Te fiaste del banco ya que lo que te pedian no podia vulnerar la seguridad de tu cuenta. ¡UN PASO MAS CERCA DE LA VICTORIA!"
+          },
+          "fallo": {
+            "mIni": "No te fiaste del banco, y al no poder identificar tu identidad,\nno pudieron recuperar el dinero que te habian estafado previamente.\nSi la llamada es oficial y te piden datos que no pueden comprometer la\nseguridad de tu banco no haces mal en fiarte, asi\npodrian haber evitado el cargo de 900€."
           }
         }
       }

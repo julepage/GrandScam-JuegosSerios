@@ -36,18 +36,20 @@ export default class GestionVidas extends Phaser.GameObjects.Container {
                 this.destFuegos[this.destFuegos.length - 1]?.setPosition(this.scene.cameras.main.width / 1.1525, this.scene.cameras.main.height / 1.92);
             this.destFuegos.pop();
         }
-        console.log(this.vidas);
+    }
+
+    addAciertos() {
+        this.aciertos++;
+    }
+
+    comprobar() {
         if (this.vidas == 0) {
             this.scene.scene?.stop('juego');
             this.scene.scene?.stop('movil');
             this.scene.scene?.stop('telefono');
             this.scene.scene.start('derrota');
         }
-    }
 
-    addAciertos() {
-        this.aciertos++;
-        console.log(this.aciertos);
         if (this.aciertos == 10) {
             this.scene.scene?.stop('juego');
             this.scene.scene?.stop('movil');
