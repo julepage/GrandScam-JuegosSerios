@@ -304,7 +304,7 @@
             "mIni": "Has detectado con exito que intentaban engañarte.\n¡UNA MAS CERCA DE LA VICTORIA!"
           },
           "fallo": {
-            "mIni": "El enlace no tenia la 's' de seguro en la url\n(Enlace seguro: https//, enlace inseguro: http//). Entraron a\ntus contraseñas y cambiaron sin tu permiso tu contraseña del\nbanco para que no pudieras cancelar la tarjeta. Sacaron 5000€." 
+            "mIni": "El enlace no tenia la 's' de seguro en la url\n(Enlace seguro: https//, enlace inseguro: http//). Entraron a\ntus contraseñas y cambiaron sin tu permiso tu contraseña del\nbanco para que no pudieras cancelar la tarjeta. Sacaron 5000€."
           }
         },
         "caso4": {
@@ -509,12 +509,8 @@
         },
         "caso3": {
           "comienzo": {
-            "mIni": "From: facturacion@notifications.plataformaStreaming.com\nTo: {nombre}@ejemplo.com\nSubject: Aviso importante: pago no recibido – riesgo de suspensión de su suscripción\nEstimado/a {nombre},\nNo hemos podido procesar el cobro de su suscripción a 'plataforma de Streaming' correspondiente al periodo actual. Si no actualiza su método de pago en las próximas 72 horas, su suscripción será suspendida y perderá acceso al servicio hasta que regularice la situación.\nPara actualizar su método de pago de forma segura, acceda a su cuenta desde la app oficial o desde su página de facturación:\nhttps://www.plataformaStreaming.com/billing\nNo responda a correos que pidan transferencias directas a cuentas bancarias no verificadas. Si necesita ayuda, contacte con Atención al Cliente a través de la app o www.plataformaStreaming.com/contact.",
+            "mIni": "From: facturacion@notifications.plataformaStreaming.com\nTo: {nombre}@ejemplo.com\nSubject: Aviso importante: pago no recibido – riesgo de suspensión de su suscripción\nEstimado/a {nombre},\nNo hemos podido procesar el cobro de su suscripción a 'plataforma de Streaming' correspondiente al periodo actual. Si no actualiza su método de pago en las próximas 72 horas, su suscripción será suspendida y perderá acceso al servicio hasta que regularice la situación.\nPara actualizar su método de pago de forma segura, acceda a su cuenta desde la app oficial o desde su página de facturación.\nSi necesita ayuda, contacte con Atención al Cliente a través de la app o www.plataformaStreaming.com/contact.",
             "opciones": [
-              {
-                "texto": "Hacer una transferencia desde mi banca online a la cuenta que aparece en el correo",
-                "siguiente": "fallo"
-              },
               {
                 "texto": "Entrar en la app o web oficiales para actualizar el pago y que no me quiten la cuenta",
                 "siguiente": "acierto"
@@ -522,19 +518,6 @@
               {
                 "texto": "Ignorar el mensaje y arriesgarme a que me quiten el servicio",
                 "siguiente": "fallo"
-              }
-            ]
-          },
-          "verificar": {
-            "mIni": "Indicadores de legitimidad:\n1) El remitente proviene de un subdominio oficial de la plataforma de streaming (notifications.plataformaStreaming.com). \n2) El correo no solicita contraseñas ni códigos por enlace. \n3) Proporciona instrucciones para operar desde canales oficiales.\n4) Incluye un plazo claro (72 horas) y opciones de contacto oficiales.",
-            "opciones": [
-              {
-                "texto": "Llamar al banco para hacer una transferencia a la cuenta indicada en el correo",
-                "siguiente": "fallo"
-              },
-              {
-                "texto": "Abrir la aplicación y comprobar el estado de la suscripción",
-                "siguiente": "acierto"
               }
             ]
           }
