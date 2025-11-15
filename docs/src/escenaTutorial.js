@@ -27,8 +27,6 @@ export default class Tutorial extends Phaser.Scene {
         this.fondo.setPosition(this.cameras.main.width / 2, this.cameras.main.height / 2);
 
         this.vidas = new GestionVida(this);
-        //CREACION ANIMACIONES DEL JUEGO
-        this.createAnims();
 
         //ANIM HUMO (SIEMPRE VA A ESTAR EN ESCENA)
         this.humo = this.add.sprite(this.cameras.main.width / 4.45, this.cameras.main.height / 1.52, 'animHumo');
@@ -94,40 +92,6 @@ export default class Tutorial extends Phaser.Scene {
         this.movil.setFrame(0);
         this.masMensaje = false;
         this.scene.launch('tutorialMovil', { vidas: this.vidas, textos: this.textos });
-    }
-
-    createAnims() {
-        //CREACION DE ANIMS
-        this.anims.create({
-            key: 'humo',
-            frames: this.anims.generateFrameNumbers('animHumo', { start: 0, end: 11 }),
-            frameRate: 10,
-            repeat: -1
-        });
-
-        //---//
-        this.anims.create({
-            key: 'fuego',
-            frames: this.anims.generateFrameNumbers('animFuego', { start: 0, end: 5 }),
-            frameRate: 10,
-            repeat: -1
-        });
-
-        //---//
-        this.anims.create({
-            key: 'telefono',
-            frames: this.anims.generateFrameNumbers('animTelefono', { start: 0, end: 3 }),
-            frameRate: 10,
-            repeat: -1
-        });
-
-        //---//
-        this.anims.create({
-            key: 'movil',
-            frames: this.anims.generateFrameNumbers('animMovil', { start: 0, end: 11 }),
-            frameRate: 10,
-            repeat: -1
-        });
     }
 
     update() {

@@ -33,6 +33,28 @@ export default class EscenaCarga extends Phaser.Scene {
         this.scene.start('menu');
       });
     });
+    //SPRITESHEETS
+    this.load.spritesheet('animHumo', './assets/animHumo.png', {
+      frameWidth: 274.28571428571428,
+      frameHeight: 273
+    });
+
+    //---//
+    this.load.spritesheet('animFuego', './assets/animFuego.png', {
+      frameWidth: 65,
+      frameHeight: 72
+    });
+
+    //---//
+    this.load.spritesheet('animTelefono', './assets/animTelefono.png', {
+      frameWidth: 274.28571428571428,
+      frameHeight: 273
+    });
+    //---//
+    this.load.spritesheet('animMovil', './assets/animMovil.png', {
+      frameWidth: 274.28571428571428,
+      frameHeight: 273
+    });
 
     //JSON CON TEXTOS
     this.load.json('es', 'assets/lang/es.json');
@@ -62,30 +84,44 @@ export default class EscenaCarga extends Phaser.Scene {
     this.load.image('fondoVictoria', './assets/fondoVictoria.png');
     this.load.image('tutorialT', './assets/tutorialTele.png');
     this.load.image('tutorialM', './assets/tutorialMov.png');
+  }
 
+  create() {
+    //CREACION ANIMACIONES DEL JUEGO
+    this.createAnims();
+  }
 
-
-    //SPRITESHEETS
-    this.load.spritesheet('animHumo', './assets/animHumo.png', {
-      frameWidth: 274.28571428571428,
-      frameHeight: 273
+  createAnims() {
+    //CREACION DE ANIMS
+    this.anims.create({
+      key: 'humo',
+      frames: this.anims.generateFrameNumbers('animHumo', { start: 0, end: 11 }),
+      frameRate: 10,
+      repeat: -1
     });
 
     //---//
-    this.load.spritesheet('animFuego', './assets/animFuego.png', {
-      frameWidth: 65,
-      frameHeight: 72
+    this.anims.create({
+      key: 'fuego',
+      frames: this.anims.generateFrameNumbers('animFuego', { start: 0, end: 5 }),
+      frameRate: 10,
+      repeat: -1
     });
 
     //---//
-    this.load.spritesheet('animTelefono', './assets/animTelefono.png', {
-      frameWidth: 274.28571428571428,
-      frameHeight: 273
+    this.anims.create({
+      key: 'telefono',
+      frames: this.anims.generateFrameNumbers('animTelefono', { start: 0, end: 3 }),
+      frameRate: 10,
+      repeat: -1
     });
+
     //---//
-    this.load.spritesheet('animMovil', './assets/animMovil.png', {
-      frameWidth: 274.28571428571428,
-      frameHeight: 273
+    this.anims.create({
+      key: 'movil',
+      frames: this.anims.generateFrameNumbers('animMovil', { start: 0, end: 11 }),
+      frameRate: 10,
+      repeat: -1
     });
   }
 }
