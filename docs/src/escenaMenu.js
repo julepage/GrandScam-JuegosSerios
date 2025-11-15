@@ -13,7 +13,7 @@ export default class EscenaMenu extends Phaser.Scene {
         const cuestionarioCompletado = this.registry.get('cuestionarioCompletado') ?? false;
         this.c = cuestionarioCompletado;//niapa
         this.teclaSpace = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
-        this.botonJugar = this.crearBotonConFlecha(this.cameras.main.width / 1.265, this.cameras.main.height * 3.75/7, textos.botones.jugar,
+        this.botonJugar = this.crearBotonConFlecha(this.cameras.main.width / 1.265, this.cameras.main.height * 3.65/7, textos.botones.jugar,
             () => {
                 this.cameras.main.fadeOut(1000, 0, 0, 0); // (duración, r, g, b)
 
@@ -29,7 +29,7 @@ export default class EscenaMenu extends Phaser.Scene {
 
             });
 
-        this.botonTutorial = this.crearBotonConFlecha(this.cameras.main.width / 1.265, this.cameras.main.height *4.25/7, textos.botones.tutorial,
+        this.botonTutorial = this.crearBotonConFlecha(this.cameras.main.width / 1.265, this.cameras.main.height *4.35/7, textos.botones.tutorial,
             () => {
                 this.cameras.main.fadeOut(1000, 0, 0, 0); // (duración, r, g, b)
 

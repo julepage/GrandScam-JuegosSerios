@@ -229,6 +229,7 @@ export default class Bocadillos extends Phaser.GameObjects.Container {
                     this.gestV.quitarVida();
                 if (siguiente == "acierto")
                     this.gestV.addAciertos();
+                //this.scene.scene.launch('respuestaCasos', {respuesta: siguiente, textos: this.textos});
                 this.scene.scene.stop();
                 return;
             }
