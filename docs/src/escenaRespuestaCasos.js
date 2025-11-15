@@ -27,7 +27,7 @@ export default class RespuestaCasos extends Phaser.Scene {
             color: '#ffffff',
         }).setOrigin(0.5).setInteractive();
 
-        boton.on('pointerdown', () => { this.scene.resume('juego'); this.scene.stop(); this.vidas.comprobar(); });
+        boton.on('pointerdown', () => { this.scene?.resume('juego'); this.scene?.resume('tutorial'); this.scene.stop(); this.vidas.comprobar(); });
 
         if (this.respuesta == "acierto") {
             this.text.setColor('#5eff00ff');
@@ -38,7 +38,7 @@ export default class RespuestaCasos extends Phaser.Scene {
 
     update() {
         if (Phaser.Input.Keyboard.JustDown(this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER))) {
-            this.scene.resume('juego'); this.scene.stop();
+            this.scene?.resume('juego'); this.scene?.resume('tutorial'); this.scene.stop();
             this.vidas.comprobar();
         }
     }
