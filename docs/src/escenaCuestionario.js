@@ -58,7 +58,7 @@ export default class EscenaCuestionario extends Phaser.Scene {
         // Botón
         const boton = this.add.text(centerX, startY + gap * 5.2, this.textos.botonComenzar, {
             fontSize: '28px',
-            backgroundColor: '#9e1f50ff',
+            backgroundColor: '#801736ff',
             padding: { x: 20, y: 10 },
             color: '#ffffff',
         }).setOrigin(0.5).setInteractive();
@@ -66,9 +66,9 @@ export default class EscenaCuestionario extends Phaser.Scene {
         boton.on('pointerdown', () => this.submitForm());
 
         // Mensaje error
-        this.mensajeError = this.add.text(centerX, startY + gap * 6, '', {
-            fontSize: '20px',
-            color: '#ff5555',
+        this.mensajeError = this.add.text(centerX, startY + gap * 6.05, '', {
+            fontSize: '27px',
+            color: '#22ff00ff',
         }).setOrigin(0.5);
 
         // Campo activo inicial

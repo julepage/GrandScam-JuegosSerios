@@ -23,6 +23,40 @@
     "jugar": "JUGAR",
     "tutorial": "TUTORIAL"
   },
+  "tutorial": {
+    "movil": {
+      "SMS": {
+        "comiezo": {
+          "mini": "Unete a un sorteo de un viaje a un valneario en Asturias entrando al siguente enlace: http:sorteo/estafa",
+          "opciones": [
+            {
+              "texto": "Hacer clic en el enlace",
+              "siguiente": "fallo"
+            },
+            {
+              "texto": "No participar en el sorteo",
+              "siguiente": "acierto"
+            }
+          ]
+        }
+      }
+    },
+    "telefono": {
+      "comiezo": {
+        "mini": "Le llamamos de la compañía del gas, debe pagar antes de 24horas o se le cortará el suministro. Visite nuestra web oficial y haga el pago desde allí.",
+        "opciones": [
+          {
+            "texto": "Ignorar",
+            "siguiente": "fallo"
+          },
+          {
+            "texto": "Comprobar en la web oficial si es verdad y si lo es, pagar de forma segura",
+            "siguiente": "acierto"
+          }
+        ]
+      }
+    }
+  },
   "movil": {
     "SMS": {
       "obligatorio": {
@@ -425,7 +459,7 @@
           "verificar": {
             "mIni": "Indicadores de legitimidad:\n1) El remitente proviene de un subdominio oficial de la plataforma de streaming (notifications.plataformaStreaming.com). \n2) El correo no solicita contraseñas ni códigos por enlace. \n3) Proporciona instrucciones para operar desde canales oficiales.\n4) Incluye un plazo claro (72 horas) y opciones de contacto oficiales.",
             "opciones": [
-               {
+              {
                 "texto": "Llamar al banco para hacer una transferencia a la cuenta indicada en el correo",
                 "siguiente": "fallo"
               },
@@ -748,10 +782,10 @@
               }
             ]
           },
-          "acierto":{
+          "acierto": {
             "mIni": "VAYA CHAMPION HOSTIA"
           },
-          "fallo":{
+          "fallo": {
             "mIni": "VAYA CHAMPION HOSTIA"
           }
         }
