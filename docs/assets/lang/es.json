@@ -14,7 +14,7 @@
       "color": "azul"
     },
     "botonComenzar": "Comenzar",
-    "errorCampos": "Por favor, completa los campos obligatorios (sin asterisco)."
+    "errorCampos": "Por favor, completa los campos obligatorios(*) y pulsa continuar"
   },
   "botones": {
     "continuar": "CONTINUAR",
