@@ -67,6 +67,15 @@
       "fallo": {
         "mIni": "MUY MAL"
       }
+    },
+    "bocadillos": {
+      "titulo": "PARTIDA DE PRUEBA",
+      "telefono": "Haz clic en el teléfono",
+      "movil": "Haz clic en el móvil",
+      "vidas": "Aquí puedes ver tus vidas, tienes un total de 3\n Por cada vez que fallas, pierdes una\n Si te quedas sin vidas perderás el juego",
+      "pausa": "Este es el botón de pausa.\nPuedes usarlo para pausar/reanudar el juego,\n volver al menú principal\n o acceder al menú de opciones.",
+      "resumen": "El juego consiste en aprender a identificar\n cuando te están intentando estafar.\n Si consigues acertar 10 casos seguidos estarás listo,\n pero cuidado con fallar 3 ya que perderás.\n!ADELANTE!",
+      "respuestas": "Lea el mensaje\n y haga clic en\n la respuesta que considere"
     }
   },
   "movil": {

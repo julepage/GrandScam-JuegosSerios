@@ -68,8 +68,10 @@ export default class Tutorial extends Phaser.Scene {
 
         this.textos = this.cache.json.get('es');
         this.empieza = false;
+        this.fin = false;
+        this.mensajeFinMostrado = false;
 
-        this.mensaje1 = this.add.text(this.cameras.main.width / 2, this.cameras.main.height / 4, 'PARTIDA DE PRUEBA', {
+        this.mensaje1 = this.add.text(this.cameras.main.width / 2, this.cameras.main.height / 4, this.textos.tutorial.bocadillos.titulo, {
             fontFamily: 'Georgia, "Times New Roman", serif',
             fontSize: '200px',
             color: '#ff5100ff',
@@ -168,7 +170,7 @@ export default class Tutorial extends Phaser.Scene {
                     this.instruccionTexto = this.add.text(
                         this.cameras.main.centerX,
                         this.cameras.main.centerY - 200, // un poco arriba del centro
-                        "Haz clic en el teléfono",
+                        this.textos.tutorial.bocadillos.telefono,
                         { fontSize: '48px', fill: '#ffffff' }
                     ).setOrigin(0.5);
 
@@ -186,7 +188,7 @@ export default class Tutorial extends Phaser.Scene {
                     this.instruccionTexto = this.add.text(
                         this.cameras.main.centerX,
                         this.cameras.main.centerY - 200, // un poco arriba del centro
-                        "Haz clic en el móvil",
+                        this.textos.tutorial.bocadillos.movil,
                         { fontSize: '48px', fill: '#ffffff' }
                     ).setOrigin(0.5);
 
@@ -200,6 +202,77 @@ export default class Tutorial extends Phaser.Scene {
                 this.entraMensaje = false;
                 this.movil.setTexture('movilOff');
             }
+
+            if (!this.masLLamada && !this.masMensaje && !this.scene.isActive('tutorialMovil') && !this.scene.isActive('tutorialTelefono')) {
+                this.fin = true;
+            }
         }
+        if (this.fin && !this.mensajeFinMostrado) {
+            this.mensajeFinMostrado = true;
+
+            this.capa1 = this.add.image(0, 0, 'tutorialV');
+            this.capa1.setScale(this.cameras.main.height / this.fondo.height);
+            this.capa1.setPosition(this.cameras.main.width / 2, this.cameras.main.height / 2);
+
+            this.flecha = this.add.image(0, 0, 'flecha');
+            this.flecha.setScale(this.cameras.main.height / this.fondo.height);
+            this.flecha.setPosition(this.cameras.main.width / 2, this.cameras.main.height / 3);
+
+            this.instruccionTexto1 = this.add.text(
+                this.cameras.main.centerX,
+                this.cameras.main.centerY - 200, // un poco arriba del centro
+                this.textos.tutorial.bocadillos.vidas,
+                { fontSize: '48px', fill: '#ffffff', align: 'center',  backgroundColor: '#000000'  }
+            ).setOrigin(0.5);
+
+
+            this.time.delayedCall(9000, () => {
+                //borro anterior
+                this.instruccionTexto1.destroy();
+                this.flecha.destroy();
+                //nuevaflecha
+                this.flecha = this.add.image(0, 0, 'flechaA');
+                this.flecha.setScale(this.cameras.main.height / this.fondo.height);
+                this.flecha.setPosition(this.cameras.main.width / 2, this.cameras.main.height / 3);
+                //bton pausa
+                this.botonPausa = this.add.sprite(this.cameras.main.width / 20, 60, "botonPausa").setInteractive().setScale(0.4).setDepth(1);
+                //texto explicando el boton de pausa
+                this.textoPausa = this.add.text(
+                    this.cameras.main.centerX,
+                    this.cameras.main.centerY - 200,
+                    this.textos.tutorial.bocadillos.pausa,
+                    { fontSize: '48px', fill: '#ffffff', align: 'center', backgroundColor: '#000000'  }
+                ).setOrigin(0.5);
+
+                // Opcional: destruir después de X segundos si quieres que desaparezca solo
+                this.time.delayedCall(12000, () => {
+                    this.capa1.destroy();
+                    this.flecha.destroy();
+                    this.textoPausa.destroy();
+                    this.botonPausa.destroy();
+                    this.flecha.destroy();
+
+                    //FONDO TRANSLUCIDO
+                    const { width, height } = this.scale;
+                    this.add.rectangle(0, 0, width * 2, height * 2, 0x000000, 0.8).setOrigin(0);
+
+                    this.textoPausa = this.add.text(
+                        this.cameras.main.centerX,
+                        this.cameras.main.centerY,
+                       this.textos.tutorial.bocadillos.resumen,
+                        { fontSize: '48px', fill: '#ffffff', align: 'center', backgroundColor: '#000000' }
+                    ).setOrigin(0.5);
+
+                    this.time.delayedCall(9000, () => {
+                        this.scene.stop('tutorial'); // detiene la escena actual o una diferente
+                        this.scene.start('menu'); // inicia la nueva
+                    }, [], this);
+
+                }, [], this);
+
+
+            }, [], this);
+        }
+
     }
 }
