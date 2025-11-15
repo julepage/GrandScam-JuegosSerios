@@ -188,7 +188,7 @@
             ]
           },
           "acierto": {
-            "mIni": "Conseguiste detectar que el enlace era falso. ¡ENHORABUENA!"
+            "mIni": "Conseguiste detectar que el enlace era falso.\n¡ENHORABUENA!"
           },
           "fallo": {
             "mIni": "Al pulsar en el enlace han conseguido acceso a tus\ncontactos y a tu cuenta del banco. Te han sacado 1600€\nde la cuenta y han enviado a todos tus contactos\nel mismo enlace fraudulento."
@@ -343,7 +343,7 @@
             ]
           },
           "acierto": {
-            "mIni": "¿Como ibas a fiarte de un enlace no oficil? ¡PERFECTO!"
+            "mIni": "¿Como ibas a fiarte de un enlace no oficil?\n¡PERFECTO!"
           },
           "fallo": {
             "mIni": "No deberias fiarte de enlaces no oficiales, hay un cien por cien\nde probabilidades de que se trate de una estafa. Con el enlace fueron\ncapaces de entrar a tus contactos y quitarte 500€ del banco.\nEnviaron a 10 de tus contactos una peticion de 50€\ny estafaron a 7 de ellos."
@@ -385,7 +385,7 @@
             ]
           },
           "acierto": {
-            "mIni": "Supiste detectar el fraude perfectamente. ¡ENHORABUENA!"
+            "mIni": "Supiste detectar el fraude perfectamente.\n¡ENHORABUENA!"
           },
           "fallo": {
             "mIni": "No tienes que fiarte de correos que se hayan enviado desde\nun remitente no oficial. Les diste tus datos y consiguieron\ntus contraseñas a traves de ellos. Se quedaron con todo\nel dinero que tenias en el banco"
@@ -423,7 +423,7 @@
             ]
           },
           "acierto": {
-            "mIni": "Eso es, era un fraude. ¡CADA VEZ MAS CERCA DE LA VICTORIA!"
+            "mIni": "Eso es, era un fraude.\n¡CADA VEZ MAS CERCA DE LA VICTORIA!"
           },
           "fallo": {
             "mIni": "El remitente no era el de una empresa y te hacian pagar\nla factura desde un enlace sin darte la opcion de pagarlo desde su aplicacion\no web oficial. Pagaste una factura falsa y se quedaron con el dinero."
@@ -629,7 +629,7 @@
             ]
           },
           "acierto": {
-            "mIni": "Reconociste que no era tu hija de verdad, se notaba que ocultaba algo al no querer coger la llamada. ¡ENHORABUENA!"
+            "mIni": "Reconociste que no era tu hija de verdad, se notaba\nque ocultaba algo al no querer coger la llamada.\n¡ENHORABUENA!"
           },
           "fallo": {
             "mIni": "Las preguntas personales siempre son buena opcion, pero\nno siempre sirven para garantizar la identidad de una persona,\nya que puedes estar preguntando algo que los estafadores puedan\nsaber sacando datos de algun otro lado. Deberias haber\nsospechado si no queria siquiera hacer una llamada,\ny no fiarte hasta que reconozcas su voz o su cara.\nEl estafador se quedo con el dinero."
@@ -734,7 +734,7 @@
             ]
           },
           "acierto": {
-            "mIni": "Reconociste que no era tu hija de verdad, se notaba que ocultaba algo al no querer coger la llamada. ¡ENHORABUENA!"
+            "mIni": "Reconociste que no era tu hija de verdad,\nse notaba que ocultaba algo al no querer coger la llamada.\n¡ENHORABUENA!"
           },
           "fallo": {
             "mIni": "Las preguntas personales siempre son buena opcion, pero\nno siempre sirven para garantizar la identidad de una persona,\nya que puedes estar preguntando algo que los estafadores puedan\nsaber sacando datos de algun otro lado. Deberias haber\nsospechado si no queria siquiera hacer una llamada,\ny no fiarte hasta que reconozcas su voz o su cara.\nEl estafador se quedo con el dinero."
@@ -1069,7 +1069,7 @@
             ]
           },
           "acierto": {
-            "mIni": "Te pedian datos sin sentido. ¡ENHORABUENA!"
+            "mIni": "Te pedian datos sin sentido.\n¡ENHORABUENA!"
           },
           "fallo": {
             "mIni": "El banco jamas te pediria los digitos de tu tarjeta o el CVV.\nLos bancos para confirmar la identidad suelen mandar codigos\na los correos o telefonos asociados para que verifiques tu identidad.\nAl darles tus datos sacaron de verdad los 1200€."
@@ -1158,7 +1158,7 @@
             ]
           },
           "acierto": {
-            "mIni": "Te fiaste del banco ya que lo que te pedian no podia vulnerar la seguridad de tu cuenta. ¡UN PASO MAS CERCA DE LA VICTORIA!"
+            "mIni": "Te fiaste del banco ya que lo que te pedian no podia vulnerar la seguridad de tu cuenta.\n¡UN PASO MAS CERCA DE LA VICTORIA!"
           },
           "fallo": {
             "mIni": "No te fiaste del banco, y al no poder identificar tu identidad,\nno pudieron recuperar el dinero que te habian estafado previamente.\nSi la llamada es oficial y te piden datos que no pueden comprometer la\nseguridad de tu banco no haces mal en fiarte, asi\npodrian haber evitado el cargo de 900€."
