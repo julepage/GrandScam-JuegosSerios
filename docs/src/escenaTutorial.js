@@ -34,13 +34,21 @@ export default class Tutorial extends Phaser.Scene {
         this.humo = this.add.sprite(this.cameras.main.width / 4.45, this.cameras.main.height / 1.52, 'animHumo');
         this.humo.anims.play('humo');
 
+
+        //TEXTOS TUTORIAL
+        this.instruccionTexto;
+        this.capa;
+
         //INSTANCIA DEL TELEFONO (ESTA FIJO PERO SIN ANIM)
         this.telefono = this.add.sprite(this.cameras.main.width / 1.25,
             this.cameras.main.height / 1.45, 'animTelefono').setInteractive();
 
+
         //PULSACION DEL BOTON TELEFONO
         this.telefono.on('pointerdown', () => {
             if (this.entraLLamada) {
+                this.instruccionTexto.destroy();
+                this.capa.destroy();
                 this.telefonoScene();
             }
         });
@@ -52,11 +60,26 @@ export default class Tutorial extends Phaser.Scene {
         //PULSACION DEL BOTON MOVIL
         this.movil.on('pointerdown', () => {
             if (this.entraMensaje) {
+                this.instruccionTexto.destroy();
+                this.capa.destroy();
                 this.movilScene();
             }
         });
 
         this.textos = this.cache.json.get('es');
+        this.empieza = false;
+
+        this.mensaje1 = this.add.text(this.cameras.main.width / 2, this.cameras.main.height / 4, 'PARTIDA DE PRUEBA', {
+            fontFamily: 'Georgia, "Times New Roman", serif',
+            fontSize: '200px',
+            color: '#ff5100ff',
+            stroke: '#561b00ff',
+            strokeThickness: 10,
+            backgroundColor: '#000000', // fondo negro
+            align: 'center'
+        }).setScale(0.4).setDepth(1).setOrigin(0.5, 0.5);
+
+
     }
 
     //CAMBIOS ESCENAS
@@ -123,26 +146,60 @@ export default class Tutorial extends Phaser.Scene {
             this.ventana3.x = Math.max(this.ventana1.x, this.ventana2.x) + this.ventana3.width;
         }
 
+
+        this.time.delayedCall(2000, () => {
+            this.mensaje1.destroy();
+            this.empieza = true;
+        }, [], this);
+
         //FLUJO JUEGO
-        if (!this.entraLLamada && !this.entraMensaje) {
-            const num = Phaser.Math.Between(0, 2);
-            if (num == 0 && this.masLLamada) {
-                this.entraLLamada = true;
-                this.telefono.anims.play('telefono');
+        if (this.empieza) {
+
+            if (!this.entraLLamada && !this.entraMensaje) {
+                const num = Phaser.Math.Between(0, 2);
+                if (num == 0 && this.masLLamada) {
+                    this.entraLLamada = true;
+                    this.telefono.anims.play('telefono');
+
+                    this.capa = this.add.image(0, 0, 'tutorialT');
+                    this.capa.setScale(this.cameras.main.height / this.fondo.height);
+                    this.capa.setPosition(this.cameras.main.width / 2, this.cameras.main.height / 2);
+
+                    this.instruccionTexto = this.add.text(
+                        this.cameras.main.centerX,
+                        this.cameras.main.centerY - 200, // un poco arriba del centro
+                        "Haz clic en el teléfono",
+                        { fontSize: '48px', fill: '#ffffff' }
+                    ).setOrigin(0.5);
+
+
+                }
+
+                if (num == 1 && this.masMensaje) {
+                    this.entraMensaje = true;
+                    this.movil.anims.play('movil');
+
+                    this.capa = this.add.image(0, 0, 'tutorialM');
+                    this.capa.setScale(this.cameras.main.height / this.fondo.height);
+                    this.capa.setPosition(this.cameras.main.width / 2, this.cameras.main.height / 2);
+
+                    this.instruccionTexto = this.add.text(
+                        this.cameras.main.centerX,
+                        this.cameras.main.centerY - 200, // un poco arriba del centro
+                        "Haz clic en el móvil",
+                        { fontSize: '48px', fill: '#ffffff' }
+                    ).setOrigin(0.5);
+
+                }
             }
 
-            if (num == 1 && this.masMensaje) {
-                this.entraMensaje = true;
-                this.movil.anims.play('movil');
+            if (!this.scene.isActive('tutorialTelefono') && !this.telefono.anims.isPlaying) {
+                this.entraLLamada = false;
             }
-        }
-
-        if (!this.scene.isActive('tutorialTelefono') && !this.telefono.anims.isPlaying) {
-            this.entraLLamada = false;
-        }
-        if (!this.scene.isActive('tutorialMovil') && !this.movil.anims.isPlaying) {
-            this.entraMensaje = false;
-            this.movil.setTexture('movilOff');
+            if (!this.scene.isActive('tutorialMovil') && !this.movil.anims.isPlaying) {
+                this.entraMensaje = false;
+                this.movil.setTexture('movilOff');
+            }
         }
     }
 }
