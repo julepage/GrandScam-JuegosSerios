@@ -1,3 +1,5 @@
+import ManagerAudio from "./ManagerAudio.js";
+
 export default class EscenaCarga extends Phaser.Scene {
   constructor() {
     super('carga');
@@ -88,11 +90,15 @@ export default class EscenaCarga extends Phaser.Scene {
     this.load.image('flecha', './assets/flecha.png');
     this.load.image('tutorialV', './assets/tutorialV.png');
     this.load.image('flechaA', './assets/flechaArriba.png');
+
+    //MUSICA
+    this.load.audio('musicaPrincipal', './musica/musicaPrincipal.mp3');
   }
 
   create() {
     //CREACION ANIMACIONES DEL JUEGO
     this.createAnims();
+    this.game.audioManager = new ManagerAudio(this);
   }
 
   createAnims() {

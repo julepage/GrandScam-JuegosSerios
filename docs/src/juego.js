@@ -30,6 +30,8 @@ export default class Juego extends Phaser.Scene {
     this.masMensaje = true;
     this.obLlamada = true;
     this.obMovil = true;
+    this.musicaMenu = this.game.audioManager.musica("musicaPrincipal");
+    this.musicaMenu.play();
     // Dentro del create() de la nueva escena
     this.cameras.main.fadeIn(1000, 0, 0, 0);
     // Personalizar textos solo la primera vez
