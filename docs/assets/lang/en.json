@@ -1,0 +1,1179 @@
+{
+    "cuestionario": {
+        "titulo": "Enter your data",
+        "campos": {
+            "nombre": "Name",
+            "edad": "Age",
+            "mascota": "Pet",
+            "calle": "Address",
+            "color": "Favorite color"
+        },
+        "defaults": {
+            "mascota": "You don't have a pet",
+            "calle": "Galileo street",
+            "color": "blue"
+        },
+        "botonComenzar": "Start",
+        "errorCampos": "Please complete the mandatory fields(*) and press continue"
+    },
+    "botones": {
+        "continuar": "CONTINUE",
+        "opciones": "OPTIONS",
+        "menu": "MENU",
+        "jugar": "PLAY",
+        "tutorial": "TUTORIAL"
+    },
+    "tutorial": {
+        "movil": {
+            "SMS": {
+                "comienzo": {
+                    "mIni": "Join a giveaway for a trip to a spa in Asturias by entering the following link: http:sorteo/estafa",
+                    "opciones": [
+                        {
+                            "texto": "Click on the link",
+                            "siguiente": "fallo"
+                        },
+                        {
+                            "texto": "Do not participate in the giveaway",
+                            "siguiente": "acierto"
+                        }
+                    ]
+                },
+                "acierto": {
+                    "mIni": "VERY GOOD"
+                },
+                "fallo": {
+                    "mIni": "VERY BAD"
+                }
+            }
+        },
+        "telefono": {
+            "comienzo": {
+                "mIni": "We are calling from the gas company, you must pay within 24 hours or your supply will be cut off. Visit our official website and make the payment from there.",
+                "opciones": [
+                    {
+                        "texto": "Ignore",
+                        "siguiente": "fallo"
+                    },
+                    {
+                        "texto": "Check the official website to see if it's true and if it is, pay securely",
+                        "siguiente": "acierto"
+                    }
+                ]
+            },
+            "acierto": {
+                "mIni": "VERY GOOD"
+            },
+            "fallo": {
+                "mIni": "VERY BAD"
+            }
+        },
+        "bocadillos": {
+            "titulo": "TEST GAME",
+            "telefono": "Click on the phone",
+            "movil": "Click on the mobile",
+            "vidas": "Here you can see your lives, you have a total of 3\\n For every time you fail, you lose one\\n If you run out of lives you will lose the game",
+            "pausa": "This is the pause button.\\nYou can use it to pause/resume the game,\\n return to the main menu\\n or access the options menu.",
+            "resumen": "The game consists of learning to identify\\n when someone is trying to scam you.\\n If you manage to get 10 cases right in a row you will be ready,\\n but be careful not to fail 3 times as you will lose.\\nGO AHEAD!",
+            "respuestas": "Read the message\\n and click on\\n the answer you consider"
+        }
+    },
+    "movil": {
+        "SMS": {
+            "obligatorio": {
+                "caso1": {
+                    "comienzo": {
+                        "mIni": "Join this giveaway and you could win a trip to a place among all our destinations!",
+                        "enlace": "sorteovacas",
+                        "opciones": [
+                            {
+                                "texto": "Click on the link",
+                                "siguiente": "fallo"
+                            },
+                            {
+                                "texto": "Do not participate in the giveaway",
+                                "siguiente": "acierto"
+                            },
+                            {
+                                "texto": "Verify the link",
+                                "siguiente": "mirarWeb"
+                            }
+                        ]
+                    },
+                    "mirarWeb": {
+                        "mIni": "Wow! It looks like an unreliable website, it doesn't have the 's' for secure in the https link",
+                        "opciones": [
+                            {
+                                "texto": "Do not participate in the giveaway",
+                                "siguiente": "acierto"
+                            },
+                            {
+                                "texto": "Participate anyway",
+                                "siguiente": "fallo"
+                            }
+                        ]
+                    },
+                    "acierto": {
+                        "mIni": "You managed to detect that it was a fake link\\nCONGRATULATIONS!"
+                    },
+                    "fallo": {
+                        "mIni": "By clicking on the link they gained access to your\\npasswords and took 3500€ from your bank account.\\nYou should not trust links that do not show the full URL."
+                    }
+                },
+                "caso2": {
+                    "comienzo": {
+                        "mIni": "The DGT (Traffic Authority) has issued a fine for speeding, https://dgtioyi-es.cfd .please pay it as soon as possible to avoid accumulation.",
+                        "opciones": [
+                            {
+                                "texto": "Click on the link to pay the fine",
+                                "siguiente": "fallo"
+                            },
+                            {
+                                "texto": "Verify if the link is official",
+                                "siguiente": "verificar"
+                            },
+                            {
+                                "texto": "Ignore the message",
+                                "siguiente": "acierto"
+                            },
+                            {
+                                "texto": "But I don't even have a car! I'm not interested.",
+                                "siguiente": "acierto"
+                            }
+                        ]
+                    },
+                    "verificar": {
+                        "mIni": "The link does not belong to the official DGT domain (dgt.es) and has spelling mistakes. It is an attempt at fraud to steal your data or money.",
+                        "opciones": [
+                            {
+                                "texto": "Delete the message and do not access the link.",
+                                "siguiente": "acierto"
+                            },
+                            {
+                                "texto": "Access anyway to check the fine, just in case.",
+                                "siguiente": "fallo"
+                            }
+                        ]
+                    },
+                    "acierto": {
+                        "mIni": "The message was suspicious everywhere.\\nONE LESS TO GO FOR VICTORY!"
+                    },
+                    "fallo": {
+                        "mIni": "The link led you to a fraudulent site since it was not the official DGT website. They were able to access your accounts and bought electronic devices for a price higher than 3200€. Also, the message was even written with spelling mistakes, an official site would never allow that."
+                    }
+                }
+            },
+            "opcional": {
+                "caso1": {
+                    "comienzo": {
+                        "mIni": "Congratulations! You have been selected to receive economic aid of 500€ from the Ministry of Solidarity. To claim it, click on the following link and complete with your personal data.",
+                        "enlace": "ministerio-ayudas-gov.es-premios",
+                        "opciones": [
+                            {
+                                "texto": "Click on the link",
+                                "siguiente": "fallo"
+                            },
+                            {
+                                "texto": "Verify the link before entering",
+                                "siguiente": "verificar"
+                            },
+                            {
+                                "texto": "Ignore the message",
+                                "siguiente": "acierto"
+                            }
+                        ]
+                    },
+                    "verificar": {
+                        "mIni": "After checking the link, you notice that the website does not have the security padlock and the address is not official (it lacks the real .gob.es). It seems like a scam to steal data.",
+                        "opciones": [
+                            {
+                                "texto": "Ignore the message and delete it",
+                                "siguiente": "acierto"
+                            },
+                            {
+                                "texto": "Enter the website anyway",
+                                "siguiente": "fallo"
+                            }
+                        ]
+                    },
+                    "acierto": {
+                        "mIni": "You managed to detect that the link was fake.\\nCONGRATULATIONS!"
+                    },
+                    "fallo": {
+                        "mIni": "By clicking on the link they gained access to your\\ncontacts and your bank account. They took 1600€\\nfrom the account and sent the same fraudulent link\\nto all your contacts."
+                    }
+                },
+                "caso2": {
+                    "comienzo": {
+                        "mIni": "Primary Care Management: We value your opinion on nursing care at your Health Center. If you wish to evaluate (1 min), access your Citizen Area on the official website and use the verification code GC-2025-8421. To check authenticity visit www.salud.gob.es or call 012. Never provide bank details, PIN or passwords via SMS.",
+                        "opciones": [
+                            {
+                                "texto": "Access the Citizen Area (no link in SMS)",
+                                "siguiente": "accesoArea"
+                            },
+                            {
+                                "texto": "Verify sender and authenticity",
+                                "siguiente": "verificar"
+                            },
+                            {
+                                "texto": "Ignore and delete the message",
+                                "siguiente": "acierto"
+                            }
+                        ]
+                    },
+                    "verificar": {
+                        "mIni": "Check: 1) that the website is the official one (.gob/.gob.es domain), 2) that you manually type the address (do not follow suspicious links), 3) that the SMS sender matches the official short number or sender of the administration, 4) call 012 if you have doubts. What do you want to do?",
+                        "opciones": [
+                            {
+                                "texto": "Manually type www.salud.gob.es and use the code",
+                                "siguiente": "accesoArea"
+                            },
+                            {
+                                "texto": "Call 112 to confirm",
+                                "siguiente": "llamar112"
+                            },
+                            {
+                                "texto": "Ignore the message",
+                                "siguiente": "acierto"
+                            }
+                        ]
+                    },
+                    "llamar112": {
+                        "mIni": "Upon contacting 112, they confirm that the evaluation campaign is active and that the code GC-2025-8421 is valid for your Citizen Area. What do you do now?",
+                        "opciones": [
+                            {
+                                "texto": "Enter the Citizen Area with the code (official site)",
+                                "siguiente": "accesoArea"
+                            },
+                            {
+                                "texto": "Even so, I prefer not to access",
+                                "siguiente": "acierto"
+                            }
+                        ]
+                    },
+                    "accesoArea": {
+                        "mIni": "Simulation: You are in the official Citizen Area. You are asked to enter the verification code. Remember: on the official website they will NEVER ask for bank details for this process.",
+                        "opciones": [
+                            {
+                                "texto": "Enter the code GC-2025-8421",
+                                "siguiente": "acierto"
+                            },
+                            {
+                                "texto": "Close and do not enter personal data",
+                                "siguiente": "acierto"
+                            }
+                        ]
+                    },
+                    "codigoValido": {
+                        "mIni": "Code accepted. Thank you for your evaluation. (Secure simulation: no sensitive data was requested).",
+                        "opciones": [
+                            {
+                                "texto": "Finish",
+                                "siguiente": "acierto"
+                            }
+                        ]
+                    },
+                    "acierto": {
+                        "mIni": "This time it didn't matter what you did. Sometimes SMS messages can also be true but you are not interested in their content. In any case, WELL DONE!"
+                    }
+                },
+                "caso3": {
+                    "comienzo": {
+                        "mIni": "Your health center confirms your medical appointment. To confirm your attendance, click on the following link:",
+                        "enlace": "http://cita-medica-.com/confirma",
+                        "opciones": [
+                            {
+                                "texto": "Click the link to confirm",
+                                "siguiente": "fallo"
+                            },
+                            {
+                                "texto": "Do not click the link and verify on the official website of the health center",
+                                "siguiente": "verificar"
+                            },
+                            {
+                                "texto": "Ignore the message",
+                                "siguiente": "acierto"
+                            }
+                        ]
+                    },
+                    "verificar": {
+                        "mIni": "Upon reviewing the link, you detect warning signs: the URL is not the official public service one (it is not a .gob/.gob.es domain), it does not have a security padlock, and it contains suspicious words.",
+                        "opciones": [
+                            {
+                                "texto": "Do not participate.",
+                                "siguiente": "acierto"
+                            },
+                            {
+                                "texto": "Participate anyway (click the link)",
+                                "siguiente": "fallo"
+                            }
+                        ]
+                    },
+                    "acierto": {
+                        "mIni": "You have successfully detected that they were trying to trick you.\\nONE STEP CLOSER TO VICTORY!"
+                    },
+                    "fallo": {
+                        "mIni": "The link did not have the 's' for secure in the url\\n(Secure link: https//, insecure link: http//). They entered\\nyour passwords and changed your bank password without your permission so you couldn't cancel the card. They took 5000€."
+                    }
+                },
+                "caso4": {
+                    "comienzo": {
+                        "mIni": "Delivery has been suspended because your order does not have a house number. Update it as soon as possible:https://dhflon.click/es",
+                        "opciones": [
+                            {
+                                "texto": "Click on the link to update the address",
+                                "siguiente": "fallo"
+                            },
+                            {
+                                "texto": "Verify if the link is official from the courier company",
+                                "siguiente": "verificar"
+                            },
+                            {
+                                "texto": "Ignore the message",
+                                "siguiente": "acierto"
+                            },
+                            {
+                                "texto": "But I haven't ordered anything! I don't trust it, it must be a scam.",
+                                "siguiente": "acierto"
+                            }
+                        ]
+                    },
+                    "verificar": {
+                        "mIni": "The link https://dhflon.click/es does not belong to any known official courier company and does not use a verified domain (.es or .com of the company).",
+                        "opciones": [
+                            {
+                                "texto": "Delete the message and do not access the link",
+                                "siguiente": "acierto"
+                            },
+                            {
+                                "texto": "Access anyway to see what it is about",
+                                "siguiente": "fallo"
+                            }
+                        ]
+                    },
+                    "acierto": {
+                        "mIni": "How could you trust a non-official link?\\nPERFECT!"
+                    },
+                    "fallo": {
+                        "mIni": "You shouldn't trust non-official links, there is a one hundred percent chance that it is a scam. With the link they were able to access your contacts and take 500€ from the bank. They sent 10 of your contacts a request for 50€ and scammed 7 of them."
+                    }
+                }
+            }
+        },
+        "correo": {
+            "obligatorio": {
+                "caso1": {
+                    "comienzo": {
+                        "mIni": "From: soporte-seguridad@outlook.com\\nTo: {nombre}@ejemplo.com\\nSubject: Unusual activity detected on your account\\nDear user,\\nWe have detected an unauthorized access attempt to your account from an unknown device. For security reasons, your account has been temporarily blocked.\\nTo restore your access, please verify your identity by clicking on the following link:\\nhttps://seguridad-outlook-auth.es/verify\\nIf you do not perform this verification within the next 24 hours, your account could be suspended preventively.",
+                        "opciones": [
+                            {
+                                "texto": "Click on the link to unlock the account",
+                                "siguiente": "fallo"
+                            },
+                            {
+                                "texto": "Verify if the email and the link are authentic",
+                                "siguiente": "verificar"
+                            },
+                            {
+                                "texto": "Ignore the message and manually enter Outlook",
+                                "siguiente": "acierto"
+                            }
+                        ]
+                    },
+                    "verificar": {
+                        "mIni": "The link domain is not the official Microsoft one (it should be outlook.com or microsoft.com). Furthermore, the sender's address does not belong to a verified domain, but what if I lose my account?",
+                        "opciones": [
+                            {
+                                "texto": "Delete the email and do not click on any link",
+                                "siguiente": "acierto"
+                            },
+                            {
+                                "texto": "Follow the link anyway to be sure",
+                                "siguiente": "fallo"
+                            }
+                        ]
+                    },
+                    "acierto": {
+                        "mIni": "You knew how to detect the fraud perfectly.\\nCONGRATULATIONS!"
+                    },
+                    "fallo": {
+                        "mIni": "You do not have to trust emails that have been sent from an unofficial sender. You gave them your data and they got your passwords through them. They kept all the money you had in the bank"
+                    }
+                },
+                "caso2": {
+                    "comienzo": {
+                        "mIni": "From: facturacion@empresa-servicios.com\\nTo: {nombre}@empresa.com\\nSubject: Pending Invoice No. 8239 – Urgent Payment Required\\nDear client,\\nWe attach the invoice corresponding to the current month. We have detected an error in the last payment and we need you to regularize the situation to avoid surcharges.\\nYou can download your invoice and make the payment from the following secure link:\\nhttps://empresa-servicios-facturas.com/descargar\\nSincerely,\\nBilling Department.",
+                        "opciones": [
+                            {
+                                "texto": "Download the invoice and pay immediately",
+                                "siguiente": "fallo"
+                            },
+                            {
+                                "texto": "Verify the domain and sender before opening the attachment",
+                                "siguiente": "verificar"
+                            },
+                            {
+                                "texto": "Check with the finance department before acting",
+                                "siguiente": "acierto"
+                            }
+                        ]
+                    },
+                    "verificar": {
+                        "mIni": "Although the email looks legitimate, the sender's domain does not match that of the actual company and the URL redirects to an unofficial site.",
+                        "opciones": [
+                            {
+                                "texto": "Open the attached file anyway to check",
+                                "siguiente": "fallo"
+                            },
+                            {
+                                "texto": "Delete the message without opening the attachment",
+                                "siguiente": "acierto"
+                            }
+                        ]
+                    },
+                    "acierto": {
+                        "mIni": "That's right, it was fraud.\\nCLOSER TO VICTORY!"
+                    },
+                    "fallo": {
+                        "mIni": "The sender was not from a company and they made you pay the invoice from a link without giving you the option to pay from their application or official website. You paid a false invoice and they kept the money."
+                    }
+                }
+            },
+            "opcional": {
+                "caso1": {
+                    "comienzo": {
+                        "mIni": "From: service@paypal.com\\nTo: {nombre}@ejemplo.com\\nSubject: Your PayPal account has been temporarily limited\\nDear customer,\\nWe have detected unusual activity on your PayPal account. To protect your security, we have limited some functions.\\nPlease access the following link and confirm your data to restore full access:\\nhttps://paypal-security-verification.com/login",
+                        "opciones": [
+                            {
+                                "texto": "Access the link to verify the account",
+                                "siguiente": "fallo"
+                            },
+                            {
+                                "texto": "Check if the domain belongs to PayPal",
+                                "siguiente": "verificar"
+                            },
+                            {
+                                "texto": "Ignore the message and check from the official app",
+                                "siguiente": "acierto"
+                            }
+                        ]
+                    },
+                    "verificar": {
+                        "mIni": "The domain shown does not belong to PayPal. Authentic emails always redirect to paypal.com and never ask for bank details directly.",
+                        "opciones": [
+                            {
+                                "texto": "Access the link anyway to check",
+                                "siguiente": "fallo"
+                            },
+                            {
+                                "texto": "Delete the message without clicking anything",
+                                "siguiente": "acierto"
+                            }
+                        ]
+                    },
+                    "acierto": {
+                        "mIni": "The sender looked strange. WELL DONE!"
+                    },
+                    "fallo": {
+                        "mIni": "The domain did not belong to PayPal and they were asking for bank details, you shouldn't trust without checking anything. They stole all the money you had in PayPal."
+                    }
+                },
+                "caso2": {
+                    "comienzo": {
+                        "mIni": "From: docs-notifications@google.com\\nTo: {nombre}@ejemplo.com\\nSubject: [Important] New document shared with you\\n{nombre} (known user) has shared a Google Docs document with you: \"Confidential Report 2025\".\\nTo view the document, access by clicking on the blue button below.",
+                        "opciones": [
+                            {
+                                "texto": "Click on the button",
+                                "siguiente": "fallo"
+                            },
+                            {
+                                "texto": "Hover the mouse over the link to see the actual destination",
+                                "siguiente": "verificar"
+                            },
+                            {
+                                "texto": "Confirm with the sender before opening",
+                                "siguiente": "acierto"
+                            }
+                        ]
+                    },
+                    "verificar": {
+                        "mIni": "Although the email appears to be from Google, the link address does not belong to domains.google.com or drive.google.com. It could try to steal your credentials by simulating a fake login screen.",
+                        "opciones": [
+                            {
+                                "texto": "Do not access the link and notify the sender",
+                                "siguiente": "acierto"
+                            },
+                            {
+                                "texto": "Access the link anyway to check the document",
+                                "siguiente": "fallo"
+                            }
+                        ]
+                    },
+                    "acierto": {
+                        "mIni": "Thank goodness you didn't click, who knows what would have happened.\\nYOU'RE GETTING CLOSER TO VICTORY!"
+                    },
+                    "fallo": {
+                        "mIni": "The sender's address was fake, you can always consult Google for the official addresses of companies like Google to make sure. You gave them your Google password and they changed all your passwords using your email. Also, by changing your bank password they were able to access your account and took 3000€."
+                    }
+                },
+                "caso3": {
+                    "comienzo": {
+                        "mIni": "From: facturacion@notifications.plataformaStreaming.com\\nTo: {nombre}@ejemplo.com\\nSubject: Important notice: payment not received – risk of subscription suspension\\nDear {nombre},\\nWe have been unable to process the payment for your 'Streaming platform' subscription corresponding to the current period. If you do not update your payment method within the next 72 hours, your subscription will be suspended and you will lose access to the service until you regularize the situation.\\nTo securely update your payment method, access your account from the official app or from your billing page.\\nIf you need help, contact Customer Service through the app or www.plataformaStreaming.com/contact.",
+                        "opciones": [
+                            {
+                                "texto": "Enter the official app or website to update the payment so they don't take away my account",
+                                "siguiente": "acierto"
+                            },
+                            {
+                                "texto": "Ignore the message and risk them taking away the service",
+                                "siguiente": "fallo"
+                            }
+                        ]
+                    }
+                },
+                "acierto": {
+                    "mIni": "VERY GOOD"
+                },
+                "fallo": {
+                    "mIni": "VERY BAD"
+                }
+            }
+        },
+        "whatsapp": {
+            "obligatorio": {
+                "caso1": {
+                    "comienzo": {
+                        "mIni": "Mom!!! My phone is broken, this is my new number. I won't use the other number anymore. Could you do me a favor?",
+                        "opciones": [
+                            {
+                                "texto": "Yes, tell me.",
+                                "siguiente": "transferencia"
+                            },
+                            {
+                                "texto": "Why did you have to change your number?",
+                                "siguiente": "transferencia"
+                            }
+                        ]
+                    },
+                    "transferencia": {
+                        "mIni": "My number got blocked and all my photos and contacts were deleted. I have to pay for something and I don't have my card, could you make a transfer for me? I'll pay you back.\\nIBAN: ESXX XXXX XXXX XXXX XXXX XXXX\\nNAME: Nacho Nachete\\nAMOUNT: 1.500€",
+                        "opciones": [
+                            {
+                                "texto": "Okay, I'll do it right now.",
+                                "siguiente": "fallo"
+                            },
+                            {
+                                "texto": "(Ask a personal question)",
+                                "siguiente": "preguntasPersonales"
+                            }
+                        ]
+                    },
+                    "preguntasPersonales": {
+                        "mIni": "What question do you want to ask?",
+                        "opciones": [
+                            {
+                                "texto": "What is your pet's name?",
+                                "siguiente": "perro"
+                            },
+                            {
+                                "texto": "What street do I live on?",
+                                "siguiente": "calle"
+                            },
+                            {
+                                "texto": "What is my favorite color?",
+                                "siguiente": "color"
+                            }
+                        ]
+                    },
+                    "perro": {
+                        "mIni": "{mascota}",
+                        "opciones": [
+                            {
+                                "texto": "Okay, I'll make the transfer",
+                                "siguiente": "fallo"
+                            },
+                            {
+                                "texto": "Can I call you?",
+                                "siguiente": "llamada"
+                            }
+                        ]
+                    },
+                    "calle": {
+                        "mIni": "You live on {calle}",
+                        "opciones": [
+                            {
+                                "texto": "Okay, I'll make the transfer",
+                                "siguiente": "fallo"
+                            },
+                            {
+                                "texto": "Can I call you?",
+                                "siguiente": "llamada"
+                            }
+                        ]
+                    },
+                    "color": {
+                        "mIni": "It's {color}",
+                        "opciones": [
+                            {
+                                "texto": "Okay, I'll make the transfer",
+                                "siguiente": "fallo"
+                            },
+                            {
+                                "texto": "Can I call you?",
+                                "siguiente": "llamada"
+                            }
+                        ]
+                    },
+                    "llamada": {
+                        "mIni": "I can't, hurry up.",
+                        "opciones": [
+                            {
+                                "texto": "Okay, I'll make the transfer",
+                                "siguiente": "fallo"
+                            },
+                            {
+                                "texto": "I don't feel confident. I'm sorry.",
+                                "siguiente": "acierto"
+                            }
+                        ]
+                    },
+                    "acierto": {
+                        "mIni": "You recognized that it wasn't really your child, it was obvious that they were hiding something by not wanting to take the call.\\nCONGRATULATIONS!"
+                    },
+                    "fallo": {
+                        "mIni": "Personal questions are always a good option, but they don't always serve to guarantee a person's identity, as you may be asking something that scammers could know by getting data from somewhere else. You should have been suspicious if they didn't even want to make a call, and not trust them until you recognize their voice or face. The scammer kept the money."
+                    }
+                }
+            },
+            "opcional": {
+                "caso1": {
+                    "comienzo": {
+                        "mIni": "Mom!!! My phone is broken, this is my new number. I won't use the other number anymore. Could you do me a favor?",
+                        "opciones": [
+                            {
+                                "texto": "Yes, tell me.",
+                                "siguiente": "transferencia"
+                            },
+                            {
+                                "texto": "Why did you have to change your number?",
+                                "siguiente": "transferencia"
+                            }
+                        ]
+                    },
+                    "transferencia": {
+                        "mIni": "My number got blocked and all my photos and contacts were deleted. I have to pay for something and I don't have my card, could you make a transfer for me? I'll pay you back.\\nIBAN: ESXX XXXX XXXX XXXX XXXX XXXX\\nNAME: Nacho Nachete\\nAMOUNT: 1.500€",
+                        "opciones": [
+                            {
+                                "texto": "Okay, I'll do it right now.",
+                                "siguiente": "fallo"
+                            },
+                            {
+                                "texto": "(Ask a personal question)",
+                                "siguiente": "preguntasPersonales"
+                            }
+                        ]
+                    },
+                    "preguntasPersonales": {
+                        "mIni": "What question do you want to ask?",
+                        "opciones": [
+                            {
+                                "texto": "What is the dog's name?",
+                                "siguiente": "perro"
+                            },
+                            {
+                                "texto": "What street do I live on?",
+                                "siguiente": "calle"
+                            },
+                            {
+                                "texto": "What is my favorite color?",
+                                "siguiente": "color"
+                            }
+                        ]
+                    },
+                    "perro": {
+                        "mIni": "{mascota}",
+                        "opciones": [
+                            {
+                                "texto": "Okay, I'll make the transfer",
+                                "siguiente": "fallo"
+                            },
+                            {
+                                "texto": "Can I call you?",
+                                "siguiente": "llamada"
+                            }
+                        ]
+                    },
+                    "calle": {
+                        "mIni": "We live on {calle}",
+                        "opciones": [
+                            {
+                                "texto": "Okay, I'll make the transfer",
+                                "siguiente": "fallo"
+                            },
+                            {
+                                "texto": "Can I call you?",
+                                "siguiente": "llamada"
+                            }
+                        ]
+                    },
+                    "color": {
+                        "mIni": "It's {color}",
+                        "opciones": [
+                            {
+                                "texto": "Okay, I'll make the transfer",
+                                "siguiente": "fallo"
+                            },
+                            {
+                                "texto": "Can I call you?",
+                                "siguiente": "llamada"
+                            }
+                        ]
+                    },
+                    "llamada": {
+                        "mIni": "I can't, hurry up.",
+                        "opciones": [
+                            {
+                                "texto": "Okay, I'll make the transfer",
+                                "siguiente": "fallo"
+                            },
+                            {
+                                "texto": "I don't feel confident. I'm sorry.",
+                                "siguiente": "acierto"
+                            }
+                        ]
+                    },
+                    "acierto": {
+                        "mIni": "You recognized that it wasn't really your child, it was obvious that they were hiding something by not wanting to take the call.\\nCONGRATULATIONS!"
+                    },
+                    "fallo": {
+                        "mIni": "Personal questions are always a good option, but they don't always serve to guarantee a person's identity, as you may be asking something that scammers could know by getting data from somewhere else. You should have been suspicious if they didn't even want to make a call, and not trust them until you recognize their voice or face. The scammer kept the money."
+                    }
+                }
+            }
+        }
+    },
+    "telefono": {
+        "llamada": {
+            "obligatorio": {
+                "caso1": {
+                    "comienzo": {
+                        "mIni": "Good morning, this is Sergio Sergitez from the customer service department of LaLuzDeDios Energía. This call may be recorded for quality purposes. Could you confirm if I am speaking with {nombre} {nombre}tez, the contract holder number 123456?",
+                        "opciones": [
+                            {
+                                "texto": "Yes, that's me.",
+                                "siguiente": "casoFactura"
+                            },
+                            {
+                                "texto": "What is this call about?",
+                                "siguiente": "casoFactura"
+                            }
+                        ]
+                    },
+                    "casoFactura": {
+                        "mIni": "We are calling to inform you that our records show you have an outstanding invoice. You can check it from your customer area or in our mobile application. We recommend you make the payment as soon as possible to prevent the supply from being affected.",
+                        "opciones": [
+                            {
+                                "texto": "Thank you for the notice, send the invoice by mail.",
+                                "siguiente": "acierto"
+                            },
+                            {
+                                "texto": "I don't trust you. Goodbye.",
+                                "siguiente": "fallo"
+                            },
+                            {
+                                "texto": "Could you repeat your name?",
+                                "siguiente": "dudas"
+                            }
+                        ]
+                    },
+                    "dudas": {
+                        "mIni": "Of course. My name is Sergio Sergitez, from LaLuzDeDios Energia customer service.",
+                        "opciones": [
+                            {
+                                "texto": "Alright, I will pay.",
+                                "siguiente": "acierto"
+                            },
+                            {
+                                "texto": "I'm sorry, but I don't trust the call. Goodbye.",
+                                "siguiente": "fallo"
+                            }
+                        ]
+                    },
+                    "acierto": {
+                        "mIni": "You trusted the company because they confirmed their identity and knew the fundamentals of your account. WELL DONE!"
+                    },
+                    "fallo": {
+                        "mIni": "Your power has been cut off, you should have trusted them since they were providing you with data that only the company can know about your account."
+                    }
+                },
+                "caso2": {
+                    "comienzo": {
+                        "mIni": "Hello, good afternoon. We are calling you because you have been randomly selected to participate in a special promotion: you could win an all-inclusive trip! You just need to open the link we sent you via WhatsApp to confirm your participation.",
+                        "opciones": [
+                            {
+                                "texto": "Which company are you calling from exactly?",
+                                "siguiente": "identificacion"
+                            },
+                            {
+                                "texto": "I don't usually open links from strangers, thank you. I prefer not to participate.",
+                                "siguiente": "acierto"
+                            },
+                            {
+                                "texto": "Oh, that's great, where is the link?",
+                                "siguiente": "fallo"
+                            }
+                        ]
+                    },
+                    "identificacion": {
+                        "mIni": "We are from the 'Programa ViajaFácil 2025'. We are contacting people at random for an exclusive promotion. You only need to open the link and fill out a short form.",
+                        "opciones": [
+                            {
+                                "texto": "Could you give me an official page to verify that this promotion exists?",
+                                "siguiente": "comprobacion"
+                            },
+                            {
+                                "texto": "Okay, I trust you. I'm going to open the link and fill out the form.",
+                                "siguiente": "fallo"
+                            },
+                            {
+                                "texto": "Better not, I don't usually do things like this over the phone. Thank you anyway.",
+                                "siguiente": "acierto"
+                            }
+                        ]
+                    },
+                    "comprobacion": {
+                        "mIni": "Of course, you can see us on our website: 'viajafacil-premios.com'. There you will find all the information. If you wish, I can wait while you review it.",
+                        "opciones": [
+                            {
+                                "texto": "I'm looking for the website.",
+                                "siguiente": "desconfianza"
+                            },
+                            {
+                                "texto": "I prefer not to continue by phone. If I really won something, they should contact me officially.",
+                                "siguiente": "acierto"
+                            }
+                        ]
+                    },
+                    "desconfianza": {
+                        "mIni": "(The website does not have a secure padlock and does not look good, it seems suspicious.)",
+                        "opciones": [
+                            {
+                                "texto": "The website is not secure, I'm not going to open anything. Goodbye.",
+                                "siguiente": "acierto"
+                            },
+                            {
+                                "texto": "Well... maybe I'll click it, after all, I have nothing to lose.",
+                                "siguiente": "fallo"
+                            }
+                        ]
+                    },
+                    "acierto": {
+                        "mIni": "If you really won a prize, it should be a safer site. ONE STEP CLOSER TO VICTORY!"
+                    },
+                    "fallo": {
+                        "mIni": "The website did not inspire confidence and was indeed an unofficial site. A call where they tell you to enter the link they sent you is usually a scam, you should check the official site first to verify the veracity. By clicking the link, they accessed your bank account directly. They took €1700."
+                    }
+                }
+            },
+            "opcional": {
+                "caso1": {
+                    "comienzo": {
+                        "mIni": "Good morning, I am calling from the Sonrisa Perfecta dental clinic. We have a pending orthodontics treatment registered and we need you to make an advance payment to confirm your appointment.",
+                        "opciones": [
+                            {
+                                "texto": "Advance payment? I don't remember making an appointment.",
+                                "siguiente": "dudaCita"
+                            },
+                            {
+                                "texto": "Oh yes, of course, how much do I have to pay?",
+                                "siguiente": "pagoDirecto"
+                            },
+                            {
+                                "texto": "Could you tell me your name and which clinic exactly you are calling from?",
+                                "siguiente": "verificacion"
+                            }
+                        ]
+                    },
+                    "dudaCita": {
+                        "mIni": "Yes, it appears in our system. We just need to confirm the payment of €2000 to keep your time slot. It is a new procedure.",
+                        "opciones": [
+                            {
+                                "texto": "Could you send me the appointment by official clinic mail?",
+                                "siguiente": "correoVerificacion"
+                            },
+                            {
+                                "texto": "Okay, tell me the account number and I will make the transfer.",
+                                "siguiente": "fallo"
+                            },
+                            {
+                                "texto": "Can I pay when I go to the clinic?",
+                                "siguiente": "negacionPago"
+                            }
+                        ]
+                    },
+                    "pagoDirecto": {
+                        "mIni": "Perfect. It is €2000 for the reservation. I will give you a personal account number to make the deposit, it is faster.",
+                        "opciones": [
+                            {
+                                "texto": "Why is it a personal account and not the clinic's?",
+                                "siguiente": "verificacion"
+                            },
+                            {
+                                "texto": "That's fine, pass me the number.",
+                                "siguiente": "fallo"
+                            }
+                        ]
+                    },
+                    "verificacion": {
+                        "mIni": "Sure, I'm Laura from the Sonrisa Perfecta clinic... well, we work with several associated consultories.",
+                        "opciones": [
+                            {
+                                "texto": "That sounds strange, can you give me the official clinic number to verify?",
+                                "siguiente": "correoVerificacion"
+                            },
+                            {
+                                "texto": "Okay, I trust you, how do I make the payment?",
+                                "siguiente": "fallo"
+                            },
+                            {
+                                "texto": "I prefer to go to the clinic in person before paying.",
+                                "siguiente": "acierto"
+                            }
+                        ]
+                    },
+                    "correoVerificacion": {
+                        "mIni": "We do not have an official email, only this number. If you do not make the payment today, you will lose your appointment.",
+                        "opciones": [
+                            {
+                                "texto": "If you don't have an official email, it doesn't seem very professional. I prefer not to continue.",
+                                "siguiente": "acierto"
+                            },
+                            {
+                                "texto": "Okay, if I need it, I'll pay later.",
+                                "siguiente": "acierto"
+                            },
+                            {
+                                "texto": "Okay, I'll make the payment then so I don't lose the appointment.",
+                                "siguiente": "fallo"
+                            }
+                        ]
+                    },
+                    "negacionPago": {
+                        "mIni": "I'm sorry, we only accept advance payments. It's a recent policy.",
+                        "opciones": [
+                            {
+                                "texto": "Then I'm sorry, I cannot confirm the appointment.",
+                                "siguiente": "acierto"
+                            },
+                            {
+                                "texto": "Well, I'll pay if there is no other option.",
+                                "siguiente": "fallo"
+                            }
+                        ]
+                    },
+                    "acierto": {
+                        "mIni": "It's too much money not to be able to pay it at the same place. ONE LESS TOWARDS VICTORY!"
+                    },
+                    "fallo": {
+                        "mIni": "The dentist would leave you the option of paying there to do it in a safe way. Also, not having an official email is an indication of a scam. The scammer kept the money for your orthodontics."
+                    }
+                },
+                "caso2": {
+                    "comienzo": {
+                        "mIni": "Good morning, we are calling from your bank's security department. We have detected an attempted charge of €1,200 on your account. We need to confirm your identity to block the operation.",
+                        "opciones": [
+                            {
+                                "texto": "What type of charge and where was it made from?",
+                                "siguiente": "detalleCargo"
+                            },
+                            {
+                                "texto": "Oh my God! Yes, I confirm I didn't do it, what should I do?",
+                                "siguiente": "pedirDatos"
+                            },
+                            {
+                                "texto": "Could you tell me your full name and which official number you are calling from?",
+                                "siguiente": "verificacionLlamada"
+                            }
+                        ]
+                    },
+                    "detalleCargo": {
+                        "mIni": "The charge was made from an international online store. To block it, we need to verify that you are the holder. Could you tell me the three digits on the back of your card?",
+                        "opciones": [
+                            {
+                                "texto": "That's the CVV, why do you need it if you already have my details?",
+                                "siguiente": "sospecha"
+                            },
+                            {
+                                "texto": "Sure, they are 482.",
+                                "siguiente": "fallo"
+                            },
+                            {
+                                "texto": "I prefer to contact my bank directly before giving any data.",
+                                "siguiente": "acierto"
+                            }
+                        ]
+                    },
+                    "pedirDatos": {
+                        "mIni": "Perfect. To stop the payment, I need you to confirm your online banking username and password, or failing that, the CVV code of your card.",
+                        "opciones": [
+                            {
+                                "texto": "I don't usually give my password over the phone, is there another way to verify?",
+                                "siguiente": "sospecha"
+                            },
+                            {
+                                "texto": "Okay, my username is... wait, shouldn't this be done from the app?",
+                                "siguiente": "sospecha"
+                            },
+                            {
+                                "texto": "Okay, I'll give you the password to block it quickly.",
+                                "siguiente": "fallo"
+                            }
+                        ]
+                    },
+                    "verificacionLlamada": {
+                        "mIni": "My name is Javier López, bank security agent. Due to data protection, I cannot give you the number, but I can confirm that we are calling from the Madrid area.",
+                        "opciones": [
+                            {
+                                "texto": "If you cannot give me a verifiable number, I prefer to hang up and call the bank myself.",
+                                "siguiente": "acierto"
+                            },
+                            {
+                                "texto": "Alright, if it's urgent I can give you my data to solve it.",
+                                "siguiente": "fallo"
+                            },
+                            {
+                                "texto": "Can you send me an official email from the bank to confirm the procedure?",
+                                "siguiente": "sospecha"
+                            }
+                        ]
+                    },
+                    "sospecha": {
+                        "mIni": "We understand your concern, but if you do not provide us with the data right now, the money will leave your account. It will only take a minute.",
+                        "opciones": [
+                            {
+                                "texto": "If it is so urgent, I will do it directly through the app or at my branch.",
+                                "siguiente": "acierto"
+                            },
+                            {
+                                "texto": "Well... okay, I'll give you the data to avoid the charge.",
+                                "siguiente": "fallo"
+                            },
+                            {
+                                "texto": "Send me an official link or email to continue.",
+                                "siguiente": "correo"
+                            }
+                        ]
+                    },
+                    "correo": {
+                        "mIni": "We will send you a link by SMS. You will only have to enter your username, password and CVV to confirm the cancellation.",
+                        "opciones": [
+                            {
+                                "texto": "That sounds dangerous. I will not enter my details in any link.",
+                                "siguiente": "acierto"
+                            },
+                            {
+                                "texto": "Perfect, I will wait for the SMS and do it right away.",
+                                "siguiente": "fallo"
+                            }
+                        ]
+                    },
+                    "acierto": {
+                        "mIni": "They were asking for non-sense data. CONGRATULATIONS!"
+                    },
+                    "fallo": {
+                        "mIni": "The bank would never ask you for your card digits or CVV. To confirm identity, banks usually send codes to associated emails or phones for you to verify your identity. By giving them your data, they really withdrew the €1200."
+                    }
+                },
+                "caso3": {
+                    "comienzo": {
+                        "mIni": "Good morning, we are calling from your bank's security department. We have detected an unusual transfer attempt of €900 from your account. We want to make sure everything is okay.",
+                        "opciones": [
+                            {
+                                "texto": "Could you tell me which account the money was attempted to be transferred to?",
+                                "siguiente": "detalleTransferencia"
+                            },
+                            {
+                                "texto": "I don't trust these calls. I prefer not to say anything and hang up.",
+                                "siguiente": "fallo"
+                            },
+                            {
+                                "texto": "Can you confirm that you are actually calling from the bank?",
+                                "siguiente": "verificacionAgente"
+                            }
+                        ]
+                    },
+                    "detalleTransferencia": {
+                        "mIni": "It was a transfer to a foreign account. If you do not recognize it, we can block it, but we need to confirm your identity first.",
+                        "opciones": [
+                            {
+                                "texto": "Okay, how can I confirm my identity?",
+                                "siguiente": "procesoVerificacion"
+                            },
+                            {
+                                "texto": "I will not give any information over the phone, thank you.",
+                                "siguiente": "fallo"
+                            },
+                            {
+                                "texto": "It sounds strange, but I can check the bank app while we talk.",
+                                "siguiente": "procesoVerificacion"
+                            }
+                        ]
+                    },
+                    "verificacionAgente": {
+                        "mIni": "Of course. I am calling from the official bank number, you can check it on your mobile screen or on the website. If you prefer, I can wait while you verify.",
+                        "opciones": [
+                            {
+                                "texto": "Good, I'll check. Yes, it matches the bank's number. What should I do?",
+                                "siguiente": "procesoVerificacion"
+                            },
+                            {
+                                "texto": "It could be a spoofed number. I don't trust it, I'll hang up.",
+                                "siguiente": "fallo"
+                            },
+                            {
+                                "texto": "I believe you, tell me how to stop that transfer.",
+                                "siguiente": "procesoVerificacion"
+                            }
+                        ]
+                    },
+                    "procesoVerificacion": {
+                        "mIni": "Perfect. We will send you an SMS code to verify that you are the holder. We will not ask for passwords or card details, only the security code.",
+                        "opciones": [
+                            {
+                                "texto": "Okay, I'll wait for the code and tell you.",
+                                "siguiente": "acierto"
+                            },
+                            {
+                                "texto": "I am not going to give any code or information, this sounds like a scam.",
+                                "siguiente": "fallo"
+                            },
+                            {
+                                "texto": "Can I confirm this process at my branch instead?",
+                                "siguiente": "esperaSucursal"
+                            }
+                        ]
+                    },
+                    "esperaSucursal": {
+                        "mIni": "You can do that, but the operation expires in minutes. If we don't block it now, the money will leave your account.",
+                        "opciones": [
+                            {
+                                "texto": "Then let's proceed with the verification code.",
+                                "siguiente": "acierto"
+                            },
+                            {
+                                "texto": "I prefer to wait and go to the bank tomorrow.",
+                                "siguiente": "fallo"
+                            }
+                        ]
+                    },
+                    "acierto": {
+                        "mIni": "You trusted the bank since what they asked you for could not compromise the security of your account. ONE STEP CLOSER TO VICTORY!"
+                    },
+                    "fallo": {
+                        "mIni": "You did not trust the bank, and by not being able to verify your identity, they could not recover the money that had been previously scammed from you. If the call is official and they ask you for data that cannot compromise your bank's security, you do not do wrong in trusting them, they could have avoided the €900 charge this way."
+                    }
+                }
+            }
+        }
+    }
+}

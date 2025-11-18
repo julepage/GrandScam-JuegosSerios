@@ -25,5 +25,13 @@ const config = {
         autoCenter: Phaser.Scale.CENTER_BOTH // Centra el canvas
     }
 };
-
 window.game = new Phaser.Game(config);
+// Load the plugin with the options, for more details on all possible options, see: http://i18next.github.io/i18next/pages/doc_init.html
+game.plugins.add(PhaserI18n.Plugin, {
+    fallbackLng: 'es',
+    backend: {
+        // The path from which we can load the translations, by default this path also includes the translation namespace.
+        // Since we only have one namespace, we'll skip this for now.
+        loadPath: 'assets/lang/{{lng}}.json'
+    }
+});
