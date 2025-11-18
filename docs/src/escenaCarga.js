@@ -6,19 +6,6 @@ export default class EscenaCarga extends Phaser.Scene {
   }
 
   preload() {
-    //idiomas
-    // Definimos los idiomas que queremos cargar: Inglés y Español
-    const languagesToLoad = ['es', 'en']; 
-    
-    // El namespace por defecto es 'translation'. Si usa solo uno, puede dejarlo así.
-    const namespaces = ['translation']; 
-
-    game.load.locale(
-        languagesToLoad,
-        namespaces
-    );
-   
-
     //PROGRESS BAR
     const centerX = this.cameras.main.width / 2;
     const centerY = this.cameras.main.height / 2;
