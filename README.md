@@ -2,7 +2,7 @@
 ## Juegos Serios 2025/2026 - 3ºV GDV
 ### Nombre del grupo: UNDERGROUND
 ### Sergio Naranjo Barroso y Jule Page Galocha
-#### Página Web
+#### 💥Página Web‼
 https://julepage.github.io/GrandScam-JuegosSerios/
 	
 ## Descripción del juego
