@@ -73,14 +73,16 @@ se emplea únicamente para rellenar el cuestionario inicial.
 #### Interacción con dispositivos: 
 El teléfono fijo y móvil tendrán una animación para indicar cuando son interactuables (recibes una llamada, mensaje, etc). Una vez ocurra ésto, el jugador hará clic en ellos para interactuar.
 #### Toma de decisiones:
-Sucede algo (llamada o mensaje).
-Se presentan varias opciones para responder a esta situación, el jugador debe hacer clic en la que quiera para responder.
-Ejemplo: 
-Hola mamá, necesito dinero ¿podrías hacerme una transferencia?
-Opciones:
-	A: Claro, ahora mismo.
-	B: Es un número desconocido, no contesto.
-	C: Hacer una pregunta que sólo tu hija podría responder.
+Sucede algo (llamada o mensaje).  
+Se presentan varias opciones para responder a esta situación.  
+El jugador debe hacer clic en la opción que quiera para responder.
+**Ejemplo:**  
+*"Hola mamá, necesito dinero. ¿Podrías hacerme una transferencia?"*
+**Opciones:**
+- **A:** Claro, ahora mismo.  
+- **B:** Es un número desconocido, no contesto.  
+- **C:** Hacer una pregunta que solo tu hija podría responder.
+  
 #### Sistema de vidas:
 El jugador comienza teniendo 3 vidas.
 Pierde una vida si:
