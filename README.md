@@ -131,7 +131,7 @@ Todos los bloques de caso comienzan con un primer bloque llamado comienzo.
 
 La estructura final de un caso, por ejemplo de whatsapp, sería esta:
 
-movil{
+[movil{
 
  whatsapp{
  
@@ -205,7 +205,7 @@ movil{
   
  }
  
-} 
+}]
 
 </details>
 
