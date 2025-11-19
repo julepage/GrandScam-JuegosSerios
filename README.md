@@ -1,4 +1,4 @@
-# Grand!Scam
+# 💲Grand!Scam💲
 ## Juegos Serios 2025/2026 - 3ºV GDV
 ### Nombre del grupo: UNDERGROUND
 #### Página Web
@@ -58,7 +58,7 @@ La cámara permanecerá completamente estática en la escena, manteniendo siempr
 llamadas por teléfono en las que te pedirán tanto información personal como dinero.
 #### SMS:  
 mensajes al móvil en los que hay enlaces que pueden ser o no malignos, etc.
-#### Correos electrónicos: e
+#### Correos electrónicos:
 mails pidiendo cambios de contraseña o datos.
 #### Whatsapps: 
 suplantación de identidad, solicitud de datos personales o información bancaria, etc.
@@ -120,12 +120,12 @@ Si pierdes, saldrá un mensaje de aviso y se reiniciará el juego.
 ### Pantalla principal:
 - Sala de estar.
 - Objetos interactuables.
-  
+[Fondo Juego](docs/assets/fondoJuego.png)
 ### HUD:
 - Nº de vidas: 3 corazones.
 - Nº casos resueltos.
 - Botón a menú de pausa.
-
+[Vidas](docs/assets/vidas.png)
 ### Menú de pausa:
 - Ajustes de sonido
 - Opción de lectura de textos
@@ -165,7 +165,7 @@ Si pierdes, saldrá un mensaje de aviso y se reiniciará el juego.
 - Referencias: Snoopy, Mafalda.
 - Se usarán muchos colores cálidos para que se sientan tranquilos y como en casa además de añadir mucha ayuda visual para que sepan en todo momento que tienen que hacer.
 - Interfaz con tipología grande y clara.
-[Imagen Paleta](https://github.com/user-attachments/assets/44b541ab-1cc4-4e90-b28d-c6caecce4057)
+[Imagen Paleta](docs/assets/GDD/image1.png)
 
 </details>
 
@@ -192,21 +192,18 @@ Por último, si nos fuera posible, intentaremos hacer playtesting para poder rec
 
 Algunos juegos que han servido de inspiración en términos de mecánicas y estilo son:
 
-- Papers Please: por su sistema de toma de decisiones y gestión moral.
+- Papers, Please: por su sistema de toma de decisiones y gestión moral.
 
-[Cuphead](https://github.com/user-attachments/assets/8b25dd1d-acf8-485f-9a34-c2b0eb177597)
+[Papers, Please](docs/assets/GDD/image3.png)
 
 - JustShare y SCHEDULE 1: por el uso de un móvil
 
-[Balatro](https://github.com/user-attachments/assets/c24e4e4c-d4ce-42f3-9485-36355d902337)
+[SCHEDULE !](docs/assets/GDD/image6.png))
 
 - Preguntados: por las preguntas con opciones.
 
-[Super Mario 64 DS](https://github.com/user-attachments/assets/d2a8af99-9e95-4be9-bb39-d680dc4a0c5d)
+- Estafas del banco Santander: ideas de tipos de estafas digitales
 
-Estafas del banco Santander: ideas de tipos de estafas digitales
-
-[Soul Eater](https://github.com/user-attachments/assets/f6d6a28e-9e56-467c-9c1c-8da3c2ec6864)
 
 </details>
 <details>
