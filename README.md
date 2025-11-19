@@ -76,8 +76,10 @@ El teléfono fijo y móvil tendrán una animación para indicar cuando son inter
 Sucede algo (llamada o mensaje).  
 Se presentan varias opciones para responder a esta situación.  
 El jugador debe hacer clic en la opción que quiera para responder.
+
 **Ejemplo:**  
 *"Hola mamá, necesito dinero. ¿Podrías hacerme una transferencia?"*
+
 **Opciones:**
 - **A:** Claro, ahora mismo.  
 - **B:** Es un número desconocido, no contesto.  
