@@ -130,43 +130,81 @@ El flujo del juego funcionaría de esa forma hasta llegar a una opción en la qu
 Todos los bloques de caso comienzan con un primer bloque llamado comienzo.
 
 La estructura final de un caso, por ejemplo de whatsapp, sería esta:
+
 movil{
+
  whatsapp{
+ 
   obligatorio{
+  
    caso1{
+   
     comienzo{
+	
      mIni: ...
+	 
 	 opciones[
+	 
 	 {
+	 
 	  texto: ...,
+	  
 	  siguiente: sig
+	  
 	 },
+	 
 	 {
+	 
 	  texto: ...,
+	  
 	  siguiente: ...
+	  
 	 }]
+	 
 	},
+	
     sig{
+	
 	 mIni: ...
+	 
 	 opciones[
+	 
 	 {
+	 
 	  texto: ...,
+	  
 	  siguiente: acierto
+	  
 	 },
+	 
 	 {
+	 
 	  texto: ...,
+	  
 	  siguiente: fallo
+	  
 	 }]
+	 
 	},
+	
 	acierto{
+	
 	 mIni: ...
+	 
 	},
+	
 	fallo{
+	
 	 mIni: ...
+	 
 	}
+	
    }
+   
   }
+  
  }
+ 
 } 
 
 </details>
