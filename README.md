@@ -223,7 +223,7 @@ Esta obra está licenciada bajo una licencia Creative Commons Atribución–NoCo
 © 2025 Jule Page Galocha y Sergio Naranjo Barroso.
 Más información: https://creativecommons.org/licenses/by-nc-sa/4.0/
 
-“UNDERGROUND™ es un nombre de empresa utilizada por nosotros. No se permite usar el nombre, logotipo o identidad de la empresa sin permiso.”
+UNDERGROUND™ es un nombre de empresa utilizada por nosotros. No se permite usar el nombre, logotipo o identidad de la empresa sin permiso.”
 
 La música usada es https://youtu.be/KmKwAh8ASXw?si=OPy2_d58Xkui0hb2
 
