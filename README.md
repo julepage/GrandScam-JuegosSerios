@@ -78,9 +78,9 @@ Se presentan varias opciones para responder a esta situación, el jugador debe h
 Ejemplo: 
 Hola mamá, necesito dinero ¿podrías hacerme una transferencia?
 Opciones:
-A: Claro, ahora mismo.
-B: Es un número desconocido, no contesto.
-C: Hacer una pregunta que sólo tu hija podría responder.
+	A: Claro, ahora mismo.
+	B: Es un número desconocido, no contesto.
+	C: Hacer una pregunta que sólo tu hija podría responder.
 #### Sistema de vidas:
 El jugador comienza teniendo 3 vidas.
 Pierde una vida si:
