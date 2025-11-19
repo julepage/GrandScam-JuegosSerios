@@ -1,6 +1,7 @@
 # 💲Grand!Scam💲
 ## Juegos Serios 2025/2026 - 3ºV GDV
 ### Nombre del grupo: UNDERGROUND
+### Sergio Naranjo Barroso y Jule Page Galocha
 #### Página Web
 https://julepage.github.io/GrandScam-JuegosSerios/
 	
@@ -124,11 +125,13 @@ Si pierdes, saldrá un mensaje de aviso y se reiniciará el juego.
 ### Pantalla principal:
 - Sala de estar.
 - Objetos interactuables.
+  
 [Fondo Juego](docs/assets/fondoJuego.png)
 ### HUD:
 - Nº de vidas: 3 corazones.
 - Nº casos resueltos.
 - Botón a menú de pausa.
+  
 [Vidas](docs/assets/vidas.png)
 ### Menú de pausa:
 - Ajustes de sonido
@@ -169,6 +172,7 @@ Si pierdes, saldrá un mensaje de aviso y se reiniciará el juego.
 - Referencias: Snoopy, Mafalda.
 - Se usarán muchos colores cálidos para que se sientan tranquilos y como en casa además de añadir mucha ayuda visual para que sepan en todo momento que tienen que hacer.
 - Interfaz con tipología grande y clara.
+  
 [Imagen Paleta](docs/assets/GDD/image1.png)
 
 </details>
