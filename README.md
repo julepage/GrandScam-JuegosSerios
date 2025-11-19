@@ -115,6 +115,59 @@ Una vez acabado el cuestionario, comenzará la partida. Durante ésta, se irán 
 ### Final:
 Una vez acaba la partida, si ganas, aparecerá una enseñanza y varios enlaces en los que se puede hacer clic para visitar webs en las que se profundiza más acerca de este tipo de estafas y cómo evitarlas.
 Si pierdes, saldrá un mensaje de aviso y se reiniciará el juego.
+### Diseño JSON:
+El JSON está compuesto por categorías. Las primeras categorías hacen referencia al dispositivo, teniendo SCAMS de teléfono fijo y de teléfono móvil, nombradas como movil y telefono. Dentro de esas categorías se encuentran otros bloques según el tipo de engaño, teniendo llamada en teléfono y SMS, whatsapp y correo en móvil.
+
+En cada una de estas categorías habrá otras dos, obligatorio y opcional, y dentro de estas habrá los distintos casos.
+Los casos empiezan con un contenedor llamado caso1, caso2, ..., casoN, y dentro de estos la estructura será por distintos bloques.
+
+Los bloques están organizados de forma que todos tienen un mIni, el texto inicial, unas opciones y, en los casos en que en la estafa se usen enlaces, también tendrán un apartado llamado enlace.
+
+Dentro de las opciones habrá apartados que tendrán texto y siguiente; el texto sería la respuesta que da el jugador y siguiente el siguiente bloque al que va a pasar el jugador según su respuesta. Este bloque estará configurado de la misma manera.
+
+El flujo del juego funcionaría de esa forma hasta llegar a una opción en la que el siguiente es fallo o acierto; estos son bloques especiales que tienen solo mIni, que funciona como aprendizaje en caso de fallo o como felicitación en caso de acierto.
+
+Todos los bloques de caso comienzan con un primer bloque llamado comienzo.
+
+La estructura final de un caso, por ejemplo de whatsapp, sería esta:
+movil{
+ whatsapp{
+  obligatorio{
+   caso1{
+    comienzo{
+     mIni: ...
+	 opciones[
+	 {
+	  texto: ...,
+	  siguiente: sig
+	 },
+	 {
+	  texto: ...,
+	  siguiente: ...
+	 }]
+	},
+    sig{
+	 mIni: ...
+	 opciones[
+	 {
+	  texto: ...,
+	  siguiente: acierto
+	 },
+	 {
+	  texto: ...,
+	  siguiente: fallo
+	 }]
+	},
+	acierto{
+	 mIni: ...
+	},
+	fallo{
+	 mIni: ...
+	}
+   }
+  }
+ }
+} 
 
 </details>
 
