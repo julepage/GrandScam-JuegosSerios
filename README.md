@@ -1,5 +1,5 @@
 # 💲Grand!Scam💲
-## Juegos Serios 2025/2026 - 3ºV GDV
+## Juegos Serios 2025/2026 - 3ºV GDV - V.2.0
 ### Nombre del grupo: UNDERGROUND
 ### Sergio Naranjo Barroso y Jule Page Galocha
 #### 💥Página Web💥
@@ -107,11 +107,11 @@ Se incluyen variaciones de tono, tipos de mensaje y credibilidad de los estafado
 
 ## Diseño del juego
 ### Tutorial inicial:
-El juego comenzará con un tutorial en el que se enseñarán las distintas mecánicas, cómo interactuar con los objetos y el objetivo.
+El juego comenzará en un menú peincipal en el que podrás elegir si jugar o su meterte en el tutorial en el que se enseñarán las distintas mecánicas, cómo interactuar con los objetos y el objetivo del juego.
 ### Cuestionario:
 A continuación, el jugador deberá rellenar una encuesta en la que se le pedirán datos personales como nombre, dirección, etc. Los datos obligatorios aparecerán con un asterisco al lado, los demás no será opcional rellenarlos. 
 ### Desarrollo:
-Una vez acabado el cuestionario, comenzará la partida. Durante ésta, se irán recibiendo tanto llamadas como mensajes. Una vez llegue uno de los anteriores, el jugador deberá elegir como reaccionar eligiendo una de las opciones que aparecerán en pantalla. Dependiendo de las respuestas, perderás vidas (si no has conseguido identificar cuando era una estafa y cuando no lo era) o no. Ésto se repetirá o bien hasta que hayas superado suficientes retos o hasta que hayas perdido todas las vidas.
+Una vez acabado el cuestionario, comenzará la partida. Durante ésta, se irán recibiendo tanto llamadas como mensajes. Una vez llegue uno de los anteriores, el jugador deberá elegir como reaccionar eligiendo una de las opciones que aparecerán en pantalla. Dependiendo de las respuestas, perderás vidas (si no has conseguido identificar cuando era una estafa y cuando no lo era) o no. Ésto se repetirá o bien hasta que hayas superado suficientes retos o hasta que hayas perdido todas las vidas. Además después de cada caso o falles o aciertes te dará una enseñanza y te dirá si has fallado o no.
 ### Final:
 Una vez acaba la partida, si ganas, aparecerá una enseñanza y varios enlaces en los que se puede hacer clic para visitar webs en las que se profundiza más acerca de este tipo de estafas y cómo evitarlas.
 Si pierdes, saldrá un mensaje de aviso y se reiniciará el juego.
@@ -134,20 +134,21 @@ Si pierdes, saldrá un mensaje de aviso y se reiniciará el juego.
   
 [Vidas](docs/assets/vidas.png)
 ### Menú de pausa:
+- Menú opciones
+- Menú incial para volver
+- Continuar el juego
+
+### Menú de opciones:
 - Ajustes de sonido
 - Opción de lectura de textos
-- Tutorial
-- Salir del juego
-
+- Pantalla grande
+  
 ### Pantalla de móvil con mensajes y preguntas con opciones:
-- Correo electrónico
-- SMS
-- Whatsapp
-- Diálogo del personaje
-- Posibles respuestas 
+- Consiste en una pantalla en la que habrá o bien un telefono fijo o bien un móvil. En el segundo caso, el móvil tendrá una imagen en la que se muestra si es un whatsapp, correo, etc.
+Además tendrá el bocadillo de diálogo del posible estafador y las respuestas a elegir. 
 
 ### Cuestionario
-- Preguntas del cuestionario
+- Preguntas del cuestionario las cuales se usan posteriormente para hacer las estafas más creibles y difíciles de detectar.
 
   [Imagen Cuestionario](docs/assets/fondoCuestionario.png)
 
@@ -159,18 +160,18 @@ Si pierdes, saldrá un mensaje de aviso y se reiniciará el juego.
 		
 ## Sonido y arte:
 ### Música:
-- Será música sin letra, solamente instrumentos.
+- Música sin letra, solamente instrumentos.
 - El sonido se podrá subir o bajar, e incluso silenciar. 
 - Será un estilo relajado y cálido (guitarra, piano, violín).
 
 ### Sonidos:
-- Los efectos de sonido estarán inspirados en los de producciones clásicas como Disney.
+- Los efectos de sonido están inspirados en los de producciones clásicas como Disney.
 - El juego tendrá una opción en la que todos los textos se leerán en alto para aquellas personas con mala visión.
 
 ### Arte:
 - El arte estará inspirado en el estilo cartoon de los 50-60.
 - Referencias: Snoopy, Mafalda.
-- Se usarán muchos colores cálidos para que se sientan tranquilos y como en casa además de añadir mucha ayuda visual para que sepan en todo momento que tienen que hacer.
+- Se usan muchos colores cálidos para que se sientan tranquilos y como en casa además de que aporta mucha ayuda visual para que sepan en todo momento que tienen que hacer.
 - Interfaz con tipología grande y clara.
   
 [Imagen Paleta](docs/assets/GDD/image1.png)
@@ -206,7 +207,7 @@ Algunos juegos que han servido de inspiración en términos de mecánicas y esti
 
 - JustShare y SCHEDULE 1: por el uso de un móvil
 
-[SCHEDULE !](docs/assets/GDD/image6.png))
+[SCHEDULE 1](docs/assets/GDD/image6.png)
 
 - Preguntados: por las preguntas con opciones.
 
