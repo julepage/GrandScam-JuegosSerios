@@ -350,41 +350,38 @@ export default class EscenaCuestionario extends Phaser.Scene {
         const input = document.getElementById("phaserInput");
 
         this.usandoTecladoNativo = true;
-
-        // Inicializar valor
         input.value = this.playerData[box.fieldKey] || "";
 
-        // Obtener posición del campo (caixa) en la pantalla
+        // Posición del campo en la pantalla
         const b = box.getBounds();
         const rect = this.game.canvas.getBoundingClientRect();
 
-        const x = rect.left + b.centerX - 50;  // se puede ajustar
+        const x = rect.left + b.centerX - 50;
         const y = rect.top + b.centerY - 20;
 
-        // iOS SOLO abre teclado si el input está visible en pantalla
+        // El input DEBE estar visible y tocable
         input.style.left = x + "px";
         input.style.top = y + "px";
-        input.style.opacity = 0.01;  // invisible pero clickable
+        input.style.opacity = 0.2;
         input.style.width = "120px";
         input.style.height = "40px";
         input.style.pointerEvents = "auto";
 
-        // retraso mínimo → permite a Safari abrir teclado
+        // Pequeño delay para que Safari no ignore el focus
         setTimeout(() => {
             input.focus();
-        }, 20);
+        }, 30);
 
-        // sincronizar texto
         input.oninput = () => {
             box.textObj.setText(input.value);
             this.playerData[box.fieldKey] = input.value;
         };
 
-        // cuando se cierra el teclado
         input.onblur = () => {
             this.usandoTecladoNativo = false;
-            input.style.pointerEvents = "none";
+
             input.style.opacity = 0;
+            input.style.pointerEvents = "none";
             input.style.left = "0px";
             input.style.top = "0px";
         };
