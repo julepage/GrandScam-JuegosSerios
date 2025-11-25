@@ -1,3 +1,4 @@
+
 export default class EscenaCuestionario extends Phaser.Scene {
     constructor() {
         super({ key: 'cuestionario' });
@@ -193,62 +194,68 @@ export default class EscenaCuestionario extends Phaser.Scene {
 
     // =================== TECLADO VIRTUAL =====================
     createVirtualKeyboard(targetField) {
-    // Inicializar array si no existe
-    if (!this.virtualKeys) this.virtualKeys = [];
+        if (!this.virtualKeys) this.virtualKeys = [];
+        this.hideVirtualKeyboard(); // borrar teclado previo
 
-    const keys = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789".split("");
-    const keyWidth = 60;  // tamaño fijo para simplificar
-    const keyHeight = 60;
-    const gap = 5;
-    const startX = 50;
-    const startY = this.cameras.main.height - (4 * (keyHeight + gap) + 100); // ajustado para que se vea
+        const keys = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789".split("");
+        const keyWidth = 60;
+        const keyHeight = 60;
+        const gap = 5;
 
-    keys.forEach((k, index) => {
-        const row = Math.floor(index / 10);
-        const col = index % 10;
+        // Colocar teclado en la parte inferior de la pantalla
+        const startX = 50;
+        const startY = this.cameras.main.height - 4 * (keyHeight + gap) - 100;
 
-        const key = this.add.text(
-            startX + col * (keyWidth + gap),
-            startY + row * (keyHeight + gap),
-            k,
-            { fontSize: '28px', backgroundColor: '#555', color: '#fff', padding: { x: 10, y: 10 } }
+        keys.forEach((k, index) => {
+            const row = Math.floor(index / 10);
+            const col = index % 10;
+
+            const key = this.add.text(
+                startX + col * (keyWidth + gap),
+                startY + row * (keyHeight + gap),
+                k,
+                { fontSize: '28px', backgroundColor: '#555', color: '#fff', padding: { x: 10, y: 10 } }
+            ).setOrigin(0, 0).setInteractive();
+
+            key.on('pointerdown', () => {
+                targetField.textObj.setText(targetField.textObj.text + k);
+                this.playerData[targetField.fieldKey] = targetField.textObj.text;
+            });
+
+            this.virtualKeys.push(key);
+        });
+
+        // Botón Borrar
+        const backspace = this.add.text(
+            startX,
+            startY + 4 * (keyHeight + gap),
+            "⌫",
+            { fontSize: '28px', backgroundColor: '#900', color: '#fff', padding: { x: 10, y: 10 } }
         ).setOrigin(0, 0).setInteractive();
 
-        key.on('pointerdown', () => {
-            targetField.textObj.setText(targetField.textObj.text + k);
+        backspace.on('pointerdown', () => {
+            targetField.textObj.setText(targetField.textObj.text.slice(0, -1));
             this.playerData[targetField.fieldKey] = targetField.textObj.text;
         });
 
-        this.virtualKeys.push(key);
-    });
+        this.virtualKeys.push(backspace);
 
-    // Borrar
-    const backspace = this.add.text(
-        startX,
-        startY + 4 * (keyHeight + gap),
-        "⌫",
-        { fontSize: '28px', backgroundColor: '#900', color: '#fff', padding: { x: 10, y: 10 } }
-    ).setOrigin(0, 0).setInteractive();
-    backspace.on('pointerdown', () => {
-        targetField.textObj.setText(targetField.textObj.text.slice(0, -1));
-        this.playerData[targetField.fieldKey] = targetField.textObj.text;
-    });
-    this.virtualKeys.push(backspace);
+        // Botón Cerrar
+        const closeKey = this.add.text(
+            startX + 200,
+            startY + 4 * (keyHeight + gap),
+            "Cerrar",
+            { fontSize: '28px', backgroundColor: '#333', color: '#fff', padding: { x: 10, y: 10 } }
+        ).setOrigin(0, 0).setInteractive();
 
-    // Cerrar teclado
-    const closeKey = this.add.text(
-        startX + 200,
-        startY + 4 * (keyHeight + gap),
-        "Cerrar",
-        { fontSize: '28px', backgroundColor: '#333', color: '#fff', padding: { x: 10, y: 10 } }
-    ).setOrigin(0, 0).setInteractive();
-    closeKey.on('pointerdown', () => this.hideVirtualKeyboard());
-    this.virtualKeys.push(closeKey);
-}
+        closeKey.on('pointerdown', () => this.hideVirtualKeyboard());
+        this.virtualKeys.push(closeKey);
+    }
 
-hideVirtualKeyboard() {
-    if (!this.virtualKeys) return;
-    this.virtualKeys.forEach(k => k.destroy());
-    this.virtualKeys = [];
-}
+
+    hideVirtualKeyboard() {
+        if (!this.virtualKeys) return;
+        this.virtualKeys.forEach(k => k.destroy());
+        this.virtualKeys = [];
+    }
 }
