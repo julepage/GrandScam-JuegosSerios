@@ -353,9 +353,9 @@ export default class EscenaCuestionario extends Phaser.Scene {
         input.value = this.playerData[box.fieldKey] || '';
 
         const rectCanvas = this.game.canvas.getBoundingClientRect();
-        input.style.left = "-9999px";
-        input.style.top = "-9999px";
-        input.style.opacity = 0;
+        input.style.left = (rectCanvas.left + box.x - 160) + "px";
+        input.style.top = (rectCanvas.top + box.y - 20) + "px";
+        input.style.opacity = 1;
         input.style.pointerEvents = "auto";
 
         input.focus();
