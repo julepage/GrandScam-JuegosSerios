@@ -298,7 +298,7 @@ export default class EscenaCuestionario extends Phaser.Scene {
         box.on('pointerdown', () => {
             this.activeField = box;
             this.updateActiveBox(box);
-            this.showNativeKeyboard(box);   // ← NUEVO
+            this.showNativeKeyboard(box);
         });
 
         this.inputFields.push(box);
@@ -347,44 +347,48 @@ export default class EscenaCuestionario extends Phaser.Scene {
 
     // 🔥 NUEVA FUNCIÓN PARA MOSTRAR TECLADO NATIVO
     showNativeKeyboard(box) {
-    const input = document.getElementById('phaserInput');
-    this.usandoTecladoNativo = true;
+        const input = document.getElementById("phaserInput");
 
-    input.value = this.playerData[box.fieldKey] || '';
+        this.usandoTecladoNativo = true;
 
-    // Mostrar el input cerca del campo para que iOS lo acepte
-    const bounds = box.getBounds();
-    const canvasRect = this.game.canvas.getBoundingClientRect();
+        // Inicializar valor
+        input.value = this.playerData[box.fieldKey] || "";
 
-    const x = canvasRect.left + bounds.x + (bounds.width / 2) - 50;
-    const y = canvasRect.top + bounds.y - 20;
+        // Obtener posición del campo (caixa) en la pantalla
+        const b = box.getBounds();
+        const rect = this.game.canvas.getBoundingClientRect();
 
-    input.style.left = x + "px";
-    input.style.top = y + "px";
-    input.style.opacity = 0.01;   // → debe ser > 0 para iOS
-    input.style.width = "100px";
-    input.style.height = "40px";
-    input.style.pointerEvents = "auto";
+        const x = rect.left + b.centerX - 50;  // se puede ajustar
+        const y = rect.top + b.centerY - 20;
 
-    // MUY IMPORTANTE: el focus debe venir de un toque real
-    setTimeout(() => input.focus(), 50);
+        // iOS SOLO abre teclado si el input está visible en pantalla
+        input.style.left = x + "px";
+        input.style.top = y + "px";
+        input.style.opacity = 0.01;  // invisible pero clickable
+        input.style.width = "120px";
+        input.style.height = "40px";
+        input.style.pointerEvents = "auto";
 
-    // Sincronizar texto
-    input.oninput = () => {
-        box.textObj.setText(input.value);
-        this.playerData[box.fieldKey] = input.value;
-    };
+        // retraso mínimo → permite a Safari abrir teclado
+        setTimeout(() => {
+            input.focus();
+        }, 20);
 
-    // Al cerrar teclado
-    input.onblur = () => {
-        this.usandoTecladoNativo = false;
+        // sincronizar texto
+        input.oninput = () => {
+            box.textObj.setText(input.value);
+            this.playerData[box.fieldKey] = input.value;
+        };
 
-        // Ocultar nuevamente
-        input.style.opacity = 0;
-        input.style.left = "-9999px";
-        input.style.pointerEvents = "none";
-    };
-}
+        // cuando se cierra el teclado
+        input.onblur = () => {
+            this.usandoTecladoNativo = false;
+            input.style.pointerEvents = "none";
+            input.style.opacity = 0;
+            input.style.left = "0px";
+            input.style.top = "0px";
+        };
+    }
 
 
     submitForm() {
