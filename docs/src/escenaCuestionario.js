@@ -347,31 +347,45 @@ export default class EscenaCuestionario extends Phaser.Scene {
 
     // 🔥 NUEVA FUNCIÓN PARA MOSTRAR TECLADO NATIVO
     showNativeKeyboard(box) {
-        const input = document.getElementById('phaserInput');
-        this.usandoTecladoNativo = true;
+    const input = document.getElementById('phaserInput');
+    this.usandoTecladoNativo = true;
 
-        input.value = this.playerData[box.fieldKey] || '';
+    input.value = this.playerData[box.fieldKey] || '';
 
-        const rectCanvas = this.game.canvas.getBoundingClientRect();
-        input.style.left = (rectCanvas.left + box.x - 160) + "px";
-        input.style.top = (rectCanvas.top + box.y - 20) + "px";
-        input.style.opacity = 1;
-        input.style.pointerEvents = "auto";
+    // Mostrar el input cerca del campo para que iOS lo acepte
+    const bounds = box.getBounds();
+    const canvasRect = this.game.canvas.getBoundingClientRect();
 
-        input.focus();
+    const x = canvasRect.left + bounds.x + (bounds.width / 2) - 50;
+    const y = canvasRect.top + bounds.y - 20;
 
-        input.oninput = () => {
-            box.textObj.setText(input.value);
-            this.playerData[box.fieldKey] = input.value;
-        };
+    input.style.left = x + "px";
+    input.style.top = y + "px";
+    input.style.opacity = 0.01;   // → debe ser > 0 para iOS
+    input.style.width = "100px";
+    input.style.height = "40px";
+    input.style.pointerEvents = "auto";
 
-        input.onblur = () => {
-            this.usandoTecladoNativo = false;
-            input.style.opacity = 0;
-            input.style.left = "-9999px";
-            input.style.pointerEvents = "none";
-        };
-    }
+    // MUY IMPORTANTE: el focus debe venir de un toque real
+    setTimeout(() => input.focus(), 50);
+
+    // Sincronizar texto
+    input.oninput = () => {
+        box.textObj.setText(input.value);
+        this.playerData[box.fieldKey] = input.value;
+    };
+
+    // Al cerrar teclado
+    input.onblur = () => {
+        this.usandoTecladoNativo = false;
+
+        // Ocultar nuevamente
+        input.style.opacity = 0;
+        input.style.left = "-9999px";
+        input.style.pointerEvents = "none";
+    };
+}
+
 
     submitForm() {
         // Comprobar obligatorios
