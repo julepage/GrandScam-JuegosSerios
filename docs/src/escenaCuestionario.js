@@ -87,20 +87,6 @@ export default class EscenaCuestionario extends Phaser.Scene {
         this.input.keyboard.on('keydown-ENTER', () => this.submitForm());
         this.input.keyboard.on('keydown-UP', () => this.focusPrevInput());
         this.input.keyboard.on('keydown-DOWN', () => this.focusNextInput());
-        // TECLADO FÍSICO
-        // this.input.keyboard.on('keydown', (event) => {
-        //     if (!this.activeField) return;
-
-        //     const key = event.key;
-
-        //     if (key === 'Backspace') {
-        //         this.activeField.textObj.setText(this.activeField.textObj.text.slice(0, -1));
-        //     } else if (key.length === 1) {
-        //         this.activeField.textObj.setText(this.activeField.textObj.text + key);
-        //     }
-
-        //     this.playerData[this.activeField.fieldKey] = this.activeField.textObj.text;
-        // });
     }
 
     createInputField(x, y, labelText, fieldKey, required = true) {
