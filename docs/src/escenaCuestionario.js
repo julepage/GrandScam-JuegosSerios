@@ -8,6 +8,7 @@ export default class EscenaCuestionario extends Phaser.Scene {
     }
 
     create() {
+        this.isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
         // Cámara principal
         const cam = this.cameras.main;
         const centerX = cam.width / 2;
@@ -75,6 +76,8 @@ export default class EscenaCuestionario extends Phaser.Scene {
         this.activeField = this.inputFields[0];
         this.updateActiveBox(this.activeField);
 
+        this.virtualKeys = [];
+
         // Teclado
         this.input.keyboard.on('keydown', this.handleTyping, this);
         this.input.keyboard.on('keydown-TAB', (event) => {
@@ -110,6 +113,10 @@ export default class EscenaCuestionario extends Phaser.Scene {
         box.on('pointerdown', () => {
             this.activeField = box;
             this.updateActiveBox(box);
+            if (this.isMobile) {
+                this.hideVirtualKeyboard();
+                this.createVirtualKeyboard(box);
+            }
         });
 
         this.inputFields.push(box);
@@ -184,5 +191,62 @@ export default class EscenaCuestionario extends Phaser.Scene {
         // Ir a siguiente escena
         this.scene.stop('juego');
         this.scene.start('juego', { playerData: this.playerData });
+    }
+
+    createVirtualKeyboard(targetField) {
+        const keys = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789".split("");
+        const keyWidth = this.cameras.main.width * 0.03125;
+        const keyHeight = this.cameras.main.width * 0.03125;
+        const gap = this.cameras.main.width * 0.003125;
+        const startX = this.cameras.main.width / 1.5;
+        const startY = this.cameras.main.height / 3;
+
+        keys.forEach((k, index) => {
+            const row = Math.floor(index / 10);
+            const col = index % 10;
+
+            const key = this.add.text(
+                startX + col * (keyWidth + gap),
+                startY + row * (keyHeight + gap),
+                k,
+                { fontSize: '28px', backgroundColor: '#555', color: '#fff', padding: { x: 10, y: 10 } }
+            ).setInteractive();
+
+            key.on('pointerdown', () => {
+                targetField.textObj.setText(targetField.textObj.text + k);
+                this.playerData[targetField.fieldKey] = targetField.textObj.text;
+            });
+
+            this.virtualKeys.push(key);
+        });
+
+        // Borrar
+        const backspace = this.add.text(
+            startX,
+            startY + 4 * (keyHeight + gap),
+            "⌫",
+            { fontSize: '28px', backgroundColor: '#900', color: '#fff', padding: { x: 10, y: 10 } }
+        ).setInteractive();
+        backspace.on('pointerdown', () => {
+            targetField.textObj.setText(targetField.textObj.text.slice(0, -1));
+            this.playerData[targetField.fieldKey] = targetField.textObj.text;
+        });
+        this.virtualKeys.push(backspace);
+
+        // Cerrar teclado
+        const closeKey = this.add.text(
+            startX + 120,
+            startY + 4 * (keyHeight + gap),
+            "Cerrar",
+            { fontSize: '28px', backgroundColor: '#333', color: '#fff', padding: { x: 10, y: 10 } }
+        ).setInteractive();
+        closeKey.on('pointerdown', () => this.hideVirtualKeyboard());
+        this.virtualKeys.push(closeKey);
+    }
+
+    hideVirtualKeyboard() {
+        if (!this.virtualKeys) return;
+        this.virtualKeys.forEach(k => k.destroy());
+        this.virtualKeys = [];
     }
 }

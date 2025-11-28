@@ -1,7 +1,8 @@
-# Grand!Scam
-## Juegos Serios 2025/2026 - 3ºV GDV
+# 💲Grand!Scam💲
+## Juegos Serios 2025/2026 - 3ºV GDV - V.2.0
 ### Nombre del grupo: UNDERGROUND
-#### Página Web
+### Sergio Naranjo Barroso y Jule Page Galocha
+#### 💥Página Web💥
 https://julepage.github.io/GrandScam-JuegosSerios/
 	
 ## Descripción del juego
@@ -58,7 +59,7 @@ La cámara permanecerá completamente estática en la escena, manteniendo siempr
 llamadas por teléfono en las que te pedirán tanto información personal como dinero.
 #### SMS:  
 mensajes al móvil en los que hay enlaces que pueden ser o no malignos, etc.
-#### Correos electrónicos: e
+#### Correos electrónicos:
 mails pidiendo cambios de contraseña o datos.
 #### Whatsapps: 
 suplantación de identidad, solicitud de datos personales o información bancaria, etc.
@@ -73,14 +74,18 @@ se emplea únicamente para rellenar el cuestionario inicial.
 #### Interacción con dispositivos: 
 El teléfono fijo y móvil tendrán una animación para indicar cuando son interactuables (recibes una llamada, mensaje, etc). Una vez ocurra ésto, el jugador hará clic en ellos para interactuar.
 #### Toma de decisiones:
-Sucede algo (llamada o mensaje).
-Se presentan varias opciones para responder a esta situación, el jugador debe hacer clic en la que quiera para responder.
-Ejemplo: 
-Hola mamá, necesito dinero ¿podrías hacerme una transferencia?
-Opciones:
-A: Claro, ahora mismo.
-B: Es un número desconocido, no contesto.
-C: Hacer una pregunta que sólo tu hija podría responder.
+Sucede algo (llamada o mensaje).  
+Se presentan varias opciones para responder a esta situación.  
+El jugador debe hacer clic en la opción que quiera para responder.
+
+**Ejemplo:**  
+*"Hola mamá, necesito dinero. ¿Podrías hacerme una transferencia?"*
+
+**Opciones:**
+- **A:** Claro, ahora mismo.  
+- **B:** Es un número desconocido, no contesto.  
+- **C:** Hacer una pregunta que solo tu hija podría responder.
+  
 #### Sistema de vidas:
 El jugador comienza teniendo 3 vidas.
 Pierde una vida si:
@@ -102,14 +107,72 @@ Se incluyen variaciones de tono, tipos de mensaje y credibilidad de los estafado
 
 ## Diseño del juego
 ### Tutorial inicial:
-El juego comenzará con un tutorial en el que se enseñarán las distintas mecánicas, cómo interactuar con los objetos y el objetivo.
+El juego comenzará en un menú peincipal en el que podrás elegir si jugar o su meterte en el tutorial en el que se enseñarán las distintas mecánicas, cómo interactuar con los objetos y el objetivo del juego.
 ### Cuestionario:
 A continuación, el jugador deberá rellenar una encuesta en la que se le pedirán datos personales como nombre, dirección, etc. Los datos obligatorios aparecerán con un asterisco al lado, los demás no será opcional rellenarlos. 
 ### Desarrollo:
-Una vez acabado el cuestionario, comenzará la partida. Durante ésta, se irán recibiendo tanto llamadas como mensajes. Una vez llegue uno de los anteriores, el jugador deberá elegir como reaccionar eligiendo una de las opciones que aparecerán en pantalla. Dependiendo de las respuestas, perderás vidas (si no has conseguido identificar cuando era una estafa y cuando no lo era) o no. Ésto se repetirá o bien hasta que hayas superado suficientes retos o hasta que hayas perdido todas las vidas.
+Una vez acabado el cuestionario, comenzará la partida. Durante ésta, se irán recibiendo tanto llamadas como mensajes. Una vez llegue uno de los anteriores, el jugador deberá elegir como reaccionar eligiendo una de las opciones que aparecerán en pantalla. Dependiendo de las respuestas, perderás vidas (si no has conseguido identificar cuando era una estafa y cuando no lo era) o no. Ésto se repetirá o bien hasta que hayas superado suficientes retos o hasta que hayas perdido todas las vidas. Además después de cada caso o falles o aciertes te dará una enseñanza y te dirá si has fallado o no.
 ### Final:
 Una vez acaba la partida, si ganas, aparecerá una enseñanza y varios enlaces en los que se puede hacer clic para visitar webs en las que se profundiza más acerca de este tipo de estafas y cómo evitarlas.
 Si pierdes, saldrá un mensaje de aviso y se reiniciará el juego.
+### Diseño JSON:
+El JSON está compuesto por categorías. Las primeras categorías hacen referencia al dispositivo, teniendo SCAMS de teléfono fijo y de teléfono móvil, nombradas como movil y telefono. Dentro de esas categorías se encuentran otros bloques según el tipo de engaño, teniendo llamada en teléfono y SMS, whatsapp y correo en móvil.
+
+En cada una de estas categorías habrá otras dos, obligatorio y opcional, y dentro de estas habrá los distintos casos.
+Los casos empiezan con un contenedor llamado caso1, caso2, ..., casoN, y dentro de estos la estructura será por distintos bloques.
+
+Los bloques están organizados de forma que todos tienen un mIni, el texto inicial, unas opciones y, en los casos en que en la estafa se usen enlaces, también tendrán un apartado llamado enlace.
+
+Dentro de las opciones habrá apartados que tendrán texto y siguiente; el texto sería la respuesta que da el jugador y siguiente el siguiente bloque al que va a pasar el jugador según su respuesta. Este bloque estará configurado de la misma manera.
+
+El flujo del juego funcionaría de esa forma hasta llegar a una opción en la que el siguiente es fallo o acierto; estos son bloques especiales que tienen solo mIni, que funciona como aprendizaje en caso de fallo o como felicitación en caso de acierto.
+
+Todos los bloques de caso comienzan con un primer bloque llamado comienzo.
+
+La estructura final de un caso, por ejemplo de whatsapp, sería esta:
+
+```
+"movil"{
+ "whatsapp"{ 
+  "obligatorio"{  
+   "caso1"{   
+    "comienzo"{
+     "mIni": "..." 
+     "opciones"[
+      {	 
+       "texto": "...",	  
+       "siguiente": "sig"	  
+      },	 
+      { 
+       "texto": "...",	  
+       "siguiente": "..."	  
+      }
+     ]	 
+    },	
+    "sig"{	
+     "mIni": "..."	 
+     "opciones"[
+      {	 
+       "texto": "...",	  
+       "siguiente": "acierto"	  
+      },	 
+      {	 
+       "texto": "...",  
+       "siguiente": "fallo"	  
+      }
+     ]	 
+    },	
+    "acierto"{	
+     "mIni": "..."	 
+    },	
+    "fallo"{	
+     "mIni": "..." 
+    }
+   }   
+  }  
+ } 
+}
+```
 
 </details>
 
@@ -121,26 +184,29 @@ Si pierdes, saldrá un mensaje de aviso y se reiniciará el juego.
 - Sala de estar.
 - Objetos interactuables.
   
+[Fondo Juego](docs/assets/fondoJuego.png)
 ### HUD:
 - Nº de vidas: 3 corazones.
 - Nº casos resueltos.
 - Botón a menú de pausa.
-
+  
+[Vidas](docs/assets/vidas.png)
 ### Menú de pausa:
+- Menú opciones
+- Menú incial para volver
+- Continuar el juego
+
+### Menú de opciones:
 - Ajustes de sonido
 - Opción de lectura de textos
-- Tutorial
-- Salir del juego
-
+- Pantalla grande
+  
 ### Pantalla de móvil con mensajes y preguntas con opciones:
-- Correo electrónico
-- SMS
-- Whatsapp
-- Diálogo del personaje
-- Posibles respuestas 
+- Consiste en una pantalla en la que habrá o bien un telefono fijo o bien un móvil. En el segundo caso, el móvil tendrá una imagen en la que se muestra si es un whatsapp, correo, etc.
+Además tendrá el bocadillo de diálogo del posible estafador y las respuestas a elegir. 
 
 ### Cuestionario
-- Preguntas del cuestionario
+- Preguntas del cuestionario las cuales se usan posteriormente para hacer las estafas más creibles y difíciles de detectar.
 
   [Imagen Cuestionario](docs/assets/fondoCuestionario.png)
 
@@ -152,20 +218,21 @@ Si pierdes, saldrá un mensaje de aviso y se reiniciará el juego.
 		
 ## Sonido y arte:
 ### Música:
-- Será música sin letra, solamente instrumentos.
+- Música sin letra, solamente instrumentos.
 - El sonido se podrá subir o bajar, e incluso silenciar. 
 - Será un estilo relajado y cálido (guitarra, piano, violín).
 
 ### Sonidos:
-- Los efectos de sonido estarán inspirados en los de producciones clásicas como Disney.
+- Los efectos de sonido están inspirados en los de producciones clásicas como Disney.
 - El juego tendrá una opción en la que todos los textos se leerán en alto para aquellas personas con mala visión.
 
 ### Arte:
 - El arte estará inspirado en el estilo cartoon de los 50-60.
 - Referencias: Snoopy, Mafalda.
-- Se usarán muchos colores cálidos para que se sientan tranquilos y como en casa además de añadir mucha ayuda visual para que sepan en todo momento que tienen que hacer.
+- Se usan muchos colores cálidos para que se sientan tranquilos y como en casa además de que aporta mucha ayuda visual para que sepan en todo momento que tienen que hacer.
 - Interfaz con tipología grande y clara.
-[Imagen Paleta](https://github.com/user-attachments/assets/44b541ab-1cc4-4e90-b28d-c6caecce4057)
+  
+[Imagen Paleta](docs/assets/GDD/image1.png)
 
 </details>
 
@@ -192,21 +259,18 @@ Por último, si nos fuera posible, intentaremos hacer playtesting para poder rec
 
 Algunos juegos que han servido de inspiración en términos de mecánicas y estilo son:
 
-- Papers Please: por su sistema de toma de decisiones y gestión moral.
+- Papers, Please: por su sistema de toma de decisiones y gestión moral.
 
-[Cuphead](https://github.com/user-attachments/assets/8b25dd1d-acf8-485f-9a34-c2b0eb177597)
+[Papers, Please](docs/assets/GDD/image3.png)
 
 - JustShare y SCHEDULE 1: por el uso de un móvil
 
-[Balatro](https://github.com/user-attachments/assets/c24e4e4c-d4ce-42f3-9485-36355d902337)
+[SCHEDULE 1](docs/assets/GDD/image6.png)
 
 - Preguntados: por las preguntas con opciones.
 
-[Super Mario 64 DS](https://github.com/user-attachments/assets/d2a8af99-9e95-4be9-bb39-d680dc4a0c5d)
+- Estafas del banco Santander: ideas de tipos de estafas digitales
 
-Estafas del banco Santander: ideas de tipos de estafas digitales
-
-[Soul Eater](https://github.com/user-attachments/assets/f6d6a28e-9e56-467c-9c1c-8da3c2ec6864)
 
 </details>
 <details>
@@ -217,6 +281,8 @@ Estafas del banco Santander: ideas de tipos de estafas digitales
 Esta obra está licenciada bajo una licencia Creative Commons Atribución–NoComercial–CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0).
 © 2025 Jule Page Galocha y Sergio Naranjo Barroso.
 Más información: https://creativecommons.org/licenses/by-nc-sa/4.0/
+
+UNDERGROUND™ es un nombre de empresa utilizada por nosotros. No se permite usar el nombre, logotipo o identidad de la empresa sin permiso.”
 
 La música usada es https://youtu.be/KmKwAh8ASXw?si=OPy2_d58Xkui0hb2
 
