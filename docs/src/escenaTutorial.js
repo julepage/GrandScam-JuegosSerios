@@ -38,12 +38,12 @@ export default class Tutorial extends Phaser.Scene {
         this.capa;
 
         //INSTANCIA DEL TELEFONO (ESTA FIJO PERO SIN ANIM)
-        this.telefono = this.add.sprite(this.cameras.main.width / 1.25,
+        this.telefonoTutorial = this.add.sprite(this.cameras.main.width / 1.25,
             this.cameras.main.height / 1.45, 'animTelefono').setInteractive();
 
 
         //PULSACION DEL BOTON TELEFONO
-        this.telefono.on('pointerdown', () => {
+        this.telefonoTutorial.on('pointerdown', () => {
             if (this.entraLLamada) {
                 this.instruccionTexto.destroy();
                 this.capa.destroy();
@@ -84,8 +84,8 @@ export default class Tutorial extends Phaser.Scene {
 
     //CAMBIOS ESCENAS
     telefonoScene() {
-        this.telefono.stop();
-        this.telefono.setFrame(0);
+        this.telefonoTutorial.stop();
+        this.telefonoTutorial.setFrame(0);
         this.masLLamada = false;
         this.scene.launch('tutorialTelefono', { vidas: this.vidas, textos: this.textos });
     }
@@ -125,7 +125,7 @@ export default class Tutorial extends Phaser.Scene {
                 const num = Phaser.Math.Between(0, 2);
                 if (num == 0 && this.masLLamada) {
                     this.entraLLamada = true;
-                    this.telefono.anims.play('telefono');
+                    this.telefonoTutorial.anims.play('telefono');
 
                     this.capa = this.add.image(0, 0, 'tutorialT');
                     this.capa.setScale(this.cameras.main.height / this.fondo.height);
@@ -159,7 +159,7 @@ export default class Tutorial extends Phaser.Scene {
                 }
             }
 
-            if (!this.scene.isActive('tutorialTelefono') && !this.telefono.anims.isPlaying) {
+            if (!this.scene.isActive('tutorialTelefono') && !this.telefonoTutorial.anims.isPlaying) {
                 this.entraLLamada = false;
             }
             if (!this.scene.isActive('tutorialMovil') && !this.movil.anims.isPlaying) {
@@ -228,7 +228,7 @@ export default class Tutorial extends Phaser.Scene {
                     ).setOrigin(0.5);
 
                     this.time.delayedCall(9000, () => {
-                        this.scene.stop('tutorial'); // detiene la escena actual o una diferente
+                        this.scene.stop(); // detiene la escena actual o una diferente
                         this.scene.start('menu'); // inicia la nueva
                     }, [], this);
 
