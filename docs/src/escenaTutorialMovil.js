@@ -11,35 +11,43 @@ export default class EscenaTutorialMovil extends Phaser.Scene {
   }
 
   create() {
-    //CREAR MENSAJE
-    //Fondo negro translucido
     const { width, height } = this.scale;
-    this.add.rectangle(0, 0, width * 2, height * 2, 0x000000, 0.5).setOrigin(0);
-    //fondo movil
+
+    // Fondo negro general (si lo necesitas)
+    this.capa = this.add.rectangle(0, 0, width * 2, height * 2, 0x000000, 1).setOrigin(0);
+
+    // Fondo negro independiente para el mensaje "lee y haz clic..."
+    this.fondoMensaje = this.add.rectangle(0, 0, width * 2, height * 2, 0x000000, 0.85)
+      .setOrigin(0)
+      .setDepth(10)
+      .setInteractive(); // Bloquea clics detrás de esta capa
+
+    // Fondo movil
     this.fondo = this.add.image(0, 0, 'fondoMovil');
     this.fondo.setScale(this.cameras.main.height / this.fondo.height);
     this.fondo.setDisplaySize(this.fondo.width * this.cameras.main.height / this.fondo.height, this.cameras.main.height);
     this.fondo.setPosition(this.cameras.main.width / 2, this.cameras.main.height / 2);
 
-    //poner bocadillos
-    this.bocadillos = new Bocadillos(this, this.textos.tutorial.movil.SMS, this.textos.tutorial.movil, this.vidas);//hasta caso1
+    // Bocadillos
+    this.bocadillos = new Bocadillos(this, this.textos.tutorial.movil.SMS, this.textos.tutorial.movil, this.vidas);
     this.bocadillos.ponerBocadillos(this.textos.tutorial.movil.SMS.comienzo.opciones);
-    this.bocadillos.ponerTextos(this.textos.tutorial.movil.SMS.comienzo.opciones); this.capa = this.add.image(0, 0, 'tutorialB');
-    this.capa.setScale(this.cameras.main.height / this.fondo.height);
-    this.capa.setPosition(this.cameras.main.width / 2, this.cameras.main.height / 2);
+    this.bocadillos.ponerTextos(this.textos.tutorial.movil.SMS.comienzo.opciones);
 
+    // Texto centrado y saltable con ENTER
     this.instruccionTexto = this.add.text(
-      this.cameras.main.centerX / 3,
-      this.cameras.main.centerY, // un poco arriba del centro
+      this.cameras.main.centerX,
+      this.cameras.main.centerY,
       this.textos.tutorial.bocadillos.respuestas,
       { fontSize: '45px', fill: '#ffffff', align: 'center', backgroundColor: '#000000' }
-    ).setOrigin(0.5);
-  }
+    ).setOrigin(0.5).setDepth(11);
 
-  update() {
-    this.time.delayedCall(5000, () => {
-      this.instruccionTexto.destroy();
-      this.capa.destroy();
-    }, [], this);
+    // Tecla ENTER para saltar el mensaje
+    this.enter = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);
+    this.enter.on('down', () => {
+      if (this.instruccionTexto) {
+        this.instruccionTexto.destroy();
+        this.fondoMensaje.destroy(); // solo destruye el fondo del mensaje
+      }
+    });
   }
 }

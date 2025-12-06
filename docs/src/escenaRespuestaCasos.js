@@ -12,7 +12,7 @@ export default class RespuestaCasos extends Phaser.Scene {
     create() {
         //Fondo negro translucido
         const { width, height } = this.scale;
-        this.add.rectangle(0, 0, width * 2, height * 2, 0x000000, 0.5).setOrigin(0);
+        this.add.rectangle(0, 0, width * 2, height * 2, 0x000000, 0.65).setOrigin(0);
 
         // Botón
         this.text = this.add.text(this.cameras.main.width / 2, this.cameras.main.height * 2 / 5, this.textos[this.respuesta].mIni, {
