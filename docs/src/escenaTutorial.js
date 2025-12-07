@@ -1,6 +1,3 @@
-// Versión adaptada: los textos permanecen hasta que el jugador pulsa ENTER para continuar
-// Sustituye tu archivo Tutorial.js por este o adapta las partes marcadas
-
 import GestionVida from "./gestionVida.js";
 
 export default class Tutorial extends Phaser.Scene {
@@ -19,13 +16,13 @@ export default class Tutorial extends Phaser.Scene {
 
         this.cameras.main.fadeIn(1000, 0, 0, 0);
 
-        // --- CIELO SCROLL ---
+        //CIELO VENTANA
         this.scrollSpeed = 0.4;
         this.ventana1 = this.add.image(0, 0, "ventana1").setOrigin(0, 0);
         this.ventana2 = this.add.image(this.ventana1.width, 0, "ventana2").setOrigin(0, 0);
         this.ventana3 = this.add.image(this.ventana1.width * 2, 0, "ventana3").setOrigin(0, 0);
 
-        // --- FONDO ---
+        //FONDO
         this.fondo = this.add.image(0, 0, "fondoJuego");
         this.fondo.setScale(this.cameras.main.height / this.fondo.height);
         this.fondo.setPosition(
@@ -35,7 +32,7 @@ export default class Tutorial extends Phaser.Scene {
 
         this.vidas = new GestionVida(this);
 
-        // --- HUMO ---
+        //HUMO
         this.humo = this.add.sprite(
             this.cameras.main.width / 4.45,
             this.cameras.main.height / 1.52,
@@ -43,11 +40,10 @@ export default class Tutorial extends Phaser.Scene {
         );
         this.humo.anims.play("humo");
 
-        // --- TEXTOS ---
         this.instruccionTexto = null;
         this.capa = null;
 
-        // --- OBJETOS INTERACTIVOS ---
+        //TELEF Y MOVIL
         this.telefonoTutorial = this.add
             .sprite(
                 this.cameras.main.width / 1.25,
@@ -74,7 +70,7 @@ export default class Tutorial extends Phaser.Scene {
 
         this.textos = this.cache.json.get("es");
 
-        // INTRO — ahora NO desaparece por tiempo, se avanza con ENTER
+        //INTRO
         this.mensaje1 = this.add
             .text(
                 this.cameras.main.width / 2,
@@ -87,19 +83,17 @@ export default class Tutorial extends Phaser.Scene {
                     stroke: "#561b00ff",
                     strokeThickness: 10,
                     backgroundColor: "#000000",
-                    align: "center",
+                    align: "center"
                 }
             )
             .setScale(0.4)
             .setDepth(1)
             .setOrigin(0.5);
 
-        // Tecla ENTER para pasar textos
+        //ENTER
         this.enter = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);
 
         this.enter.on("down", () => {
-            // SOLO avanza si NO estamos dentro de las escenas tutorialMovil o tutorialTelefono
-            // y NO estamos en los pasos de clic (llamada/mensaje)
             if (
                 !this.scene.isActive("tutorialMovil") &&
                 !this.scene.isActive("tutorialTelefono") &&
@@ -109,56 +103,81 @@ export default class Tutorial extends Phaser.Scene {
                 this.avanzarPaso();
             }
         });
-
-
-        this.paso = "intro"; // control del tutorial
+        //EMPIEZO EN INTRO
+        this.paso = "intro";
     }
 
+   
+    //INTRO → RESUMEN → VIDAS → PAUSA → CASOS
     avanzarPaso() {
         if (!this.puedePasar) return;
 
+        //INTRO→RESUMEN
         if (this.paso === "intro") {
             this.mensaje1.destroy();
-            this.paso = "esperando_evento";
+            this.mostrarResumen();
+            this.paso = "resumen";
             return;
         }
 
-        if (this.paso === "llamada") {
-            this.instruccionTexto.destroy();
-            this.capa.destroy();
-            this.telefonoScene();
-            this.paso = "esperando_evento";
+        //RESUMEN→VIDAS
+        if (this.paso === "resumen") {
+            this.textoResumen.destroy();
+            this.capaResumen.destroy();
+            this.paso = "vidas";
+            this.mostrarVidasPaso();
             return;
         }
 
-        if (this.paso === "mensaje") {
-            this.instruccionTexto.destroy();
-            this.capa.destroy();
-            this.movilScene();
-            this.paso = "esperando_evento";
-            return;
-        }
-
+        //VIDAS→PAUSA
         if (this.paso === "vidas") {
             this.instruccionTexto1.destroy();
             this.flecha.destroy();
             this.mostrarPasoPausa();
+            this.paso = "pausa";
             return;
         }
 
+        //PAUSA→ESPERANDO CASOS
         if (this.paso === "pausa") {
             this.textoPausa.destroy();
             this.botonPausa.destroy();
             this.capa1.destroy();
             this.flecha.destroy();
-            this.mostrarResumen();
+            this.paso = "esperando_evento";
             return;
         }
 
-        if (this.paso === "resumen") {
-            this.scene.start("menu");
+        //LLAMADA
+        if (this.paso === "llamada") {
+            this.instruccionTexto.destroy();
+            this.capa.destroy();
+            this.telefonoScene();
+            this.paso = "esperando_evento";
+
+            //Si ya se han hecho ambos casos, terminar tutorial
+            if (!this.masLLamada && !this.masMensaje) {
+                this.scene.start("menu");
+            }
+
             return;
         }
+
+        //MENSAJE
+        if (this.paso === "mensaje") {
+            this.instruccionTexto.destroy();
+            this.capa.destroy();
+            this.movilScene();
+            this.paso = "esperando_evento";
+
+            //Si ya se hicieron ambos casos, terminar tutorial
+            if (!this.masLLamada && !this.masMensaje) {
+                this.scene.start("menu");
+            }
+
+            return;
+        }
+
     }
 
     telefonoScene() {
@@ -167,7 +186,7 @@ export default class Tutorial extends Phaser.Scene {
         this.masLLamada = false;
         this.scene.launch("tutorialTelefono", {
             vidas: this.vidas,
-            textos: this.textos,
+            textos: this.textos
         });
     }
 
@@ -177,12 +196,12 @@ export default class Tutorial extends Phaser.Scene {
         this.masMensaje = false;
         this.scene.launch("tutorialMovil", {
             vidas: this.vidas,
-            textos: this.textos,
+            textos: this.textos
         });
     }
 
-    mostrarPasoPausa() {
-        this.paso = "pausa";
+    //VIDA
+    mostrarVidasPaso() {
         this.capa1 = this.add
             .image(0, 0, "tutorialV")
             .setScale(this.cameras.main.height / this.fondo.height)
@@ -191,6 +210,31 @@ export default class Tutorial extends Phaser.Scene {
                 this.cameras.main.height / 2
             );
 
+        this.flecha = this.add
+            .image(0, 0, "flecha")
+            .setScale(this.cameras.main.height / this.fondo.height)
+            .setPosition(
+                this.cameras.main.width / 2,
+                this.cameras.main.height / 3
+            );
+
+        this.instruccionTexto1 = this.add
+            .text(
+                this.cameras.main.centerX,
+                this.cameras.main.centerY - 200,
+                this.textos.tutorial.bocadillos.vidas,
+                {
+                    fontSize: "48px",
+                    fill: "#ffffff",
+                    backgroundColor: "#000000"
+                }
+            )
+            .setOrigin(0.5);
+    }
+
+    //PAUSA
+    mostrarPasoPausa() {
+       
         this.flecha = this.add
             .image(0, 0, "flechaA")
             .setScale(this.cameras.main.height / this.fondo.height)
@@ -215,13 +259,15 @@ export default class Tutorial extends Phaser.Scene {
             .setOrigin(0.5);
     }
 
+    //RESUMEN
     mostrarResumen() {
-        this.paso = "resumen";
-
         const { width, height } = this.scale;
-        this.add.rectangle(0, 0, width * 2, height * 2, 0x000000, 0.8).setOrigin(0);
 
-        this.textoPausa = this.add
+        this.capaResumen = this.add
+            .rectangle(0, 0, width * 2, height * 2, 0x000000, 0.8)
+            .setOrigin(0);
+
+        this.textoResumen = this.add
             .text(
                 this.cameras.main.centerX,
                 this.cameras.main.centerY,
@@ -230,14 +276,14 @@ export default class Tutorial extends Phaser.Scene {
                     fontSize: "48px",
                     fill: "#ffffff",
                     align: "center",
-                    backgroundColor: "#000000",
+                    backgroundColor: "#000000"
                 }
             )
             .setOrigin(0.5);
     }
 
     update() {
-        // scroll del cielo
+        //scroll del cielo
         this.ventana1.x -= this.scrollSpeed;
         this.ventana2.x -= this.scrollSpeed;
         this.ventana3.x -= this.scrollSpeed;
@@ -249,7 +295,8 @@ export default class Tutorial extends Phaser.Scene {
         if (this.ventana3.x + this.ventana3.width <= 0)
             this.ventana3.x = Math.max(this.ventana1.x, this.ventana2.x) + this.ventana3.width;
 
-        // LÓGICA DE EVENTOS DEL TUTORIAL
+        
+        //EVENTOS LLAMADA / MENSAJE
         if (this.paso === "esperando_evento") {
             const num = Phaser.Math.Between(0, 2);
 
@@ -297,39 +344,6 @@ export default class Tutorial extends Phaser.Scene {
                         this.cameras.main.centerY - 200,
                         this.textos.tutorial.bocadillos.movil,
                         { fontSize: "48px", fill: "#ffffff" }
-                    )
-                    .setOrigin(0.5);
-            }
-
-            if (!this.masLLamada && !this.masMensaje) {
-                this.paso = "vidas";
-
-                this.capa1 = this.add
-                    .image(0, 0, "tutorialV")
-                    .setScale(this.cameras.main.height / this.fondo.height)
-                    .setPosition(
-                        this.cameras.main.width / 2,
-                        this.cameras.main.height / 2
-                    );
-
-                this.flecha = this.add
-                    .image(0, 0, "flecha")
-                    .setScale(this.cameras.main.height / this.fondo.height)
-                    .setPosition(
-                        this.cameras.main.width / 2,
-                        this.cameras.main.height / 3
-                    );
-
-                this.instruccionTexto1 = this.add
-                    .text(
-                        this.cameras.main.centerX,
-                        this.cameras.main.centerY - 200,
-                        this.textos.tutorial.bocadillos.vidas,
-                        {
-                            fontSize: "48px",
-                            fill: "#ffffff",
-                            backgroundColor: "#000000",
-                        }
                     )
                     .setOrigin(0.5);
             }

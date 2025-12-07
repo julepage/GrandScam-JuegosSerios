@@ -3,63 +3,81 @@ export default class EscenaMenu extends Phaser.Scene {
         super({ key: 'menu' });
     }
 
-
     create() {
         const textos = this.cache.json.get('es');
+
+        // Fondo
         this.fondo = this.add.image(0, 0, 'fondoMenu');
         this.fondo.setScale(this.cameras.main.height / this.fondo.height);
         this.fondo.setPosition(this.cameras.main.width / 2, this.cameras.main.height / 2);
 
+        // Estado del cuestionario
         const cuestionarioCompletado = this.registry.get('cuestionarioCompletado') ?? false;
-        this.c = cuestionarioCompletado;//niapa
+        this.c = cuestionarioCompletado;
+        
+        // Teclas
+        //this.teclaEnter = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);
         this.teclaSpace = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
-        this.botonJugar = this.crearBotonConFlecha(this.cameras.main.width / 1.265, this.cameras.main.height * 3.65/7, textos.botones.jugar,
-            () => {
-                this.cameras.main.fadeOut(1000, 0, 0, 0); // (duración, r, g, b)
 
+        // Desactivar temporalmente la detección de teclas
+        this.enterEnabled = false;
+        this.spaceEnabled = false;
+
+        // Habilitar las teclas después de un pequeño delay (200 ms)
+        this.time.delayedCall(200, () => {
+            this.enterEnabled = true;
+            this.spaceEnabled = true;
+        });
+
+        // Botón Jugar
+        this.botonJugar = this.crearBotonConFlecha(
+            this.cameras.main.width / 1.265,
+            this.cameras.main.height * 3.65 / 7,
+            textos.botones.jugar,
+            () => {
+                this.cameras.main.fadeOut(1000, 0, 0, 0);
                 this.cameras.main.once('camerafadeoutcomplete', () => {
                     if (!cuestionarioCompletado) {
                         this.scene.start('cuestionario');
-                    }
-                    else {
+                    } else {
                         this.scene.stop('juego');
                         this.scene.start('juego');
                     }
                 });
+            }
+        );
 
-            });
-
-        this.botonTutorial = this.crearBotonConFlecha(this.cameras.main.width / 1.265, this.cameras.main.height *4.35/7, textos.botones.tutorial,
+        // Botón Tutorial
+        this.botonTutorial = this.crearBotonConFlecha(
+            this.cameras.main.width / 1.265,
+            this.cameras.main.height * 4.35 / 7,
+            textos.botones.tutorial,
             () => {
-                this.cameras.main.fadeOut(1000, 0, 0, 0); // (duración, r, g, b)
-
+                this.cameras.main.fadeOut(1000, 0, 0, 0);
                 this.cameras.main.once('camerafadeoutcomplete', () => {
                     this.scene.start('tutorial');
                 });
-
-            });
+            }
+        );
     }
 
     update() {
-        // Revisar si se presionó Enter
+        // // Revisar teclas solo si ya se habilitaron
+        // if (this.enterEnabled && Phaser.Input.Keyboard.JustDown(this.teclaEnter)) {
+        //     if (!this.c) {
+        //         this.scene.start('cuestionario');
+        //     } else {
+        //         this.scene.start('juego');
+        //     }
+        // }
 
-        if (Phaser.Input.Keyboard.JustDown(this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER))) {
-            if (!this.c) {
-                this.scene.start('cuestionario');
-            }
-            else {
-                this.scene.start('juego');
-            }
-        }
-
-        if (Phaser.Input.Keyboard.JustDown(this.teclaSpace)) {
+        if (this.spaceEnabled && Phaser.Input.Keyboard.JustDown(this.teclaSpace)) {
             this.scene.start('tutorial');
         }
     }
 
-    //METODO PARA CREAR BOTONES
+    // Método para crear botones
     crearBotonConFlecha(x, y, texto, accion) {
-        // Crear el texto del botón
         const boton = this.add.text(x, y, texto, {
             fontFamily: 'Georgia, "Times New Roman", serif',
             fontSize: '150px',
@@ -73,9 +91,6 @@ export default class EscenaMenu extends Phaser.Scene {
             .setDepth(1)
             .setOrigin(0.5, 0.5);
 
-
-
-        // Eventos del botón
         boton.on('pointerover', () => {
             boton.setStyle({ fontSize: '160px', color: '#ffd500ff' });
         });
@@ -84,11 +99,8 @@ export default class EscenaMenu extends Phaser.Scene {
             boton.setStyle({ fontSize: '150px', color: '#f8f8f8ff' });
         });
 
-        boton.on('pointerdown', accion);//lo que hace cuando lo presionas
-        // Dentro de tu escena actual
-
+        boton.on('pointerdown', accion);
 
         return boton;
     }
-
 }
