@@ -7,6 +7,7 @@ export default class ManagerAudioextends {
 
         this.volumenMusica = 1;
         this.volumenFx = 1;
+        this.volMusica(0.1);
     }
 
     musica(key) {
@@ -26,12 +27,16 @@ export default class ManagerAudioextends {
         return fx;
     }
 
-    volumenMusica(valor) {
+    volMusica(valor) {
         this.volumenMusica = valor;
         this.musicas.forEach(m => m.setVolume(valor));
     }
 
-    volumenFx(valor) {
+    stopMusic() {
+        this.musicas.forEach(m => m.stop());
+    }
+
+    volFx(valor) {
         this.volumenFx = valor;
         this.efectos.forEach(e => e.setVolume(valor));
     }

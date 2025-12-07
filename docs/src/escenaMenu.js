@@ -4,8 +4,12 @@ export default class EscenaMenu extends Phaser.Scene {
     }
 
     create() {
+        this.game.audioManager.stopMusic();
         const textos = this.cache.json.get('es');
         this.cameras.main.fadeIn(1000, 0, 0, 0);
+        this.music = this.game.audioManager.musica("musicaMenu");
+        this.buttonEffect = this.game.audioManager.fx("buttonClick");
+        this.music.play()
         // Fondo
         this.fondo = this.add.image(0, 0, 'fondoMenu');
         this.fondo.setScale(this.cameras.main.height / this.fondo.height);
@@ -14,7 +18,7 @@ export default class EscenaMenu extends Phaser.Scene {
         // Estado del cuestionario
         const cuestionarioCompletado = this.registry.get('cuestionarioCompletado') ?? false;
         this.c = cuestionarioCompletado;
-        
+
         // Teclas
         //this.teclaEnter = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);
         this.teclaSpace = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
@@ -35,13 +39,16 @@ export default class EscenaMenu extends Phaser.Scene {
             this.cameras.main.height * 3.65 / 7,
             textos.botones.jugar,
             () => {
+                this.buttonEffect.play();
                 this.cameras.main.fadeOut(1000, 0, 0, 0);
                 this.cameras.main.once('camerafadeoutcomplete', () => {
                     if (!cuestionarioCompletado) {
                         this.scene.start('cuestionario');
+                        this.music.stop()
                     } else {
                         this.scene.stop('juego');
                         this.scene.start('juego');
+                        this.music.stop()
                     }
                 });
             }
@@ -53,9 +60,11 @@ export default class EscenaMenu extends Phaser.Scene {
             this.cameras.main.height * 4.35 / 7,
             textos.botones.tutorial,
             () => {
+                this.buttonEffect.play();
                 this.cameras.main.fadeOut(1000, 0, 0, 0);
                 this.cameras.main.once('camerafadeoutcomplete', () => {
                     this.scene.start('tutorial');
+                    this.music.stop()
                 });
             }
         );
@@ -72,7 +81,9 @@ export default class EscenaMenu extends Phaser.Scene {
         // }
 
         if (this.spaceEnabled && Phaser.Input.Keyboard.JustDown(this.teclaSpace)) {
+            this.buttonEffect.play();
             this.scene.start('tutorial');
+            this.music.stop()
         }
     }
 

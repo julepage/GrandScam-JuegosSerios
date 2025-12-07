@@ -11,12 +11,15 @@ export default class EscenaMovil extends Phaser.Scene {
     this.randomApp = data.randomApp;
     this.randomCaso = data.randomCaso;
     this.obligatorio = data.obligatorio;
+    this.musicaMenu = data.musica;
   }
 
   create() {
     //Fondo negro translucido
     const { width, height } = this.scale;
     this.add.rectangle(0, 0, width * 2, height * 2, 0x000000, 0.5).setOrigin(0);
+    this.music = this.game.audioManager.musica("tension");
+    this.music.play();
     //fondo movil
     this.fondo = this.add.image(0, 0, 'fondoMovil');
     this.fondo.setScale(this.cameras.main.height / this.fondo.height);
@@ -26,12 +29,12 @@ export default class EscenaMovil extends Phaser.Scene {
     //poner bocadillos
     if (this.randomCaso != " ") {
       if (this.obligatorio) {
-        this.bocadillos = new Bocadillos(this, this.textos.movil[this.randomApp].obligatorio[this.randomCaso], this.textos.movil[this.randomApp], this.vidas);//hasta caso1
+        this.bocadillos = new Bocadillos(this, this.textos.movil[this.randomApp].obligatorio[this.randomCaso], this.textos.movil[this.randomApp], this.vidas, this.musicaMenu);//hasta caso1
         this.bocadillos.ponerBocadillos(this.textos.movil[this.randomApp].obligatorio[this.randomCaso].comienzo.opciones);
         this.bocadillos.ponerTextos(this.textos.movil[this.randomApp].obligatorio[this.randomCaso].comienzo.opciones);
       }
       else{
-        this.bocadillos = new Bocadillos(this, this.textos.movil[this.randomApp].opcional[this.randomCaso], this.textos.movil[this.randomApp], this.vidas);//hasta caso1
+        this.bocadillos = new Bocadillos(this, this.textos.movil[this.randomApp].opcional[this.randomCaso], this.textos.movil[this.randomApp], this.vidas, this.musicaMenu);//hasta caso1
         this.bocadillos.ponerBocadillos(this.textos.movil[this.randomApp].opcional[this.randomCaso].comienzo.opciones);
         this.bocadillos.ponerTextos(this.textos.movil[this.randomApp].opcional[this.randomCaso].comienzo.opciones);
       }

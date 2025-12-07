@@ -4,6 +4,10 @@ export default class Victoria extends Phaser.Scene {
     }
 
     create() {
+        this.game.audioManager.stopMusic();
+        this.buttonEffect = this.game.audioManager.fx("buttonClick");
+        this.victoria = this.game.audioManager.musica("victoria");
+        this.victoria.play();
         //POSICION Y TAMAÑO DEL FONDO
         this.fondo = this.add.image(0, 0, 'fondoJuego');
         this.fondo.setScale(this.cameras.main.height / this.fondo.height);
@@ -17,6 +21,7 @@ export default class Victoria extends Phaser.Scene {
         this.fondoV.setPosition(this.cameras.main.width / 2, this.cameras.main.height / 2);
 
         this.fondoV.on('pointerdown', () => {
+            this.buttonEffect.play();
             this.scene.start('menu');
         });
     }

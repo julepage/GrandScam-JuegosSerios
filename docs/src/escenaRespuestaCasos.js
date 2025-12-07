@@ -7,9 +7,12 @@ export default class RespuestaCasos extends Phaser.Scene {
         this.respuesta = data.respuesta;
         this.textos = data.textos;
         this.vidas = data.vidas;
+        this.musicaMenu = data.musica;
     }
 
     create() {
+        this.game.audioManager.stopMusic();
+        this.buttonEffect = this.game.audioManager.fx("buttonClick");
         //Fondo negro translucido
         const { width, height } = this.scale;
         this.rct = this.add.rectangle(0, 0, width * 2, height * 2, 0x000000, 0.65).setOrigin(0);
@@ -27,19 +30,22 @@ export default class RespuestaCasos extends Phaser.Scene {
         }).setOrigin(0.5).setInteractive();
 
         boton.on('pointerdown', () => {
-            if (this.scene.isPaused('juego'))
+            this.buttonEffect.play();
+            if (this.scene.isPaused('juego')) {
                 this.scene?.resume('juego');
-            if (this.scene.isPaused('tutorial')){
-                this.scene.get('tutorial').events.emit("tutorialFinalizado");
-                this.scene?.resume('tutorial'); 
+                this.musicaMenu.resume();
             }
-            this.scene.stop(); 
+            if (this.scene.isPaused('tutorial')) {
+                this.scene.get('tutorial').events.emit("tutorialFinalizado");
+                this.scene?.resume('tutorial');
+            }
+            this.scene.stop();
             this.vidas.comprobar();
         });
 
         if (this.respuesta == "acierto") {
             this.text.setColor('#5eff00ff');
-            boton.setStyle({ backgroundColor: '#5eff00ff', color: '#FF00FF'});
+            boton.setStyle({ backgroundColor: '#5eff00ff', color: '#FF00FF' });
             this.bckRct.setFillStyle(0xFF00FF, 0.65);
         }
         else {
@@ -72,9 +78,11 @@ export default class RespuestaCasos extends Phaser.Scene {
     }
     update() {
         if (Phaser.Input.Keyboard.JustDown(this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER))) {
-            if (this.scene.isPaused('juego'))
+            if (this.scene.isPaused('juego')) {
                 this.scene?.resume('juego');
-            if (this.scene.isPaused('tutorial')){
+                this.musicaMenu.resume();
+            }
+            if (this.scene.isPaused('tutorial')) {
                 this.scene.get('tutorial').events.emit("tutorialFinalizado");
                 this.scene?.resume('tutorial');
             }

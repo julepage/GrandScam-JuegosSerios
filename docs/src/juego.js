@@ -24,13 +24,24 @@ export default class Juego extends Phaser.Scene {
   }
 
   create() {
+    this.game.audioManager.stopMusic();
     this.entraLLamada = false;
     this.entraMensaje = false;
     this.masLLamada = true;
     this.masMensaje = true;
     this.obLlamada = true;
     this.obMovil = true;
+
+    //MUSICA
     this.musicaMenu = this.game.audioManager.musica("musicaPrincipal");
+    this.ring = this.game.audioManager.musica("ring");
+    this.vibracion = this.game.audioManager.musica("vibracion");
+
+    //EFECTOS
+    this.buttonEffect = this.game.audioManager.fx("buttonClick");
+    this.descolgarTelefono = this.game.audioManager.fx("descolgarTelefono");
+    this.desbloquearMovil = this.game.audioManager.fx("desbloquearMovil");
+
     this.musicaMenu.play();
     // Dentro del create() de la nueva escena
     this.cameras.main.fadeIn(1000, 0, 0, 0);
@@ -75,7 +86,10 @@ export default class Juego extends Phaser.Scene {
     //PULSACION DEL BOTON TELEFONO
     this.telefono.on('pointerdown', () => {
       if (this.entraLLamada) {
+        this.ring.stop();
+        this.descolgarTelefono.play();
         this.telefonoScene();
+        this.musicaMenu.pause();
       }
     });
 
@@ -86,14 +100,23 @@ export default class Juego extends Phaser.Scene {
     //PULSACION DEL BOTON MOVIL
     this.movil.on('pointerdown', () => {
       if (this.entraMensaje) {
+        this.vibracion.stop();
+        this.desbloquearMovil.play();
         this.movilScene();
+        this.musicaMenu.pause();
       }
     });
 
     //BOTON PAUSA
     this.botonPausa = this.add.sprite(this.cameras.main.width / 20, 60, "botonPausa").setInteractive().setScale(0.4).setDepth(1);
     this.botonPausa.on('pointerdown', () => {
+      this.buttonEffect.play();
+      if (this.vibracion.isPlaying)
+        this.vibracion.pause();
+      if (this.ring.isPlaying)
+        this.ring.pause();
       this.escenaPausa();
+      this.musicaMenu.pause();
     });
 
     this.botonPausa.on('pointerover', () => { this.botonPausa.setScale(0.45); });
@@ -131,7 +154,7 @@ export default class Juego extends Phaser.Scene {
     else {
       this.randomCaso = " ";
     }
-    this.scene.launch('telefono', { vidas: this.vidas, textos: this.textos, randomCaso: this.randomCaso, obligatorio: this.obLlamada });
+    this.scene.launch('telefono', { vidas: this.vidas, textos: this.textos, randomCaso: this.randomCaso, obligatorio: this.obLlamada, musica: this.musicaMenu });
   }
   movilScene() {
     this.movil.stop();
@@ -187,10 +210,10 @@ export default class Juego extends Phaser.Scene {
     }
     // console.log(this.randomApp);
     // console.log(this.randomCaso);
-    this.scene.launch('movil', { vidas: this.vidas, textos: this.textos, randomApp: this.randomApp, randomCaso: this.randomCaso, obligatorio: this.obMovil });
+    this.scene.launch('movil', { vidas: this.vidas, textos: this.textos, randomApp: this.randomApp, randomCaso: this.randomCaso, obligatorio: this.obMovil, musica: this.musicaMenu });
   }
   escenaPausa() {
-    this.scene.launch('EscenaPausa');
+    this.scene.launch('EscenaPausa', { musica: this.musicaMenu });
     this.scene.pause();
   }
 
@@ -215,17 +238,21 @@ export default class Juego extends Phaser.Scene {
       const num = Phaser.Math.Between(0, 2);
       if (num == 0 && this.masLLamada) {
         this.entraLLamada = true;
+        this.ring.play();
         this.telefono.anims.play('telefono');
       }
 
       if (num == 1 && this.masMensaje) {
         this.entraMensaje = true;
+        this.vibracion.play();
         this.movil.anims.play('movil');
       }
     }
 
     if (Phaser.Input.Keyboard.JustDown(this.teclaEsc)) {
       // Acción al presionar ESC
+      this.buttonEffect.play();
+      this.musicaMenu.pause();
       this.scene.pause();              // Pausa la escena actual
       this.scene.launch('EscenaPausa'); // Abre tu escena de pausa
     }
@@ -235,6 +262,13 @@ export default class Juego extends Phaser.Scene {
     if (!this.scene.isActive('movil') && !this.movil.anims.isPlaying) {
       this.entraMensaje = false;
       this.movil.setTexture('movilOff');
+    }
+
+    if (!this.scene.isActive('escenaPausa')) {
+      if (this.vibracion.isPaused)
+        this.vibracion.resume();
+      if (this.ring.isPaused)
+        this.ring.resume();
     }
   }
 }

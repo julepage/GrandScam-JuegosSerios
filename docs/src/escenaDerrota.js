@@ -4,6 +4,10 @@ export default class Derrota extends Phaser.Scene {
     }
 
     create() {
+        this.game.audioManager.stopMusic();
+        this.buttonEffect = this.game.audioManager.fx("buttonClick");
+        this.derrota = this.game.audioManager.musica("derrota");
+        this.derrota.play();
         //CARGAR TEXTOS
         const textos = this.cache.json.get('es');
         //FONDO TRANSLUCIDO
@@ -24,6 +28,7 @@ export default class Derrota extends Phaser.Scene {
             .setOrigin(0.5, 0.5);
 
         this.volver.on('pointerdown', () => {
+            this.buttonEffect.play();
             this.scene.start('menu');
         });
     }

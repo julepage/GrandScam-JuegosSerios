@@ -1,10 +1,12 @@
 export default class Bocadillos extends Phaser.GameObjects.Container {
-    constructor(scene, textoInicial, tipoEstafa, vidas) {
+    constructor(scene, textoInicial, tipoEstafa, vidas, musica) {
         super(scene);
         this.scene = scene;
         scene.add.existing(this);
 
+        this.musicaMenu = musica;
         this.textos = textoInicial;
+        this.buttonEffect = this.scene.game.audioManager.fx("buttonClick");
         // Crear el cuadro
         this.cuadro = this.scene.add.image(
             this.scene.cameras.main.width / 1.5,
@@ -37,7 +39,7 @@ export default class Bocadillos extends Phaser.GameObjects.Container {
                 fontSize -= 1;
                 txt.setFontSize(fontSize);
                 txt.setWordWrapWidth(maxWidth); // 🔹 recalcula wordWrap con la nueva fuente
-            } 
+            }
 
             return txt;
         }
@@ -231,7 +233,7 @@ export default class Bocadillos extends Phaser.GameObjects.Container {
                     this.gestV.addAciertos();
                 this.scene.scene?.pause('juego');
                 this.scene.scene?.pause('tutorial');
-                this.scene.scene.launch('respuestaCasos', {respuesta: siguiente, textos: this.textos, vidas: this.gestV});
+                this.scene.scene.launch('respuestaCasos', { respuesta: siguiente, textos: this.textos, vidas: this.gestV, musica: this.musicaMenu });
                 this.scene.scene.stop();
                 return;
             }
@@ -258,6 +260,7 @@ export default class Bocadillos extends Phaser.GameObjects.Container {
             if (!bocadillo || !opcionesArray[index]) return;
 
             bocadillo.setInteractive().off('pointerdown').on('pointerdown', () => {
+                this.buttonEffect.play();
                 actualizarCaso(opcionesArray[index].siguiente);
             });
         });

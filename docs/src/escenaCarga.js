@@ -93,6 +93,16 @@ export default class EscenaCarga extends Phaser.Scene {
 
     //MUSICA
     this.load.audio('musicaPrincipal', './musica/musicaPrincipal.mp3');
+    this.load.audio('musicaMenu', './musica/musicaMenu.mp3');
+    this.load.audio('ring', './musica/ring.mp3');
+    this.load.audio('vibracion', './musica/vibracion.mp3');
+    this.load.audio('victoria', './musica/victoria.mp3');
+    this.load.audio('derrota', './musica/derrota.mp3');
+    this.load.audio('tension', './musica/tension.mp3');
+    //EFFECTS
+    this.load.audio('buttonClick', './musica/effects/buttonClick.mp3');
+    this.load.audio('descolgarTelefono', './musica/effects/descolgarTelefono.mp3');
+    this.load.audio('desbloquearMovil', './musica/effects/desbloquearMovil.mp3');
   }
 
   create() {

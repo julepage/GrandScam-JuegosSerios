@@ -3,7 +3,13 @@ export default class EscenaPausa extends Phaser.Scene {
         super({ key: 'EscenaPausa' });
     }
 
+    init(data) {
+        this.musicaMenu = data.musica;
+    }
+
+
     create() {
+        this.buttonEffect = this.game.audioManager.fx("buttonClick");
         //CARGAR TEXTOS
         const textos = this.cache.json.get('es');
         //FONDO TRANSLUCIDO
@@ -23,18 +29,21 @@ export default class EscenaPausa extends Phaser.Scene {
         this.botonContinuar = this.crearBotonConFlecha(this.cameras.main.width / 2, this.cameras.main.height / 3, textos.botones.continuar,
             () => {
                 this.scene.resume('juego');
+                this.musicaMenu.resume();
                 this.scene.stop(); // opcional: cierra la escena de pausa
             });
 
         //OPCIONES
         this.botonOpciones = this.crearBotonConFlecha(this.cameras.main.width / 2, this.cameras.main.height / 2, textos.botones.opciones,
             () => {
+                this.buttonEffect.play();
                 this.scene.pause();
                 this.scene.launch('opciones');
             });
         //MENU
         this.botonMenu = this.crearBotonConFlecha(this.cameras.main.width / 2, this.cameras.main.height / 3 * 2, textos.botones.menu,
             () => {
+                this.buttonEffect.play();
                 this.scene.launch('menu');
                 this.scene?.stop('juego');
                 this.scene?.stop('movil');
@@ -47,6 +56,7 @@ export default class EscenaPausa extends Phaser.Scene {
         // Revisar si se presionó ESC
 
         if (Phaser.Input.Keyboard.JustDown(this.teclaEsc)) {
+            this.musicaMenu.resume();
             this.scene.stop();        // Cierra la escena de pausa
             this.scene.resume('juego'); // Reanuda el juego
         }
@@ -81,7 +91,7 @@ export default class EscenaPausa extends Phaser.Scene {
             boton.y,
             'boton'
         ).setVisible(false).setScale(0.3).setDepth(1).setFlipX(true);
-;
+        ;
 
         // Eventos del botón
         boton.on('pointerover', () => {

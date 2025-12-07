@@ -10,12 +10,14 @@ export default class EscenaTelefono extends Phaser.Scene {
     this.textos = data.textos;
     this.randomCaso = data.randomCaso;
     this.obligatorio = data.obligatorio;
+    this.musicaMenu = data.musica;
   }
 
   create() {
     const { width, height } = this.scale;
     this.add.rectangle(0, 0, width * 2, height * 2, 0x000000, 0.5).setOrigin(0);
-
+    this.music = this.game.audioManager.musica("tension");
+    this.music.play();
     //POSICION Y TAMAÑO DEL FONDO
     this.fondo = this.add.image(0, 0, 'fondoTelefono');
     this.fondo.setScale(this.cameras.main.height / this.fondo.height);
@@ -26,12 +28,12 @@ export default class EscenaTelefono extends Phaser.Scene {
     console.log(this.randomCaso);
     if (this.randomCaso != " ") {
       if (this.obligatorio) {
-        this.bocadillos = new Bocadillos(this, this.textos.telefono.llamada.obligatorio[this.randomCaso], this.textos.telefono.llamada, this.vidas);
+        this.bocadillos = new Bocadillos(this, this.textos.telefono.llamada.obligatorio[this.randomCaso], this.textos.telefono.llamada, this.vidas, this.musicaMenu);
         this.bocadillos.ponerBocadillos(this.textos.telefono.llamada.obligatorio[this.randomCaso].comienzo.opciones);
         this.bocadillos.ponerTextos(this.textos.telefono.llamada.obligatorio[this.randomCaso].comienzo.opciones);
       }
-      else{
-        this.bocadillos = new Bocadillos(this, this.textos.telefono.llamada.opcional[this.randomCaso], this.textos.telefono.llamada, this.vidas);
+      else {
+        this.bocadillos = new Bocadillos(this, this.textos.telefono.llamada.opcional[this.randomCaso], this.textos.telefono.llamada, this.vidas, this.musicaMenu);
         this.bocadillos.ponerBocadillos(this.textos.telefono.llamada.opcional[this.randomCaso].comienzo.opciones);
         this.bocadillos.ponerTextos(this.textos.telefono.llamada.opcional[this.randomCaso].comienzo.opciones);
       }
