@@ -531,13 +531,13 @@
                 "siguiente": "fallo"
               }
             ]
+          },
+          "acierto": {
+            "mIni": "MUY BIEN"
+          },
+          "fallo": {
+            "mIni": "MUY MAL"
           }
-        },
-        "acierto": {
-          "mIni": "MUY BIEN"
-        },
-        "fallo": {
-          "mIni": "MUY MAL"
         }
       }
     },
@@ -894,6 +894,207 @@
           "fallo": {
             "mIni": "Has desconfiado demasiado y no lo ayudaste. Tu nieto se quedó sin almuerzo y tu hija se enfadó contigo. A veces la prudencia es buena, pero antes de desconfiar del todo deberias asegurarte si de verdad intentan estafarte con pruebas como audio, fotos o videos, que son suficientes para confiar."
           }
+        },
+        "caso2": {
+          "comienzo": {
+            "mIni": "Hola, soy tu hijo, este es el movil del trabajo, estoy aqui y necesito hacer una transferencia urgente pero mi móvil personal no me deja. ¿Me la puedes hacer tú? Luego te lo devuelvo y te doy 50 euros por la ayuda.",
+            "opciones": [
+              {
+                "texto": "¿Por qué no puedes usar tu cuenta? Suena raro.",
+                "siguiente": "explicacion"
+              },
+              {
+                "texto": "Vale, pero antes necesito saber que eres tú.",
+                "siguiente": "verificacionInicial"
+              },
+              {
+                "texto": "¿Qué cantidad necesitas exactamente?",
+                "siguiente": "pedirCantidad"
+              }
+            ]
+          },
+          "explicacion": {
+            "mIni": "El sistema del móvil se ha quedado pillado y no puedo entrar a la app del banco. Estoy en medio de algo importante, por eso te escribo desde el número del trabajo.",
+            "opciones": [
+              {
+                "texto": "Manda una foto tuya ahora mismo en el trabajo.",
+                "siguiente": "fotoPedida"
+              },
+              {
+                "texto": "Dime algo personal que solo tú y yo sabemos.",
+                "siguiente": "preguntasPersonales"
+              },
+              {
+                "texto": "Sigue sin convencerme. ¿Por qué es tan urgente?",
+                "siguiente": "urgencia"
+              }
+            ]
+          },
+          "preguntasPersonales": {
+            "mIni": "¿Que pregunta quieres hacer?",
+            "opciones": [
+              {
+                "texto": "¿Como se llama tu mascota?",
+                "siguiente": "perro"
+              },
+              {
+                "texto": "¿En que calle vivo?",
+                "siguiente": "calle"
+              },
+              {
+                "texto": "¿Cual es mi color favorito?",
+                "siguiente": "color"
+              }
+            ]
+          },
+          "perro": {
+            "mIni": "{mascota}",
+            "opciones": [
+              {
+                "texto": "Bueno… si sabes eso puede que seas tú.",
+                "siguiente": "suavizarDesconfianza"
+              },
+              {
+                "texto": "Hmm… aún quiero otra verificación.",
+                "siguiente": "segundaVerificacion"
+              },
+              {
+                "texto": "No me fío, es demasiado fácil encontrar esos datos.",
+                "siguiente": "dudarFuerte"
+              }
+            ]
+          },
+          "calle": {
+            "mIni": "Vives en {calle}",
+            "opciones": [
+              {
+                "texto": "Bueno… si sabes eso puede que seas tú.",
+                "siguiente": "suavizarDesconfianza"
+              },
+              {
+                "texto": "Hmm… aún quiero otra verificación.",
+                "siguiente": "segundaVerificacion"
+              },
+              {
+                "texto": "No me fío, es demasiado fácil encontrar esos datos.",
+                "siguiente": "dudarFuerte"
+              }
+            ]
+          },
+          "color": {
+            "mIni": "Es el {color}",
+            "opciones": [
+              {
+                "texto": "Bueno… si sabes eso puede que seas tú.",
+                "siguiente": "suavizarDesconfianza"
+              },
+              {
+                "texto": "Hmm… aún quiero otra verificación.",
+                "siguiente": "segundaVerificacion"
+              },
+              {
+                "texto": "No me fío, es demasiado fácil encontrar esos datos.",
+                "siguiente": "dudarFuerte"
+              }
+            ]
+          },
+          "fotoPedida": {
+            "mIni": "No puedo mandar foto ahora, estoy en una zona donde no puedo usar la cámara. Solo necesito que me ayudes.",
+            "opciones": [
+              {
+                "texto": "Eso es extraño, siempre puedes mandar una foto.",
+                "siguiente": "dudarFuerte"
+              },
+              {
+                "texto": "Vale, entonces mándame un audio.",
+                "siguiente": "audioRequerido"
+              }
+            ]
+          },
+          "audioRequerido": {
+            "mIni": "No puedo mandar un audio ahora, estoy rodeado de gente y no puedo hablar. Por favor, hazme la transferencia.",
+            "opciones": [
+              {
+                "texto": "Demasiadas excusas, no me fío.",
+                "siguiente": "acierto"
+              },
+              {
+                "texto": "Si es tan urgente… dime la cantidad y los datos.",
+                "siguiente": "pedirCantidad"
+              }
+            ]
+          },
+          "urgencia": {
+            "mIni": "Es muy urgente porque si no hago esta transferencia puedo tener un problema serio en el trabajo.",
+            "opciones": [
+              {
+                "texto": "Si es tan urgente, mándame algún tipo de prueba.",
+                "siguiente": "segundaVerificacion"
+              },
+              {
+                "texto": "No me convence nada de esto.",
+                "siguiente": "dudarFuerte"
+              }
+            ]
+          },
+          "suavizarDesconfianza": {
+            "mIni": "Te lo estoy diciendo, soy yo. Necesito que me ayudes.",
+            "opciones": [
+              {
+                "texto": "Vale, mándame los datos.",
+                "siguiente": "pedirCantidad"
+              },
+              {
+                "texto": "Todavía quiero una prueba más.",
+                "siguiente": "segundaVerificacion"
+              }
+            ]
+          },
+          "segundaVerificacion": {
+            "mIni": "¿Otra prueba más? De verdad que no puedo enviar nada más, estoy muy liado. Confía en mí.",
+            "opciones": [
+              {
+                "texto": "No, si no puedes demostrarlo, no te hago la transferencia.",
+                "siguiente": "acierto"
+              },
+              {
+                "texto": "Bueno… supongo que puedo confiar. Dime la cantidad.",
+                "siguiente": "pedirCantidad"
+              }
+            ]
+          },
+          "dudarFuerte": {
+            "mIni": "No tengo tiempo para esto. Ayúdame o no podré resolverlo.",
+            "opciones": [
+              {
+                "texto": "No voy a caer en esto. No eres mi hijo.",
+                "siguiente": "acierto"
+              },
+              {
+                "texto": "De acuerdo… dime los datos de la transferencia.",
+                "siguiente": "pedirCantidad"
+              }
+            ]
+          },
+          "pedirCantidad": {
+            "mIni": "Necesito que envíes 1.500€ a este IBAN: ESXX XXXX XXXX XXXX XXXX XXXX. Es muy urgente.",
+            "opciones": [
+              {
+                "texto": "Está bien, te lo envío ya.",
+                "siguiente": "fallo"
+              },
+              {
+                "texto": "No, definitivamente no. Esto no es normal.",
+                "siguiente": "acierto"
+              }
+            ]
+          },
+          "acierto": {
+            "mIni": "Nada puede contigo, detectas a los estafadores de lejos. ¡BIEN HECHO!"
+          },
+          "fallo": {
+            "mIni": "Has hecho la transferencia creyendo que era tu hijo. Los estafadores usaron datos personales básicos y urgencia para presionarte. Has caído en la trampa."
+          }
         }
       }
     }
@@ -903,7 +1104,7 @@
       "obligatorio": {
         "caso1": {
           "comienzo": {
-            "mIni": "Buenos días, le habla Sergio Sergitez del departamento de atención al cliente de LaLuzDeDios Energía. Esta llamada puede ser grabada por motivos de calidad. ¿Podría confirmar si hablo con  {nombre}  {nombre}tez, titular del contrato número 123456?",
+            "mIni": "Buenos días, le habla Sergio Sergitez del departamento de atención al cliente de LaLuzDeDios Energía.\nEsta llamada puede ser grabada por motivos de calidad.\n¿Podría confirmar si hablo con {nombre} {nombre}tez, titular del contrato número 123456?",
             "opciones": [
               {
                 "texto": "Sí, soy yo.",
@@ -916,14 +1117,14 @@
             ]
           },
           "casoFactura": {
-            "mIni": "Le llamamos para informarle que en nuestros registros tiene una factura pendiente. Puede consultarla desde su área de\n cliente o en nuestra aplicación móvil. Le recomendamos efectuar el pago lo antes posible para evitar que el suministro pueda verse afectado.",
+            "mIni": "Le llamamos para informarle que, según nuestros registros, tiene una factura pendiente.\nPuede consultarla desde su área de cliente o en nuestra aplicación móvil.\nLe recomendamos efectuar el pago lo antes posible para evitar que el suministro pueda verse afectado.",
             "opciones": [
               {
-                "texto": "Gracias por el aviso, envienme la factura por correo.",
+                "texto": "Gracias por el aviso, envíenme la factura por correo.",
                 "siguiente": "acierto"
               },
               {
-                "texto": "No me fio de usted. Adios.",
+                "texto": "No me fío de usted. Adiós.",
                 "siguiente": "fallo"
               },
               {
@@ -933,28 +1134,28 @@
             ]
           },
           "dudas": {
-            "mIni": "Por supuesto. Me llamo Sergio Sergitez, de atencion al cliente de LaLuzDeDios Energia.",
+            "mIni": "Por supuesto. Me llamo Sergio Sergitez, del departamento de atención al cliente de LaLuzDeDios Energía.",
             "opciones": [
               {
-                "texto": "Esta bien, pagare.",
+                "texto": "Está bien, pagaré.",
                 "siguiente": "acierto"
               },
               {
-                "texto": "Lo siento pero no me fio de la llamada. Adios.",
+                "texto": "Lo siento, pero no me fío de la llamada. Adiós.",
                 "siguiente": "fallo"
               }
             ]
           },
           "acierto": {
-            "mIni": "Te fiaste de la empresa ya que confirmo su identidad y conocia lo fundamental de tu cuenta. ¡BIEN HECHO!"
+            "mIni": "Te fíaste de la empresa ya que confirmó su identidad y conocía lo fundamental de tu cuenta.\n¡BIEN HECHO!"
           },
           "fallo": {
-            "mIni": "Te han conrtado la luz, debiste fiarte ya que te estaba proporcionando datos que solo la empresa puede saber de tu cuenta."
+            "mIni": "Te han cortado la luz. Debiste fiarte ya que te estaba proporcionando datos que solo la empresa puede saber de tu cuenta."
           }
         },
         "caso2": {
           "comienzo": {
-            "mIni": "Hola, buenas tardes. Le llamamos porque ha sido seleccionado al azar para participar en una promoción especial: ¡podría ganar un viaje todo incluido! Solo tiene que abrir el enlace que le enviamos por WhatsApp para confirmar su participación.",
+            "mIni": "Hola, buenas tardes.\nLe llamamos porque ha sido seleccionado al azar para participar en una promoción especial: ¡podría ganar un viaje todo incluido!\nSolo tiene que abrir el enlace que le enviamos por WhatsApp para confirmar su participación.",
             "opciones": [
               {
                 "texto": "¿De qué empresa me llama exactamente?",
@@ -971,7 +1172,7 @@
             ]
           },
           "identificacion": {
-            "mIni": "Somos del 'Programa ViajaFácil 2025'. Estamos contactando a personas al azar para una promoción exclusiva. Solo necesita abrir el enlace y rellenar un breve formulario.",
+            "mIni": "Somos del 'Programa ViajaFácil 2025'.\nEstamos contactando a personas al azar para una promoción exclusiva.\nSolo necesita abrir el enlace y rellenar un breve formulario.",
             "opciones": [
               {
                 "texto": "¿Podría darme una página oficial donde comprobar que esta promoción existe?",
@@ -988,7 +1189,7 @@
             ]
           },
           "comprobacion": {
-            "mIni": "Claro, puede vernos en nuestra web: 'viajafacil-premios.com'. Ahí encontrará toda la información. Si lo desea, puedo esperar mientras la revisa.",
+            "mIni": "Claro, puede vernos en nuestra web: 'viajafacil-premios.com'.\nAhí encontrará toda la información.\nSi lo desea, puedo esperar mientras la revisa.",
             "opciones": [
               {
                 "texto": "Busco la web.",
@@ -1014,17 +1215,17 @@
             ]
           },
           "acierto": {
-            "mIni": "Si de verdad ganaste un premio que sea un sitio mas seguro. ¡UN PASO MAS CERCA DE LA VICTORIA!"
+            "mIni": "Si de verdad ganaste un premio, asegúrate de que sea un sitio más seguro.\n¡UN PASO MÁS CERCA DE LA VICTORIA!"
           },
           "fallo": {
-            "mIni": "La web no daba confianza y efectivamente era un sitio no oficial. Una llamada donde te dicen que entres al enlace que te enviaron suele ser una estafa, deberias comprobar antes el sitio oficial para verificar la veracidad. Al pulsar el enlace entraban directamente a tu cuenta bancaria. Te quitaron 1700€."
+            "mIni": "La web no daba confianza y efectivamente era un sitio no oficial.\nUna llamada donde te dicen que entres al enlace enviado suele ser una estafa.\nDeberías comprobar antes el sitio oficial para verificar la veracidad.\nAl pulsar el enlace entraban directamente a tu cuenta bancaria. Te quitaron 1700€."
           }
         }
       },
       "opcional": {
         "caso1": {
           "comienzo": {
-            "mIni": "Buenos días, le llamo de la clínica dental Sonrisa Perfecta. Tenemos registrada una ortodoncia pendiente y necesitamos que realice el pago por adelantado para confirmar su cita.",
+            "mIni": "Buenos días, le llamo de la clínica dental Sonrisa Perfecta.\nTenemos registrada una ortodoncia pendiente y necesitamos que realice el pago por adelantado para confirmar su cita.",
             "opciones": [
               {
                 "texto": "¿Pago por adelantado? No recuerdo haber hecho cita.",
@@ -1041,7 +1242,7 @@
             ]
           },
           "dudaCita": {
-            "mIni": "Sí, aparece en nuestro sistema. Solo necesitamos confirmar el abono de 2000€ para mantener su hora. Es un procedimiento nuevo.",
+            "mIni": "Sí, aparece en nuestro sistema.\nSolo necesitamos confirmar el abono de 2000€ para mantener su hora.\nEs un procedimiento nuevo.",
             "opciones": [
               {
                 "texto": "¿Podría enviarme la cita por correo oficial de la clínica?",
@@ -1058,7 +1259,7 @@
             ]
           },
           "pagoDirecto": {
-            "mIni": "Perfecto. Son 2000€ por la reserva. Le paso un número de cuenta personal para hacer el ingreso, es más rápido.",
+            "mIni": "Perfecto. Son 2000€ por la reserva.\nLe paso un número de cuenta personal para hacer el ingreso, es más rápido.",
             "opciones": [
               {
                 "texto": "¿Por qué es una cuenta personal y no de la clínica?",
@@ -1071,14 +1272,14 @@
             ]
           },
           "verificacion": {
-            "mIni": "Claro, soy Laura de la clínica Sonrisa Perfecta... bueno, trabajamos con varios consultorios asociados.",
+            "mIni": "Claro, soy Laura de la clínica Sonrisa Perfecta...\nBueno, trabajamos con varios consultorios asociados.",
             "opciones": [
               {
                 "texto": "Eso suena raro, ¿puede darme el número oficial de la clínica para verificar?",
                 "siguiente": "correoVerificacion"
               },
               {
-                "texto": "Vale, me fio, ¿cómo hago el pago?",
+                "texto": "Vale, me fío, ¿cómo hago el pago?",
                 "siguiente": "fallo"
               },
               {
@@ -1088,7 +1289,7 @@
             ]
           },
           "correoVerificacion": {
-            "mIni": "No tenemos correo oficial, solo este número. Si no hace el pago hoy, perderá su cita.",
+            "mIni": "No tenemos correo oficial, solo este número.\nSi no hace el pago hoy, perderá su cita.",
             "opciones": [
               {
                 "texto": "Si no tienen correo oficial, no parece muy profesional. Prefiero no seguir.",
@@ -1118,15 +1319,15 @@
             ]
           },
           "acierto": {
-            "mIni": "Es demasiado dinero como para no poder pagarlo en el mismo sitio. ¡UNA MENOS PARA LA VICTORIA!"
+            "mIni": "Es demasiado dinero como para no poder pagarlo en el mismo sitio.\n¡UNA MENOS PARA LA VICTORIA!"
           },
           "fallo": {
-            "mIni": "El dentista te dejaria la opcion de pagarlo alli para hacerlo de una forma segura. Ademas no tener un correo oficial es un indicio de estafa. El estafador se quedo con el dinero de tu ortodoncia."
+            "mIni": "El dentista te dejaría la opción de pagarlo allí para hacerlo de una forma segura.\nAdemás, no tener un correo oficial es un indicio de estafa.\nEl estafador se quedó con el dinero de tu ortodoncia."
           }
         },
         "caso2": {
           "comienzo": {
-            "mIni": "Buenos días, le llamamos del departamento de seguridad de su banco. Hemos detectado un intento de cargo de 1.200€ en su cuenta. Necesitamos confirmar su identidad para bloquear la operación.",
+            "mIni": "Buenos días, le llamamos del departamento de seguridad de su banco. Hemos detectado un intento de cargo de 1.200 € en su cuenta. Necesitamos confirmar su identidad para bloquear la operación.",
             "opciones": [
               {
                 "texto": "¿Qué tipo de cargo y desde dónde se ha hecho?",
@@ -1224,15 +1425,15 @@
             ]
           },
           "acierto": {
-            "mIni": "Te pedian datos sin sentido. ¡ENHORABUENA!"
+            "mIni": "Te pedían datos sin sentido. ¡ENHORABUENA!"
           },
           "fallo": {
-            "mIni": "El banco jamas te pediria los digitos de tu tarjeta o el CVV. Los bancos para confirmar la identidad suelen mandar codigos a los correos o telefonos asociados para que verifiques tu identidad. Al darles tus datos sacaron de verdad los 1200€."
+            "mIni": "El banco jamás te pediría los dígitos de tu tarjeta o el CVV. Los bancos, para confirmar la identidad, suelen mandar códigos a los correos o teléfonos asociados para que verifiques tu identidad. Al darles tus datos sacaron de verdad los 1.200 €."
           }
         },
         "caso3": {
           "comienzo": {
-            "mIni": "Buenos días, le llamamos del departamento de seguridad de su banco. Hemos detectado un intento de transferencia inusual de 900€ desde su cuenta. Queremos asegurarnos de que todo está bien.",
+            "mIni": "Buenos días, le llamamos del departamento de seguridad de su banco. Hemos detectado un intento de transferencia inusual de 900 € desde su cuenta. Queremos asegurarnos de que todo está bien.",
             "opciones": [
               {
                 "texto": "¿Podría decirme a qué cuenta se intentó transferir el dinero?",
@@ -1313,10 +1514,10 @@
             ]
           },
           "acierto": {
-            "mIni": "Te fiaste del banco ya que lo que te pedian no podia vulnerar la seguridad de tu cuenta. ¡UN PASO MAS CERCA DE LA VICTORIA!"
+            "mIni": "Te fiaste del banco ya que lo que te pedían no podía vulnerar la seguridad de tu cuenta. ¡UN PASO MÁS CERCA DE LA VICTORIA!"
           },
           "fallo": {
-            "mIni": "No te fiaste del banco, y al no poder identificar tu identidad, no pudieron recuperar el dinero que te habian estafado previamente. Si la llamada es oficial y te piden datos que no pueden comprometer la seguridad de tu banco no haces mal en fiarte, asi podrian haber evitado el cargo de 900€."
+            "mIni": "No te fiaste del banco, y al no poder identificar tu identidad, no pudieron recuperar el dinero que te habían estafado previamente. Si la llamada es oficial y te piden datos que no pueden comprometer la seguridad de tu banco, no haces mal en fiarte; así podrían haber evitado el cargo de 900 €."
           }
         }
       }
