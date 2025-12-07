@@ -9,10 +9,10 @@ export default class Bocadillos extends Phaser.GameObjects.Container {
         this.buttonEffect = this.scene.game.audioManager.fx("buttonClick");
         // Crear el cuadro
         this.cuadro = this.scene.add.image(
-            this.scene.cameras.main.width / 1.5,
+            this.scene.cameras.main.width / 1.55,
             this.scene.cameras.main.height / 4.4,
             'cuadroTexto'
-        ).setScale(0.5);
+        ).setScale(0.6);
 
         // Obtener posición central real del cuadro
         const cuadroCenter = this.cuadro.getCenter();
@@ -22,20 +22,20 @@ export default class Bocadillos extends Phaser.GameObjects.Container {
         const maxHeight = this.cuadro.displayHeight * 0.9;
 
         // Función para texto escalable
-        const crearTextoEscalable = (x, y, textoStr, maxWidth, maxHeight) => {
+        const crearTextoEscalable = (x, y, textoStr, maxWidth , maxHeight) => {
             let fontSize = 20;
             let txt = this.scene.add.text(x, y, textoStr, {
                 fontFamily: 'Georgia, "Times New Roman", serif',
                 fontSize: `${fontSize}px`,
                 color: '#000000ff',
                 stroke: '#000000',
-                strokeThickness: 1,
+                strokeThickness: 0.8,
                 align: 'center',
                 wordWrap: { width: maxWidth, useAdvancedWrap: true }
             }).setOrigin(0.5, 0.5);
 
             // Reducir fuente hasta que ancho y alto encajen
-            while ((txt.width > maxWidth || txt.height > maxHeight - 110) && fontSize > 8) {
+            while ((txt.width > maxWidth || txt.height > maxHeight - 130) && fontSize > 8) {
                 fontSize -= 1;
                 txt.setFontSize(fontSize);
                 txt.setWordWrapWidth(maxWidth); // 🔹 recalcula wordWrap con la nueva fuente
@@ -71,22 +71,22 @@ export default class Bocadillos extends Phaser.GameObjects.Container {
             this.fondoMovil = this.scene.add.image(0, 0, 'fondoSMS');
             this.fondoMovil.setScale(this.scene.cameras.main.height / this.fondoMovil.height);
             this.fondoMovil.setDisplaySize(this.fondoMovil.width * this.scene.cameras.main.height / this.fondoMovil.height, this.scene.cameras.main.height);
-            this.fondoMovil.setPosition(this.scene.cameras.main.width / 2, this.scene.cameras.main.height / 2);
+            this.fondoMovil.setPosition(this.scene.cameras.main.width / 2.25, this.scene.cameras.main.height / 2);
         }
         else if (tipoEstafa === this.scene.textos.movil.whatsapp) {
             this.fondoMovil = this.scene.add.image(0, 0, 'was');
             this.fondoMovil.setScale(this.scene.cameras.main.height / this.fondoMovil.height);
             this.fondoMovil.setDisplaySize(this.fondoMovil.width * this.scene.cameras.main.height / this.fondoMovil.height, this.scene.cameras.main.height);
-            this.fondoMovil.setPosition(this.scene.cameras.main.width / 2, this.scene.cameras.main.height / 2);
+            this.fondoMovil.setPosition(this.scene.cameras.main.width / 2.25, this.scene.cameras.main.height / 2);
         }
         else if (tipoEstafa === this.scene.textos.movil.correo) {
             this.fondoMovil = this.scene.add.image(0, 0, 'fondoCorreo');
             this.fondoMovil.setScale(this.scene.cameras.main.height / this.fondoMovil.height);
             this.fondoMovil.setDisplaySize(this.fondoMovil.width * this.scene.cameras.main.height / this.fondoMovil.height, this.scene.cameras.main.height);
-            this.fondoMovil.setPosition(this.scene.cameras.main.width / 2, this.scene.cameras.main.height / 2);
+            this.fondoMovil.setPosition(this.scene.cameras.main.width / 2.25, this.scene.cameras.main.height / 2);
         }
-        this.padding = this.scene.cameras.main.width / 11.5;//12.8
-        this.topY = this.cuadro.y + this.padding * 2;
+        this.padding = this.scene.cameras.main.width / 9.5;//12.8
+        this.topY = this.cuadro.y + this.padding * 1.8;
         this.gestV = vidas;
     }
 
@@ -107,13 +107,13 @@ export default class Bocadillos extends Phaser.GameObjects.Container {
                     this.caso1.x,
                     this.topY - this.padding * 0.002,
                     "bocadilloG"
-                ).setOrigin(0.5, 0.5).setScale(0.5).setInteractive();
+                ).setOrigin(0.5, 0.5).setScale(0.6).setInteractive();
 
                 this.bocadillo2 = this.scene.add.image(
                     this.caso1.x,
-                    this.topY + this.bocadillo1.height / 2.355,
+                    this.topY + this.bocadillo1.height / 1.9,
                     "bocadilloG"
-                ).setOrigin(0.5, 0.5).setScale(0.5).setInteractive();
+                ).setOrigin(0.5, 0.5).setScale(0.6).setInteractive();
                 break;
             }
             case 3: {
@@ -124,31 +124,31 @@ export default class Bocadillos extends Phaser.GameObjects.Container {
                     this.caso1.x - this.padding, // separar un poco a la izquierda
                     this.topY,
                     "bocadilloP"
-                ).setOrigin(0.5, 0.5).setScale(0.5).setInteractive();
+                ).setOrigin(0.5, 0.5).setScale(0.6).setInteractive();
 
                 // Bocadillo pequeño derecha
                 this.bocadillo2 = this.scene.add.image(
                     this.caso1.x + this.padding, // separar un poco a la derecha
                     this.topY,
                     "bocadilloP"
-                ).setOrigin(0.5, 0.5).setScale(0.5).setInteractive();
+                ).setOrigin(0.5, 0.5).setScale(0.6).setInteractive();
 
                 // Bocadillo grande abajo
                 this.bocadillo3 = this.scene.add.image(
                     this.caso1.x,
-                    this.topY + this.bocadillo1.height / 2,
+                    this.topY + this.bocadillo1.height / 1.7,
                     "bocadilloG"
-                ).setOrigin(0.5, 0.5).setScale(0.5).setInteractive();
+                ).setOrigin(0.5, 0.5).setScale(0.6).setInteractive();
                 break;
             }
             case 4: {
                 // fila superior
-                this.bocadillo1 = this.scene.add.image(this.caso1.x - this.padding, this.topY, "bocadilloP").setOrigin(0.5, 0.5).setScale(0.5).setInteractive();
-                this.bocadillo2 = this.scene.add.image(this.caso1.x + this.padding, this.topY, "bocadilloP").setOrigin(0.5, 0.5).setScale(0.5).setInteractive();
+                this.bocadillo1 = this.scene.add.image(this.caso1.x - this.padding, this.topY, "bocadilloP").setOrigin(0.5, 0.5).setScale(0.6).setInteractive();
+                this.bocadillo2 = this.scene.add.image(this.caso1.x + this.padding, this.topY, "bocadilloP").setOrigin(0.5, 0.5).setScale(0.6).setInteractive();
 
                 // fila inferior
-                this.bocadillo3 = this.scene.add.image(this.caso1.x - this.padding, this.topY + this.bocadillo1.height / 1.95, "bocadilloP").setOrigin(0.5, 0.5).setScale(0.5).setInteractive();
-                this.bocadillo4 = this.scene.add.image(this.caso1.x + this.padding, this.topY + this.bocadillo1.height / 1.95, "bocadilloP").setOrigin(0.5, 0.5).setScale(0.5).setInteractive();
+                this.bocadillo3 = this.scene.add.image(this.caso1.x - this.padding, this.topY + this.bocadillo1.height / 1.7, "bocadilloP").setOrigin(0.5, 0.5).setScale(0.6).setInteractive();
+                this.bocadillo4 = this.scene.add.image(this.caso1.x + this.padding, this.topY + this.bocadillo1.height / 1.7, "bocadilloP").setOrigin(0.5, 0.5).setScale(0.6).setInteractive();
                 break;
             }
             default:

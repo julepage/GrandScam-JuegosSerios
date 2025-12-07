@@ -124,7 +124,7 @@
         },
         "caso2": {
           "comienzo": {
-            "mIni": "El DGT ha emitido una multa por exceso de  velocidad , https://dgtioyi-es.cfd .por favor pagarla lo antes posible para evitar acumucion.",
+            "mIni": "El DGT ha emitido una multa por exceso de  velocidad , https://dgtioyi-es.cfd .\npor favor pagarla lo antes posible para evitar acumucion.",
             "opciones": [
               {
                 "texto": "Hacer clic en el enlace para pagar la multa",
