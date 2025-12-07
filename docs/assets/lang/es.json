@@ -529,13 +529,13 @@
                 "siguiente": "fallo"
               }
             ]
+          },
+          "acierto": {
+            "mIni": "MUY BIEN"
+          },
+          "fallo": {
+            "mIni": "MUY MAL"
           }
-        },
-        "acierto": {
-          "mIni": "MUY BIEN"
-        },
-        "fallo": {
-          "mIni": "MUY MAL"
         }
       }
     },
