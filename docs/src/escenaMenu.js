@@ -5,7 +5,7 @@ export default class EscenaMenu extends Phaser.Scene {
 
     create() {
         const textos = this.cache.json.get('es');
-
+        this.cameras.main.fadeIn(1000, 0, 0, 0);
         // Fondo
         this.fondo = this.add.image(0, 0, 'fondoMenu');
         this.fondo.setScale(this.cameras.main.height / this.fondo.height);

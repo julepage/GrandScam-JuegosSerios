@@ -29,8 +29,10 @@ export default class RespuestaCasos extends Phaser.Scene {
         boton.on('pointerdown', () => {
             if (this.scene.isPaused('juego'))
                 this.scene?.resume('juego');
-            if (this.scene.isPaused('tutorial'))
+            if (this.scene.isPaused('tutorial')){
+                this.scene.get('tutorial').events.emit("tutorialFinalizado");
                 this.scene?.resume('tutorial'); 
+            }
             this.scene.stop(); 
             this.vidas.comprobar();
         });
@@ -72,8 +74,10 @@ export default class RespuestaCasos extends Phaser.Scene {
         if (Phaser.Input.Keyboard.JustDown(this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER))) {
             if (this.scene.isPaused('juego'))
                 this.scene?.resume('juego');
-            if (this.scene.isPaused('tutorial'))
+            if (this.scene.isPaused('tutorial')){
+                this.scene.get('tutorial').events.emit("tutorialFinalizado");
                 this.scene?.resume('tutorial');
+            }
             this.scene.stop();
             this.vidas.comprobar();
         }

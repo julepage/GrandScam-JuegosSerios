@@ -6,6 +6,13 @@ export default class Tutorial extends Phaser.Scene {
     }
 
     create() {
+        //para acabarlo
+        this.finTutorial = false;
+        this.events.on("tutorialFinalizado", () => {
+            this.finTutorial = !this.finTutorial;
+            console.log(this.finTutorial);
+        });
+
         this.entraLLamada = false;
         this.entraMensaje = false;
         this.masLLamada = true;
@@ -74,7 +81,7 @@ export default class Tutorial extends Phaser.Scene {
         this.mensaje1 = this.add
             .text(
                 this.cameras.main.width / 2,
-                this.cameras.main.height / 4,
+                this.cameras.main.height / 6.8,
                 this.textos.tutorial.bocadillos.titulo,
                 {
                     fontFamily: 'Georgia, "Times New Roman", serif',
@@ -87,6 +94,30 @@ export default class Tutorial extends Phaser.Scene {
                 }
             )
             .setScale(0.4)
+            .setDepth(1)
+            .setOrigin(0.5);
+
+        //Si estoy en movil o pc
+         this.isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+         if(this.Movile) this.textoEnter = this.textos.tutorial.bocadillos.enterTablet;
+         else this.textoEnter = this.textos.tutorial.bocadillos.enter;
+
+        this.mensaje2 = this.add
+            .text(
+                this.cameras.main.width / 2,
+                this.cameras.main.height / 4.5,
+                this.textoEnter,
+                {
+                    fontFamily: 'Georgia, "Times New Roman", serif',
+                    fontSize: "200px",
+                    color: "#ffffffff",
+                    stroke: "#000000ff",
+                    strokeThickness: 10,
+                    backgroundColor: "#000000",
+                    align: "center"
+                }
+            )
+            .setScale(0.3)
             .setDepth(1)
             .setOrigin(0.5);
 
@@ -107,7 +138,7 @@ export default class Tutorial extends Phaser.Scene {
         this.paso = "intro";
     }
 
-   
+
     //INTRO → RESUMEN → VIDAS → PAUSA → CASOS
     avanzarPaso() {
         if (!this.puedePasar) return;
@@ -115,6 +146,7 @@ export default class Tutorial extends Phaser.Scene {
         //INTRO→RESUMEN
         if (this.paso === "intro") {
             this.mensaje1.destroy();
+            this.mensaje2.destroy();
             this.mostrarResumen();
             this.paso = "resumen";
             return;
@@ -155,10 +187,7 @@ export default class Tutorial extends Phaser.Scene {
             this.telefonoScene();
             this.paso = "esperando_evento";
 
-            //Si ya se han hecho ambos casos, terminar tutorial
-            if (!this.masLLamada && !this.masMensaje) {
-                this.scene.start("menu");
-            }
+
 
             return;
         }
@@ -169,12 +198,6 @@ export default class Tutorial extends Phaser.Scene {
             this.capa.destroy();
             this.movilScene();
             this.paso = "esperando_evento";
-
-            //Si ya se hicieron ambos casos, terminar tutorial
-            if (!this.masLLamada && !this.masMensaje) {
-                this.scene.start("menu");
-            }
-
             return;
         }
 
@@ -234,7 +257,7 @@ export default class Tutorial extends Phaser.Scene {
 
     //PAUSA
     mostrarPasoPausa() {
-       
+
         this.flecha = this.add
             .image(0, 0, "flechaA")
             .setScale(this.cameras.main.height / this.fondo.height)
@@ -283,6 +306,11 @@ export default class Tutorial extends Phaser.Scene {
     }
 
     update() {
+        //Si ya se han hecho ambos casos, terminar tutorial
+        if (!this.masLLamada && !this.masMensaje && !this.finTutorial) {
+            this.scene.start("menu");
+        }
+
         //scroll del cielo
         this.ventana1.x -= this.scrollSpeed;
         this.ventana2.x -= this.scrollSpeed;
@@ -295,7 +323,7 @@ export default class Tutorial extends Phaser.Scene {
         if (this.ventana3.x + this.ventana3.width <= 0)
             this.ventana3.x = Math.max(this.ventana1.x, this.ventana2.x) + this.ventana3.width;
 
-        
+
         //EVENTOS LLAMADA / MENSAJE
         if (this.paso === "esperando_evento") {
             const num = Phaser.Math.Between(0, 2);
