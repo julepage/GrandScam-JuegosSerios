@@ -20,8 +20,8 @@ export default class EscenaOpciones extends Phaser.Scene {
         this.volver = this.add.text(this.cameras.main.width / 2, this.cameras.main.height / 2, 'volver', {
             fontFamily: 'Georgia, "Times New Roman", serif',
             fontSize: '150px',
-            color: '#ff5100ff',
-            stroke: '#561b00ff',
+            color: '#471600ff',
+            stroke: '#3e1401ff',
             strokeThickness: 6,
             align: 'center'
         })
@@ -35,8 +35,16 @@ export default class EscenaOpciones extends Phaser.Scene {
             this.scene.resume('EscenaPausa');
         });
 
+        this.volver.on("pointerover", () => {
+            this.volver.setStyle({ fontSize: '175px' });
+        });
+
+        this.volver.on("pointerout", () => {
+            this.volver.setStyle({ fontSize: '150px' });
+        });
+
         // PANTALLA COMPLETA
-        const fullscreenButton = this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 4, 'boton').setInteractive(); // Ajusta la escala si es necesario
+        const fullscreenButton = this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 3, 'botonPantalla').setInteractive().setScale(0.5); // Ajusta la escala si es necesario
         fullscreenButton.on('pointerup', () => {
             if (this.scale.isFullscreen) {
                 this.scale.stopFullscreen();
@@ -46,7 +54,13 @@ export default class EscenaOpciones extends Phaser.Scene {
             this.scale.on('resize', this.onResize, this);
         });
 
+        fullscreenButton.on('pointerover', () => {
+            fullscreenButton.setScale(0.55);
+        });
 
+        fullscreenButton.on('pointerout', () => {
+            fullscreenButton.setScale(0.5);
+        });
     }
 
     onResize(gameSize) {

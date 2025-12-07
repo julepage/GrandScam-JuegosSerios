@@ -43,25 +43,24 @@ export default class Juego extends Phaser.Scene {
     this.desbloquearMovil = this.game.audioManager.fx("desbloquearMovil");
 
     this.musicaMenu.play();
-    // Dentro del create() de la nueva escena
+   
     this.cameras.main.fadeIn(1000, 0, 0, 0);
-    // Personalizar textos solo la primera vez
+   
     if (!this.registry.get('textosPersonalizados')) {
       const textosBase = this.cache.json.get('es');  // Tu JSON de diálogos
       const textosPersonalizados = this.reemplazarEnJson(textosBase, this.playerData);
 
-      // ⚠️ Importante: Phaser devuelve una referencia viva, así que esto modifica el JSON global
       Object.assign(textosBase, textosPersonalizados);
 
-      // Marca que ya se hizo el reemplazo
+      //Marca que ya se hizo el reemplazo
       this.registry.set('textosPersonalizados', true);
-      // Marcar el cuestionario como completado
+      //Marcar el cuestionario como completado
       this.registry.set('cuestionarioCompletado', true);
 
     }
 
     //VENTANA
-    this.scrollSpeed = 0.4; // velocidad del movimiento (ajústala)
+    this.scrollSpeed = 0.1;
     this.ventana1 = this.add.image(0, 0, 'ventana1').setOrigin(0, 0);
     this.ventana2 = this.add.image(this.ventana1.width, 0, 'ventana2').setOrigin(0, 0);
     this.ventana3 = this.add.image(this.ventana1.width * 2, 0, 'ventana3').setOrigin(0, 0);
