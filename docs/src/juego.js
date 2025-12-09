@@ -43,9 +43,9 @@ export default class Juego extends Phaser.Scene {
     this.desbloquearMovil = this.game.audioManager.fx("desbloquearMovil");
 
     this.musicaMenu.play();
-   
+
     this.cameras.main.fadeIn(1000, 0, 0, 0);
-   
+
     if (!this.registry.get('textosPersonalizados')) {
       const textosBase = this.cache.json.get('es');  // Tu JSON de diálogos
       const textosPersonalizados = this.reemplazarEnJson(textosBase, this.playerData);
@@ -109,17 +109,19 @@ export default class Juego extends Phaser.Scene {
     //BOTON PAUSA
     this.botonPausa = this.add.sprite(this.cameras.main.width / 20, 60, "botonPausa").setInteractive().setScale(0.4).setDepth(1);
     this.botonPausa.on('pointerdown', () => {
-      this.buttonEffect.play();
-      if (this.vibracion.isPlaying)
-        this.vibracion.pause();
-      if (this.ring.isPlaying)
-        this.ring.pause();
-      this.escenaPausa();
-      this.musicaMenu.pause();
+      if (!this.scene.isActive('telefono') && !this.scene.isActive('movil')) {
+        this.buttonEffect.play();
+        if (this.vibracion.isPlaying)
+          this.vibracion.pause();
+        if (this.ring.isPlaying)
+          this.ring.pause();
+        this.escenaPausa();
+        this.musicaMenu.pause();
+      }
     });
 
-    this.botonPausa.on('pointerover', () => { this.botonPausa.setScale(0.45); });
-    this.botonPausa.on('pointerout', () => { this.botonPausa.setScale(0.4); });
+    this.botonPausa.on('pointerover', () => { if (!this.scene.isActive('telefono') && !this.scene.isActive('movil')) { this.botonPausa.setScale(0.45); } });
+    this.botonPausa.on('pointerout', () => { if (!this.scene.isActive('telefono') && !this.scene.isActive('movil')) { this.botonPausa.setScale(0.4); } });
     this.textos = this.cache.json.get('es');
     this.casosDisponiblesLLOb = Object.keys(this.textos.telefono.llamada.obligatorio);
     this.casosDisponiblesLLOp = Object.keys(this.textos.telefono.llamada.opcional);

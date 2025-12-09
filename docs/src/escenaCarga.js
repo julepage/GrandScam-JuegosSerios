@@ -84,6 +84,7 @@ export default class EscenaCarga extends Phaser.Scene {
     this.load.image('ventana3', './assets/ventana3.png');
     this.load.image('fondoC', './assets/fondoCuestionario.png');
     this.load.image('fondoVictoria', './assets/fondoVictoria.png');
+    this.load.image('fondoDerrota', './assets/fondoDerrota.png');
     this.load.image('tutorialT', './assets/tutorialTele.png');
     this.load.image('tutorialM', './assets/tutorialMov.png');
     this.load.image('tutorialB', './assets/tutorialB.png');
@@ -91,6 +92,8 @@ export default class EscenaCarga extends Phaser.Scene {
     this.load.image('tutorialV', './assets/tutorialV.png');
     this.load.image('flechaA', './assets/flechaArriba.png');
     this.load.image('botonPantalla', './assets/pantallaGrande.png');
+    this.load.image('acierto', './assets/acierto.png');
+    this.load.image('fallo', './assets/fallo.png');
 
     //MUSICA
     this.load.audio('musicaPrincipal', './musica/musicaPrincipal.mp3');
@@ -104,6 +107,8 @@ export default class EscenaCarga extends Phaser.Scene {
     this.load.audio('buttonClick', './musica/effects/buttonClick.mp3');
     this.load.audio('descolgarTelefono', './musica/effects/descolgarTelefono.mp3');
     this.load.audio('desbloquearMovil', './musica/effects/desbloquearMovil.mp3');
+    this.load.audio('correct', './musica/effects/correct.mp3');
+    this.load.audio('incorrect', './musica/effects/incorrect.mp3');
   }
 
   create() {

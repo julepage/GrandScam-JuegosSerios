@@ -1,10 +1,11 @@
 export default class Bocadillos extends Phaser.GameObjects.Container {
-    constructor(scene, textoInicial, tipoEstafa, vidas, musica) {
+    constructor(scene, textoInicial, tipoEstafa, vidas, musica, lastMusic) {
         super(scene);
         this.scene = scene;
         scene.add.existing(this);
 
         this.musicaMenu = musica;
+        this.lastMusic = lastMusic;
         this.textos = textoInicial;
         this.buttonEffect = this.scene.game.audioManager.fx("buttonClick");
         // Crear el cuadro
@@ -233,6 +234,7 @@ export default class Bocadillos extends Phaser.GameObjects.Container {
                     this.gestV.addAciertos();
                 this.scene.scene?.pause('juego');
                 this.scene.scene?.pause('tutorial');
+                this.lastMusic.stop();
                 this.scene.scene.launch('respuestaCasos', { respuesta: siguiente, textos: this.textos, vidas: this.gestV, musica: this.musicaMenu });
                 this.scene.scene.stop();
                 return;

@@ -11,18 +11,11 @@ export default class RespuestaCasos extends Phaser.Scene {
     }
 
     create() {
-        this.game.audioManager.stopMusic();
         this.buttonEffect = this.game.audioManager.fx("buttonClick");
         //Fondo negro translucido
         const { width, height } = this.scale;
         this.rct = this.add.rectangle(0, 0, width * 2, height * 2, 0x000000, 0.65).setOrigin(0);
-
-        this.bckRct = this.add.rectangle(this.cameras.main.width / 2, this.cameras.main.height / 2.4, this.cameras.main.width / 1.25, this.cameras.main.height / 2, '#00ffffff', 1).setOrigin(0.5);
         // Botón
-        this.text = this.autoFitText(this.textos[this.respuesta].mIni, this.cameras.main.width / 1.25, this.cameras.main.height / 2).setOrigin(0.5)
-        this.text.setPosition(this.cameras.main.width / 2, this.cameras.main.height / 2.4)
-        this.text.setColor('#000000ff');
-
         const boton = this.add.text(this.cameras.main.width / 2, this.cameras.main.height / 1.35, 'CONTINUAR', {
             fontSize: '50px',
             backgroundColor: '#ff0000ff',
@@ -46,12 +39,17 @@ export default class RespuestaCasos extends Phaser.Scene {
 
         if (this.respuesta == "acierto") {
             boton.setStyle({ backgroundColor: '#5eff00ff', color: '#000000ff' });
-            this.bckRct.setFillStyle(0x5eff00, 0.65);
+            this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2.4, 'acierto').setOrigin(0.5).setScale(1.075);
+            this.game.audioManager.fx("correct").play();
         }
         else {
-            this.bckRct.setFillStyle(0xff0000, 0.65);
+            this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2.4, 'fallo').setOrigin(0.5).setScale(1.075);
+            this.game.audioManager.fx("incorrect").play();
         }
 
+        this.text = this.autoFitText(this.textos[this.respuesta].mIni, this.cameras.main.width / 1.25, this.cameras.main.height / 2).setOrigin(0.5)
+        this.text.setPosition(this.cameras.main.width / 2, this.cameras.main.height / 2.4)
+        this.text.setColor('#000000ff');
     }
 
     autoFitText(textString, width, height, maxFontSize = 100, minFontSize = 5) {
