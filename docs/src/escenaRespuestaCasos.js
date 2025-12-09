@@ -21,12 +21,13 @@ export default class RespuestaCasos extends Phaser.Scene {
         // Botón
         this.text = this.autoFitText(this.textos[this.respuesta].mIni, this.cameras.main.width / 1.25, this.cameras.main.height / 2).setOrigin(0.5)
         this.text.setPosition(this.cameras.main.width / 2, this.cameras.main.height / 2.4)
+        this.text.setColor('#000000ff');
 
         const boton = this.add.text(this.cameras.main.width / 2, this.cameras.main.height / 1.35, 'CONTINUAR', {
             fontSize: '50px',
             backgroundColor: '#ff0000ff',
             padding: { x: 20, y: 10 },
-            color: '#00FFFF',
+            color: '#000000ff',
         }).setOrigin(0.5).setInteractive();
 
         boton.on('pointerdown', () => {
@@ -44,13 +45,11 @@ export default class RespuestaCasos extends Phaser.Scene {
         });
 
         if (this.respuesta == "acierto") {
-            this.text.setColor('#5eff00ff');
-            boton.setStyle({ backgroundColor: '#5eff00ff', color: '#FF00FF' });
-            this.bckRct.setFillStyle(0xFF00FF, 0.65);
+            boton.setStyle({ backgroundColor: '#5eff00ff', color: '#000000ff' });
+            this.bckRct.setFillStyle(0x5eff00, 0.65);
         }
         else {
-            this.text.setColor('#ff0000ff');
-            this.bckRct.setFillStyle(0x00FFFF, 0.65);
+            this.bckRct.setFillStyle(0xff0000, 0.65);
         }
 
     }
