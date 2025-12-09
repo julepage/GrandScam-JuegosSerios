@@ -234,7 +234,7 @@ export default class Bocadillos extends Phaser.GameObjects.Container {
                     this.gestV.addAciertos();
                 this.scene.scene?.pause('juego');
                 this.scene.scene?.pause('tutorial');
-                this.lastMusic.stop();
+                this.lastMusic?.stop();
                 this.scene.scene.launch('respuestaCasos', { respuesta: siguiente, textos: this.textos, vidas: this.gestV, musica: this.musicaMenu });
                 this.scene.scene.stop();
                 return;

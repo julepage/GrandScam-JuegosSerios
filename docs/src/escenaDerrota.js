@@ -24,5 +24,5 @@ export default class Derrota extends Phaser.Scene {
             this.buttonEffect.play();
             this.scene.start('menu');
         });
-    }
+    } 
 }
