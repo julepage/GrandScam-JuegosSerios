@@ -84,6 +84,16 @@ export default class Tutorial extends Phaser.Scene {
 
         this.textos = this.cache.json.get(lang);
 
+        //boton volver al menu
+        this.botonMenu = this.add
+            .sprite(this.cameras.main.width / 20, 60, "menuCasa")
+            .setInteractive()
+            .setScale(0.4)
+            .setDepth(1);
+
+        this.botonMenu.on("pointerdown", () => {
+            this.scene.start("menu");
+        });
         //INTRO
         this.mensaje1 = this.add
             .text(
@@ -177,12 +187,22 @@ export default class Tutorial extends Phaser.Scene {
             return;
         }
 
-        //PAUSA→ESPERANDO CASOS
+        //PAUSA → ACIERTOS
         if (this.paso === "pausa") {
             this.textoPausa.destroy();
             this.botonPausa.destroy();
             this.capa1.destroy();
             this.flecha.destroy();
+            this.paso = "aciertos";
+            this.mostrarPasoAciertos();
+            return;
+        }
+
+        // ACIERTOS → ESPERANDO CASOS
+        if (this.paso === "aciertos") {
+            this.textoAciertos.destroy();
+            this.capaAciertos.destroy();
+            this.flechaAciertos.destroy();
             this.paso = "esperando_evento";
             return;
         }
@@ -256,7 +276,8 @@ export default class Tutorial extends Phaser.Scene {
                 {
                     fontSize: "48px",
                     fill: "#ffffff",
-                    backgroundColor: "#000000"
+                    backgroundColor: "#000000",
+                    align: "center"
                 }
             )
             .setOrigin(0.5);
@@ -284,9 +305,37 @@ export default class Tutorial extends Phaser.Scene {
                 this.cameras.main.centerX,
                 this.cameras.main.centerY - 200,
                 this.textos.tutorial.bocadillos.pausa,
-                { fontSize: "48px", fill: "#ffffff", backgroundColor: "#000000" }
+                { fontSize: "48px", fill: "#ffffff", backgroundColor: "#000000", align: "center" }
             )
             .setOrigin(0.5);
+    }
+    // ACIERTOS
+    mostrarPasoAciertos() {
+        this.capaAciertos = this.add
+            .rectangle(0, 0, this.cameras.main.width * 2, this.cameras.main.height * 2, 0x000000, 0.7)
+            .setOrigin(0);
+
+
+        this.textoAciertos = this.add.text(
+            this.cameras.main.centerX,
+            this.cameras.main.centerY,
+            this.textos.tutorial.bocadillos.aciertos,
+            {
+                fontSize: "48px",
+                fill: "#ffffff",
+                align: "center",
+                backgroundColor: "#000000"
+            }
+        ).setOrigin(0.5);
+
+        //flecha
+        this.flechaAciertos = this.add
+            .image(0, 0, "flecha") // Usa tu sprite de flecha
+            .setScale(this.cameras.main.height / this.fondo.height)
+            .setPosition(
+                this.cameras.main.width / 2,
+                this.cameras.main.height / 4
+            );
     }
 
     //RESUMEN

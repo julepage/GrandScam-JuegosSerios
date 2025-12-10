@@ -80,7 +80,8 @@
             "resumen": "The game consists of learning to identify\n when someone is trying to scam you. If you manage\n to get 10 cases right in a row you will be ready,\n but be careful not to fail 3 times as you will lose.\nGO AHEAD!",
             "respuestas": "Read the message\n and click on\n the answer you consider",
             "enter": "Press ENTER to continue",
-            "enterTablet": "Tap the screen to continue"
+            "enterTablet": "Tap the screen to continue",
+            "aciertos": "Here you can check the total correct answers.\n You win when you reach 10."
         }
     },
     "movil": {
