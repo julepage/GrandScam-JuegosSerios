@@ -793,10 +793,6 @@
               {
                 "texto": "No sé si puedo ayudarte, ¿quién me manda este mensaje?",
                 "siguiente": "preguntaNombre"
-              },
-              {
-                "texto": "Si es urgente, igualmente quiero verificar quien eres.",
-                "siguiente": "verificacion"
               }
             ]
           },
@@ -821,7 +817,7 @@
             "mIni": "¡Claro! ¿Qué quieres que haga para comprobar que soy yo?",
             "opciones": [
               {
-                "texto": "Dime tu color favorito o el nombre de tu mascota.",
+                "texto": "Dime mi color favorito o el nombre de mi mascota.",
                 "siguiente": "verificacionSecreta"
               },
               {
