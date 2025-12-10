@@ -256,6 +256,10 @@ export default class Juego extends Phaser.Scene {
       // Acción al presionar ESC
       this.buttonEffect.play();
       this.musicaMenu.pause();
+      if (this.vibracion.isPlaying)
+        this.vibracion.pause();
+      if (this.ring.isPlaying)
+        this.ring.pause();
       this.scene.pause();              // Pausa la escena actual
       this.scene.launch('EscenaPausa'); // Abre tu escena de pausa
     }
