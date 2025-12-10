@@ -7,11 +7,16 @@ export default class EscenaPausa extends Phaser.Scene {
         this.musicaMenu = data.musica;
     }
 
-
+    preload() {
+        this.load.json('es', 'assets/lang/es.json');
+        this.load.json('en', 'assets/lang/en.json');
+    }
     create() {
+        const lang = this.registry.get('idiomaSeleccionado') || 'es';
+
         this.buttonEffect = this.game.audioManager.fx("buttonClick");
         //CARGAR TEXTOS
-        const textos = this.cache.json.get('es');
+        const textos = this.cache.json.get(lang);
         //FONDO TRANSLUCIDO
         const { width, height } = this.scale;
         this.add.rectangle(0, 0, width * 2, height * 2, 0x000000, 0.8).setOrigin(0);

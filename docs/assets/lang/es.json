@@ -4,7 +4,7 @@
     "campos": {
       "nombre": "Nombre",
       "edad": "Edad",
-      "mascota": "Mascota",
+      "mascota": "Nombre de tu mascota\n(si no tienes,\n no contestes)",
       "calle": "Dirección",
       "color": "Color favorito"
     },
@@ -21,7 +21,10 @@
     "opciones": "OPCIONES",
     "menu": "MENÚ",
     "jugar": "JUGAR",
-    "tutorial": "TUTORIAL"
+    "tutorial": "TUTORIAL",
+    "volver":"VOLVER",
+    "musica": "MÚSICA",
+    "efectos": "EFECTOS DE SONIDO"
   },
   "tutorial": {
     "movil": {

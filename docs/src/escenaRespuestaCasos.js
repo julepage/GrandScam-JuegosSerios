@@ -10,13 +10,25 @@ export default class RespuestaCasos extends Phaser.Scene {
         this.musicaMenu = data.musica;
     }
 
+    preload() {
+        this.load.json('es', 'assets/lang/es.json');
+        this.load.json('en', 'assets/lang/en.json');
+    }
+
     create() {
+
+        const lang = this.registry.get('idiomaSeleccionado') || 'es';
+
+        //JSON cargado
+        const json = this.cache.json.get(lang);
+        this.textosBoton = json;
+
         this.buttonEffect = this.game.audioManager.fx("buttonClick");
         //Fondo negro translucido
         const { width, height } = this.scale;
         this.rct = this.add.rectangle(0, 0, width * 2, height * 2, 0x000000, 0.65).setOrigin(0);
         // Botón
-        const boton = this.add.text(this.cameras.main.width / 2, this.cameras.main.height / 1.35, 'CONTINUAR', {
+        const boton = this.add.text(this.cameras.main.width / 2, this.cameras.main.height / 1.35, this.textosBoton.botones.continuar, {
             fontSize: '50px',
             backgroundColor: '#ff0000ff',
             padding: { x: 20, y: 10 },

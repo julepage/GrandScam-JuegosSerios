@@ -45,9 +45,11 @@ export default class Juego extends Phaser.Scene {
     this.musicaMenu.play();
 
     this.cameras.main.fadeIn(1000, 0, 0, 0);
+    //idioma
+    this.idiomaActual = this.registry.get('idiomaSeleccionado') || 'es';
 
     if (!this.registry.get('textosPersonalizados')) {
-      const textosBase = this.cache.json.get('es');  // Tu JSON de diálogos
+      const textosBase = this.cache.json.get(this.idiomaActual);
       const textosPersonalizados = this.reemplazarEnJson(textosBase, this.playerData);
 
       Object.assign(textosBase, textosPersonalizados);
@@ -122,7 +124,7 @@ export default class Juego extends Phaser.Scene {
 
     this.botonPausa.on('pointerover', () => { if (!this.scene.isActive('telefono') && !this.scene.isActive('movil')) { this.botonPausa.setScale(0.45); } });
     this.botonPausa.on('pointerout', () => { if (!this.scene.isActive('telefono') && !this.scene.isActive('movil')) { this.botonPausa.setScale(0.4); } });
-    this.textos = this.cache.json.get('es');
+    this.textos = this.cache.json.get(this.idiomaActual);
     this.casosDisponiblesLLOb = Object.keys(this.textos.telefono.llamada.obligatorio);
     this.casosDisponiblesLLOp = Object.keys(this.textos.telefono.llamada.opcional);
     this.casosDisponiblesSMSOb = Object.keys(this.textos.movil.SMS.obligatorio);

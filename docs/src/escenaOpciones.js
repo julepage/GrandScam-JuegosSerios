@@ -3,11 +3,17 @@ export default class EscenaOpciones extends Phaser.Scene {
         super({ key: 'opciones' });
     }
 
+    preload() {
+        this.load.json('es', 'assets/lang/es.json');
+        this.load.json('en', 'assets/lang/en.json');
+    }
 
     create() {
+        const lang = this.registry.get('idiomaSeleccionado') || 'es';
+
         this.buttonEffect = this.game.audioManager.fx("buttonClick");
         //CARGAR TEXTOS
-        const textos = this.cache.json.get('es');
+        this.textos = this.cache.json.get(lang);
         //FONDO TRANSLUCIDO
         const { width, height } = this.scale;
         this.add.rectangle(0, 0, width * 2, height * 2, 0x000000, 0.8).setOrigin(0);
@@ -17,7 +23,7 @@ export default class EscenaOpciones extends Phaser.Scene {
             'fondoOp'
         ).setOrigin(0.5).setScale(0.8);
 
-        this.volver = this.add.text(this.cameras.main.width / 2, this.cameras.main.height / 2, 'volver', {
+        this.volver = this.add.text(this.cameras.main.width / 2, this.cameras.main.height / 2, this.textos.botones.volver, {
             fontFamily: 'Georgia, "Times New Roman", serif',
             fontSize: '150px',
             color: '#471600ff',
@@ -65,7 +71,7 @@ export default class EscenaOpciones extends Phaser.Scene {
         });
 
         //SLIDER MUSIC
-        this.musicText = this.add.text(this.cameras.main.width / 2, this.cameras.main.height / 1.575, 'MUSICA', {
+        this.musicText = this.add.text(this.cameras.main.width / 2, this.cameras.main.height / 1.575, this.textos.botones.musica, {
             fontFamily: 'Georgia, "Times New Roman", serif',
             fontSize: '150px',
             color: '#471600ff',
@@ -79,11 +85,11 @@ export default class EscenaOpciones extends Phaser.Scene {
 
         const startX = this.cameras.main.width / 2 - this.cameras.main.width / 4.5;
         const startY = this.cameras.main.height / 1.5;
-        const sliderLength = this.cameras.main.width / 4.5 * 2; 
+        const sliderLength = this.cameras.main.width / 4.5 * 2;
 
         const track = this.add.graphics({ fillStyle: { color: 0xcccccc } });
         track.fillRect(startX, startY, sliderLength, 10);
-        this.sliderTrack = { x: startX, width: sliderLength }; 
+        this.sliderTrack = { x: startX, width: sliderLength };
 
 
         const minX = startX;
@@ -107,7 +113,7 @@ export default class EscenaOpciones extends Phaser.Scene {
         this.sliderThumb.on('drag', (pointer, dragX, dragY) => {
             const clampedX = Phaser.Math.Clamp(dragX, minX, maxX);
             this.sliderThumb.x = clampedX;
-            this.sliderThumb.y = startY; 
+            this.sliderThumb.y = startY;
 
             const currentDistance = clampedX - minX;
 
@@ -120,7 +126,7 @@ export default class EscenaOpciones extends Phaser.Scene {
 
 
         //SLIDER FX
-         this.fxText = this.add.text(this.cameras.main.width / 2, this.cameras.main.height / 1.35, 'EFECTOS', {
+        this.fxText = this.add.text(this.cameras.main.width / 2, this.cameras.main.height / 1.35, this.textos.botones.efectos, {
             fontFamily: 'Georgia, "Times New Roman", serif',
             fontSize: '150px',
             color: '#471600ff',
@@ -134,11 +140,11 @@ export default class EscenaOpciones extends Phaser.Scene {
 
         const startXFX = this.cameras.main.width / 2 - this.cameras.main.width / 4.5;
         const startYFX = this.cameras.main.height / 1.3;
-        const sliderLengthFX = this.cameras.main.width / 4.5 * 2; 
+        const sliderLengthFX = this.cameras.main.width / 4.5 * 2;
 
         const trackFX = this.add.graphics({ fillStyle: { color: 0xcccccc } });
         trackFX.fillRect(startXFX, startYFX, sliderLengthFX, 10);
-        this.sliderTrackFX = { x: startXFX, width: sliderLengthFX }; 
+        this.sliderTrackFX = { x: startXFX, width: sliderLengthFX };
 
 
         const minXFX = startXFX;
@@ -162,7 +168,7 @@ export default class EscenaOpciones extends Phaser.Scene {
         this.sliderThumbFX.on('drag', (pointer, dragX, dragY) => {
             const clampedX = Phaser.Math.Clamp(dragX, minXFX, maxXFX);
             this.sliderThumbFX.x = clampedX;
-            this.sliderThumbFX.y = startYFX; 
+            this.sliderThumbFX.y = startYFX;
 
             const currentDistance = clampedX - minXFX;
 

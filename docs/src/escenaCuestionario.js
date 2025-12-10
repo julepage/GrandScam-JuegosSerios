@@ -4,20 +4,25 @@ export default class EscenaCuestionario extends Phaser.Scene {
     }
 
     preload() {
-        this.load.json('es', 'assets/es.json');
+        this.load.json('es', 'assets/lang/es.json');
+        this.load.json('en', 'assets/lang/en.json');
     }
 
     create() {
+        //idioma
+        const lang = this.registry.get('idiomaSeleccionado') || 'es';
+
         this.isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
         // Cámara principal
         const cam = this.cameras.main;
         const centerX = cam.width / 2;
         const centerY = cam.height / 2;
 
         // Cargar JSON
-        const textos = this.cache.json.get('es');
+        const textos = this.cache.json.get(lang);
         this.textos = textos.cuestionario;
-
+       
         // Defaults
         this.defaults = this.textos.defaults;
 
@@ -52,7 +57,7 @@ export default class EscenaCuestionario extends Phaser.Scene {
         this.createInputField(centerX, startY + gap, `${lbl('edad')}*`, 'edad', true);
 
         // Campos opcionales
-        this.createInputField(centerX, startY + gap * 2, `Nombre de tu ${lbl('mascota')} \n(si no tienes,\n no contestes)`, 'mascota', false);
+        this.createInputField(centerX, startY + gap * 2, this.textos.campos.mascota, 'mascota', false);
         this.createInputField(centerX, startY + gap * 3, lbl('calle'), 'calle', false);
         this.createInputField(centerX, startY + gap * 4, lbl('color'), 'color', false);
 

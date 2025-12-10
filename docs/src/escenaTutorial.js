@@ -5,7 +5,14 @@ export default class Tutorial extends Phaser.Scene {
         super({ key: "tutorial" });
     }
 
+    preload() {
+        this.load.json('es', 'assets/lang/es.json');
+        this.load.json('en', 'assets/lang/en.json');
+    }
+
     create() {
+        const lang = this.registry.get('idiomaSeleccionado') || 'es';
+
         //para acabarlo
         this.finTutorial = false;
         this.events.on("tutorialFinalizado", () => {
@@ -75,7 +82,7 @@ export default class Tutorial extends Phaser.Scene {
             if (this.entraMensaje) this.avanzarPaso();
         });
 
-        this.textos = this.cache.json.get("es");
+        this.textos = this.cache.json.get(lang);
 
         //INTRO
         this.mensaje1 = this.add
@@ -98,9 +105,9 @@ export default class Tutorial extends Phaser.Scene {
             .setOrigin(0.5);
 
         //Si estoy en movil o pc
-         this.isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-         if(this.Movile) this.textoEnter = this.textos.tutorial.bocadillos.enterTablet;
-         else this.textoEnter = this.textos.tutorial.bocadillos.enter;
+        this.isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        if (this.Movile) this.textoEnter = this.textos.tutorial.bocadillos.enterTablet;
+        else this.textoEnter = this.textos.tutorial.bocadillos.enter;
 
         this.mensaje2 = this.add
             .text(
