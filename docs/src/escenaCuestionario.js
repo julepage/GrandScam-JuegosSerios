@@ -179,16 +179,26 @@ export default class EscenaCuestionario extends Phaser.Scene {
             return;
         }
 
+        let opcionalRellenado = false;
         // Asignar defaults a opcionales vacíos
         this.inputFields.forEach(box => {
             const key = box.fieldKey;
             let value = this.playerData[key]?.trim();
-            if (!box.required && (!value || value.length === 0)) {
-                value = this.defaults[key] || '';
+           if (!box.required) {
+                // Es un campo opcional
+                
+                if (value && value.length > 0) {
+                    // **¡Se ha rellenado un campo opcional!**
+                    opcionalRellenado = true;
+                } else {
+                    // Asignar default si está vacío
+                    value = this.defaults[key] || '';
+                }
             }
             this.playerData[key] = value;
         });
 
+        this.registry.set('opcionalRellenado', opcionalRellenado);
         // Guardar datos globales
         this.registry.set('playerData', this.playerData);
         this.registry.set('cuestionarioCompletado', true);

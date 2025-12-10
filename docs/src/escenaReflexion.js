@@ -26,9 +26,9 @@ export default class EscneaReflexion extends Phaser.Scene {
         this.textToSet = this.textos.reflexion.victoria;
         if (!this.win) {
             this.textToSet = this.textos.reflexion.derrota;
-            const boton = this.add.text(this.cameras.main.width / 2, this.cameras.main.height / 1.35, this.textos.botones.restart, {
+            const boton = this.add.text(this.cameras.main.width / 2, this.cameras.main.height / 1.15, this.textos.botones.restart, {
                 fontSize: '50px',
-                backgroundColor: '#613946ff',
+                backgroundColor: '#b96f86ff',
                 padding: { x: 20, y: 10 },
                 color: '#000000ff',
             }).setOrigin(0.5).setInteractive();
@@ -39,12 +39,66 @@ export default class EscneaReflexion extends Phaser.Scene {
                 this.scene.launch('menu');
             });
         }
+        else {
+            const enlace = this.add.text(this.cameras.main.width / 2, this.cameras.main.height / 1.35, this.textos.reflexion.enlace, {
+                fontSize: '30px',
+                backgroundColor: '#b96f86ff',
+                padding: { x: 20, y: 10 },
+                color: '#000000ff',
+            }).setOrigin(0.5).setInteractive();
+
+            enlace.on('pointerdown', () => {
+                this.buttonEffect.play();
+                window.open("https://sede.agenciatributaria.gob.es/Sede/condiciones-uso-sede-electronica/aviso-seguridad/consejos-evitar-fraude-internet.html", '_blank');
+            });
+            this.putCuest = this.registry.get('opcionalRellenado');
+
+            if (this.putCuest) {
+                const boton = this.add.text(this.cameras.main.width / 2, this.cameras.main.height / 1.15, this.textos.botones.continuar, {
+                    fontSize: '50px',
+                    backgroundColor: '#b96f86ff',
+                    padding: { x: 20, y: 10 },
+                    color: '#000000ff',
+                }).setOrigin(0.5).setInteractive();
+
+                boton.on('pointerdown', () => {
+                    const boton = this.add.text(this.cameras.main.width / 2, this.cameras.main.height / 1.15, this.textos.botones.reset, {
+                        fontSize: '50px',
+                        backgroundColor: '#b96f86ff',
+                        padding: { x: 20, y: 10 },
+                        color: '#000000ff',
+                    }).setOrigin(0.5).setInteractive();
+
+                    boton.on('pointerdown', () => {
+                        this.buttonEffect.play();
+                        this.scene.stop();
+                        this.scene.launch('menu');
+                    });
+                    this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2.4, 'reflexion').setOrigin(0.5).setScale(1.075);
+                    this.text = this.autoFitText(this.textos.reflexion.cuestionario, this.cameras.main.width / 1.25, this.cameras.main.height / 2).setOrigin(0.5)
+                    this.text.setPosition(this.cameras.main.width / 2, this.cameras.main.height / 2.4)
+                    this.text.setColor('#000000ff');
+                });
+            }
+            else{
+                const boton = this.add.text(this.cameras.main.width / 2, this.cameras.main.height / 1.15, this.textos.botones.continuar, {
+                        fontSize: '50px',
+                        backgroundColor: '#b96f86ff',
+                        padding: { x: 20, y: 10 },
+                        color: '#000000ff',
+                    }).setOrigin(0.5).setInteractive();
+
+                    boton.on('pointerdown', () => {
+                        this.buttonEffect.play();
+                        this.scene.stop();
+                        this.scene.launch('menu');
+                    });
+            }
+        }
+        this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2.4, 'reflexion').setOrigin(0.5).setScale(1.075);
         this.text = this.autoFitText(this.textToSet, this.cameras.main.width / 1.25, this.cameras.main.height / 2).setOrigin(0.5)
         this.text.setPosition(this.cameras.main.width / 2, this.cameras.main.height / 2.4)
         this.text.setColor('#000000ff');
-        // this.fondoV = this.add.image(0, 0, 'fondoDerrota')
-        // this.fondoV.setScale(this.cameras.main.height / this.fondo.height);
-        // this.fondoV.setPosition(this.cameras.main.width / 2, this.cameras.main.height / 2);
     }
 
     autoFitText(textString, width, height, maxFontSize = 100, minFontSize = 5) {

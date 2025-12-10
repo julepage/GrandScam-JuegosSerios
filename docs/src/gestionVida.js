@@ -6,6 +6,7 @@ export default class GestionVidas extends Phaser.GameObjects.Container {
 
         this.vidas = 3;
         this.aciertos = 0;
+        this.aciertosToWin = 10;
         this.velas = this.scene.add.image(this.scene.cameras.main.width / 1.165, this.scene.cameras.main.height / 1.745, 'velas').setScale(0.5, 0.5);
         this.vida3 = this.scene.add.image(this.scene.cameras.main.width / 70, this.scene.cameras.main.height / 1.075, 'vida').setScale(0.6, 0.6).setOrigin(0, 0.5);
         this.vida2 = this.scene.add.image(this.scene.cameras.main.width / 70, this.scene.cameras.main.height / 1.252, 'vida').setScale(0.6, 0.6).setOrigin(0, 0.5);
@@ -18,6 +19,21 @@ export default class GestionVidas extends Phaser.GameObjects.Container {
         this.fuego3.anims.play('fuego');
         this.destVidas = [this.vida3, this.vida2, this.vida1];
         this.destFuegos = [this.fuego3, this.fuego2, this.fuego1];
+        this.aciertosText = this.scene.add.text(this.scene.cameras.main.width / 20, this.scene.cameras.main.height / 2.150, this.aciertos, {
+            fontSize: '80px',
+            padding: { x: 20, y: 10 },
+            color: '#ffffffff',
+        }).setOrigin(0.5);
+        this.scene.add.text(this.scene.cameras.main.width /20, this.scene.cameras.main.height / 2.8, "__", {
+            fontSize: '80px',
+            padding: { x: 20, y: 10 },
+            color: '#ffffffff',
+        }).setOrigin(0.5)
+        this.scene.add.text(this.scene.cameras.main.width / 20, this.scene.cameras.main.height / 3, this.aciertosToWin, {
+            fontSize: '80px',
+            padding: { x: 20, y: 10 },
+            color: '#ffffffff',
+        }).setOrigin(0.5);
     }
 
     quitarVida() {
@@ -40,6 +56,7 @@ export default class GestionVidas extends Phaser.GameObjects.Container {
 
     addAciertos() {
         this.aciertos++;
+        this.aciertosText.setText(this.aciertos);
     }
 
     comprobar() {
@@ -50,7 +67,7 @@ export default class GestionVidas extends Phaser.GameObjects.Container {
             this.scene.scene.start('derrota', { win: false });
         }
 
-        if (this.aciertos == 10) {
+        if (this.aciertos == this.aciertosToWin) {
             this.scene.scene?.stop('juego');
             this.scene.scene?.stop('movil');
             this.scene.scene?.stop('telefono');

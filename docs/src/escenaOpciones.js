@@ -96,13 +96,14 @@ export default class EscenaOpciones extends Phaser.Scene {
         const maxX = startX + sliderLength;
 
         const thumb = this.add.graphics({ fillStyle: { color: 0xff0000 } });
-        thumb.fillCircle(0, 0, 15);
+        thumb.fillCircle(0, 0, this.cameras.main.width / 106.6);
         this.sliderThumb = thumb;
 
         this.sliderThumb.x = minX + this.game.audioManager.vM() * 2 * sliderLength;
         this.sliderThumb.y = startY;
+        this.slider = this.add.image(this.sliderThumb.x, this.sliderThumb.y, 'slider').setOrigin(0.5, 0.475).setScale(0.15);
 
-        this.sliderThumb.setInteractive(new Phaser.Geom.Circle(0, 0, 15), Phaser.Geom.Circle.Contains);
+        this.sliderThumb.setInteractive(new Phaser.Geom.Circle(0, 0, this.cameras.main.width / 106.6), Phaser.Geom.Circle.Contains);
         this.input.setDraggable(this.sliderThumb);
 
         this.valueText = this.add.text(startX + sliderLength + 20, startY, Math.floor(this.game.audioManager.vM() * 2 * 100), {
@@ -114,6 +115,8 @@ export default class EscenaOpciones extends Phaser.Scene {
             const clampedX = Phaser.Math.Clamp(dragX, minX, maxX);
             this.sliderThumb.x = clampedX;
             this.sliderThumb.y = startY;
+            this.slider.x = clampedX;
+            this.slider.y = startY;
 
             const currentDistance = clampedX - minX;
 
@@ -151,13 +154,14 @@ export default class EscenaOpciones extends Phaser.Scene {
         const maxXFX = startXFX + sliderLengthFX;
 
         const thumbFX = this.add.graphics({ fillStyle: { color: 0xff0000 } });
-        thumbFX.fillCircle(0, 0, 15);
+        thumbFX.fillCircle(0, 0, this.cameras.main.width / 106.6);
         this.sliderThumbFX = thumbFX;
 
         this.sliderThumbFX.x = minXFX + this.game.audioManager.vFx() * 1.5 * sliderLengthFX;
         this.sliderThumbFX.y = startYFX;
+        this.sliderFX = this.add.image(this.sliderThumbFX.x, this.sliderThumbFX.y, 'slider').setOrigin(0.5, 0.475).setScale(0.15);
 
-        this.sliderThumbFX.setInteractive(new Phaser.Geom.Circle(0, 0, 15), Phaser.Geom.Circle.Contains);
+        this.sliderThumbFX.setInteractive(new Phaser.Geom.Circle(0, 0, this.cameras.main.width / 106.6), Phaser.Geom.Circle.Contains);
         this.input.setDraggable(this.sliderThumbFX);
 
         this.valueTextFX = this.add.text(startXFX + sliderLengthFX + 20, startYFX, Math.floor(this.game.audioManager.vFx() * 1.5 * 100), {
@@ -169,6 +173,8 @@ export default class EscenaOpciones extends Phaser.Scene {
             const clampedX = Phaser.Math.Clamp(dragX, minXFX, maxXFX);
             this.sliderThumbFX.x = clampedX;
             this.sliderThumbFX.y = startYFX;
+             this.sliderFX.x = clampedX;
+            this.sliderFX.y = startYFX;
 
             const currentDistance = clampedX - minXFX;
 
