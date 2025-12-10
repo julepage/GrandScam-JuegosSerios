@@ -19,7 +19,7 @@ export default class GestionVidas extends Phaser.GameObjects.Container {
         this.fuego3.anims.play('fuego');
         this.destVidas = [this.vida3, this.vida2, this.vida1];
         this.destFuegos = [this.fuego3, this.fuego2, this.fuego1];
-        this.aciertosText = this.scene.add.text(this.scene.cameras.main.width / 20, this.scene.cameras.main.height / 2.150, this.aciertos, {
+        this.aciertosText = this.scene.add.text(this.scene.cameras.main.width / 20, this.scene.cameras.main.height / 3, this.aciertos, {
             fontSize: '80px',
             padding: { x: 20, y: 10 },
             color: '#ffffffff',
@@ -29,7 +29,7 @@ export default class GestionVidas extends Phaser.GameObjects.Container {
             padding: { x: 20, y: 10 },
             color: '#ffffffff',
         }).setOrigin(0.5)
-        this.scene.add.text(this.scene.cameras.main.width / 20, this.scene.cameras.main.height / 3, this.aciertosToWin, {
+        this.scene.add.text(this.scene.cameras.main.width / 20, this.scene.cameras.main.height / 2.150, this.aciertosToWin, {
             fontSize: '80px',
             padding: { x: 20, y: 10 },
             color: '#ffffffff',

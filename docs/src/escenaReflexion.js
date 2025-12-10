@@ -19,7 +19,7 @@ export default class EscneaReflexion extends Phaser.Scene {
         //this.victoria = this.game.audioManager.musica("victoria");
         //this.victoria.play();
         //POSICION Y TAMAÑO DEL FONDO
-        this.fondo = this.add.image(0, 0, 'fondoJuego');
+        this.fondo = this.add.image(0, 0, 'fondoreflexion');
         this.fondo.setScale(this.cameras.main.height / this.fondo.height);
         this.fondo.setPosition(this.cameras.main.width / 2, this.cameras.main.height / 2);
 
