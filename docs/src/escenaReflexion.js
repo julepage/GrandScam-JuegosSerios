@@ -62,7 +62,7 @@ export default class EscneaReflexion extends Phaser.Scene {
                 }).setOrigin(0.5).setInteractive();
 
                 boton.on('pointerdown', () => {
-                    const boton = this.add.text(this.cameras.main.width / 2, this.cameras.main.height / 1.15, this.textos.botones.reset, {
+                    const boton = this.add.text(this.cameras.main.width / 2, this.cameras.main.height / 1.15, this.textos.botones.restart, {
                         fontSize: '50px',
                         backgroundColor: '#b96f86ff',
                         padding: { x: 20, y: 10 },
