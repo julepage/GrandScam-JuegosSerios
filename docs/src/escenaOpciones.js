@@ -25,7 +25,7 @@ export default class EscenaOpciones extends Phaser.Scene {
 
         this.volver = this.add.text(this.cameras.main.width / 2, this.cameras.main.height / 2, this.textos.botones.volver, {
             fontFamily: 'Georgia, "Times New Roman", serif',
-            fontSize: '150px',
+            fontSize: '90px',
             color: '#471600ff',
             stroke: '#3e1401ff',
             strokeThickness: 6,
@@ -43,11 +43,11 @@ export default class EscenaOpciones extends Phaser.Scene {
         });
 
         this.volver.on("pointerover", () => {
-            this.volver.setStyle({ fontSize: '175px' });
+            this.volver.setStyle({ fontSize: '105px' });
         });
 
         this.volver.on("pointerout", () => {
-            this.volver.setStyle({ fontSize: '150px' });
+            this.volver.setStyle({ fontSize: '90px' });
         });
 
         // PANTALLA COMPLETA
