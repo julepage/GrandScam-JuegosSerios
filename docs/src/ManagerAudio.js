@@ -5,9 +5,16 @@ export default class ManagerAudioextends {
         this.musicas = [];
         this.efectos = [];
 
-        this.volumenMusica = 1;
-        this.volumenFx = 1;
-        this.volMusica(0.1);
+        this.volumenMusica = 0.5;
+        this.volumenFx = 0.666666666666666666;
+    }
+
+    vM(){
+        return this.volumenMusica;
+    }
+
+    vFx(){
+        return this.volumenFx;
     }
 
     musica(key) {

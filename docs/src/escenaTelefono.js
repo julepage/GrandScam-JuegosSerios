@@ -28,12 +28,12 @@ export default class EscenaTelefono extends Phaser.Scene {
     console.log(this.randomCaso);
     if (this.randomCaso != " ") {
       if (this.obligatorio) {
-        this.bocadillos = new Bocadillos(this, this.textos.telefono.llamada.obligatorio[this.randomCaso], this.textos.telefono.llamada, this.vidas, this.musicaMenu);
+        this.bocadillos = new Bocadillos(this, this.textos.telefono.llamada.obligatorio[this.randomCaso], this.textos.telefono.llamada, this.vidas, this.musicaMenu, this.music);
         this.bocadillos.ponerBocadillos(this.textos.telefono.llamada.obligatorio[this.randomCaso].comienzo.opciones);
         this.bocadillos.ponerTextos(this.textos.telefono.llamada.obligatorio[this.randomCaso].comienzo.opciones);
       }
       else {
-        this.bocadillos = new Bocadillos(this, this.textos.telefono.llamada.opcional[this.randomCaso], this.textos.telefono.llamada, this.vidas, this.musicaMenu);
+        this.bocadillos = new Bocadillos(this, this.textos.telefono.llamada.opcional[this.randomCaso], this.textos.telefono.llamada, this.vidas, this.musicaMenu, this.music);
         this.bocadillos.ponerBocadillos(this.textos.telefono.llamada.opcional[this.randomCaso].comienzo.opciones);
         this.bocadillos.ponerTextos(this.textos.telefono.llamada.opcional[this.randomCaso].comienzo.opciones);
       }
