@@ -534,13 +534,13 @@
                                 "siguiente": "fallo"
                             }
                         ]
+                    },
+                    "acierto": {
+                        "mIni": "VERY GOOD"
+                    },
+                    "fallo": {
+                        "mIni": "VERY BAD"
                     }
-                },
-                "acierto": {
-                    "mIni": "VERY GOOD"
-                },
-                "fallo": {
-                    "mIni": "VERY BAD"
                 }
             }
         },
