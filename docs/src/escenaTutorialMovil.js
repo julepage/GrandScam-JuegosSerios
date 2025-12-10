@@ -26,7 +26,7 @@ export default class EscenaTutorialMovil extends Phaser.Scene {
     this.fondo = this.add.image(0, 0, 'fondoMovil');
     this.fondo.setScale(this.cameras.main.height / this.fondo.height);
     this.fondo.setDisplaySize(this.fondo.width * this.cameras.main.height / this.fondo.height, this.cameras.main.height);
-    this.fondo.setPosition(this.cameras.main.width / 2, this.cameras.main.height / 2);
+    this.fondo.setPosition(this.cameras.main.width / 2.3, this.cameras.main.height / 2);
 
     // Bocadillos
     this.bocadillos = new Bocadillos(this, this.textos.tutorial.movil.SMS, this.textos.tutorial.movil, this.vidas);

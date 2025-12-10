@@ -78,7 +78,9 @@
             "vidas": "Here you can see your lives, you have a total of 3\n For every time you fail, you lose one\n If you run out of lives you will lose the game",
             "pausa": "This is the pause button.\nYou can use it to pause/resume the game,\n return to the main menu\n or access the options menu.",
             "resumen": "The game consists of learning to identify\n when someone is trying to scam you. If you manage\n to get 10 cases right in a row you will be ready,\n but be careful not to fail 3 times as you will lose.\nGO AHEAD!",
-            "respuestas": "Read the message\n and click on\n the answer you consider"
+            "respuestas": "Read the message\n and click on\n the answer you consider",
+            "enter": "Press ENTER to continue",
+            "enterTablet": "Tap the screen to continue"
         }
     },
     "movil": {
