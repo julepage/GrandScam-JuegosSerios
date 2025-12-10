@@ -870,7 +870,7 @@
             ]
           },
           "verificacionSecreta": {
-            "mIni": "¡Claro! Mi color favorito es azul y mi perro se llama Rocky.",
+            "mIni": "¡Claro! El {color} y {mascota}.",
             "opciones": [
               {
                 "texto": "Perfecto, confío en ti y te paso el dinero.",
@@ -941,7 +941,7 @@
             "mIni": "¿Que pregunta quieres hacer?",
             "opciones": [
               {
-                "texto": "¿Como se llama tu mascota?",
+                "texto": "¿Como se llama mi mascota?",
                 "siguiente": "perro"
               },
               {
