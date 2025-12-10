@@ -47,14 +47,14 @@ export default class GestionVidas extends Phaser.GameObjects.Container {
             this.scene.scene?.stop('juego');
             this.scene.scene?.stop('movil');
             this.scene.scene?.stop('telefono');
-            this.scene.scene.start('derrota');
+            this.scene.scene.start('derrota', { win: false });
         }
 
         if (this.aciertos == 10) {
             this.scene.scene?.stop('juego');
             this.scene.scene?.stop('movil');
             this.scene.scene?.stop('telefono');
-            this.scene.scene.start('victoria');
+            this.scene.scene.start('victoria', { win: true });
         }
     }
 }

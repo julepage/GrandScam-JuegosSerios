@@ -12,6 +12,7 @@ import Tutorial from './escenaTutorial.js';
 import TutorialTelefono from './escenaTutorialTelefono.js';
 import TutorialMovil from './escenaTutorialMovil.js';
 import RespuestaCasos from './escenaRespuestaCasos.js';
+import EscenaReflexion from './escenaReflexion.js';
 
 
 const config = {
@@ -19,7 +20,7 @@ const config = {
     width: 1600, // Ancho de la ventana
     height: 900, // Alto de la ventana
     scene: [EscenaCarga,EscenaCuestionario, EscenaMenu, Juego, EscenaTelefono, EscenaMovil,
-         EscenaPausa, EscenaOpciones, Victoria, Derrota, Tutorial, RespuestaCasos, TutorialMovil, TutorialTelefono], // Aquí defines tus escenas
+         EscenaPausa, EscenaOpciones, Victoria, Derrota, Tutorial, RespuestaCasos, TutorialMovil, TutorialTelefono, EscenaReflexion], // Aquí defines tus escenas
     scale: {
         mode: Phaser.Scale.FIT, // Ajusta el canvas para que ocupe toda la pantalla
         autoCenter: Phaser.Scale.CENTER_BOTH // Centra el canvas

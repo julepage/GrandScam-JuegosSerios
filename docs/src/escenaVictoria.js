@@ -3,6 +3,10 @@ export default class Victoria extends Phaser.Scene {
         super({ key: 'victoria' });
     }
 
+    init(data) {
+        this.win = data.win;
+    }
+
     create() {
         this.game.audioManager.stopMusic();
         this.buttonEffect = this.game.audioManager.fx("buttonClick");
@@ -22,7 +26,7 @@ export default class Victoria extends Phaser.Scene {
 
         this.fondoV.on('pointerdown', () => {
             this.buttonEffect.play();
-            this.scene.start('menu');
+            this.scene.start('reflexion', { win: this.win });
         });
     }
 }

@@ -3,8 +3,12 @@ export default class Derrota extends Phaser.Scene {
         super({ key: 'derrota' });
     }
 
+    init(data) {
+        this.win = data.win;
+    }
+
     create() {
-       this.game.audioManager.stopMusic();
+        this.game.audioManager.stopMusic();
         this.buttonEffect = this.game.audioManager.fx("buttonClick");
         this.victoria = this.game.audioManager.musica("victoria");
         this.victoria.play();
@@ -22,7 +26,7 @@ export default class Derrota extends Phaser.Scene {
 
         this.fondoV.on('pointerdown', () => {
             this.buttonEffect.play();
-            this.scene.start('menu');
+            this.scene.start('reflexion', { win: this.win });
         });
-    } 
+    }
 }
