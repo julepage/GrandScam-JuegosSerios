@@ -89,7 +89,7 @@
     "victoria": "¡Enhorabuena! Has pasado el juego con éxisto y ya estás preparado para detectar cualquier tipo de estafa.\nAquí te dejo un enlace donde puedes ver mas información sobre las estafas actuales y como evitarlas, espero que hayas disfrutado el juego.",
     "enlace": "https://sede.agenciatributaria.gob.es/Sede/\ncondiciones-uso-sede-electronica/aviso-seguridad/\nconsejos-evitar-fraude-internet.html",
     "derrota": "Otra vez será... !Pulsa el boton para empezar de nuevo!",
-    "cuestionario": "Antes de terminar, ¿Recuerdas el cuestionario del principio?, ¡Esa era la primera estafa, y caíste de lleno!. No tenias que haber rellenado la informacion sin (*). En la mayoria de cuestionarios las preguntas que es obligatorio contestar suelen estar marcadas con (*), las demás no son necesarias, es información que puede ser usada en tu contra. Con ella, podrian sacar más facilmente una contraseña de alguna de tus cuentas o, como a lo largo del juego, usarla en tu contra haciendose pasar por alguien que conoces, diciendo toda tu información personal. ¡Recuerda andar con ojo en todos lados!"
+    "cuestionario": "Antes de terminar ¿Recuerdas el cuestionario del principio? ¡Esa era la primera estafa, y caíste de lleno!. No tenías que haber rellenado la información sin (*). En la mayoría de cuestionarios las preguntas que es obligatorio contestar suelen estar marcadas con (*), las demás no son necesarias, es información que puede ser usada en tu contra. Con ella, podrían sacar más facilmente una contraseña de alguna de tus cuentas o, como a lo largo del juego, usarla en tu contra haciéndose pasar por alguien que conoces, diciendo toda tu información personal. ¡Recuerda andar con ojo en todos lados!"
   },
   "movil": {
     "SMS": {
@@ -870,7 +870,7 @@
             ]
           },
           "verificacionSecreta": {
-            "mIni": "¡Claro! El {color} y {mascota}.",
+            "mIni": "¡Claro! {mascota} y {color}.",
             "opciones": [
               {
                 "texto": "Perfecto, confío en ti y te paso el dinero.",

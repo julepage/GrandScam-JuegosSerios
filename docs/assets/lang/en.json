@@ -870,7 +870,7 @@
             ]
           },
           "verificacionSecreta": {
-            "mIni": "Of course! My favorite color is blue and my dog's name is Rocky.",
+            "mIni": "Of course! {mascota} and {color}.",
             "opciones": [
               {
                 "texto": "Perfect, I trust you and I'll send you the money.",
