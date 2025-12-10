@@ -61,7 +61,7 @@ export default class Bocadillos extends Phaser.GameObjects.Container {
                 stroke: '#1e00ffff',
                 strokeThickness: 1,
                 align: 'center'
-            }).setOrigin(0.5, 0.5);
+            }).setOrigin(0.5);
 
             //dibuja linea debajo del texto
             const underline = this.scene.add.graphics();
