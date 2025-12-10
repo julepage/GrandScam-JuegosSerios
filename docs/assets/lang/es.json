@@ -369,7 +369,7 @@
       "obligatorio": {
         "caso1": {
           "comienzo": {
-            "mIni": "From: soporte-seguridad@outlook.com\nTo: {nombre}@ejemplo.com\nSubject: Se ha detectado actividad inusual en su cuenta\nEstimado usuario,\nHemos detectado un intento de acceso no autorizado a su cuenta desde un dispositivo desconocido. Por motivos de seguridad, su cuenta ha sido bloqueada temporalmente.\nPara restablecer su acceso, por favor verifique su identidad haciendo clic en el siguiente enlace:\nhttps://seguridad-outlook-auth.es/verify\nSi no realiza esta verificación en las próximas 24 horas, su cuenta podría ser suspendida de forma preventiva.",
+            "mIni": "From: soporte-seguridad@outlook.com\nTo: {nombre}@ejemplo.com\nSubject: Se ha detectado actividad inusual en su cuenta\nEstimado usuario,\nHemos detectado un intento de acceso no autorizado a su cuenta desde un dispositivo desconocido. Por motivos de seguridad, su cuenta ha sido bloqueada temporalmente.Para restablecer su acceso, por favor verifique su identidad haciendo clic en el siguiente enlace:https://seguridad-outlook-auth.es/verify Si no realiza esta verificación en las próximas 24 horas, su cuenta podría ser suspendida de forma preventiva.",
             "opciones": [
               {
                 "texto": "Hacer clic en el enlace para desbloquear la cuenta",

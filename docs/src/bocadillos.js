@@ -23,7 +23,7 @@ export default class Bocadillos extends Phaser.GameObjects.Container {
         const maxHeight = this.cuadro.displayHeight * 0.9;
 
         // Función para texto escalable
-        const crearTextoEscalable = (x, y, textoStr, maxWidth , maxHeight) => {
+        const crearTextoEscalable = (x, y, textoStr, maxWidth, maxHeight) => {
             let fontSize = 20;
             let txt = this.scene.add.text(x, y, textoStr, {
                 fontFamily: 'Georgia, "Times New Roman", serif',
@@ -35,15 +35,23 @@ export default class Bocadillos extends Phaser.GameObjects.Container {
                 wordWrap: { width: maxWidth, useAdvancedWrap: true }
             }).setOrigin(0.5, 0.5);
 
+            const paddingTop = 30; // margen superior más pequeño
+            const paddingBottom = 50; // mantener margen inferior
+
             // Reducir fuente hasta que ancho y alto encajen
-            while ((txt.width > maxWidth || txt.height > maxHeight - 130) && fontSize > 8) {
+            while ((txt.width > maxWidth || txt.height > maxHeight - paddingBottom) && fontSize > 8) {
                 fontSize -= 1;
                 txt.setFontSize(fontSize);
-                txt.setWordWrapWidth(maxWidth); // 🔹 recalcula wordWrap con la nueva fuente
+                txt.setWordWrapWidth(maxWidth); // recalcula wordWrap con la nueva fuente
             }
+
+            // Ajustar posición vertical para reducir margen superior
+            const cuadroCentroY = y;
+            txt.setY(cuadroCentroY - (paddingBottom - paddingTop) / 2);
 
             return txt;
         }
+
 
         // Crear texto centrado en el cuadro
         this.caso1 = crearTextoEscalable(
