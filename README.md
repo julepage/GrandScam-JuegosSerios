@@ -349,11 +349,11 @@ Algunos juegos que han servido de inspiración en términos de mecánicas y esti
 
 - Papers, Please: por su sistema de toma de decisiones y gestión moral.
 
-[Papers, Please](docs/assets/GDD/image3.png)
+	- [Papers, Please](docs/assets/GDD/image3.png)
 
 - JustShare y SCHEDULE 1: por el uso de un móvil
 
-[SCHEDULE 1](docs/assets/GDD/image6.png)
+	- [SCHEDULE 1](docs/assets/GDD/image6.png)
 
 - Preguntados: por las preguntas con opciones.
 
