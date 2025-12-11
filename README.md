@@ -250,6 +250,94 @@ Además, se analizarán los datos recogidos de las partidas jugadas por cada par
 
 Por último, si nos fuera posible, intentaremos hacer playtesting para poder recoger información como el tiempo promedio para completar los retos, la facilidad para comprender el juego, etc.
 
+A continuación podrás leer las preguntas del cuestionario Pre juego a las que deben contestar para poder comenzar la partida (todas son obligatorias):
+
+### Acerca de ti:
+- Edad
+- ¿Alguna vez ha sufrido una estafa online?
+  
+### Conocimiento y reconocimiento de estafas online
+- ¿Cuál de las siguientes consideras una estafa/phishing?
+	- Un email de tu banco pidiendo tu clave
+ 	- Un sorteo online que pide pocos datos
+    - Un mensaje de un amigo pidiendo dinero urgente
+-  Recibe un mensaje por la noche de una empresa o servicio que dice que su cuenta está bloqueada en 2 horas si no hace clic en un enlace para confirmar su contraseña y usuario ¿Cuál es su señal de alarma más clara?
+	- El mensaje tiene un enlace muy corto
+ 	- La urgencia por saber mi contraseña
+  	- Que el mensaje se envíe fuera del horario laboral
+- Recibes un mensaje de alguien que no conoces diciendo que has ganado un sorteo y te pide tus datos bancarios para reclamarlo. ¿Qué harías?
+	- Ignorarlo
+	- Dar mis datos para reclamar el premio
+	- Comprobar la veracidad del sorteo
+	- Otra
+ - Al navegar por internet, aparece una ventana que dice que tu dispositivo está infectado y debes descargar un programa para “arreglarlo”. ¿Qué harías?
+	- Descargar el programa para solucionar el problema
+	- Cerrar la ventana y no descargar nada
+	- Ignorarlo y comprobar con un antivirus fiable si mi dispositivo está libre de virus
+   
+   ### Autopercepción y confianza
+- Me siento capaz de reconocer estafas online:	Totalmente en desacuerdo	En desacuerdo	Indiferente	De acuerdo	Totalmente de acuerdo	Sin respuesta
+- Creo que podría evitar caer en un intento de estafa online:	Totalmente en desacuerdo	En desacuerdo	Indiferente	De acuerdo	Totalmente de acuerdo	Sin respuesta
+- Confío en mi capacidad para identificar mensajes sospechosos en redes sociales o apps de mensajería:	Totalmente en desacuerdo	En desacuerdo	Indiferente	De acuerdo	Totalmente de acuerdo	Sin respuesta
+- Creo que siempre debo verificar antes de hacer clic en enlaces o descargar archivos desconocidos:	Totalmente en desacuerdo	En desacuerdo	Indiferente	De acuerdo	Totalmente de acuerdo	Sin respuesta
+- Me siento capaz de explicar a otras personas cómo reconocer estafas online:	Totalmente en desacuerdo	En desacuerdo	Indiferente	De acuerdo	Totalmente de acuerdo	Sin respuesta
+- Suelo revisar la autenticidad de un mensaje antes de actuar cuando algo me parece sospechoso:	Totalmente en desacuerdo	En desacuerdo	Indiferente	De acuerdo	Totalmente de acuerdo	Sin respuesta
+- Si recibo un mensaje sospechoso, sé qué pasos seguir para protegerme:	Totalmente en desacuerdo	En desacuerdo	Indiferente	De acuerdo	Totalmente de acuerdo	Sin respuesta
+- Me considero consciente de los riesgos de compartir información personal en internet:	Totalmente en desacuerdo	En desacuerdo	Indiferente	De acuerdo	Totalmente de acuerdo	Sin respuesta
+- Creo que mi entorno (amigos/familia) también podría beneficiarse de aprender a reconocer estafas online:	Totalmente en desacuerdo	En desacuerdo	Indiferente	De acuerdo	Totalmente de acuerdo	Sin respuesta
+- Considero importante verificar la autenticidad de los mensajes antes de actuar:	Totalmente en desacuerdo	En desacuerdo	Indiferente	De acuerdo	Totalmente de acuerdo	Sin respuesta
+- Me preocupa la seguridad de mi información personal en internet: Totalmente en desacuerdo	En desacuerdo	Indiferente	De acuerdo	Totalmente de acuerdo	Sin respuesta
+
+- Escriba algo que le gustaría aprender o reforzar acerca de las estafas online.
+  
+Por último, éstas son las preguntas del cuestionario post juego a las que el jugador solo podrá contestar una vez termine de jugar una ronda completa, es decir, hasta que pierda o gane:
+
+### Conocimiento y reconocimiento de estafas online
+- ¿Cuál de las siguientes consideras una estafa/phishing?
+	- Un email de tu banco pidiendo tu clave
+	- Un sorteo online que pide pocos datos
+	- Un mensaje de un amigo pidiendo dinero urgente
+- Recibe un mensaje por la noche de una empresa o servicio que dice que su cuenta está bloqueada en 2 horas si no hace clic en un enlace para confirmar su contraseña y usuario ¿Cuál es su señal de alarma más clara?
+	- El mensaje tiene un enlace muy corto
+ 	- La urgencia por saber mi contraseña
+	- Que el mensaje se envíe fuera del horario laboral
+ - Recibes un mensaje de alguien que no conoces diciendo que has ganado un sorteo y te pide tus datos bancarios para reclamarlo. ¿Qué harías?
+	- Ignorarlo
+	- Dar mis datos para reclamar el premio
+	- Comprobar la veracidad del sorteo
+	- Otra
+ - Al navegar por internet, aparece una ventana que dice que tu dispositivo está infectado y debes descargar un programa para “arreglarlo”. ¿Qué harías?
+	- Descargar el programa para solucionar el problema
+	- Cerrar la ventana y no descargar nada
+	- Ignorarlo y comprobar con un antivirus fiable si mi dispositivo está libre de virus
+### Autopercepción y confianza
+- Me siento capaz de reconocer estafas online:	Totalmente en desacuerdo	En desacuerdo	Indiferente	De acuerdo	Totalmente de acuerdo	Sin respuesta
+- Creo que podría evitar caer en un intento de estafa online:	Totalmente en desacuerdo	En desacuerdo	Indiferente	De acuerdo	Totalmente de acuerdo	Sin respuesta
+- Confío en mi capacidad para identificar mensajes sospechosos en redes sociales o apps de mensajería:	Totalmente en desacuerdo	En desacuerdo	Indiferente	De acuerdo	Totalmente de acuerdo	Sin respuesta
+- Creo que siempre debo verificar antes de hacer clic en enlaces o descargar archivos desconocidos:	Totalmente en desacuerdo	En desacuerdo	Indiferente	De acuerdo	Totalmente de acuerdo	Sin respuesta
+- Me siento capaz de explicar a otras personas cómo reconocer estafas online:	Totalmente en desacuerdo	En desacuerdo	Indiferente	De acuerdo	Totalmente de acuerdo	Sin respuesta
+- Suelo revisar la autenticidad de un mensaje antes de actuar cuando algo me parece sospechoso:	Totalmente en desacuerdo	En desacuerdo	Indiferente	De acuerdo	Totalmente de acuerdo	Sin respuesta
+- Si recibo un mensaje sospechoso, sé qué pasos seguir para protegerme:	Totalmente en desacuerdo	En desacuerdo	Indiferente	De acuerdo	Totalmente de acuerdo	Sin respuesta
+- Me considero consciente de los riesgos de compartir información personal en internet:	Totalmente en desacuerdo	En desacuerdo	Indiferente	De acuerdo	Totalmente de acuerdo	Sin respuesta
+- Creo que mi entorno (amigos/familia) también podría beneficiarse de aprender a reconocer estafas online:	Totalmente en desacuerdo	En desacuerdo	Indiferente	De acuerdo	Totalmente de acuerdo	Sin respuesta
+- Considero importante verificar la autenticidad de los mensajes antes de actuar:	Totalmente en desacuerdo	En desacuerdo	Indiferente	De acuerdo	Totalmente de acuerdo	Sin respuesta
+- Me preocupa la seguridad de mi información personal en internet: Totalmente en desacuerdo	En desacuerdo	Indiferente	De acuerdo	Totalmente de acuerdo	Sin respuesta
+
+### Acerca del juego
+- ¿Qué cambiarías o mejorarías del juego para que sea más claro o divertido?
+- Si pudieras añadir algo al juego, ¿qué sería?
+- ¿Qué parte del juego te resultó más difícil o confusa y cómo la mejorarías?
+- ¿Tienes alguna sugerencia para que el juego sea más útil para aprender a reconocer estafas online?
+
+- Indica tu satisfacción respecto a los distintos aspectos del juego.
+	- Tamaño de los textos:	Muy satisfech@	Regular	Poco satisfech@	Sin respuesta
+	- Tutorial / explicación inicial:	Muy satisfech@	Regular	Poco satisfech@	Sin respuesta
+	- Lo intuitivo que es el juego:	Muy satisfech@	Regular	Poco satisfech@	Sin respuesta
+	- Visualización de resultados (cuando ganabas o perdías):	Muy satisfech@	Regular	Poco satisfech@	Sin respuesta
+	- Sonidos y efectos de audio:	Muy satisfech@	Regular	Poco satisfech@	Sin respuesta
+	- Arte / gráficos del juego:	Muy satisfech@	Regular	Poco satisfech@	Sin respuesta
+	- En general, ¿cómo de satisfecho estás respecto al juego?:	Muy satisfech@ Regular	Poco satisfech@	Sin respuesta
+  
 </details>
 
 <details>
