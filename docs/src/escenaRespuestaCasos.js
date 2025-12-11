@@ -33,6 +33,7 @@ export default class RespuestaCasos extends Phaser.Scene {
             backgroundColor: '#ff0000ff',
             padding: { x: 20, y: 10 },
             color: '#000000ff',
+            align: "center"
         }).setOrigin(0.5).setInteractive();
 
         boton.on('pointerdown', () => {
@@ -50,7 +51,7 @@ export default class RespuestaCasos extends Phaser.Scene {
         });
 
         if (this.respuesta == "acierto") {
-            boton.setStyle({ backgroundColor: '#5eff00ff', color: '#000000ff' });
+            boton.setStyle({ backgroundColor: '#5eff00ff', color: '#000000ff',align: "center" });
             this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2.4, 'acierto').setOrigin(0.5).setScale(1.075);
             this.game.audioManager.fx("correct").play();
         }
@@ -69,6 +70,7 @@ export default class RespuestaCasos extends Phaser.Scene {
         let textObj = this.add.text(0, 0, textString, {
             fontSize: fontSize + "px",
             wordWrap: { width: width },
+            align: "center"
         }).setOrigin(0);
 
         // Reducir tamaño hasta que quepa

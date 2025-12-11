@@ -31,6 +31,7 @@ export default class EscneaReflexion extends Phaser.Scene {
                 backgroundColor: '#b96f86ff',
                 padding: { x: 20, y: 10 },
                 color: '#000000ff',
+                align: "center"
             }).setOrigin(0.5).setInteractive();
 
             boton.on('pointerdown', () => {
@@ -45,6 +46,7 @@ export default class EscneaReflexion extends Phaser.Scene {
                 backgroundColor: '#b96f86ff',
                 padding: { x: 20, y: 10 },
                 color: '#000000ff',
+                align: "center"
             }).setOrigin(0.5).setInteractive();
 
             enlace.on('pointerdown', () => {
@@ -59,6 +61,7 @@ export default class EscneaReflexion extends Phaser.Scene {
                     backgroundColor: '#b96f86ff',
                     padding: { x: 20, y: 10 },
                     color: '#000000ff',
+                    align: "center"
                 }).setOrigin(0.5).setInteractive();
 
                 boton.on('pointerdown', () => {
@@ -67,6 +70,7 @@ export default class EscneaReflexion extends Phaser.Scene {
                         backgroundColor: '#b96f86ff',
                         padding: { x: 20, y: 10 },
                         color: '#000000ff',
+                        align: "center"
                     }).setOrigin(0.5).setInteractive();
 
                     boton.on('pointerdown', () => {
@@ -86,6 +90,7 @@ export default class EscneaReflexion extends Phaser.Scene {
                         backgroundColor: '#b96f86ff',
                         padding: { x: 20, y: 10 },
                         color: '#000000ff',
+                        align: "center"
                     }).setOrigin(0.5).setInteractive();
 
                     boton.on('pointerdown', () => {
@@ -106,6 +111,7 @@ export default class EscneaReflexion extends Phaser.Scene {
         let textObj = this.add.text(0, 0, textString, {
             fontSize: fontSize + "px",
             wordWrap: { width: width },
+            align: "center"
         }).setOrigin(0);
 
         // Reducir tamaño hasta que quepa
