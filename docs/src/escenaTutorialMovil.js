@@ -13,6 +13,9 @@ export default class EscenaTutorialMovil extends Phaser.Scene {
   create() {
     const { width, height } = this.scale;
 
+    //si es movil
+    this.isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
     // Fondo negro general (si lo necesitas)
     this.capa = this.add.rectangle(0, 0, width * 2, height * 2, 0x000000, 1).setOrigin(0);
 
@@ -28,12 +31,12 @@ export default class EscenaTutorialMovil extends Phaser.Scene {
     this.fondo.setDisplaySize(this.fondo.width * this.cameras.main.height / this.fondo.height, this.cameras.main.height);
     this.fondo.setPosition(this.cameras.main.width / 2.3, this.cameras.main.height / 2);
 
-    // Bocadillos
+    //Bocadillos
     this.bocadillos = new Bocadillos(this, this.textos.tutorial.movil.SMS, this.textos.tutorial.movil, this.vidas);
     this.bocadillos.ponerBocadillos(this.textos.tutorial.movil.SMS.comienzo.opciones);
     this.bocadillos.ponerTextos(this.textos.tutorial.movil.SMS.comienzo.opciones);
 
-    // Texto centrado y saltable con ENTER
+    //Texto centrado y saltable con ENTER
     this.instruccionTexto = this.add.text(
       this.cameras.main.centerX,
       this.cameras.main.centerY,
@@ -41,7 +44,7 @@ export default class EscenaTutorialMovil extends Phaser.Scene {
       { fontSize: '45px', fill: '#ffffff', align: 'center', backgroundColor: '#000000' }
     ).setOrigin(0.5).setDepth(11);
 
-    // Tecla ENTER para saltar el mensaje
+    //ENTER para saltar el mensaje
     this.enter = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);
     this.enter.on('down', () => {
       if (this.instruccionTexto) {
@@ -49,5 +52,14 @@ export default class EscenaTutorialMovil extends Phaser.Scene {
         this.fondoMensaje.destroy(); // solo destruye el fondo del mensaje
       }
     });
+    //toque
+    if (this.isMobile) {
+      this.input.on('pointerdown', () => {
+        if (this.instruccionTexto) {
+          this.instruccionTexto.destroy();
+          this.fondoMensaje.destroy();
+        }
+      });
+    }
   }
 }

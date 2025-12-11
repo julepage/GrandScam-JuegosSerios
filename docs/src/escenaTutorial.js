@@ -116,8 +116,11 @@ export default class Tutorial extends Phaser.Scene {
 
         //Si estoy en movil o pc
         this.isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-        if (this.Movile) this.textoEnter = this.textos.tutorial.bocadillos.enterTablet;
-        else this.textoEnter = this.textos.tutorial.bocadillos.enter;
+
+        if (this.isMobile)
+            this.textoEnter = this.textos.tutorial.bocadillos.enterTablet;
+        else
+            this.textoEnter = this.textos.tutorial.bocadillos.enter;
 
         this.mensaje2 = this.add
             .text(
@@ -151,6 +154,21 @@ export default class Tutorial extends Phaser.Scene {
                 this.avanzarPaso();
             }
         });
+
+        //TOQUE EN PANTALLA (para móvil o PC)
+        if (this.isMobile) {
+            this.input.on("pointerdown", () => {
+                if (
+                    !this.scene.isActive("tutorialMovil") &&
+                    !this.scene.isActive("tutorialTelefono") &&
+                    this.paso !== "llamada" &&
+                    this.paso !== "mensaje"
+                ) {
+                    this.avanzarPaso();
+                }
+            });
+        }
+
         //EMPIEZO EN INTRO
         this.paso = "intro";
     }

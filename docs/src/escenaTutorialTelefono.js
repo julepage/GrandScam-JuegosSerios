@@ -13,6 +13,9 @@ export default class EscenaTutorialTelefono extends Phaser.Scene {
   create() {
     const { width, height } = this.scale;
 
+    //si es movil
+    this.isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    
     // Fondo general (opcional)
     this.add.rectangle(0, 0, width * 2, height * 2, 0x000000, 1).setOrigin(0);
 
@@ -47,5 +50,14 @@ export default class EscenaTutorialTelefono extends Phaser.Scene {
       if (this.instruccionTexto) this.instruccionTexto.destroy();
       if (this.fondoMensaje) this.fondoMensaje.destroy();
     });
+
+    if (this.isMobile) {
+      this.input.on('pointerdown', () => {
+        if (this.instruccionTexto) {
+          this.instruccionTexto.destroy();
+          this.fondoMensaje.destroy();
+        }
+      });
+    }
   }
 }
