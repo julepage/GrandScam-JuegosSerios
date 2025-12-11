@@ -30,9 +30,10 @@ export default class EscenaMenu extends Phaser.Scene {
         });
 
         this.dibujarMenu();
+        this.muteB = false;
     }
 
-   
+
     dibujarMenu() {
         // Carga textos según idioma
         const textos = this.cache.json.get(this.idiomaActual);
@@ -53,6 +54,29 @@ export default class EscenaMenu extends Phaser.Scene {
 
         // Estado del cuestionario
         const cuestionarioCompletado = this.registry.get('cuestionarioCompletado') ?? false;
+        this.muteAsset = '';
+        if (this.muteB) {
+            this.muteAsset = 'mute';
+        }
+        else
+            this.muteAsset = 'unmute';
+        this.mute = this.add.image(
+            width / 1.265,
+            height * 3 / 7,
+            this.muteAsset,
+        ).setInteractive();
+        this.mute.setScale(0.1);
+        this.mute.on('pointerdown', () => {
+            this.buttonEffect.play();
+            this.muteB = !this.muteB;
+            if (this.muteB) {
+                this.muteAsset = 'mute';
+            }
+            else
+                this.muteAsset = 'unmute';
+            this.mute.setTexture(this.muteAsset);
+            this.game.audioManager.mute(this.muteB);
+        })
 
         // Botón Jugar
         this.botonJugar = this.crearBotonConFlecha(
@@ -91,7 +115,7 @@ export default class EscenaMenu extends Phaser.Scene {
             }
         );
 
-    
+
         this.contenedorIdioma = this.add.container(
             width / 1.265,
             height * 5.05 / 7
@@ -108,7 +132,7 @@ export default class EscenaMenu extends Phaser.Scene {
         this.actualizarColoresIdioma();
     }
 
- 
+
     crearBotonIdioma(texto, langKey, offsetX, offsetY) {
         const boton = this.add.text(0, 0, texto, {
             fontSize: '60px',
@@ -147,7 +171,7 @@ export default class EscenaMenu extends Phaser.Scene {
         this.botonEN.setBackgroundColor(this.idiomaActual === "en" ? seleccionado : gris);
     }
 
-   
+
     update() {
         if (this.spaceEnabled && Phaser.Input.Keyboard.JustDown(this.teclaSpace)) {
             this.buttonEffect.play();
@@ -156,7 +180,7 @@ export default class EscenaMenu extends Phaser.Scene {
         }
     }
 
-  
+
     crearBotonConFlecha(x, y, texto, accion) {
         const boton = this.add.text(x, y, texto, {
             fontFamily: 'Georgia, "Times New Roman", serif',

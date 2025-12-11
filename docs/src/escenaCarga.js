@@ -98,8 +98,10 @@ export default class EscenaCarga extends Phaser.Scene {
     this.load.image('reflexion', './assets/reflexion.png');
     this.load.image('slider', './assets/slider.png');
     this.load.image('fondoreflexion', './assets/fondoreflexion.png');
+    this.load.image('mute', './assets/mute.jpg');
+    this.load.image('unmute', './assets/unmute.jpg');
 
-    
+
     //MUSICA
     this.load.audio('musicaPrincipal', './musica/musicaPrincipal.mp3');
     this.load.audio('musicaMenu', './musica/musicaMenu.mp3');

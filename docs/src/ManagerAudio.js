@@ -9,12 +9,23 @@ export default class ManagerAudioextends {
         this.volumenFx = 0.666666666666666666;
     }
 
-    vM(){
+    vM() {
         return this.volumenMusica;
     }
 
-    vFx(){
+    vFx() {
         return this.volumenFx;
+    }
+
+    mute(m) {
+        if (m) {
+            this.musicas.forEach(m => m.setVolume(0));
+            this.efectos.forEach(e => e.setVolume(0));
+        }
+        else {
+            this.musicas.forEach(m => m.setVolume(this.volumenMusica));
+            this.efectos.forEach(e => e.setVolume(this.volumenFx));
+        }
     }
 
     musica(key) {
