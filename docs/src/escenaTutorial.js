@@ -191,7 +191,7 @@ export default class Tutorial extends Phaser.Scene {
         if (this.paso === "pausa") {
             this.textoPausa.destroy();
             this.botonPausa.destroy();
-            this.capa1.destroy();
+
             this.flecha.destroy();
             this.paso = "aciertos";
             this.mostrarPasoAciertos();
@@ -201,7 +201,7 @@ export default class Tutorial extends Phaser.Scene {
         // ACIERTOS → ESPERANDO CASOS
         if (this.paso === "aciertos") {
             this.textoAciertos.destroy();
-            this.capaAciertos.destroy();
+            this.capa1.destroy();
             this.flechaAciertos.destroy();
             this.paso = "esperando_evento";
             return;
@@ -213,9 +213,6 @@ export default class Tutorial extends Phaser.Scene {
             this.capa.destroy();
             this.telefonoScene();
             this.paso = "esperando_evento";
-
-
-
             return;
         }
 
@@ -311,9 +308,9 @@ export default class Tutorial extends Phaser.Scene {
     }
     // ACIERTOS
     mostrarPasoAciertos() {
-        this.capaAciertos = this.add
-            .rectangle(0, 0, this.cameras.main.width * 2, this.cameras.main.height * 2, 0x000000, 0.7)
-            .setOrigin(0);
+        // this.capaAciertos = this.add
+        //     .rectangle(0, 0, this.cameras.main.width * 2, this.cameras.main.height * 2, 0x000000, 0.7)
+        //     .setOrigin(0);
 
 
         this.textoAciertos = this.add.text(
@@ -333,8 +330,8 @@ export default class Tutorial extends Phaser.Scene {
             .image(0, 0, "flecha") // Usa tu sprite de flecha
             .setScale(this.cameras.main.height / this.fondo.height)
             .setPosition(
-                this.cameras.main.width / 2,
-                this.cameras.main.height / 4
+                this.cameras.main.width / 1.96,
+                this.cameras.main.height / 17
             );
     }
 
