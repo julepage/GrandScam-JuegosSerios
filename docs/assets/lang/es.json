@@ -180,7 +180,6 @@
         "caso1": {
           "comienzo": {
             "mIni": "¡Enhorabuena! Has sido seleccionado para recibir una ayuda económica de 500€ del Ministerio de Solidaridad. Para reclamarla, haz clic en el siguiente enlace y completa con tus datos personales.",
-            "enlace": "ministerio-ayudas-gov.es-premios",
             "opciones": [
               {
                 "texto": "Hacer clic en el enlace",
@@ -377,7 +376,7 @@
       "obligatorio": {
         "caso1": {
           "comienzo": {
-            "mIni": "From: soporte-seguridad@outlook.com\nTo: {nombre}@ejemplo.com\nSubject: Se ha detectado actividad inusual en su cuenta\nEstimado usuario,\nHemos detectado un intento de acceso no autorizado a su cuenta desde un dispositivo desconocido. Por motivos de seguridad, su cuenta ha sido bloqueada temporalmente.Para restablecer su acceso, por favor verifique su identidad haciendo clic en el siguiente enlace:https://seguridad-outlook-auth.es/verify Si no realiza esta verificación en las próximas 24 horas, su cuenta podría ser suspendida de forma preventiva.",
+            "mIni": "From: soporte-seguridad@outlook.com\nTo: {nombre}@ejemplo.com\nSubject: Se ha detectado actividad inusual en su cuenta\nEstimado usuario,\nHemos detectado un intento de acceso a su cuenta desde un dispositivo desconocido. Por seguridad, su cuenta ha sido bloqueada temporalmente. Para restablecer su acceso, verifique su identidad haciendo clic en el enlace:https://seguridad-outlook-auth.es/verify. Si no verifica en las próximas 24 horas, su cuenta podría ser suspendida.",
             "opciones": [
               {
                 "texto": "Hacer clic en el enlace para desbloquear la cuenta",
@@ -415,7 +414,7 @@
         },
         "caso2": {
           "comienzo": {
-            "mIni": "From: facturacion@empresa-servicios.com\nTo: {nombre}@empresa.com\nSubject: Factura pendiente Nº 8239 – Pago urgente requerido\nEstimado cliente,\nAdjuntamos la factura correspondiente al mes actual. Hemos detectado un error en el último pago y necesitamos que regularice la situación para evitar recargos.\nPuede descargar su factura y realizar el pago desde el siguiente enlace seguro:\nhttps://empresa-servicios-facturas.com/descargar\nAtentamente,\nDepartamento de Facturación.",
+            "mIni": "From: facturacion@empresa-servicios.com\nTo: {nombre}.com\nSubject: Factura pendiente Nº 8239 – Pago urgente requerido\nEstimado cliente,\nadjuntamos la factura correspondiente al mes actual. Hemos detectado un error en el último pago y necesitamos que regularice la situación para evitar recargos.\nRealice el pago desde aquí:\nhttps://empresa-servicios-facturas.com\nDepartamento de Facturación.",
             "opciones": [
               {
                 "texto": "Descargar la factura y pagar de inmediato",
@@ -531,7 +530,7 @@
         },
         "caso3": {
           "comienzo": {
-            "mIni": "From: facturacion@notifications.plataformaStreaming.com\nTo: {nombre}@ejemplo.com\nSubject: Aviso importante: pago no recibido – riesgo de suspensión de su suscripción\nEstimado/a {nombre},\nNo hemos podido procesar el cobro de su suscripción a 'plataforma de Streaming' correspondiente al periodo actual. Si no actualiza su método de pago en las próximas 72 horas, su suscripción será suspendida y perderá acceso al servicio hasta que regularice la situación.\nPara actualizar su método de pago de forma segura, acceda a su cuenta desde la app oficial o desde su página de facturación.\nSi necesita ayuda, contacte con Atención al Cliente a través de la app o www.plataformaStreaming.com/contact.",
+            "mIni": "From: facturacion@plataformaStreaming.com\nTo: {nombre}@ejemplo.com\nSubject: Aviso importante: pago no recibido – riesgo de suspensión de su suscripción\nEstimado/a {nombre},\nNo hemos podido procesar el cobro de su suscripción a 'plataforma de Streaming'. Si no actualiza su método de pago en las próximas 72 horas, su suscripción será suspendida hasta que regularice la situación.\nPara actualizar su método de pago de forma segura, acceda a su cuenta desde la app oficial.",
             "opciones": [
               {
                 "texto": "Entrar en la app o web oficiales para actualizar el pago y que no me quiten la cuenta",
@@ -1111,7 +1110,7 @@
       "obligatorio": {
         "caso1": {
           "comienzo": {
-            "mIni": "Buenos días, le habla Sergio Sergitez del departamento de atención al cliente de LaLuzDeDios Energía.\nEsta llamada puede ser grabada por motivos de calidad.\n¿Podría confirmar si hablo con {nombre} {nombre}tez, titular del contrato número 123456?",
+            "mIni": "Buenos días, le habla Sergio Sergitez del departamento de atención al cliente de LaLuzDeDios Energía. Esta llamada puede ser grabada por motivos de calidad. ¿Podría confirmar si hablo con {nombre} {nombre}tez, titular del contrato número 123456?",
             "opciones": [
               {
                 "texto": "Sí, soy yo.",

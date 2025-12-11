@@ -180,7 +180,6 @@
         "caso1": {
           "comienzo": {
             "mIni": "Congratulations! You've been selected to receive a financial aid of €500 from the Ministry of Solidarity. To claim it, click the following link and complete your personal data.",
-            "enlace": "ministerio-aid-gov.us-awards",
             "opciones": [
               {
                 "texto": "Click the link",
@@ -415,7 +414,7 @@
         },
         "caso2": {
           "comienzo": {
-            "mIni": "From: billing@service-company.com\nTo: {nombre}@company.com\nSubject: Pending Invoice No. 8239  Urgent payment required\nDear customer,\nWe've attached the invoice for the current month. We detected an error in the last payment and need you to resolve the situation to avoid penalties.\nYou can download your invoice and make the payment from the following secure link:\nhttps://service-company-invoices.com/download\nSincerely,\nBilling Department.",
+            "mIni": "From: billing@service-company.com\nTo: {nombre}@company.com\nSubject: Pending Invoice No. 8239  Urgent payment required\nDear customer,\nWe've attached the invoice for the current month. We detected an error in the last payment and need you to resolve the situation to avoid penalties.\nYou can download your invoice and make the payment from the following secure link:\nhttps://service-company-invoices.com/download.",
             "opciones": [
               {
                 "texto": "Download the invoice and pay immediately",
@@ -531,7 +530,7 @@
         },
         "caso3": {
           "comienzo": {
-            "mIni": "From: billing@notifications.Streamingplatform.com\nTo: {nombre}@example.com\nSubject: Important notice: payment not received – risk of subscription suspension\nDear {nombre},\nWe haven't been able to process the payment for your 'Streaming platform' subscription for the current period. If you don't update your payment method within the next 72 hours, your subscription will be suspended and you'll lose access to the service until you resolve the situation.\nTo securely update your payment method, log into your account via the official app or your billing page.\nIf you need help, contact Customer Service through the app or www.Streamingplatform.com/contact.",
+            "mIni": "From: billing@notifications.Streamingplatform.com\nTo: {nombre}@example.com\nSubject: Important notice: payment not received – risk of subscription suspension\nDear {nombre},\nWe haven't been able to process the payment for your 'Streaming platform' subscription. If you don't update your payment method within the next 72 hours, your subscription will be suspended until you resolve the situation.\nTo securely update your payment method, log into your account via the official app.",
             "opciones": [
               {
                 "texto": "Log into the official app or website to update the payment and prevent account cancellation",
