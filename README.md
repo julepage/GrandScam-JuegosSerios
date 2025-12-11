@@ -26,7 +26,7 @@ El jugador encarna a una persona mayor en el sofá de su casa, con el teléfono 
 Juego educativo perteneciente a la gama de los juegos serios.
 
 ### Plataforma(s):
- PC
+ PC, tablet, ipad, móvil
 
 ### Público objetivo:
 Enfocado a las personas de la tercera edad (+60) y adultos entre 40-60 años. 
