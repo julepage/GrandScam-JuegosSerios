@@ -359,6 +359,10 @@ Algunos juegos que han servido de inspiración en términos de mecánicas y esti
 
 - Estafas del banco Santander: ideas de tipos de estafas digitales
 
+- Datos para las preguntas de los formularios de evaluación:
+  	- [Primera Ref](https://www.pensamientopenal.com.ar/system/files/Encuesta%20sobre%20ciberdelitos.pdf)
+  	- [Segunda Ref](https://www.supersurvey.com/LPB-phishing?utm_source=chatgpt.com)
+  	- [Tercera Ref](https://docs.google.com/forms/d/e/1FAIpQLScwZn_9oNT57SeaGlzqqbQjswcFgQCrpZNwtEtU2GtChvyXoA/viewform)
 
 </details>
 <details>
