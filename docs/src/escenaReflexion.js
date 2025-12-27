@@ -74,6 +74,20 @@ export default class EscneaReflexion extends Phaser.Scene {
                     }).setOrigin(0.5).setInteractive();
 
                     boton.on('pointerdown', () => {
+                        //TRACKER
+                        GameData.tracker.completable("GrandScamSession", GameData.tracker.COMPLETABLETYPE.Session)
+                            .completed(
+                                true,
+                                10
+                            )
+                            .send();
+
+                        GameData.tracker.flush();
+                        window.open(
+                            "https://limesurvey.simva-beta.e-ucm.es/227815?lang=es",
+                            "_blank"
+                        );
+
                         this.buttonEffect.play();
                         this.scene.stop();
                         this.scene.launch('menu');
@@ -84,21 +98,36 @@ export default class EscneaReflexion extends Phaser.Scene {
                     this.text.setColor('#000000ff');
                 });
             }
-            else{
+            else {
                 const boton = this.add.text(this.cameras.main.width / 2, this.cameras.main.height / 1.15, this.textos.botones.continuar, {
-                        fontSize: '50px',
-                        backgroundColor: '#b96f86ff',
-                        padding: { x: 20, y: 10 },
-                        color: '#000000ff',
-                        align: "center"
-                    }).setOrigin(0.5).setInteractive();
+                    fontSize: '50px',
+                    backgroundColor: '#b96f86ff',
+                    padding: { x: 20, y: 10 },
+                    color: '#000000ff',
+                    align: "center"
+                }).setOrigin(0.5).setInteractive();
 
-                    boton.on('pointerdown', () => {
-                        this.buttonEffect.play();
-                        this.scene.stop();
-                        this.scene.launch('menu');
-                    });
+                boton.on('pointerdown', () => {
+                    //TRACKER
+                    GameData.tracker.completable("GrandScamSession", GameData.tracker.COMPLETABLETYPE.Session)
+                        .completed(
+                            true,
+                            10
+                        )
+                        .send();
+
+                    GameData.tracker.flush();
+                    window.open(
+                        "https://limesurvey.simva-beta.e-ucm.es/227815?lang=es",
+                        "_blank"
+                    );
+
+                    this.buttonEffect.play();
+                    this.scene.stop();
+                    this.scene.launch('menu');
+                });
             }
+
         }
         this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2.4, 'reflexion').setOrigin(0.5).setScale(1.075);
         this.text = this.autoFitText(this.textToSet, this.cameras.main.width / 1.25, this.cameras.main.height / 2).setOrigin(0.5)

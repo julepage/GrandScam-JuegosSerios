@@ -14,6 +14,22 @@ import TutorialMovil from './escenaTutorialMovil.js';
 import RespuestaCasos from './escenaRespuestaCasos.js';
 import EscenaReflexion from './escenaReflexion.js';
 
+window.GameData = {
+    tracker: new SeriousGameTracker()
+}
+
+GameData.tracker.trackerSettings.activity_id="https://limesurvey.simva-beta.e-ucm.es/227815?lang=es";
+GameData.tracker.trackerSettings.generateSettingsFromURLParams=false;
+GameData.tracker.trackerSettings.batch_endpoint = "https://myendpoint.com";
+GameData.tracker.trackerSettings.actor_homePage = "https://myhomepage.com";
+GameData.tracker.trackerSettings.actor_name = "username";
+GameData.tracker.start();
+GameData.tracker.completable(
+  "GrandScamSession",
+  GameData.tracker.COMPLETABLETYPE.Session
+)
+.initialized()
+.send();
 
 const config = {
     type: Phaser.AUTO,

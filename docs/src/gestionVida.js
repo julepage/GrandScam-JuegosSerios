@@ -6,7 +6,7 @@ export default class GestionVidas extends Phaser.GameObjects.Container {
 
         this.vidas = 3;
         this.aciertos = 0;
-        this.aciertosToWin = 10;
+        this.aciertosToWin = 1;
         this.velas = this.scene.add.image(this.scene.cameras.main.width / 1.165, this.scene.cameras.main.height / 1.745, 'velas').setScale(0.5, 0.5);
         this.vida3 = this.scene.add.image(this.scene.cameras.main.width / 70, this.scene.cameras.main.height / 1.075, 'vida').setScale(0.6, 0.6).setOrigin(0, 0.5);
         this.vida2 = this.scene.add.image(this.scene.cameras.main.width / 70, this.scene.cameras.main.height / 1.252, 'vida').setScale(0.6, 0.6).setOrigin(0, 0.5);
