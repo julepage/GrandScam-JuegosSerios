@@ -10,7 +10,7 @@ Grand!Scam es un juego serio educativo cuyo objetivo es enseñar a adultos y per
 El jugador encarna a una persona mayor sentada en el sofá de su casa. A lo largo de la partida recibe llamadas y mensajes sospechosos y debe tomar decisiones seguras, identificando si se trata de una estafa o de una situación legítima.
 El objetivo consiste en reconocer señales comunes de phishing y estafas online y aumentar la confianza frente a amenazas tecnológicas.
 
-![Pantalla principal del juego](docs/assets/GDD/pantallaPrincipal.png)
-![Pantalla del juego](docs/assets/GDD/juego.png)
-![Pantalla caso móvil](docs/assets/GDD/movil.png)
+![Pantalla principal del juego](docs/assets/GDD/pantallaPrincipal.PNG)
+![Pantalla del juego](docs/assets/GDD/juego.PNG)
+![Pantalla caso móvil](docs/assets/GDD/movil.PNG)
 
