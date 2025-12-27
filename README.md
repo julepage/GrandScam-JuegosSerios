@@ -12,5 +12,5 @@ El objetivo consiste en reconocer señales comunes de phishing y estafas online 
 
 ![Pantalla principal del juego](docs/assets/GDD/pantallaPrincipal.PNG)
 ![Pantalla del juego](docs/assets/GDD/juego.PNG)
-![Pantalla caso móvil](docs/assets/movil.PNG)
+![Pantalla caso móvil](docs/assets/GDD/movil.PNG)
 
