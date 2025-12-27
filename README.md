@@ -11,7 +11,18 @@ pcke /
 sufz /
 nfec /
 zziz /
-gzla
+gzla /
+nzfh /
+rtyg / 
+nmwc /
+snas /
+vsvr /
+qbrv /
+ktll /
+wljq /
+gtjq
+
+Si no funciona con uno de los usuarios prueba con otro.
 ## Descripción
 Grand!Scam es un juego serio educativo cuyo objetivo es enseñar a adultos y personas mayores a reconocer estafas digitales.
 El jugador encarna a una persona mayor sentada en el sofá de su casa. A lo largo de la partida recibe llamadas y mensajes sospechosos y debe tomar decisiones seguras, identificando si se trata de una estafa o de una situación legítima.
